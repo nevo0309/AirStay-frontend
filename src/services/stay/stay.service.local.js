@@ -1,9 +1,12 @@
 import { storageService } from '../async-storage.service'
-import { makeId } from '../util.service'
+import { makeId, saveToStorage } from '../util.service'
 import { userService } from '../user'
+import { stays } from '../../../data/stay'
 
-const STORAGE_KEY = 'stay'
+const STORAGE_KEY = 'stayDB'
 
+let gStays = []
+_createStays()
 export const stayService = {
   query,
   getById,
@@ -34,13 +37,6 @@ async function query(filterBy = { txt: '', price: 0 }) {
     stays.sort((stay1, stay2) => (stay1[sortField] - stay2[sortField]) * +sortDir)
   }
 
-  stays = stays.map(({ _id, vendor, price, speed, owner }) => ({
-    _id,
-    vendor,
-    price,
-    speed,
-    owner,
-  }))
   return stays
 }
 
@@ -89,4 +85,14 @@ async function addStayMsg(stayId, txt) {
   await storageService.put(STORAGE_KEY, stay)
 
   return msg
+}
+function _createStays() {
+  storageService.query(STORAGE_KEY).then(storedStays => {
+    if (!storedStays || !storedStays.length) {
+      gStays = [...stays]
+      saveToStorage(STORAGE_KEY, gStays)
+    } else {
+      gStays = storedStays
+    }
+  })
 }
