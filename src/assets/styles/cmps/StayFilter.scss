@@ -1,26 +1,26 @@
 .stay-filter {
-  display: grid;
-  grid-template-columns: 1fr 5em 5em auto;
+  grid-area: filter;
+  display: flex;
   align-items: center;
+  margin-inline: auto;
+  margin-block: 1.5em;
+  border-radius: 50px;
   gap: 0 0.5em;
+  background-color: $clr6;
+  padding-inline: 1.2rem;
+  padding-block: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f8f8f8;
 
-  background-color: $clr4;
-  padding: 0.5em;
-
-  h3 {
-    grid-column: 1 / -1;
-    font-size: rem(14px);
-    margin: 0;
+  .input-section{
+    border-right: 1px solid $gray1;
   }
-
-  & :not(h3) {
-    cursor: pointer;
+  label{
+    font-size:  0.75rem;
+    font-weight: 700;
   }
-
-  input:is([type='text'], [type='number']) {
-    height: 1.8em;
+  input{
     border: none;
-    border-block-end: 1px solid $gray1;
 
     &:focus {
       outline: none;
@@ -51,16 +51,16 @@
     display: none;
   }
 
-  label {
-    span {
-      font-size: 0.9em;
-      padding: 0.1em 0.3em;
-      outline: 1px solid $gray1;
-    }
+  // label {
+  //   span {
+  //     font-size: 0.9em;
+  //     padding: 0.1em 0.3em;
+  //     outline: 1px solid $gray1;
+  //   }
 
-    &:has(:checked) span {
-      background-color: $clr3;
-      color: $gray1;
-    }
-  }
+  //   &:has(:checked) span {
+  //     background-color: $clr3;
+  //     color: $gray1;
+  //   }
+  // }
 }

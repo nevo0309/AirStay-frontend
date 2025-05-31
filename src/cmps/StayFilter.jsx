@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 
 export function StayFilter({ filterBy, onSetFilterBy }) {
-  const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
+  // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
 
-  useEffect(() => {
-    onSetFilterBy(filterToEdit)
-  }, [filterToEdit])
+  // useEffect(() => {
+  //   onSetFilterBy(filterToEdit)
+  // }, [filterToEdit])
 
   function handleChange(ev) {
     const type = ev.target.type
@@ -23,42 +23,88 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         value = +ev.target.value
         break
     }
-    setFilterToEdit({ ...filterToEdit, [field]: value })
+    // setFilterToEdit({ ...filterToEdit, [field]: value })
   }
 
-  function clearFilter() {
-    setFilterToEdit({ ...filterToEdit, txt: '', minSpeed: '', maxPrice: '' })
-  }
+  // function clearFilter() {
+  //   setFilterToEdit({ ...filterToEdit, txt: '', minSpeed: '', maxPrice: '' })
+  // }
 
-  function clearSort() {
-    setFilterToEdit({ ...filterToEdit, sortField: '', sortDir: '' })
-  }
+  // function clearSort() {
+  //   setFilterToEdit({ ...filterToEdit, sortField: '', sortDir: '' })
+  // }
 
   return (
     <section className="stay-filter">
-      <h3>Filter:</h3>
-      <input
-        type="text"
-        name="txt"
-        value={filterToEdit.txt}
-        placeholder="Free text"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        min="0"
-        name="minSpeed"
-        value={filterToEdit.minSpeed}
-        placeholder="min. speed"
-        onChange={handleChange}
-        required
-      />
-      <button className="btn-clear" onClick={clearFilter}>
+      <div className='input-section flex column'>
+        <label>Where</label>
+        <input
+          type="text"
+          name="txt"
+          // value={filterToEdit.txt}
+          placeholder="Search Destinations"
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+      <div className='input-section flex column'>
+        <label>
+          Check in
+        </label>
+
+        <input
+          type="date"
+          name="date"
+          // value={filterToEdit.minSpeed}
+          placeholder="Add dates"
+          onChange={handleChange}
+          required
+        />
+
+      </div>
+
+
+      <div className='input-section flex column'>
+        <label>
+          Check out
+        </label>
+
+        <input
+          type="date"
+          name="checkOut"
+          // value={filterToEdit.minSpeed}
+          placeholder="Add dates"
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+
+      <div className='input-section flex column'>
+        <label>
+          Who
+        </label>
+
+        <input
+          type="txt"
+          name="who"
+          // value={filterToEdit.minSpeed}
+          placeholder="Add guests"
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+
+
+
+
+      {/* <button className="btn-clear" onClick={clearFilter}>
         Clear
       </button>
-      <h3>Sort:</h3>
-      <div className="sort-field">
+      <h3>Sort:</h3> */}
+      {/* <div className="sort-field">
         <label>
           <span>Speed</span>
           <input
@@ -89,8 +135,8 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
             onChange={handleChange}
           />
         </label>
-      </div>
-      <div className="sort-dir">
+      </div> */}
+      {/* <div className="sort-dir">
         <label>
           <span>Asce</span>
           <input
@@ -111,10 +157,10 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
             checked={filterToEdit.sortDir === -1}
           />
         </label>
-      </div>
-      <button className="btn-clear" onClick={clearSort}>
+      </div> */}
+      {/* <button className="btn-clear" onClick={clearSort}>
         Clear
-      </button>
+      </button> */}
     </section>
   )
 }
