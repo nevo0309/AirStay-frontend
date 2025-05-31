@@ -1,30 +1,26 @@
-import { userService } from '../services/user'
-import { StayPreview } from './StayPreview'
+// src/cmps/StayList.jsx
+import React from 'react'
+import { StayCarousel } from './carousel/StayCarousel'
 
-export function StayList({ stays, onRemoveStay, onUpdateStay }) {
-  function shouldShowActionBtns(stay) {
-    const user = userService.getLoggedinUser()
-
-    if (!user) return false
-    if (user.isAdmin) return true
-    return stay.owner?._id === user._id
-  }
+export function StayList({ stays }) {
+  const sections = [
+    'Popular homes in Eilat >',
+    'Available in Tel Aviv-Yafo this weekend >',
+    'Stay in Athens >',
+    'Available in Jerusalem this weekend >',
+    'Homes in Budapest >',
+    'Available next month in Rome >',
+    'Places to stay in Paris >',
+    'Check out homes in Haifa >',
+    'Popular homes in London >',
+    'Stay in Madrid >',
+  ]
 
   return (
-    <section>
-      <ul className="list">
-        {stays.map(stay => (
-          <li key={stay._id}>
-            <StayPreview stay={stay} />
-            {shouldShowActionBtns(stay) && (
-              <div className="actions">
-                <button onClick={() => onUpdateStay(stay)}>Edit</button>
-                <button onClick={() => onRemoveStay(stay._id)}>x</button>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
+    <section className="explor-lists">
+      {sections.map((title, idx) => (
+        <StayCarousel key={idx} stays={stays} title={title} />
+      ))}
     </section>
   )
 }
