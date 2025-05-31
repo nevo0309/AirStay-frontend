@@ -1,7 +1,7 @@
 import { storageService } from '../async-storage.service'
 import { makeId, saveToStorage } from '../util.service'
 import { userService } from '../user'
-import { stays } from '../../../data/stay'
+import { stays } from '../../../data/stay-demo'
 
 const STORAGE_KEY = 'stayDB'
 

@@ -2,8 +2,9 @@ $gap: 11px;
 $slidesToShow: 7;
 
 .carousel-section {
-  margin-bottom: 70px;
-
+  &:last-child {
+    margin-bottom: 20px;
+  }
   .embla-wrapper {
     position: relative;
     left: 50%;
@@ -19,7 +20,7 @@ $slidesToShow: 7;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 70px;
+    height: 50px;
     // margin: 32px 0 14px;
     font-size: 20px;
     line-height: 24px;
