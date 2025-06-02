@@ -11,7 +11,9 @@
         display: grid;
         grid-template-areas:
             'logo . btns'
-            'filter filter filter';
+            'filter filter filter'
+            'dinamic dinamic dinamic';
+            
         width: 100%;
         align-items: center;
         font-size: 0.9em;

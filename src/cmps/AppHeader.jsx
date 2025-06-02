@@ -3,11 +3,19 @@ import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/user.actions'
-import {StayFilter} from '../cmps/StayFilter.jsx'
+import { StayFilter } from '../cmps/StayFilter.jsx'
+import { FilterCalender } from './calender/FilterCaleder.jsx'
+import { useState} from 'react'
 
 export function AppHeader() {
   const user = useSelector(storeState => storeState.userModule.user)
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false)
   const navigate = useNavigate()
+
+
+  function onToggleCalendar(){
+    setIsCalendarOpen(!isCalendarOpen)
+  }
 
   async function onLogout() {
     try {
@@ -29,13 +37,7 @@ export function AppHeader() {
           </NavLink>
         </div>
 
-        <StayFilter/>
-        {/* <NavLink to="/about">About</NavLink>
-        <NavLink to="/stay">Stays</NavLink> */}
-        {/* <NavLink to="/chat">Chat</NavLink> */}
-        {/* <NavLink to="/review">Review</NavLink> */}
-        {/* {user?.isAdmin && <NavLink to="/admin">Admin</NavLink>} */}
-
+        <StayFilter onToggleCalendar={onToggleCalendar} />
 
         {/* {!user && (
           <NavLink to="login" className="login-link">
@@ -57,6 +59,7 @@ export function AppHeader() {
           </button>
         </section>
 
+       {isCalendarOpen && <FilterCalender/>}
 
         {/* {user && (
           <div className="user-info">

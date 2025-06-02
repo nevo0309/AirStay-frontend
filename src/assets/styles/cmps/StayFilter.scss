@@ -14,6 +14,11 @@
 
   .input-section{
     border-right: 1px solid $gray1;
+
+    p{
+      margin: 0;
+      color: rgb(118, 118, 118);
+    }
   }
   label{
     font-size:  0.75rem;
@@ -21,6 +26,7 @@
   }
   input{
     border: none;
+    font-family: poppins;
 
     &:focus {
       outline: none;
@@ -28,39 +34,7 @@
     }
   }
 
-  .btn-clear {
-    grid-column: 4;
-  }
-
-  .sort-field,
-  .sort-dir {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-
-    // margin-inline-start: .4em;
 
     font-size: 0.8em;
   }
 
-  .sort-dir {
-    grid-column: 2 / 3;
-  }
-
-  input[type='radio'] {
-    display: none;
-  }
-
-  // label {
-  //   span {
-  //     font-size: 0.9em;
-  //     padding: 0.1em 0.3em;
-  //     outline: 1px solid $gray1;
-  //   }
-
-  //   &:has(:checked) span {
-  //     background-color: $clr3;
-  //     color: $gray1;
-  //   }
-  // }
-}

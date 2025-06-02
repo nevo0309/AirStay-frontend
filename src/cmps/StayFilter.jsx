@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
-export function StayFilter({ filterBy, onSetFilterBy }) {
+export function StayFilter({ filterBy, onSetFilterBy,onToggleCalendar}) {
   // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
+
 
   // useEffect(() => {
   //   onSetFilterBy(filterToEdit)
@@ -26,13 +27,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
     // setFilterToEdit({ ...filterToEdit, [field]: value })
   }
 
-  // function clearFilter() {
-  //   setFilterToEdit({ ...filterToEdit, txt: '', minSpeed: '', maxPrice: '' })
-  // }
 
-  // function clearSort() {
-  //   setFilterToEdit({ ...filterToEdit, sortField: '', sortDir: '' })
-  // }
 
   return (
     <section className="stay-filter">
@@ -48,40 +43,22 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         />
       </div>
 
-      <div className='input-section flex column'>
+      <div className='input-section flex column' onClick={onToggleCalendar}>
         <label>
           Check in
         </label>
-
-        <input
-          type="date"
-          name="date"
-          // value={filterToEdit.minSpeed}
-          placeholder="Add dates"
-          onChange={handleChange}
-          required
-        />
-
+        <p>Add dates</p>
       </div>
 
-
-      <div className='input-section flex column'>
+      <div className='input-section flex column' onClick={onToggleCalendar}>
         <label>
           Check out
         </label>
-
-        <input
-          type="date"
-          name="checkOut"
-          // value={filterToEdit.minSpeed}
-          placeholder="Add dates"
-          onChange={handleChange}
-          required
-        />
+        <p>Add dates</p>
       </div>
 
 
-      <div className='input-section flex column'>
+      <div className='input-section flex column' >
         <label>
           Who
         </label>
