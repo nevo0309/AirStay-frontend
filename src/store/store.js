@@ -4,12 +4,14 @@ import { stayReducer } from './stay.reducer'
 import { userReducer } from './user.reducer'
 import { reviewReducer } from './review.reducer'
 import { systemReducer } from './system.reducer'
+import { orderReducer } from './order.reducer'
 
 const rootReducer = combineReducers({
   stayModule: stayReducer,
   userModule: userReducer,
   systemModule: systemReducer,
   reviewModule: reviewReducer,
+  orderModule: orderReducer,
 })
 
 const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
