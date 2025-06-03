@@ -1,66 +1,126 @@
 .stay-filter {
+  box-sizing: border-box;
+  grid-area: filter;
   display: grid;
-  grid-template-columns: 1fr 5em 5em auto;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   align-items: center;
-  gap: 0 0.5em;
+  margin-inline: auto;
+  margin-block: 1.5em;
+  border-radius: 50px;
+  background-color: $clr6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dfdddd;
+  height: 66px;
+  max-width: 850px;
+  position: relative;
 
-  background-color: $clr4;
-  padding: 0.5em;
 
-  h3 {
-    grid-column: 1 / -1;
-    font-size: rem(14px);
-    margin: 0;
+  .input-section {
+    padding-inline: 1.5rem;
+    height: 66px;
+    justify-content: center;
+    border-radius: 50px;
+
+    &:hover {
+      background-color: #EBEBEB;
+
+      input {
+        background-color: #EBEBEB;
+      }
+
+      &::after {
+        background-color: #999999; // צבע חדש בזמן hover
+      }
+
+
+    }
+
+    &:nth-of-type(1) {
+      grid-column: 1;
+      padding-inline: 2rem;
+
+    }
+
+    &:nth-of-type(4) {
+      padding-inline-end: 140px;
+    }
+
+    &:nth-child(1):not(:hover):not(:has(+ .input-section:hover))::after {
+      content: "";
+      position: absolute;
+      height: 36px;
+      width: 1px;
+      background-color: #cccccc;
+      left: 33%;
+    }
+
+    &:nth-child(2):not(:hover):not(:has(+ .input-section:hover))::after {
+      content: "";
+      position: absolute;
+      height: 36px;
+      width: 1px;
+      background-color: #cccccc;
+      left: 50%;
+    }
+
+    &:nth-child(3):not(:hover):not(:has(+ .input-section:hover))::after {
+      content: "";
+      position: absolute;
+      height: 36px;
+      width: 1px;
+      background-color: #cccccc;
+      left: 66%;
+    }
+
+
+    p {
+      margin: 0;
+      color: rgb(118, 118, 118);
+      font-size: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
   }
 
-  & :not(h3) {
-    cursor: pointer;
+  label {
+    font-size: 0.70rem;
+    font-weight: 700;
+
   }
 
-  input:is([type='text'], [type='number']) {
-    height: 1.8em;
+  input {
     border: none;
-    border-block-end: 1px solid $gray1;
+    font-family: poppins;
+    font-size: 0.8rem;
+    width: 214px;
 
     &:focus {
       outline: none;
       background-color: $gray1;
     }
+
+
   }
 
-  .btn-clear {
-    grid-column: 4;
-  }
-
-  .sort-field,
-  .sort-dir {
+  .search-btn {
     display: flex;
+    position: absolute;
+    right: 10px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    height: 48px;
+    justify-content: center;
     align-items: center;
-    gap: 1em;
+    background-color: #FF385C;
 
-    // margin-inline-start: .4em;
-
-    font-size: 0.8em;
-  }
-
-  .sort-dir {
-    grid-column: 2 / 3;
-  }
-
-  input[type='radio'] {
-    display: none;
-  }
-
-  label {
-    span {
-      font-size: 0.9em;
-      padding: 0.1em 0.3em;
-      outline: 1px solid $gray1;
+    svg {
+      color: white;
     }
 
-    &:has(:checked) span {
-      background-color: $clr3;
-      color: $gray1;
-    }
   }
+
+
+
 }

@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
+import { searchSvg } from '../../data/svgExport'
 
-export function StayFilter({ filterBy, onSetFilterBy }) {
-  const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
+export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
+  // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
 
-  useEffect(() => {
-    onSetFilterBy(filterToEdit)
-  }, [filterToEdit])
+
+  // useEffect(() => {
+  //   onSetFilterBy(filterToEdit)
+  // }, [filterToEdit])
 
   function handleChange(ev) {
     const type = ev.target.type
@@ -23,98 +25,52 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         value = +ev.target.value
         break
     }
-    setFilterToEdit({ ...filterToEdit, [field]: value })
+    // setFilterToEdit({ ...filterToEdit, [field]: value })
   }
 
-  function clearFilter() {
-    setFilterToEdit({ ...filterToEdit, txt: '', minSpeed: '', maxPrice: '' })
-  }
 
-  function clearSort() {
-    setFilterToEdit({ ...filterToEdit, sortField: '', sortDir: '' })
-  }
 
   return (
     <section className="stay-filter">
-      <h3>Filter:</h3>
-      <input
-        type="text"
-        name="txt"
-        value={filterToEdit.txt}
-        placeholder="Free text"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        min="0"
-        name="minSpeed"
-        value={filterToEdit.minSpeed}
-        placeholder="min. speed"
-        onChange={handleChange}
-        required
-      />
-      <button className="btn-clear" onClick={clearFilter}>
-        Clear
-      </button>
-      <h3>Sort:</h3>
-      <div className="sort-field">
-        <label>
-          <span>Speed</span>
-          <input
-            type="radio"
-            name="sortField"
-            value="speed"
-            checked={filterToEdit.sortField === 'speed'}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <span>Vendor</span>
-          <input
-            type="radio"
-            name="sortField"
-            value="vendor"
-            checked={filterToEdit.sortField === 'vendor'}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <span>Owner</span>
-          <input
-            type="radio"
-            name="sortField"
-            value="owner"
-            checked={filterToEdit.sortField === 'owner'}
-            onChange={handleChange}
-          />
-        </label>
+      <div className='input-section flex column'>
+        <label>Where</label>
+        <input
+          type="text"
+          name="txt"
+          // value={filterToEdit.txt}
+          placeholder="Search Destinations"
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div className="sort-dir">
+
+      <div className='input-section flex column' onClick={onToggleCalendar}>
         <label>
-          <span>Asce</span>
-          <input
-            type="radio"
-            name="sortDir"
-            value="1"
-            checked={filterToEdit.sortDir === 1}
-            onChange={handleChange}
-          />
+          Check in
         </label>
-        <label>
-          <span>Desc</span>
-          <input
-            type="radio"
-            name="sortDir"
-            value="-1"
-            onChange={handleChange}
-            checked={filterToEdit.sortDir === -1}
-          />
-        </label>
+        <p>Add dates</p>
       </div>
-      <button className="btn-clear" onClick={clearSort}>
-        Clear
-      </button>
+
+      <div className='input-section flex column' onClick={onToggleCalendar}>
+        <label>
+          Check out
+        </label>
+        <p>Add dates</p>
+      </div>
+
+
+      <div className='input-section flex column' >
+        <label>
+          Who
+        </label>
+        <p>Add guests</p>
+      </div>
+
+      <button className="search-btn">{searchSvg}</button>
+
+
+
+
     </section>
   )
 }
