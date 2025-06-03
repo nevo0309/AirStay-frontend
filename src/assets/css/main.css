@@ -1,0 +1,1348 @@
+@charset "UTF-8";
+/* Breakpoint mixins */
+/* Media  Mixins */
+@font-face {}
+@font-face {}
+.fs12 {
+  font-size: 0.75rem;
+}
+
+.fs14 {
+  font-size: 0.875rem;
+}
+
+.fs18 {
+  font-size: 1.125rem;
+}
+
+.fs20 {
+  font-size: 1.25rem;
+}
+
+.fs24 {
+  font-size: 1.5rem;
+}
+
+.fs28 {
+  font-size: 1.75rem;
+}
+
+.fs30 {
+  font-size: 1.875rem;
+}
+
+.flex {
+  display: flex;
+}
+.flex > *.full {
+  flex: 1;
+}
+.flex.column {
+  flex-direction: column;
+}
+.flex.justify-center {
+  justify-content: center;
+}
+.flex.align-center {
+  align-items: center;
+}
+
+.square-ratio {
+  position: relative;
+  overflow: hidden;
+}
+.square-ratio::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 100%;
+}
+.square-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.square-ratio > img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-ratio {
+  position: relative;
+  overflow: hidden;
+}
+.video-ratio::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+.video-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.video-ratio > img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.portrait-ratio {
+  position: relative;
+  overflow: hidden;
+}
+.portrait-ratio::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 177.7777777778%;
+}
+.portrait-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.portrait-ratio > img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1rem 1fr 1rem;
+}
+.main-container > * {
+  grid-column: 2;
+}
+.main-container > *.full {
+  grid-column: 1/-1;
+}
+
+.stayd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.6;
+  color: #4f3a65;
+}
+
+body {
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.125rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+input {
+  max-width: 100%;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+button {
+  border: 0;
+  background-color: #ce2e6c;
+  color: whitesmoke;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+form > * {
+  display: block;
+  margin: 10px 0px;
+}
+
+.btn-link {
+  border: 0;
+  background-color: transparent;
+  transition: 0.5s;
+}
+
+.btn-link:hover {
+  background-color: #ce2e6c;
+}
+
+.main-container main {
+  min-height: calc(100vh - 10rem);
+}
+
+.fancy-box {
+  background-color: gold;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+}
+
+.split-pane > div {
+  transition: 0.5s;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transform: scale(1);
+  transition: all 300ms ease-in;
+}
+
+.proj-preview {
+  background-color: teal;
+  color: whitesmoke;
+  padding: 5px;
+  margin: 3px;
+}
+
+.stay-index header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.3em;
+}
+.stay-index button {
+  margin-inline-end: 0;
+}
+
+.reserve-page {
+  min-height: 100vh;
+  /* ------------------------------
+     Header section (top bar)
+     ------------------------------ */
+}
+.reserve-page .reserve-header {
+  padding: 1rem 1.5rem;
+  background-color: #ffffff;
+}
+.reserve-page .reserve-header .header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.reserve-page .reserve-header .header-container .back-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: #222222;
+}
+.reserve-page .reserve-header .header-container .back-arrow:hover {
+  color: #717171;
+}
+.reserve-page .reserve-header .header-container .page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #222222;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Container + Grid
+   ------------------------------------------------------------------------- */
+.reserve-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+.reserve-container .reserve-grid {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .reserve-container .reserve-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Left‐column content
+   ------------------------------------------------------------------------- */
+.reserve-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* -------------------------------------------------------------------------
+   STEP CARD (expanded state) – applies to Step 1, Step 2, Step 3, Step 4
+   ------------------------------------------------------------------------- */
+.step-card {
+  background-color: #ffffff;
+  border-radius: 24px; /* very rounded corners */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* subtle shadow */
+  border: none;
+  overflow: hidden;
+  width: 524px;
+  min-height: 292px;
+  max-height: 550px;
+  margin: 0 auto;
+  /* ---- STEP HEADER (Title) ---- */
+  /* ---- STEP BODY (Contents) ---- */
+  /* -------------------------------------------------------------------------
+     STEP FOOTER (Done button)
+     ------------------------------------------------------------------------- */
+}
+.step-card .step-header {
+  padding: 1.5rem 1.5rem 0.75rem;
+  background-color: #ffffff;
+}
+.step-card .step-header .step-title {
+  font-size: 1.375rem; /* ≈22px */
+  font-weight: 600;
+  color: #222222;
+  margin: 0;
+  line-height: 1.2;
+}
+.step-card .step-body {
+  padding: 0.75rem 1.5rem 1.5rem;
+  background-color: #ffffff;
+  /* -----------------------------------------------------------------------
+     STEP 1: “Choose when to pay” - Payment options styling
+     ----------------------------------------------------------------------- */
+  /* -----------------------------------------------------------------------
+     STEP 2: “Add a payment method”
+     ----------------------------------------------------------------------- */
+  /* -----------------------------------------------------------------------
+     STEP 3: “Write a message to the host”
+     ----------------------------------------------------------------------- */
+}
+.step-card .step-body .payment-options {
+  display: flex;
+  flex-direction: column;
+}
+.step-card .step-body .payment-options .payment-option {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 0;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+}
+.step-card .step-body .payment-options .payment-option .option-content {
+  flex: 1;
+}
+.step-card .step-body .payment-options .payment-option .option-content .option-text {
+  font-size: 1.0625rem; /* ≈17px */
+  font-weight: 500;
+  color: #222222;
+  margin-bottom: 0.25rem;
+}
+.step-card .step-body .payment-options .payment-option .option-content .option-subtext {
+  font-size: 0.875rem; /* ≈14px */
+  color: #6f6f6f;
+  line-height: 1.4;
+}
+.step-card .step-body .payment-options .payment-option .option-content .option-subtext .more-info {
+  color: #222222;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.step-card .step-body .payment-options .payment-option .option-content .option-subtext .more-info:hover {
+  color: #555555;
+}
+.step-card .step-body .payment-options .payment-option .radio-input {
+  margin-left: 1rem;
+  margin-top: 0.2rem; /* vertical nudge to align with text */
+  width: 1.25rem; /* 20px */
+  height: 1.25rem;
+  accent-color: #222222;
+  cursor: pointer;
+}
+.step-card .step-body .payment-method-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* A) The two clickable options (“Credit or debit card” & “Google Pay”) */
+  /* B) The credit-card form fields (only visible when “Credit or debit card” is selected) */
+}
+.step-card .step-body .payment-method-form .method-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid #e0e0e0;
+  /* Radio button on the right */
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .method-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  /* Icon on the left for credit card */
+  /* Text label */
+  /* Logos for Visa/MasterCard/Amex next to text */
+  /* G Pay icon for Google Pay option */
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .method-info .card-icon {
+  font-size: 1.5rem; /* ≈24px */
+  color: #222222;
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .method-info span {
+  font-size: 1rem; /* ≈16px */
+  font-weight: 500;
+  color: #222222;
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .method-info .card-logos {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .method-info .card-logos .visa {
+  height: 1rem;
+  align-self: center;
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .method-info .card-logos .mastercard {
+  height: 1rem;
+  align-self: center;
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .method-info .card-logos .amex {
+  height: 1rem;
+  align-self: center;
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .method-info .gpay-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1rem;
+}
+.step-card .step-body .payment-method-form .method-selector .payment-method-option .radio-input {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: #222222;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.step-card .step-body .payment-method-form .card-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  /* Removed border-bottom here, since card-numbers will visually group these fields */
+  border-bottom: none;
+  /* ---------- Group card number + expiration/CVV in one bordered box ---------- */
+  /* ---------- ZIP code (full-width) ---------- */
+  /* ---------- Country select (full-width) ---------- */
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  /* no margin: we want it to sit flush under “Credit or debit card” */
+  /* Card number row (full-width) */
+  /* Expiration + CVV row (side by side) */
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .form-group {
+  margin: 0; /* remove default margins */
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .form-group .form-input {
+  width: 100%;
+  padding: 1rem;
+  border: none; /* rely on parent border */
+  border-radius: 0;
+  font-size: 1rem;
+  color: #222222;
+  box-sizing: border-box;
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .form-group .form-input::placeholder {
+  color: #6f6f6f;
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .form-group .form-input:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .card-extra-info {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #e0e0e0; /* separate from card number above */
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .card-extra-info .form-group.half {
+  flex: 1;
+  margin: 0; /* remove default margins */
+  position: relative;
+  /* vertical divider between Expiration & CVV */
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .card-extra-info .form-group.half:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .card-extra-info .form-group.half .form-input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 0;
+  font-size: 1rem;
+  color: #222222;
+  box-sizing: border-box;
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .card-extra-info .form-group.half .form-input::placeholder {
+  color: #6f6f6f;
+}
+.step-card .step-body .payment-method-form .card-form .card-numbers .card-extra-info .form-group.half .form-input:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.step-card .step-body .payment-method-form .card-form .form-group.zip {
+  margin-top: 1rem; /* spacing from the .card-numbers box */
+}
+.step-card .step-body .payment-method-form .card-form .form-group.zip .form-input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #222222;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.step-card .step-body .payment-method-form .card-form .form-group.zip .form-input::placeholder {
+  color: #6f6f6f;
+}
+.step-card .step-body .payment-method-form .card-form .form-group.zip .form-input:focus {
+  outline: none;
+  border-color: #222222;
+  box-shadow: 0 0 0 1px #222222;
+}
+.step-card .step-body .payment-method-form .card-form .form-group.country {
+  margin-top: 1rem; /* spacing from the ZIP field */
+}
+.step-card .step-body .payment-method-form .card-form .form-group.country .select-wrapper {
+  position: relative;
+}
+.step-card .step-body .payment-method-form .card-form .form-group.country .select-wrapper .form-select {
+  width: 100%;
+  padding: 1rem;
+  padding-right: 2.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #222222;
+  background: #ffffff;
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.step-card .step-body .payment-method-form .card-form .form-group.country .select-wrapper .form-select::placeholder {
+  color: #6f6f6f;
+}
+.step-card .step-body .payment-method-form .card-form .form-group.country .select-wrapper .form-select:focus {
+  outline: none;
+  border-color: #222222;
+  box-shadow: 0 0 0 1px #222222;
+}
+.step-card .step-body .payment-method-form .card-form .form-group.country .select-wrapper .select-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: #6f6f6f;
+  pointer-events: none;
+}
+.step-card .step-body .message-form .message-instruction {
+  font-size: 0.875rem;
+  color: #6f6f6f;
+  line-height: 1.5;
+}
+.step-card .step-body .message-form .message-input-container {
+  position: relative;
+  width: 476px;
+  height: 76px;
+  margin-bottom: 0.8rem;
+}
+.step-card .step-body .message-form .message-input-container .message-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #222222;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+.step-card .step-body .message-form .message-input-container .message-textarea::placeholder {
+  color: #6f6f6f;
+}
+.step-card .step-body .message-form .message-input-container .message-textarea:focus {
+  outline: none;
+  border-color: #222222;
+  box-shadow: 0 0 0 1px #222222;
+}
+.step-card .step-body .message-form .message-input-container .textarea-icons {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.step-card .step-body .message-form .message-input-container .textarea-icons .icon-button {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+  line-height: 1;
+}
+.step-card .step-body .message-form .message-input-container .textarea-icons .icon-button:hover {
+  background-color: #f7f7f7;
+}
+.step-card .step-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+.step-card .step-footer .done-button {
+  background-color: #222222;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.step-card .step-footer .done-button:hover {
+  background-color: #484848;
+}
+.step-card .step-footer .done-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------------------------
+   Collapsed summary (for Steps 1–3 when inactive or completed)
+   ------------------------------------------------------------------------- */
+.collapsed-summary {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  width: 524px;
+  height: 98px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.collapsed-summary .summary-left {
+  display: flex;
+  flex-direction: column;
+}
+.collapsed-summary .summary-left .step-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 4px;
+  margin-left: 25px;
+  color: #222222;
+}
+.collapsed-summary .summary-left .summary-text {
+  font-size: 0.875rem; /* ≈14px */
+  color: #717171;
+  margin-top: 4px;
+  margin-left: 25px;
+}
+.collapsed-summary .change-button {
+  background: #f2f2f2;
+  border-radius: 6px;
+  width: 75px;
+  height: 32px;
+  color: #222222;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 25px;
+}
+.collapsed-summary .change-button:hover {
+  color: #717171;
+}
+.collapsed-summary.inactive {
+  opacity: 0.6;
+  cursor: default;
+}
+.collapsed-summary.inactive .change-button {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------
+   STEP 4: “Review your request” (expanded content)
+   ------------------------------------------------------------------------- */
+.review-content .review-info {
+  color: #222222;
+  font-size: 0.875rem; /* ≈14px */
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.review-content .terms-text {
+  color: #717171;
+  font-size: 0.875rem; /* ≈14px */
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+.review-content .terms-text .terms-link {
+  color: #222222;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.review-content .terms-text .terms-link:hover {
+  color: #717171;
+}
+.review-content .confirm-button {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.review-content .confirm-button .gpay-icon {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.review-content .confirm-button:hover {
+  background-color: #333333;
+}
+
+/* -------------------------------------------------------------------------
+   Right sidebar (placeholder)
+   ------------------------------------------------------------------------- */
+.reserve-sidebar {
+  position: sticky;
+  top: 0;
+}
+.reserve-sidebar .sidebar-placeholder {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.reserve-sidebar .sidebar-placeholder .placeholder-content {
+  text-align: center;
+  color: #717171;
+}
+.reserve-sidebar .sidebar-placeholder .placeholder-content .placeholder-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.reserve-sidebar .sidebar-placeholder .placeholder-content .placeholder-text {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.reserve-sidebar .sidebar-placeholder .placeholder-content .placeholder-subtext {
+  font-size: 0.875rem;
+  color: #aaaaaa;
+}
+
+.review-index h2 {
+  margin: 0;
+}
+
+.user-details .user-img {
+  height: 200px;
+  width: 200px;
+  background-size: contain;
+}
+
+.admin li.user {
+  border-bottom: 1px solid;
+  padding-block: 5px;
+}
+
+.task-details {
+  top: 0px;
+}
+
+.login-form,
+.signup-form {
+  display: grid;
+  width: min(80%, 300px);
+  margin: auto;
+  padding: 1em;
+  background-color: #95adbe;
+}
+
+.signup-form input {
+  width: 100%;
+}
+.signup-form .admin-toggle {
+  display: flex;
+  align-items: center;
+  justify-self: start;
+}
+.signup-form .admin-toggle span {
+  font-size: 0.8em;
+}
+
+.login-page nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  margin-block: 100px 0.5em;
+}
+.login-page nav a {
+  font-size: 0.8em;
+  color: #95adbe;
+}
+.login-page nav a:hover {
+  color: #ce2e6c;
+}
+.login-page nav a.active {
+  text-decoration: underline;
+  color: #4f3a65;
+}
+
+.chat li {
+  padding-inline-start: 0.3em;
+  font-size: 0.96em;
+}
+.chat li:nth-child(odd) {
+  background-color: whitesmoke;
+}
+.chat form {
+  display: flex;
+  gap: 1em;
+}
+.chat form input {
+  flex-grow: 1;
+}
+
+.chat-options {
+  display: flex;
+  gap: 1em;
+  padding: 0.5em;
+  background-color: #95adbe;
+  accent-color: black;
+}
+.chat-options label:last-of-type {
+  margin-inline-start: auto;
+}
+
+.list {
+  --min-column-size: 220px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
+  gap: 0.5em;
+}
+.list li {
+  display: grid;
+  grid-template-columns: max-content auto;
+  padding: 0.5em;
+  background-color: #4f3a65;
+  color: #fff;
+}
+.list li .actions {
+  justify-self: end;
+}
+.list li .actions button {
+  padding: 0.3em 0.5em;
+}
+
+.preview a {
+  color: #95adbe;
+  padding: 0;
+}
+.preview p {
+  margin-block: 0 0.2rem;
+  font-size: 0.85em;
+}
+
+.app-header {
+  min-height: 5rem;
+  background-color: #95adbe;
+}
+.app-header nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1em;
+  font-size: 0.8em;
+}
+.app-header nav .active {
+  color: #ce2e6c;
+}
+.app-header nav .logo {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-inline-end: 2em;
+}
+.app-header nav .login-link {
+  margin-inline-start: auto;
+}
+.app-header nav button {
+  margin-inline-end: 0;
+}
+.app-header .user-info {
+  display: flex;
+  align-items: center;
+  margin-inline-start: auto;
+  color: #ce2e6c;
+}
+.app-header .user-info .score {
+  padding: 8px;
+  background-color: #4f3a65;
+  border-radius: 50%;
+  margin: 10px;
+  color: #fff;
+}
+.app-header .user-info img {
+  width: 32px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.app-header .user-info .btn-link {
+  color: #4f3a65;
+}
+
+.app-footer {
+  min-height: 5rem;
+  background-color: #95adbe;
+}
+.app-footer > section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-footer > section p {
+  margin: 0;
+}
+
+.user-msg {
+  position: fixed;
+  top: 60px;
+  right: 0.2em;
+  display: flex;
+  align-items: center;
+  padding: 0.2em;
+  padding-inline-end: 20px;
+  background-color: grey;
+  color: white;
+  font-size: 0.9em;
+  opacity: 0;
+  translate: 150%;
+  transition: 600ms;
+}
+
+.user-msg.visible {
+  opacity: 1;
+  translate: 0;
+}
+
+.user-msg button {
+  background-color: #ddd;
+  padding: 1px 6px;
+  border: 0;
+  border-radius: 50%;
+  color: #333;
+}
+
+.user-msg.success {
+  background-color: rgb(41, 189, 73);
+}
+
+.user-msg.error {
+  background-color: rgb(216, 59, 59);
+}
+
+.stay-filter {
+  display: grid;
+  grid-template-columns: 1fr 5em 5em auto;
+  align-items: center;
+  gap: 0 0.5em;
+  background-color: #95adbe;
+  padding: 0.5em;
+}
+.stay-filter h3 {
+  grid-column: 1/-1;
+  font-size: 0.875rem;
+  margin: 0;
+}
+.stay-filter :not(h3) {
+  cursor: pointer;
+}
+.stay-filter input:is([type=text], [type=number]) {
+  height: 1.8em;
+  border: none;
+  border-block-end: 1px solid #ddd;
+}
+.stay-filter input:is([type=text], [type=number]):focus {
+  outline: none;
+  background-color: #ddd;
+}
+.stay-filter .btn-clear {
+  grid-column: 4;
+}
+.stay-filter .sort-field,
+.stay-filter .sort-dir {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  font-size: 0.8em;
+}
+.stay-filter .sort-dir {
+  grid-column: 2/3;
+}
+.stay-filter input[type=radio] {
+  display: none;
+}
+.stay-filter label span {
+  font-size: 0.9em;
+  padding: 0.1em 0.3em;
+  outline: 1px solid #ddd;
+}
+.stay-filter label:has(:checked) span {
+  background-color: #574f7d;
+  color: #ddd;
+}
+
+.review-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  padding-block-end: 1em;
+  border-block-end: 1px solid lightgray;
+}
+.review-edit > * {
+  margin: 0;
+  height: 2em;
+}
+.review-edit textarea {
+  flex-grow: 1;
+  font-family: inherit;
+}
+
+.review-list li {
+  grid-template-columns: 1fr 2.5em;
+  align-items: start;
+}
+.review-list li > * {
+  grid-row: 1;
+}
+.review-list li .actions {
+  grid-column: 2;
+}
+.review-list li .actions button {
+  margin: 0;
+}
+
+.review-preview {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1/-1;
+}
+.review-preview p {
+  grid-column: 1;
+}
+.review-preview .review-by {
+  margin-block-end: 1em;
+}
+.review-preview .review-txt {
+  grid-column: 1/3;
+  padding: 0.2em;
+  background-color: #aaa;
+  color: #333;
+}
+.review-preview .review-txt pre {
+  font-family: inherit;
+}
+.review-preview .created-at {
+  margin-top: 1em;
+}
+.review-preview .created-at h4 {
+  margin: 0;
+}
+
+.carousel-section:last-child {
+  margin-bottom: 20px;
+}
+.carousel-section .embla-wrapper {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  padding: 0 48px;
+}
+.carousel-section .embla-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  line-height: 24px;
+  border-radius: 0;
+}
+.carousel-section .embla-header__title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+.carousel-section .embla-header__arrows {
+  display: flex;
+  width: 56px;
+  height: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+.carousel-section .embla-header__arrows .embla__button {
+  background: #f2f2f2;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: #222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.carousel-section .embla-header__arrows .embla__button:hover:not(:disabled) {
+  background: #f7f7f7;
+  border-color: #b0b0b0;
+  transform: scale(1.04);
+}
+.carousel-section .embla-header__arrows .embla__button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: #f7f7f7;
+  border-color: #e0e0e0;
+  color: #b0b0b0;
+}
+.carousel-section .embla-header__arrows .embla__button__svg {
+  width: 24px;
+  height: 24px;
+}
+.carousel-section .embla {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  /* Responsive */
+}
+.carousel-section .embla__viewport {
+  overflow: hidden;
+}
+.carousel-section .embla__container {
+  display: flex;
+  gap: 11px;
+}
+.carousel-section .embla__slide {
+  flex: 0 0 calc((100% - 66px) / 7);
+  min-width: 0;
+  border-radius: 0;
+  width: 180px;
+  height: 230px;
+}
+.carousel-section .embla__slide .preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.carousel-section .embla__slide .preview img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 15px;
+  flex-shrink: 0;
+}
+.carousel-section .embla__slide .preview .preview-content {
+  padding: 2px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.carousel-section .embla__slide .preview .preview-content h3 {
+  margin: 0;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  height: auto;
+}
+.carousel-section .embla__slide .preview .preview-content .stay-dates {
+  font-size: 11px;
+  line-height: 16px;
+  color: #717171;
+}
+.carousel-section .embla__slide .preview .preview-content .stay-price-preview {
+  font-size: 11px;
+  line-height: 16px;
+}
+@media (max-width: 1200px) and (min-width: 1130px) {
+  .carousel-section .embla__slide {
+    flex: 0 0 calc((100% - 55px) / 6);
+    width: 175px;
+    height: 221px;
+  }
+  .carousel-section .embla__slide .preview img {
+    height: 156px;
+  }
+}
+@media (max-width: 1129px) and (min-width: 950px) {
+  .carousel-section .embla__slide {
+    flex: 0 0 calc((100% - 44px) / 5);
+    width: 175px;
+    height: 231px;
+  }
+  .carousel-section .embla__slide .preview img {
+    height: 156px;
+  }
+}
+@media (max-width: 949px) and (min-width: 745px) {
+  .carousel-section .embla__slide {
+    flex: 0 0 calc((100% - 33px) / 4);
+    width: 170px;
+    height: 220px;
+  }
+  .carousel-section .embla__slide .preview img {
+    height: 150px;
+  }
+}
+@media (max-width: 744px) {
+  .carousel-section .embla .embla-wrapper {
+    padding: 0 24px;
+  }
+  .carousel-section .embla__slide {
+    flex: 0 0 calc((100% - 11px) / 2);
+    width: 316px;
+    height: 354px;
+  }
+  .carousel-section .embla__slide .preview img {
+    height: 280px;
+    border-radius: 15px;
+  }
+  .carousel-section .embla__slide .preview .preview-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .carousel-section .embla__slide .preview .preview-content h3 {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #222;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+  .carousel-section .embla__slide .preview .preview-content .stay-dates {
+    font-size: 11px;
+    line-height: 13px;
+    color: #717171;
+  }
+  .carousel-section .embla__slide .preview .preview-content .stay-price-preview {
+    font-size: 11px;
+    line-height: 13px;
+    color: #222;
+  }
+}
+.carousel-section section.explor-list {
+  margin: 0;
+  gap: 0;
+}
+.carousel-section .preview {
+  box-sizing: border-box;
+  position: relative;
+}
+.carousel-section .preview .heart-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  z-index: 10;
+}
+.carousel-section .embla__container {
+  will-change: transform;
+}
+
+/*# sourceMappingURL=main.css.map */
