@@ -1,8 +1,10 @@
 @charset "UTF-8";
 /* Breakpoint mixins */
 /* Media  Mixins */
-@font-face {}
-@font-face {}
+@font-face {
+  font-family: poppins;
+  src: url("fonts/Poppins-Regular.ttf");
+}
 .fs12 {
   font-size: 0.75rem;
 }
@@ -115,7 +117,7 @@
 
 .main-container {
   display: grid;
-  grid-template-columns: 1rem 1fr 1rem;
+  grid-template-columns: 2rem 1fr 2rem;
 }
 .main-container > * {
   grid-column: 2;
@@ -141,7 +143,7 @@ html {
 
 body {
   margin: 0 auto;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: poppins;
   font-size: 1.125rem;
 }
 
@@ -928,28 +930,64 @@ form > * {
 
 .app-header {
   min-height: 5rem;
-  background-color: #95adbe;
+  background: linear-gradient(0deg, hsl(0, 0%, 98%) 0%, hsl(0, 0%, 100%) 100%);
+  border-bottom: 1px solid #EBEBEB;
+  padding-block: 1rem;
 }
 .app-header nav {
-  display: flex;
+  display: grid;
+  grid-template-areas: "logo . btns" "filter filter filter" "dinamic dinamic dinamic";
   width: 100%;
   align-items: center;
-  gap: 1em;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 .app-header nav .active {
   color: #ce2e6c;
 }
 .app-header nav .logo {
+  grid-area: logo;
+}
+.app-header nav .logo svg {
+  margin-inline-end: 0.5rem;
+}
+.app-header nav .logo a {
+  display: flex;
   font-size: 1.4em;
   font-weight: bold;
   margin-inline-end: 2em;
+  color: #FF385C;
+  font-family: poppins;
+}
+.app-header nav .logo a:hover {
+  text-decoration: none;
+}
+.app-header nav .logo span {
+  display: inline;
 }
 .app-header nav .login-link {
   margin-inline-start: auto;
 }
+.app-header nav .btns {
+  grid-area: btns;
+  justify-self: end;
+}
+.app-header nav .btns .host-guest-btn {
+  background-color: transparent;
+  font-weight: 800;
+}
+.app-header nav .btns .menue-btn {
+  background-color: #f2f2f2;
+  border-radius: 50%;
+  min-height: 40px;
+  min-width: 40px;
+}
+.app-header nav .btns .menue-btn svg {
+  justify-self: center;
+}
 .app-header nav button {
+  font-family: poppins;
   margin-inline-end: 0;
+  color: #222;
 }
 .app-header .user-info {
   display: flex;
@@ -1024,54 +1062,103 @@ form > * {
 }
 
 .stay-filter {
+  box-sizing: border-box;
+  grid-area: filter;
   display: grid;
-  grid-template-columns: 1fr 5em 5em auto;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   align-items: center;
-  gap: 0 0.5em;
-  background-color: #95adbe;
-  padding: 0.5em;
+  margin-inline: auto;
+  margin-block: 1.5em;
+  border-radius: 50px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dfdddd;
+  height: 66px;
+  max-width: 850px;
+  position: relative;
 }
-.stay-filter h3 {
-  grid-column: 1/-1;
-  font-size: 0.875rem;
+.stay-filter .input-section {
+  padding-inline: 1.5rem;
+  height: 66px;
+  justify-content: center;
+  border-radius: 50px;
+}
+.stay-filter .input-section:hover {
+  background-color: #EBEBEB;
+}
+.stay-filter .input-section:hover input {
+  background-color: #EBEBEB;
+}
+.stay-filter .input-section:hover::after {
+  background-color: #999999;
+}
+.stay-filter .input-section:nth-of-type(1) {
+  grid-column: 1;
+  padding-inline: 2rem;
+}
+.stay-filter .input-section:nth-of-type(4) {
+  padding-inline-end: 140px;
+}
+.stay-filter .input-section:nth-child(1):not(:hover):not(:has(+ .input-section:hover))::after {
+  content: "";
+  position: absolute;
+  height: 36px;
+  width: 1px;
+  background-color: #cccccc;
+  left: 33%;
+}
+.stay-filter .input-section:nth-child(2):not(:hover):not(:has(+ .input-section:hover))::after {
+  content: "";
+  position: absolute;
+  height: 36px;
+  width: 1px;
+  background-color: #cccccc;
+  left: 50%;
+}
+.stay-filter .input-section:nth-child(3):not(:hover):not(:has(+ .input-section:hover))::after {
+  content: "";
+  position: absolute;
+  height: 36px;
+  width: 1px;
+  background-color: #cccccc;
+  left: 66%;
+}
+.stay-filter .input-section p {
   margin: 0;
+  color: rgb(118, 118, 118);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
-.stay-filter :not(h3) {
-  cursor: pointer;
+.stay-filter label {
+  font-size: 0.7rem;
+  font-weight: 700;
 }
-.stay-filter input:is([type=text], [type=number]) {
-  height: 1.8em;
+.stay-filter input {
   border: none;
-  border-block-end: 1px solid #ddd;
+  font-family: poppins;
+  font-size: 0.8rem;
+  width: 214px;
 }
-.stay-filter input:is([type=text], [type=number]):focus {
+.stay-filter input:focus {
   outline: none;
   background-color: #ddd;
 }
-.stay-filter .btn-clear {
-  grid-column: 4;
-}
-.stay-filter .sort-field,
-.stay-filter .sort-dir {
+.stay-filter .search-btn {
   display: flex;
+  position: absolute;
+  right: 10px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  height: 48px;
+  justify-content: center;
   align-items: center;
-  gap: 1em;
-  font-size: 0.8em;
+  background-color: #FF385C;
 }
-.stay-filter .sort-dir {
-  grid-column: 2/3;
-}
-.stay-filter input[type=radio] {
-  display: none;
-}
-.stay-filter label span {
-  font-size: 0.9em;
-  padding: 0.1em 0.3em;
-  outline: 1px solid #ddd;
-}
-.stay-filter label:has(:checked) span {
-  background-color: #574f7d;
-  color: #ddd;
+.stay-filter .search-btn svg {
+  color: white;
 }
 
 .review-edit {
@@ -1343,6 +1430,122 @@ form > * {
 }
 .carousel-section .embla__container {
   will-change: transform;
+}
+
+.calender {
+  grid-area: dinamic;
+  justify-self: center;
+  position: absolute;
+  top: 170px;
+  z-index: 10;
+}
+
+.rdrCalendarWrapper {
+  font-family: poppins !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 50px !important;
+  padding: 2rem;
+}
+
+.rdrMonths {
+  gap: 56px;
+}
+
+.rdrDateDisplayWrapper {
+  background: none;
+  font-family: poppins;
+}
+
+.rdrDateDisplayItem {
+  border-radius: 50px;
+}
+
+.rdrDateDisplay {
+  color: transparent !important;
+}
+.rdrDateDisplay span {
+  box-shadow: none !important;
+}
+
+.rdrDateDisplayItemActive input,
+.rdrDateDisplayItem input {
+  color: black;
+  font-weight: bold;
+  font-family: poppins;
+  font-size: 0.9rem;
+}
+
+.rdrDay {
+  max-width: 51px !important;
+  height: 51px;
+  width: 100%;
+}
+.rdrDay .rdrDayNumber {
+  font-size: 0.825rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.rdrDays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(35px, 51px));
+  justify-content: center;
+}
+.rdrDays button {
+  margin: 0 !important;
+}
+
+.rdrWeekDay {
+  max-width: 51px !important;
+}
+
+.rdrMonth {
+  width: 357px;
+  padding: 0;
+}
+
+.rdrMonthName {
+  display: none;
+}
+
+/* תאריך התחלה וסיום בצבע שחור */
+.rdrStartEdge,
+.rdrEndEdge {
+  background: black !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1;
+  top: 2px;
+}
+
+/* התאריכים שבאמצע באפור */
+.rdrInRange {
+  background: #f7f7f7 !important;
+  border-radius: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  color: black !important;
+}
+
+.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive),
+.rdrDay:not(.rdrDayPassive),
+.rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span {
+  color: black;
+}
+
+.rdrDayStartPreview,
+.rdrDayEndPreview {
+  border: 1px solid black !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1;
+}
+
+.rdrDayInPreview {
+  border: none;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */
