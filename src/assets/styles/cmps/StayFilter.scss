@@ -1,40 +1,126 @@
 .stay-filter {
+  box-sizing: border-box;
   grid-area: filter;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   align-items: center;
   margin-inline: auto;
   margin-block: 1.5em;
   border-radius: 50px;
-  gap: 0 0.5em;
   background-color: $clr6;
-  padding-inline: 1.2rem;
-  padding-block: 0.5rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid #f8f8f8;
+  border: 1px solid #dfdddd;
+  height: 66px;
+  max-width: 850px;
+  position: relative;
 
-  .input-section{
-    border-right: 1px solid $gray1;
 
-    p{
+  .input-section {
+    padding-inline: 1.5rem;
+    height: 66px;
+    justify-content: center;
+    border-radius: 50px;
+
+    &:hover {
+      background-color: #EBEBEB;
+
+      input {
+        background-color: #EBEBEB;
+      }
+
+      &::after {
+        background-color: #999999; // צבע חדש בזמן hover
+      }
+
+
+    }
+
+    &:nth-of-type(1) {
+      grid-column: 1;
+      padding-inline: 2rem;
+
+    }
+
+    &:nth-of-type(4) {
+      padding-inline-end: 140px;
+    }
+
+    &:nth-child(1):not(:hover):not(:has(+ .input-section:hover))::after {
+      content: "";
+      position: absolute;
+      height: 36px;
+      width: 1px;
+      background-color: #cccccc;
+      left: 33%;
+    }
+
+    &:nth-child(2):not(:hover):not(:has(+ .input-section:hover))::after {
+      content: "";
+      position: absolute;
+      height: 36px;
+      width: 1px;
+      background-color: #cccccc;
+      left: 50%;
+    }
+
+    &:nth-child(3):not(:hover):not(:has(+ .input-section:hover))::after {
+      content: "";
+      position: absolute;
+      height: 36px;
+      width: 1px;
+      background-color: #cccccc;
+      left: 66%;
+    }
+
+
+    p {
       margin: 0;
       color: rgb(118, 118, 118);
+      font-size: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
   }
-  label{
-    font-size:  0.75rem;
+
+  label {
+    font-size: 0.70rem;
     font-weight: 700;
+
   }
-  input{
+
+  input {
     border: none;
     font-family: poppins;
+    font-size: 0.8rem;
+    width: 214px;
 
     &:focus {
       outline: none;
       background-color: $gray1;
     }
+
+
+  }
+
+  .search-btn {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF385C;
+
+    svg {
+      color: white;
+    }
+
   }
 
 
-    font-size: 0.8em;
-  }
 
+}

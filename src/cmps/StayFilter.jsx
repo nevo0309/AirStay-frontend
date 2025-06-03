@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { searchSvg } from '../../data/svgExport'
 
-export function StayFilter({ filterBy, onSetFilterBy,onToggleCalendar}) {
+export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
   // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
 
 
@@ -62,82 +63,14 @@ export function StayFilter({ filterBy, onSetFilterBy,onToggleCalendar}) {
         <label>
           Who
         </label>
-
-        <input
-          type="txt"
-          name="who"
-          // value={filterToEdit.minSpeed}
-          placeholder="Add guests"
-          onChange={handleChange}
-          required
-        />
+        <p>Add guests</p>
       </div>
 
+      <button className="search-btn">{searchSvg}</button>
 
 
 
 
-      {/* <button className="btn-clear" onClick={clearFilter}>
-        Clear
-      </button>
-      <h3>Sort:</h3> */}
-      {/* <div className="sort-field">
-        <label>
-          <span>Speed</span>
-          <input
-            type="radio"
-            name="sortField"
-            value="speed"
-            checked={filterToEdit.sortField === 'speed'}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <span>Vendor</span>
-          <input
-            type="radio"
-            name="sortField"
-            value="vendor"
-            checked={filterToEdit.sortField === 'vendor'}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <span>Owner</span>
-          <input
-            type="radio"
-            name="sortField"
-            value="owner"
-            checked={filterToEdit.sortField === 'owner'}
-            onChange={handleChange}
-          />
-        </label>
-      </div> */}
-      {/* <div className="sort-dir">
-        <label>
-          <span>Asce</span>
-          <input
-            type="radio"
-            name="sortDir"
-            value="1"
-            checked={filterToEdit.sortDir === 1}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <span>Desc</span>
-          <input
-            type="radio"
-            name="sortDir"
-            value="-1"
-            onChange={handleChange}
-            checked={filterToEdit.sortDir === -1}
-          />
-        </label>
-      </div> */}
-      {/* <button className="btn-clear" onClick={clearSort}>
-        Clear
-      </button> */}
     </section>
   )
 }

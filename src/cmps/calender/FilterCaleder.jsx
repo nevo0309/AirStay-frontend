@@ -4,7 +4,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
 
 import { addDays } from 'date-fns';
-import { useState} from 'react';
+import { useState } from 'react';
 
 
 export function FilterCalender() {

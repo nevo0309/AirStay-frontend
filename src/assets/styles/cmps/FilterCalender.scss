@@ -4,7 +4,7 @@
     // border-radius: 50px;
     // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 150px;
+    top: 170px;
     z-index: 10;
 
 
@@ -17,8 +17,8 @@
     padding: 2rem;
 }
 
-.rdrMonths{
-    gap: 30px;
+.rdrMonths {
+    gap: 56px;
 }
 
 .rdrDateDisplayWrapper {
@@ -48,14 +48,38 @@
 
 
 .rdrDay {
-    width: 51px;
-    height: 51px
+    max-width: 51px!important;
+    height: 51px;
+    width: 100%;
+
+
+    .rdrDayNumber {
+        font-size: 0.825rem;
+        font-weight: 600;
+        width: 100%;
+
+    }
+
 }
 
 .rdrDays {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(35px,51px));
+  justify-content: center;
+  
     button {
         margin: 0 !important;
     }
+}
+
+
+.rdrWeekDay {
+    max-width: 51px !important;
+}
+
+.rdrMonth {
+    width: 357px;
+    padding: 0;
 }
 
 .rdrMonthName {
@@ -88,12 +112,6 @@
 .rdrDay:not(.rdrDayPassive),
 .rdrDay:not(.rdrDayPassive) .rdrSelected~.rdrDayNumber span {
     color: black;
-}
-
-.rdrDayNumber {
-    font-size: 0.825rem;
-    font-weight: 600;
-
 }
 
 .rdrDayStartPreview,
