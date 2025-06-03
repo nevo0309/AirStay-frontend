@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "sass-dev": "sass --watch src/assets/main.scss:src/assets/css/main.css --style=expanded --quiet-deps",
-    "sass-prod": "sass src/assets/main.scss:src/assets/css/main.css --no-source-map --style=compressed",
+    "sass-dev": "sass --watch src/assets/styles/main.scss:src/assets/css/main.css --style=expanded --quiet-deps",
+    "sass-prod": "sass src/assets/styles/main.scss:src/assets/css/main.css --no-source-map --style=compressed",
     "dev": "vite",
     "dev:local": "set VITE_LOCAL=true && vite",
     "dev:local:mac": "export VITE_LOCAL=true && vite",
@@ -17,12 +17,14 @@
     "axios": "^1.9.0",
     "embla-carousel-react": "^8.6.0",
     "embla-carousel-reactive-utils": "^8.6.0",
+    "lucide-react": "^0.511.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.6.1",
     "react-router-dom": "^7.6.1",
     "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
     "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
