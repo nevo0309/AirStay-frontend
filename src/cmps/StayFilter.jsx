@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { searchSvg } from '../../data/svgExport'
+import { AddGuests } from './AddGuests'
 
 export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
   // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
-
+  const [isAddGuestsOpen, setIsAddGuestsOpen] = useState(false)
 
   // useEffect(() => {
   //   onSetFilterBy(filterToEdit)
@@ -28,6 +29,9 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
     // setFilterToEdit({ ...filterToEdit, [field]: value })
   }
 
+  function onToggleAddGuests(){
+    setIsAddGuestsOpen(!isAddGuestsOpen)
+  }
 
 
   return (
@@ -59,7 +63,7 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
       </div>
 
 
-      <div className='input-section flex column' >
+      <div className='input-section flex column' onClick={onToggleAddGuests}>
         <label>
           Who
         </label>
@@ -69,7 +73,7 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
       <button className="search-btn">{searchSvg}</button>
 
 
-
+{isAddGuestsOpen && <AddGuests/>}
 
     </section>
   )

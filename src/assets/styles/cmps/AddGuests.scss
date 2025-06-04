@@ -1,0 +1,82 @@
+.add-guests {
+    display: grid;
+    // grid-template-columns: 1fr 1fr;
+    // grid-template-rows: repeat(4, 91px);
+    position: absolute;
+    top: 80px;
+    background-color: white;
+    z-index: 10;
+    right: 0;
+    border-radius: 30px;
+    padding: 16px 38px;
+    width: 425px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.14));
+
+    .guest-counter-card {
+        display: flex;
+        justify-content: space-between;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #EBEBEB;
+        }
+
+
+        .counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            justify-self: end;
+
+
+            h2 {
+                margin: 0;
+                color: $clr7;
+                font-size: 1rem;
+                font-weight: 400;
+            }
+
+            button {
+                border-radius: 50%;
+                aspect-ratio: 1;
+                height: 1.875rem;
+                background-color: white;
+                border: 1px solid #909090;
+                margin: 0;
+            }
+
+            .blocked {
+                color: #f0f0f0;
+                border-color: #f0f0f0;
+            }
+        }
+
+        .guest {
+            margin-block: 24px;
+
+            h1 {
+                color: $clr7;
+                margin: 0;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+            p {
+                color: #6A6A6A;
+                margin: 0;
+                font-size: 0.86rem;
+                padding-block-start: 0.25rem;
+
+            }
+
+            h2 {
+                font-size: 0.8rem;
+                color: #6A6A6A;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+
+
+}

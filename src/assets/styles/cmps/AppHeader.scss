@@ -12,18 +12,11 @@
         grid-template-areas:
             'logo . btns'
             'filter filter filter'
-            'dinamic dinamic dinamic';
+           ;
             
         width: 100%;
         align-items: center;
         font-size: 0.9em;
-
-
-        .active {
-            color: $clr1;
-        }
-
-
 
         .logo {
             grid-area: logo;
@@ -51,9 +44,6 @@
             }
         }
 
-        .login-link {
-            margin-inline-start: auto;
-        }
 
         .btns {
             grid-area: btns;
@@ -85,29 +75,29 @@
         }
     }
 
-    .user-info {
-        display: flex;
-        align-items: center;
-        margin-inline-start: auto;
-        color: $clr1;
+    // .user-info {
+    //     display: flex;
+    //     align-items: center;
+    //     margin-inline-start: auto;
+    //     color: $clr1;
 
-        .score {
-            padding: 8px;
-            background-color: $clr2;
-            border-radius: 50%;
-            margin: 10px;
+    //     .score {
+    //         padding: 8px;
+    //         background-color: $clr2;
+    //         border-radius: 50%;
+    //         margin: 10px;
 
-            color: $clr6;
-        }
+    //         color: $clr6;
+    //     }
 
-        img {
-            width: 32px;
-            aspect-ratio: 1;
-            border-radius: 50%;
-        }
+    //     img {
+    //         width: 32px;
+    //         aspect-ratio: 1;
+    //         border-radius: 50%;
+    //     }
 
-        .btn-link {
-            color: $clr2;
-        }
-    }
+    //     .btn-link {
+    //         color: $clr2;
+    //     }
+    // }
 }
