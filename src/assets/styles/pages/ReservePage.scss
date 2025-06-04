@@ -5,33 +5,46 @@
      Header section (top bar)
      ------------------------------ */
   .reserve-header {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 1.5rem;
+    padding-top: 2rem;
     background-color: #ffffff;
 
     .header-container {
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      padding-left: 4rem;
       display: flex;
       align-items: center;
+    }
 
-      .back-arrow {
-        width: 1.25rem;
-        height: 1.25rem;
-        margin-right: 1rem;
-        cursor: pointer;
-        color: #222222;
+    .back-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-        &:hover {
-          color: #717171;
-        }
+      width: 2.5rem;
+      height: 2.5rem;
+      cursor: pointer;
+      color: #222222;
+      background-color: #f7f7f7;
+      border-radius: 100%;
+
+      position: absolute;
+      left: -0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+
+      &:hover {
+        color: #717171;
       }
+    }
 
-      .page-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #222222;
-        margin: 0;
-      }
+    .page-title {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 600;
+      color: #222222;
     }
   }
 }
@@ -42,12 +55,11 @@
 .reserve-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
-
+  padding: 0 1.5rem;
   .reserve-grid {
     display: flex;
-    justify-content: space-evenly;
-    gap: 4rem;
+    justify-content: center;
+    gap: 80px;
     align-items: start;
 
     @media (max-width: 1024px) {
@@ -71,8 +83,8 @@
    ------------------------------------------------------------------------- */
 .step-card {
   background-color: #ffffff;
-  border-radius: 24px; /* very rounded corners */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* subtle shadow */
+  border-radius: 24px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.12);
   border: none;
   overflow: hidden;
   width: 524px;
@@ -462,13 +474,18 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 1.5rem 1.5rem 1.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
 
     .done-button {
+      position: relative;
+      top: -0.7rem;
       background-color: #222222;
       color: #ffffff;
       border: none;
-      padding: 0.75rem 1.75rem;
+      width: 112px;
+      height: 48px;
+
+      // padding: 0.75rem 1.75rem;
       border-radius: 12px;
       font-size: 1rem;
       font-weight: 600;
@@ -618,10 +635,11 @@
     border-radius: 12px;
     // min-height: 300px;
     height: 500px;
+    width: 372px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    // padding: 2rem;
     box-sizing: border-box;
 
     .placeholder-content {
