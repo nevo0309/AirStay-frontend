@@ -3,7 +3,7 @@
 /* Media  Mixins */
 @font-face {
   font-family: poppins;
-  src: url("fonts/Poppins-Regular.ttf");
+  src: url("/public/fonts/Poppins-Regular.ttf");
 }
 .fs12 {
   font-size: 0.75rem;
@@ -251,6 +251,25 @@ form > * {
 }
 .stay-index button {
   margin-inline-end: 0;
+}
+
+.stay-details {
+  padding: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.stay-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stay-details-header .stay-details-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #222;
 }
 
 .reserve-page {
@@ -1546,6 +1565,42 @@ form > * {
 
 .rdrDayToday .rdrDayNumber span:after {
   display: none;
+}
+
+.details-image-gallery .grid-container {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 200px 200px;
+  grid-auto-flow: dense;
+}
+.details-image-gallery .grid-container .image-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.details-image-gallery .grid-container .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.details-image-gallery .grid-container .image-wrapper:hover img {
+  transform: scale(1.05);
+}
+.details-image-gallery .grid-container .image-wrapper.main-image {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+@media (max-width: 768px) {
+  .details-image-gallery .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .details-image-gallery .grid-container .image-wrapper.main-image {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

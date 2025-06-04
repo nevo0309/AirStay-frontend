@@ -1,0 +1,21 @@
+.stay-details {
+  padding: 24px;
+  max-width: 1200px;
+  margin: auto;
+  // Miss Font
+}
+
+.stay-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stay-details-header {
+  .stay-details-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #222;
+  }
+}
