@@ -1,7 +1,7 @@
 // src/components/ReservePage.jsx
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 import { orderService } from '../services/stay/order.service.local.js'
@@ -23,6 +23,10 @@ export function ReservePage() {
     country: 'Israel',
   })
 
+  const handleBackArrow = c => {
+    navigate('/')
+  }
+
   const handleStepComplete = step => {
     setCurrentStep(step + 1)
   }
@@ -38,7 +42,7 @@ export function ReservePage() {
       paymentMethod,
       message,
       cardDetails,
-      createdAt: Date.now(),
+      OrderedAt: Date.now(),
     }
 
     try {
@@ -72,13 +76,17 @@ export function ReservePage() {
   return (
     <div className="reserve-page">
       {/* Header */}
-      <div className="reserve-header">
-        <div className="header-container">
-          <h1 className="page-title">Request to book</h1>
-        </div>
-      </div>
 
       <div className="reserve-container">
+        <div className="reserve-header">
+          <div className="header-container">
+            <div className="back-arrow" onClick={handleBackArrow}>
+              <ArrowLeft />
+            </div>
+
+            <h1 className="page-title">Request to book</h1>
+          </div>
+        </div>
         <div className="reserve-grid">
           <div className="reserve-content">
             {/* --- Step 1: Choose when to pay --- */}
