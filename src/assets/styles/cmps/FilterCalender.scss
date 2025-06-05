@@ -3,17 +3,24 @@
     // border-radius: 50px;
     // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 170px;
+    top: 80px;
     z-index: 10;
-
-
+    width: 100%;
+    max-height: 500px;
 }
 
 .rdrCalendarWrapper {
+    position: relative;
     font-family: poppins !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.14));
     border-radius: 50px !important;
     padding: 2rem;
+    width: 100%;
+    height: 500px;
+}
+
+.rdrDateDisplayItem {
+    display: none;
 }
 
 .rdrMonths {
@@ -47,7 +54,7 @@
 
 
 .rdrDay {
-    max-width: 51px!important;
+    max-width: 51px !important;
     height: 51px;
     width: 100%;
 
@@ -63,40 +70,54 @@
 
 .rdrDays {
     display: grid;
-    grid-template-columns: repeat(7, minmax(35px,51px));
-  justify-content: center;
-  
+    grid-template-columns: repeat(7, minmax(35px, 51px));
+    justify-content: center;
+
     button {
         margin: 0 !important;
     }
 }
 
+.rdrDayDisabled {
+    background-color: inherit;
+    color: #d4d4d4;
+}
 
 .rdrWeekDay {
     max-width: 51px !important;
 }
 
 .rdrMonth {
-    width: 357px;
+    width: 100%;
     padding: 0;
 }
 
 .rdrMonthName {
-    display: none;
+    justify-self: center;
+    font-size: 0.875rem;
+    color: $clr7;
+    // position: absolute;
+    // top: 70px;
+    // &:first-of-type{
+    //     left: 20%;
+    // }
+    // &:nth-of-type(2){
+    //     left: 200px;
+    // }
 }
 
-/* תאריך התחלה וסיום בצבע שחור */
+
 .rdrStartEdge,
 .rdrEndEdge {
     background: black !important;
-    // color: whit;
     border-radius: 50% !important;
     aspect-ratio: 1;
     top: 2px;
+    align-self: center;
 
 }
 
-/* התאריכים שבאמצע באפור */
+
 .rdrInRange {
     background: #f7f7f7 !important;
     border-radius: 0 !important;
@@ -118,9 +139,14 @@
     border: 1px solid black !important;
     border-radius: 50% !important;
     aspect-ratio: 1;
-    // height: 51px;
-    // width: 51px;
-    // bottom: 2px !important;
+    top: 2px;
+    align-self: center;
+    left: 2px;
+}
+
+.rdrNextPrevButton {
+    background-color: transparent;
+    
 }
 
 .rdrDayInPreview {
@@ -131,3 +157,17 @@
 .rdrDayToday .rdrDayNumber span:after {
     display: none;
 }
+
+.rdrMonthAndYearPickers {
+    display: none;
+}
+
+.rdrMonthAndYearWrapper{
+    position: absolute;
+top: 40px;
+    .rdrNextButton{
+        position: absolute;
+        left: 520px;
+    }
+}
+

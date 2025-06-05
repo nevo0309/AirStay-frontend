@@ -1,10 +1,10 @@
 .app-header {
-    min-height: 5rem;
+    height: 200px;
     background: linear-gradient(0deg,
             hsla(0, 0%, 98%, 1) 0%,
             hsla(0, 0%, 100%, 1) 100%);
     border-bottom: 1px solid #EBEBEB;
-    padding-block: 1rem;
+    padding-block: 1.2rem;
 
     nav {
         // justify-content: space-between;
@@ -22,12 +22,12 @@
             grid-area: logo;
 
             svg {
-                margin-inline-end: 0.5rem;
+                margin-inline-end: 0.2rem;
             }
 
             a {
                 display: flex;
-                font-size: 1.4em;
+                font-size: 1.3em;
                 font-weight: bold;
                 margin-inline-end: 2em;
                 color: #FF385C;
