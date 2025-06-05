@@ -1,21 +1,44 @@
 .stay-details {
-  padding: 24px;
+  padding: 14px;
   max-width: 1200px;
-  margin: auto;
-  // Miss Font
+  margin: 0;
 }
 
 .stay-details-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 18px;
 }
 
 .stay-details-header {
   .stay-details-title {
-    font-size: 32px;
+    font-size: 1.625rem;
     font-weight: bold;
-    margin-bottom: 8px;
+    // margin-bottom: 8px;
     color: #222;
   }
 }
+
+// .details-Amenities {
+//   margin-top: 24px;
+
+//   h3 {
+//     color: #222222;
+//     font-size: 1.25rem;
+//     margin-bottom: 12px;
+//   }
+
+//   ul {
+//     list-style: none;
+//     padding: 0;
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+//     gap: 12px;
+
+//     li {
+//       display: flex;
+//       align-items: center;
+//       gap: 8px;
+//     }
+//   }
+// }
