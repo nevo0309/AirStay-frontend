@@ -24,7 +24,7 @@ export function StayDetails() {
           <h1 className='stay-details-title'>{stay.name}</h1>
         </header>
         <DetailsImageGallery images={stay.imgUrls} />
-        {/* <div className='details-amenitiess'>
+        <div className='details-amenitiess'>
           <h3>What this place offers</h3>
           <ul>
             {stay.amenities?.map((amenity, idx) => (
@@ -33,7 +33,7 @@ export function StayDetails() {
               </li>
             ))}
           </ul>
-        </div> */}
+        </div>
       </div>
     </section>
   )
