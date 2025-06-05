@@ -16,7 +16,10 @@ export function FilterCalender() {
         }
     ])
 
-    console.log(range)
+    // const { startDate, endDate } = range[0];
+    // console.log(endDate.toLocaleDateString('he-IL'))
+
+
     return <section className='calender' >
         <DateRange
             onChange={item => setRange([item.selection])}
