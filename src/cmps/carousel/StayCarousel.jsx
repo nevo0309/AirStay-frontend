@@ -33,7 +33,11 @@ export function StayCarousel({ stays, title }) {
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">
               {stays.map(stay => (
-                <div className="embla__slide" key={stay._id} onClick={moveToDetails(stay._id)}>
+                <div
+                  className="embla__slide"
+                  key={stay._id}
+                  onClick={() => moveToDetails(stay._id)}
+                >
                   <StayPreview stay={stay} />
                 </div>
               ))}
