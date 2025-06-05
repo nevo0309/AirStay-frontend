@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { searchSvg } from '../../data/svgExport'
 import { AddGuests } from './AddGuests'
 import { SearchDes } from './SearchDes'
+import { FilterCalender } from './calender/FilterCaleder.jsx'
 
 export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
   // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
   const [isAddGuestsOpen, setIsAddGuestsOpen] = useState(false)
   const [isSearchDesOpen, setIsSearchDesOpen] = useState(false)
-
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false)
   // useEffect(() => {
   //   onSetFilterBy(filterToEdit)
   // }, [filterToEdit])
@@ -36,6 +37,9 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
   }
   function onToggleSearchDes() {
     setIsSearchDesOpen(!isSearchDesOpen)
+  }
+  function onToggleCalendar() {
+    setIsCalendarOpen(!isCalendarOpen)
   }
 
 
@@ -80,6 +84,7 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
 
       {isAddGuestsOpen && <AddGuests />}
       {isSearchDesOpen && <SearchDes />}
+      {isCalendarOpen && <FilterCalender />}
 
     </section>
   )

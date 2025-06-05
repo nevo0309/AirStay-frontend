@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/user.actions'
 import { StayFilter } from '../cmps/StayFilter.jsx'
-import { FilterCalender } from './calender/FilterCaleder.jsx'
 import { useState } from 'react'
 import { logoSvg } from '../../data/svgExport.jsx'
 import { humburgerSvg } from '../../data/svgExport.jsx'
@@ -12,13 +11,7 @@ import { humburgerSvg } from '../../data/svgExport.jsx'
 
 export function AppHeader() {
   const user = useSelector(storeState => storeState.userModule.user)
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false)
   const navigate = useNavigate()
-
-
-  function onToggleCalendar() {
-    setIsCalendarOpen(!isCalendarOpen)
-  }
 
   async function onLogout() {
     try {
@@ -40,7 +33,7 @@ export function AppHeader() {
           </NavLink>
         </div>
 
-        <StayFilter onToggleCalendar={onToggleCalendar} />
+        <StayFilter />
 
         {/* {!user && (
           <NavLink to="login" className="login-link">
@@ -54,7 +47,7 @@ export function AppHeader() {
           </button>
         </section>
 
-        {isCalendarOpen && <FilterCalender />}
+   
 
         {/* {user && (
           <div className="user-info">
