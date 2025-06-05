@@ -2,8 +2,10 @@ import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { PrevButton, NextButton, usePrevNextButtons } from './EmblaCarouselArrowButtons'
 import { StayPreview } from '../StayPreview'
+import { useNavigate } from 'react-router-dom'
 
 export function StayCarousel({ stays, title }) {
+  const navigate = useNavigate()
   const options = {
     align: 'start',
     slidesToScroll: 1,
@@ -12,6 +14,9 @@ export function StayCarousel({ stays, title }) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
     usePrevNextButtons(emblaApi)
+  function moveToDetails(id) {
+    navigate(`stay/${id}`)
+  }
 
   return (
     <div className="carousel-section">
@@ -28,7 +33,7 @@ export function StayCarousel({ stays, title }) {
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">
               {stays.map(stay => (
-                <div className="embla__slide" key={stay._id}>
+                <div className="embla__slide" key={stay._id} onClick={moveToDetails(stay._id)}>
                   <StayPreview stay={stay} />
                 </div>
               ))}
