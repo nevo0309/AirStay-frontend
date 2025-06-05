@@ -1,0 +1,51 @@
+.details-image-gallery {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.grid-container {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  grid-auto-flow: dense;
+
+  .image-wrapper {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    &.main-image {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+}
+
+@media (max-width: 743px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    .image-wrapper {
+      display: none;
+
+      &.main-image {
+        display: block;
+        overflow: hidden;
+        img {
+          border-radius: 12px;
+        }
+      }
+    }
+  }
+}

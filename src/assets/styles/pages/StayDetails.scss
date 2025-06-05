@@ -1,0 +1,19 @@
+.stay-details {
+  padding: 14px;
+  max-width: 1200px;
+}
+
+.stay-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stay-details-header {
+  .stay-details-title {
+    font-size: 1.625rem;
+    font-weight: bold;
+    // margin-bottom: 8px;
+    color: #222;
+  }
+}

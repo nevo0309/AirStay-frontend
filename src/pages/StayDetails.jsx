@@ -1,46 +1,40 @@
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useEffect } from "react"
+import { useParams, Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { loadStay, addStayMsg } from '../store/stay.actions'
+import { loadStay } from "../store/stay.actions"
+import { DetailsImageGallery } from "../cmps/DetailsImageGallery"
 
 export function StayDetails() {
   const { stayId } = useParams()
-  const stay = useSelector(storeState => storeState.stayModule.stay)
+
+  const stay = useSelector((storeState) => storeState.stayModule.stay)
 
   useEffect(() => {
     loadStay(stayId)
   }, [stayId])
 
-  async function onAddStayMsg(stayId) {
-    try {
-      await addStayMsg(stayId, 'bla bla ' + parseInt(Math.random() * 10))
-      showSuccessMsg(`Stay msg added`)
-    } catch (err) {
-      showErrorMsg('Cannot add stay msg')
-    }
-  }
+  if (!stay) return <div>Loading...</div>
 
   return (
-    <section className="stay-details">
-      <Link to="/stay">Back to list</Link>
-      <h1>Stay Details</h1>
-      {stay && (
-        <div>
-          <h3>{stay.vendor}</h3>
-          <h4>${stay.price}</h4>
-          <pre> {JSON.stringify(stay, null, 2)} </pre>
+    <section className='stay-details'>
+      {/* <Link to='/'>Back to list</Link> */}
+      <div className='details-content'>
+        <header className='stay-details-header'>
+          <h1 className='stay-details-title'>{stay.name}</h1>
+        </header>
+        <DetailsImageGallery images={stay.imgUrls} />
+        <div className='details-amenitiess'>
+          <h3>What this place offers</h3>
+          <ul>
+            {stay.amenities?.map((amenity, idx) => (
+              <li key={idx}>
+                <span>{amenity}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
-      <button
-        onClick={() => {
-          onAddStayMsg(stay._id)
-        }}
-      >
-        Add stay msg
-      </button>
+      </div>
     </section>
   )
 }

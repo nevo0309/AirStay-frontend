@@ -17,6 +17,18 @@
 @import 'pages/AboutUs';
 @import 'pages/HomePage';
 @import 'pages/StayIndex';
+@import 'pages/StayDetails';
+
+@import 'pages/ReservePage';
+@import 'pages/ReviewIndex';
+@import 'pages/UserDetails';
+@import 'pages/AdminIndex';
+@import 'pages/TaskDetails';
+@import 'pages/LoginSignup';
+@import 'pages/Chat';
+@import 'pages/AboutUs';
+@import 'pages/HomePage';
+@import 'pages/StayIndex';
 @import 'pages/TripsPage';
 @import 'pages/ReservePage';
 @import 'pages/ReviewIndex';
@@ -41,5 +53,8 @@
 
 @import 'cmps/Carousel';
 @import 'cmps/FilterCalender.scss';
+
+@import 'cmps/DetailsImageGallery';
+
 // @import "cmps/StayList";
 // @import "cmps/StayPreview";
