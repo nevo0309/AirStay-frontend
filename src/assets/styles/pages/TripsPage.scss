@@ -1,0 +1,146 @@
+// src/components/TripsPage.scss
+
+.trips-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #222222;
+
+  .trips-heading {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .trips-count {
+    font-size: 18px;
+    color: #6f6f6f;
+    margin: 0 0 2rem 0;
+  }
+
+  .trips-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      th {
+        text-align: left;
+        font-size: 14px;
+        font-weight: 500;
+        color: #6f6f6f;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #e0e0e0;
+        white-space: nowrap;
+      }
+
+      // Column-specific min-widths
+      .th-destination {
+        min-width: 250px;
+      }
+      .th-host {
+        min-width: 120px;
+      }
+      .th-checkin {
+        min-width: 100px;
+      }
+      .th-checkout {
+        min-width: 100px;
+      }
+      .th-guests {
+        min-width: 120px;
+      }
+      .th-price {
+        min-width: 120px;
+        text-align: right;
+      }
+      .th-status {
+        min-width: 100px;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #e0e0e0;
+
+        &:hover {
+          background-color: #fafafa;
+        }
+      }
+
+      td {
+        padding: 1rem 1rem;
+        vertical-align: middle;
+        font-size: 16px;
+        color: #222222;
+      }
+
+      .no-trips {
+        text-align: center;
+        font-style: italic;
+        color: #6f6f6f;
+      }
+    }
+  }
+
+  .trip-destination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .trip-image {
+      width: 120px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background-color: #f0f0f0; /* fallback if the image URL is missing */
+    }
+
+    .trip-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #222222;
+    }
+  }
+
+  .td-host {
+    color: #525252;
+    font-size: 16px;
+  }
+
+  .td-checkin,
+  .td-checkout {
+    color: #6f6f6f;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .td-guests {
+    color: #6f6f6f;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .td-price {
+    color: #222222;
+    font-size: 16px;
+    text-align: right;
+  }
+
+  .td-status {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    white-space: nowrap;
+
+    &.status-pending {
+      color: #ff7a45;
+    }
+
+    &.status-completed {
+      color: #222222;
+    }
+  }
+}
