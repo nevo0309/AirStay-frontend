@@ -156,7 +156,7 @@ export function ReservePage() {
         </div>
 
         <div className="reserve-grid">
-          {/* ========== LEFT SIDE: 4‐Step Wizard ========== */}
+          {/* ========== LEFT SIDE: 4‐Step  ========== */}
           <div className="reserve-content">
             {/* --- Step 1: Choose when to pay --- */}
             {currentStep === 1 ? (
