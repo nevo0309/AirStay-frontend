@@ -1,15 +1,27 @@
 // src/components/ReservePage.jsx
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ChevronDown, ArrowLeft } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
 
+import { stayService } from '../services/stay/stay.service.local.js'
 import { orderService } from '../services/stay/order.service.local.js'
 import { ADD_ORDER } from '../store/order.reducer.js'
+
+import { BookingSidebar } from '../cmps/BookkingSidebar.jsx'
 
 export function ReservePage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { stayId } = useParams()
+
+  // State to hold the full stay object once we load it
+  const [stay, setStay] = useState(null)
+  const [loadingStay, setLoadingStay] = useState(true)
+
+  const [startDate, setStartDate] = useState('2025-07-04')
+  const [endDate, setEndDate] = useState('2025-07-06')
+  const [guests, setGuests] = useState({ adults: 1, kids: 0 })
 
   const [currentStep, setCurrentStep] = useState(1)
   const [paymentOption, setPaymentOption] = useState('full')
@@ -23,26 +35,64 @@ export function ReservePage() {
     country: 'Israel',
   })
 
-  const handleBackArrow = c => {
-    navigate('/')
+  useEffect(() => {
+    const loadStay = async () => {
+      try {
+        const fetched = await stayService.getById(stayId)
+        setStay(fetched)
+      } catch (err) {
+        console.error('Could not load stay', err)
+      } finally {
+        setLoadingStay(false)
+      }
+    }
+    loadStay()
+  }, [stayId])
+
+  const handleBackArrow = () => {
+    navigate(-1) // go back to previous page
   }
 
+  // When user clicks "Next" / "Next" on each step
   const handleStepComplete = step => {
     setCurrentStep(step + 1)
   }
 
+  // Controlled inputs for card details
   const handleCardDetailsChange = e => {
     const { name, value } = e.target
     setCardDetails(prev => ({ ...prev, [name]: value }))
   }
 
   const handleConfirm = async () => {
+    if (!stay) return
     const orderData = {
       paymentOption,
       paymentMethod,
       message,
       cardDetails,
       OrderedAt: Date.now(),
+
+      stay: {
+        _id: stay._id,
+        name: stay.name,
+        imgUrl: stay.imgUrls[0],
+      },
+      guest: {
+        _id: 'u101',
+        fullname: 'User 1',
+      },
+      host: {
+        _id: stay.host._id,
+        fullname: stay.host.fullname,
+        imgUrl: stay.host.thumbnailUrl || stay.host.pictureUrl,
+      },
+      totalPrice: calculateTotalPrice(stay.price, startDate, endDate),
+      startDate,
+      endDate,
+      guests, // { adults, kids }
+      msgs: [],
+      status: 'pending',
     }
 
     try {
@@ -53,6 +103,7 @@ export function ReservePage() {
         order: savedOrder,
       })
 
+      // Reset
       setCurrentStep(1)
       setPaymentOption('full')
       setPaymentMethod('card')
@@ -65,7 +116,7 @@ export function ReservePage() {
         country: 'Israel',
       })
 
-      navigate('/')
+      navigate('/') // or wherever you want to send them
       alert('Your order has been placed!')
     } catch (err) {
       console.error('Failed to add order:', err)
@@ -73,21 +124,39 @@ export function ReservePage() {
     }
   }
 
+  function calculateTotalPrice(pricePerNight, sd, ed) {
+    const nights = Math.round(
+      (new Date(ed + 'T00:00:00') - new Date(sd + 'T00:00:00')) / (1000 * 60 * 60 * 24)
+    )
+    const base = pricePerNight * (nights > 0 ? nights : 0)
+    const cleaningFee = 55
+    const serviceFee = 62.82
+    return base + cleaningFee + serviceFee
+  }
+
+  if (loadingStay) {
+    return <div>Loading stay details…</div>
+  }
+
+  if (!stay) {
+    return <div>Stay not found.</div>
+  }
+
   return (
     <div className="reserve-page">
       {/* Header */}
-
       <div className="reserve-container">
         <div className="reserve-header">
           <div className="header-container">
             <div className="back-arrow" onClick={handleBackArrow}>
               <ArrowLeft />
             </div>
-
             <h1 className="page-title">Request to book</h1>
           </div>
         </div>
+
         <div className="reserve-grid">
+          {/* ========== LEFT SIDE: 4‐Step Wizard ========== */}
           <div className="reserve-content">
             {/* --- Step 1: Choose when to pay --- */}
             {currentStep === 1 ? (
@@ -132,7 +201,7 @@ export function ReservePage() {
                 </div>
                 <div className="step-footer">
                   <button className="done-button" onClick={() => handleStepComplete(1)}>
-                    Done
+                    Next
                   </button>
                 </div>
               </div>
@@ -217,7 +286,7 @@ export function ReservePage() {
                                 <input
                                   type="text"
                                   name="expiration"
-                                  placeholder="Expiration (MM/YY)"
+                                  placeholder="Expiration"
                                   value={cardDetails.expiration}
                                   onChange={handleCardDetailsChange}
                                   className="form-input"
@@ -256,9 +325,9 @@ export function ReservePage() {
                                 <option value="Israel">Israel</option>
                                 <option value="United States">United States</option>
                                 <option value="United Kingdom">United Kingdom</option>
-                                {/* more countries */}
+                                {/* …more countries… */}
                               </select>
-                              <ChevronDown className="select-icon" size={100} />
+                              <ChevronDown className="select-icon" size={16} />
                             </div>
                           </div>
                         </div>
@@ -293,7 +362,7 @@ export function ReservePage() {
                 </div>
                 <div className="step-footer">
                   <button className="done-button" onClick={() => handleStepComplete(2)}>
-                    Done
+                    Next
                   </button>
                 </div>
               </div>
@@ -335,20 +404,12 @@ export function ReservePage() {
                         className="message-textarea"
                         rows={4}
                       />
-                      <div className="textarea-icons">
-                        <button className="icon-button" title="Add emoji">
-                          🌟
-                        </button>
-                        <button className="icon-button" title="Use template">
-                          G
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>
                 <div className="step-footer">
                   <button
-                    className="done-button"
+                    className="done-button-message"
                     onClick={() => handleStepComplete(3)}
                     disabled={!message}
                   >
@@ -399,18 +460,9 @@ export function ReservePage() {
             ) : null}
           </div>
 
-          {/* Sidebar – placeholder */}
-          <div className="reserve-sidebar">
-            <div className="sidebar-placeholder">
-              <div className="placeholder-content">
-                <div className="placeholder-icon">🏠</div>
-                <p className="placeholder-text">Booking Details Sidebar</p>
-                <p className="placeholder-subtext">
-                  This will contain property info, dates, pricing, etc.
-                </p>
-              </div>
-            </div>
-          </div>
+          {/* ========== RIGHT SIDE: BookingSidebar ========== */}
+
+          <BookingSidebar stay={stay} startDate={startDate} endDate={endDate} guests={guests} />
         </div>
       </div>
     </div>
