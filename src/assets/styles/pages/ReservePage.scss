@@ -91,6 +91,9 @@
   min-height: 292px;
   max-height: 550px;
   margin: 0 auto;
+  &:last-child {
+    margin-bottom: 60px;
+  }
 
   /* ---- STEP HEADER (Title) ---- */
   .step-header {
@@ -293,7 +296,6 @@
             }
           }
 
-          /* Expiration + CVV row (side by side) */
           .card-extra-info {
             display: flex;
             width: 100%;
@@ -476,9 +478,8 @@
     align-items: center;
     padding: 0 1.5rem 0.5rem 1.5rem;
 
-    .done-button {
-      position: relative;
-      top: -0.7rem;
+    .done-button,
+    .done-button-message {
       background-color: #222222;
       color: #ffffff;
       border: none;
@@ -497,9 +498,15 @@
       }
 
       &:disabled {
-        opacity: 0.6;
         cursor: not-allowed;
       }
+    }
+    .done-button {
+      position: relative;
+      top: -0.7rem;
+    }
+    .done-button-message {
+      margin-bottom: 20px;
     }
   }
 }
@@ -517,7 +524,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  &:last-child {
+    margin-bottom: 60px;
+  }
   .summary-left {
     display: flex;
     flex-direction: column;
@@ -626,41 +635,4 @@
    Right sidebar (placeholder)
    ------------------------------------------------------------------------- */
 .reserve-sidebar {
-  position: sticky;
-  top: 0;
-
-  .sidebar-placeholder {
-    background-color: #ffffff;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
-    // min-height: 300px;
-    height: 500px;
-    width: 372px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // padding: 2rem;
-    box-sizing: border-box;
-
-    .placeholder-content {
-      text-align: center;
-      color: #717171;
-
-      .placeholder-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .placeholder-text {
-        font-size: 1rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-      }
-
-      .placeholder-subtext {
-        font-size: 0.875rem;
-        color: #aaaaaa;
-      }
-    }
-  }
 }

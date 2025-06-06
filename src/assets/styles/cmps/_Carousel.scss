@@ -5,6 +5,9 @@ $slidesToShow: 7;
   &:last-child {
     margin-bottom: 20px;
   }
+  &:first-child {
+    margin-top: 20px;
+  }
   .embla-wrapper {
     position: relative;
     left: 50%;
@@ -99,6 +102,9 @@ $slidesToShow: 7;
 
       width: 180px;
       height: 230px;
+      &:hover {
+        cursor: pointer;
+      }
 
       .preview {
         width: 100%;
