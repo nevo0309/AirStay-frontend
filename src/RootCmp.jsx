@@ -21,12 +21,21 @@ import { Signup } from './pages/Signup.jsx'
 import { ReservePage } from './pages/ReservePage.jsx'
 import { TripsPage } from './pages/TripsPage.jsx'
 
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => window.scrollTo(0, 0), [pathname])
+  return null
+}
+
 export function RootCmp() {
   return (
     <div className="main-container">
       <AppHeader />
       <UserMsg />
-
+      <ScrollToTop />
       <main>
         <Routes>
           {/* <Route path="" element={<HomePage />} /> */}
