@@ -133,8 +133,7 @@ export function ReservePage() {
       })
       setMessage('')
 
-      navigate('/')
-      alert('Your order has been placed!')
+      navigate('/trips')
     } catch (err) {
       console.error('Failed to add order:', err)
       alert('Something went wrong. Please try again.')
