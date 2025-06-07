@@ -1,19 +1,109 @@
 .stay-details {
-  padding: 14px;
   max-width: 1200px;
+  margin: 0 auto;
 }
 
-.stay-details-content {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+.details-content {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
-.stay-details-header {
-  .stay-details-title {
+.details-header {
+  .details-title {
     font-size: 1.625rem;
     font-weight: bold;
-    // margin-bottom: 8px;
-    color: #222;
+    margin-bottom: 0.5em;
+    color: #222222;
+  }
+}
+
+.details-overview {
+  margin-bottom: 1rem;
+  @include section-divider;
+  .overview-header {
+    .overview-location {
+      font-size: 1.625rem;
+      margin-bottom: 0.5rem;
+      color: #222;
+    }
+
+    .overview-info {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .stay-rating {
+      font-size: 1rem;
+      color: #222222;
+
+      .star {
+        color: #ff5a5f;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
+
+.stay-highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  @include section-divider;
+
+  .highlight-host {
+    display: flex;
+    gap: 16px;
+  }
+
+  .highlight-text {
+    h4 {
+      margin: 0 0 0.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #222;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+    }
+  }
+}
+
+.details-reserve-card {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  max-width: 300px;
+
+  .price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+
+    .nightly-price {
+      color: #222;
+    }
+  }
+
+  .reserve-btn {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e14b4f;
+    }
   }
 }

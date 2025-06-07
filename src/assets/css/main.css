@@ -255,61 +255,100 @@ form > * {
 
 .stay-details {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
-.stay-details .details-main-content {
+
+.details-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
 }
-.stay-details .details-header .details-title {
+
+.details-header .details-title {
   font-size: 1.625rem;
   font-weight: bold;
   margin-bottom: 0.5em;
+  color: #222222;
+}
+
+.details-overview {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.details-overview .overview-header .overview-location {
+  font-size: 1.625rem;
+  margin-bottom: 0.5rem;
   color: #222;
 }
-.stay-details .details-overview {
-  margin-bottom: 1rem;
-}
-.stay-details .details-overview .overview-header .overview-location {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-}
-.stay-details .details-overview .overview-header .overview-info {
+.details-overview .overview-header .overview-info {
   font-size: 1rem;
   color: #444;
   margin-bottom: 0.5rem;
-  line-height: 1.5;
+  line-height: 1.4;
 }
-.stay-details .details-overview .overview-header .stay-rating {
+.details-overview .overview-header .stay-rating {
   font-size: 1rem;
-  color: #222;
+  color: #222222;
 }
-.stay-details .details-overview .overview-header .stay-rating .star {
+.details-overview .overview-header .stay-rating .star {
   color: #ff5a5f;
   margin-right: 0.25rem;
 }
-.stay-details .stay-highlights {
+
+.stay-highlights {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin: 2rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
-.stay-details .stay-highlights .highlight-host {
+.stay-highlights .highlight-host {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
 }
-.stay-details .stay-highlights .highlight-text h4 {
+.stay-highlights .highlight-text h4 {
   margin: 0 0 0.25rem;
   font-size: 1rem;
   font-weight: 600;
   color: #222;
 }
-.stay-details .stay-highlights .highlight-text p {
+.stay-highlights .highlight-text p {
   margin: 0;
   font-size: 0.95rem;
   color: #555;
   line-height: 1.4;
+}
+
+.details-reserve-card {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  max-width: 300px;
+}
+.details-reserve-card .price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.details-reserve-card .price .nightly-price {
+  color: #222;
+}
+.details-reserve-card .reserve-btn {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.details-reserve-card .reserve-btn:hover {
+  background-color: #e14b4f;
 }
 
 .reserve-page {
@@ -2471,15 +2510,76 @@ form > * {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
 }
 .grid-container .image-wrapper:hover img {
-  transform: scale(1.05);
+  opacity: 0.9;
 }
 .grid-container .image-wrapper.main-image {
   grid-column: span 2;
   grid-row: span 2;
   aspect-ratio: 2/2;
+}
+
+@media (max-width: 763px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .grid-container .image-wrapper {
+    display: none;
+  }
+  .grid-container .image-wrapper.main-image {
+    display: block;
+    grid-column: 1/-1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  .grid-container .image-wrapper.main-image img {
+    width: 100vw;
+    height: auto;
+    border-radius: 0;
+    object-fit: cover;
+    display: block;
+  }
+}
+.details-amenities {
+  padding: 24px 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  color: #222222;
+}
+
+.amenities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.amenities-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.2s ease;
+}
+.amenities-item .amenities-label {
+  font-size: 1rem;
+  color: #333;
+}
+.amenities-item .amenities-tittle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
