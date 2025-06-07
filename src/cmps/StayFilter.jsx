@@ -33,19 +33,26 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
   }
 
   function onToggleAddGuests() {
+    setIsSearchDesOpen(false)
+    setIsCalendarOpen(false)
     setIsAddGuestsOpen(!isAddGuestsOpen)
   }
   function onToggleSearchDes() {
+    setIsAddGuestsOpen(false)
+    setIsCalendarOpen(false)
     setIsSearchDesOpen(!isSearchDesOpen)
   }
   function onToggleCalendar() {
+    setIsAddGuestsOpen(false)
+    setIsSearchDesOpen(false)
     setIsCalendarOpen(!isCalendarOpen)
   }
 
+  const isAnyInputActive = isAddGuestsOpen || isCalendarOpen || isSearchDesOpen ? true : false
 
   return (
-    <section className="stay-filter">
-      <div className='input-section flex column' onClick={onToggleSearchDes}>
+    <section className={'stay-filter ' + (isAnyInputActive ? 'open': '')}>
+      <div className={'input-section flex column ' + (isSearchDesOpen ? 'active' : '')} onClick={onToggleSearchDes}>
         <label>Where</label>
         <input
           type="text"
@@ -57,7 +64,7 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
         />
       </div>
 
-      <div className='input-section flex column' onClick={onToggleCalendar}>
+      <div className={'input-section flex column ' + (isCalendarOpen ? 'active' : '')} onClick={onToggleCalendar}>
         <label>
           Check in
         </label>
@@ -72,7 +79,7 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
       </div>
 
 
-      <div className='input-section flex column' onClick={onToggleAddGuests}>
+      <div className={'input-section flex column ' + (isAddGuestsOpen ? 'active' : '')} onClick={onToggleAddGuests}>
         <label>
           Who
         </label>
