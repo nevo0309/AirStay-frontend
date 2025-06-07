@@ -1,23 +1,19 @@
 .stay-details {
-  padding: 14px;
   max-width: 1200px;
-}
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 
-.stay-details-content {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.stay-details-header {
-  .stay-details-title {
-    font-size: 1.625rem;
-    font-weight: bold;
-    // margin-bottom: 8px;
-    color: #222;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 }
 
+.details-content {
+  display: flex;
+  flex-direction: column;
+}
 .reserve-btn-details {
   --x: 70%;
   --y: 50%;
@@ -41,7 +37,8 @@
   );
   // background: radial-gradient(circle at var(--x) var(--y), #ff7c4c52, transparent 40%),
   //   linear-gradient(90deg, $clr1se 0%, $clr1st 100%);
-  background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+  background-position: calc((100 - var(--mouse-x, 0)) * 1%)
+    calc((100 - var(--mouse-y, 0)) * 1%);
 }
 
 .reserve-btn-details:hover {

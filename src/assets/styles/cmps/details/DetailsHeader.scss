@@ -1,0 +1,16 @@
+.details-header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1rem;
+
+  .details-title {
+    font-size: 1.625rem;
+    font-weight: bold;
+    color: #222;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
+}
