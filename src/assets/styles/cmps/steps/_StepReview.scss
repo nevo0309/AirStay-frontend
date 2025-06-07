@@ -1,0 +1,51 @@
+.review-content {
+  .review-info {
+    color: #222222;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .terms-text {
+    color: #717171;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+
+    .terms-link {
+      color: #222222;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        color: #717171;
+      }
+    }
+  }
+}
+
+.confirm-order-button {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  .gpay-icon {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  &:hover {
+    background-color: #333333;
+  }
+}

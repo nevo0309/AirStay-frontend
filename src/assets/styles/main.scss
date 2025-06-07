@@ -17,6 +17,19 @@
 @import 'pages/AboutUs';
 @import 'pages/HomePage';
 @import 'pages/StayIndex';
+@import 'pages/StayDetails';
+
+@import 'pages/ReservePage';
+@import 'pages/ReviewIndex';
+@import 'pages/UserDetails';
+@import 'pages/AdminIndex';
+@import 'pages/TaskDetails';
+@import 'pages/LoginSignup';
+@import 'pages/Chat';
+@import 'pages/AboutUs';
+@import 'pages/HomePage';
+@import 'pages/StayIndex';
+@import 'pages/TripsPage';
 @import 'pages/ReservePage';
 @import 'pages/ReviewIndex';
 @import 'pages/UserDetails';
@@ -28,6 +41,7 @@
 // Components
 @import 'cmps/list';
 @import 'cmps/preview';
+@import 'cmps/BookingSidebar';
 
 @import 'cmps/AppHeader';
 @import 'cmps/AppFooter';
@@ -41,6 +55,14 @@
 
 @import 'cmps/Carousel';
 @import 'cmps/FilterCalender.scss';
+
+@import 'cmps/DetailsImageGallery';
+@import 'cmps/steps/StepChoosePayment';
+@import 'cmps/steps/StepMessage';
+@import 'cmps/steps/StepPaymentMethod';
+@import 'cmps/steps/StepReview';
+@import 'cmps/steps/StepCard.scss';
+
 @import 'cmps/AddGuests.scss';
 @import 'cmps/SeachDes.scss'
 

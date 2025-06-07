@@ -1,0 +1,206 @@
+.payment-method-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .method-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    .payment-method-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      cursor: pointer;
+      position: relative;
+      border-bottom: 1px solid #e0e0e0;
+
+      .method-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex: 1;
+
+        .card-icon {
+          font-size: 1.5rem;
+          color: #222222;
+        }
+
+        span {
+          font-size: 1rem;
+          font-weight: 500;
+          color: #222222;
+        }
+
+        .card-logos {
+          display: flex;
+          gap: 0.5rem;
+          margin-left: 1rem;
+
+          .visa,
+          .mastercard,
+          .amex {
+            height: 1rem;
+            align-self: center;
+          }
+        }
+
+        .gpay-icon {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          font-size: 1rem;
+        }
+      }
+
+      .radio-input {
+        width: 1.25rem;
+        height: 1.25rem;
+        accent-color: #222222;
+        margin-left: 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .card-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    border-bottom: none;
+
+    .card-numbers {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+
+      .form-group {
+        margin: 0;
+
+        .form-input {
+          width: 100%;
+          padding: 1rem;
+          border: none;
+          border-radius: 0;
+          font-size: 1rem;
+          color: #222222;
+          box-sizing: border-box;
+
+          &::placeholder {
+            color: #6f6f6f;
+          }
+          &:focus {
+            outline: none;
+            box-shadow: none;
+            border: none;
+          }
+        }
+      }
+
+      .card-extra-info {
+        display: flex;
+        width: 100%;
+        border-top: 1px solid #e0e0e0;
+
+        .form-group.half {
+          flex: 1;
+          margin: 0;
+          position: relative;
+
+          &:first-child {
+            border-right: 1px solid #e0e0e0;
+          }
+
+          .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0;
+            font-size: 1rem;
+            color: #222222;
+            box-sizing: border-box;
+
+            &::placeholder {
+              color: #6f6f6f;
+            }
+            &:focus {
+              outline: none;
+              box-shadow: none;
+              border: none;
+            }
+          }
+        }
+      }
+    }
+
+    .form-group.zip {
+      margin-top: 1rem;
+
+      .form-input {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        color: #222222;
+        transition: border-color 0.2s;
+        box-sizing: border-box;
+
+        &::placeholder {
+          color: #6f6f6f;
+        }
+        &:focus {
+          outline: none;
+          border-color: #222222;
+          box-shadow: 0 0 0 1px #222222;
+        }
+      }
+    }
+
+    .form-group.country {
+      margin-top: 1rem;
+
+      .select-wrapper {
+        position: relative;
+
+        .form-select {
+          width: 100%;
+          padding: 1rem;
+          padding-right: 2.5rem;
+          border: 1px solid #e0e0e0;
+          border-radius: 8px;
+          font-size: 1rem;
+          color: #222222;
+          background: #ffffff;
+          appearance: none;
+          cursor: pointer;
+          box-sizing: border-box;
+
+          &::placeholder {
+            color: #6f6f6f;
+          }
+          &:focus {
+            outline: none;
+            border-color: #222222;
+            box-shadow: 0 0 0 1px #222222;
+          }
+        }
+
+        .select-icon {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1rem;
+          height: 1rem;
+          color: #6f6f6f;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

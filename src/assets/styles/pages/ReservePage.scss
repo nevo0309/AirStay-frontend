@@ -1,576 +1,31 @@
+/* ReservePage.scss */
 .reserve-page {
   min-height: 100vh;
+  position: relative;
 
-  /* ------------------------------
-     Header section (top bar)
-     ------------------------------ */
-  .reserve-header {
-    padding: 1rem 1.5rem;
-    background-color: #ffffff;
+  .sticky-arrow-wrapper {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 100;
+    pointer-events: none;
 
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
+    .back-arrow {
+      position: absolute;
+      top: 2.5rem;
+      left: 7rem;
       display: flex;
       align-items: center;
-
-      .back-arrow {
-        width: 1.25rem;
-        height: 1.25rem;
-        margin-right: 1rem;
-        cursor: pointer;
-        color: #222222;
-
-        &:hover {
-          color: #717171;
-        }
-      }
-
-      .page-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #222222;
-        margin: 0;
-      }
-    }
-  }
-}
-
-/* -------------------------------------------------------------------------
-   Container + Grid
-   ------------------------------------------------------------------------- */
-.reserve-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-
-  .reserve-grid {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 4rem;
-    align-items: start;
-
-    @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: 2rem;
-    }
-  }
-}
-
-/* -------------------------------------------------------------------------
-   Left‐column content
-   ------------------------------------------------------------------------- */
-.reserve-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* -------------------------------------------------------------------------
-   STEP CARD (expanded state) – applies to Step 1, Step 2, Step 3, Step 4
-   ------------------------------------------------------------------------- */
-.step-card {
-  background-color: #ffffff;
-  border-radius: 24px; /* very rounded corners */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* subtle shadow */
-  border: none;
-  overflow: hidden;
-  width: 524px;
-  min-height: 292px;
-  max-height: 550px;
-  margin: 0 auto;
-
-  /* ---- STEP HEADER (Title) ---- */
-  .step-header {
-    padding: 1.5rem 1.5rem 0.75rem;
-    background-color: #ffffff;
-
-    .step-title {
-      font-size: 1.375rem; /* ≈22px */
-      font-weight: 600;
-      color: #222222;
-      margin: 0;
-      line-height: 1.2;
-    }
-  }
-
-  /* ---- STEP BODY (Contents) ---- */
-  .step-body {
-    padding: 0.75rem 1.5rem 1.5rem;
-    background-color: #ffffff;
-
-    /* -----------------------------------------------------------------------
-       STEP 1: “Choose when to pay” - Payment options styling
-       ----------------------------------------------------------------------- */
-    .payment-options {
-      display: flex;
-      flex-direction: column;
-
-      .payment-option {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        padding: 1rem 0;
-        cursor: pointer;
-        border-bottom: 1px solid #e0e0e0;
-
-        // &:last-child {
-        //   border-bottom: 1px solid black;
-        // }
-
-        .option-content {
-          flex: 1;
-
-          .option-text {
-            font-size: 1.0625rem; /* ≈17px */
-            font-weight: 500;
-            color: #222222;
-            margin-bottom: 0.25rem;
-          }
-
-          .option-subtext {
-            font-size: 0.875rem; /* ≈14px */
-            color: #6f6f6f;
-            line-height: 1.4;
-
-            .more-info {
-              color: #222222;
-              text-decoration: underline;
-              cursor: pointer;
-
-              &:hover {
-                color: #555555;
-              }
-            }
-          }
-        }
-
-        .radio-input {
-          margin-left: 1rem;
-          margin-top: 0.2rem; /* vertical nudge to align with text */
-          width: 1.25rem; /* 20px */
-          height: 1.25rem;
-          accent-color: #222222;
-          cursor: pointer;
-        }
-      }
-    }
-
-    /* -----------------------------------------------------------------------
-       STEP 2: “Add a payment method”
-       ----------------------------------------------------------------------- */
-    .payment-method-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-
-      /* A) The two clickable options (“Credit or debit card” & “Google Pay”) */
-      .method-selector {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-
-        .payment-method-option {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 1rem 0;
-          cursor: pointer;
-          position: relative;
-
-          border-bottom: 1px solid #e0e0e0;
-
-          .method-info {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex: 1;
-
-            /* Icon on the left for credit card */
-            .card-icon {
-              font-size: 1.5rem; /* ≈24px */
-              color: #222222;
-            }
-
-            /* Text label */
-            span {
-              font-size: 1rem; /* ≈16px */
-              font-weight: 500;
-              color: #222222;
-            }
-
-            /* Logos for Visa/MasterCard/Amex next to text */
-            .card-logos {
-              display: flex;
-              gap: 0.5rem;
-              margin-left: 1rem;
-
-              .visa {
-                height: 1rem;
-                align-self: center;
-              }
-              .mastercard {
-                height: 1rem;
-                align-self: center;
-              }
-              .amex {
-                height: 1rem;
-                align-self: center;
-              }
-            }
-
-            /* G Pay icon for Google Pay option */
-            .gpay-icon {
-              display: flex;
-              align-items: center;
-              gap: 0.25rem;
-              font-size: 1rem;
-            }
-          }
-
-          /* Radio button on the right */
-          .radio-input {
-            width: 1.25rem;
-            height: 1.25rem;
-            accent-color: #222222;
-            margin-left: 1rem;
-            cursor: pointer;
-          }
-        }
-      }
-
-      /* B) The credit-card form fields (only visible when “Credit or debit card” is selected) */
-      .card-form {
-        display: flex;
-        flex-direction: column;
-        // gap: 1rem;
-        padding-top: 1rem;
-        /* Removed border-bottom here, since card-numbers will visually group these fields */
-        border-bottom: none;
-
-        /* ---------- Group card number + expiration/CVV in one bordered box ---------- */
-        .card-numbers {
-          display: flex;
-          flex-direction: column;
-          border: 1px solid #e0e0e0;
-          border-radius: 8px;
-          overflow: hidden;
-          /* no margin: we want it to sit flush under “Credit or debit card” */
-
-          /* Card number row (full-width) */
-          .form-group {
-            margin: 0; /* remove default margins */
-
-            .form-input {
-              width: 100%;
-              padding: 1rem;
-              border: none; /* rely on parent border */
-              border-radius: 0;
-              font-size: 1rem;
-              color: #222222;
-              box-sizing: border-box;
-
-              &::placeholder {
-                color: #6f6f6f;
-              }
-              &:focus {
-                outline: none;
-                box-shadow: none;
-                border: none;
-              }
-            }
-          }
-
-          /* Expiration + CVV row (side by side) */
-          .card-extra-info {
-            display: flex;
-            width: 100%;
-            border-top: 1px solid #e0e0e0; /* separate from card number above */
-
-            .form-group.half {
-              flex: 1;
-              margin: 0; /* remove default margins */
-              position: relative;
-
-              /* vertical divider between Expiration & CVV */
-              &:first-child {
-                border-right: 1px solid #e0e0e0;
-              }
-
-              .form-input {
-                width: 100%;
-                padding: 1rem;
-                border: none;
-                border-radius: 0;
-                font-size: 1rem;
-                color: #222222;
-                box-sizing: border-box;
-
-                &::placeholder {
-                  color: #6f6f6f;
-                }
-                &:focus {
-                  outline: none;
-                  box-shadow: none;
-                  border: none;
-                }
-              }
-            }
-          }
-        }
-
-        /* ---------- ZIP code (full-width) ---------- */
-        .form-group.zip {
-          margin-top: 1rem; /* spacing from the .card-numbers box */
-
-          .form-input {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            color: #222222;
-            transition: border-color 0.2s;
-            box-sizing: border-box;
-
-            &::placeholder {
-              color: #6f6f6f;
-            }
-            &:focus {
-              outline: none;
-              border-color: #222222;
-              box-shadow: 0 0 0 1px #222222;
-            }
-          }
-        }
-
-        /* ---------- Country select (full-width) ---------- */
-        .form-group.country {
-          margin-top: 1rem; /* spacing from the ZIP field */
-
-          .select-wrapper {
-            position: relative;
-
-            .form-select {
-              width: 100%;
-              padding: 1rem;
-              padding-right: 2.5rem;
-              border: 1px solid #e0e0e0;
-              border-radius: 8px;
-              font-size: 1rem;
-              color: #222222;
-              background: #ffffff;
-              appearance: none;
-              cursor: pointer;
-              box-sizing: border-box;
-
-              &::placeholder {
-                color: #6f6f6f;
-              }
-              &:focus {
-                outline: none;
-                border-color: #222222;
-                box-shadow: 0 0 0 1px #222222;
-              }
-            }
-
-            .select-icon {
-              position: absolute;
-              right: 1rem;
-              top: 50%;
-              transform: translateY(-50%);
-              width: 1rem;
-              height: 1rem;
-              color: #6f6f6f;
-              pointer-events: none;
-            }
-          }
-        }
-      }
-    }
-
-    /* -----------------------------------------------------------------------
-       STEP 3: “Write a message to the host”
-       ----------------------------------------------------------------------- */
-    .message-form {
-      .message-instruction {
-        font-size: 0.875rem;
-        color: #6f6f6f;
-        // margin-bottom: 1rem;
-        line-height: 1.5;
-      }
-
-      .message-input-container {
-        position: relative;
-        width: 476px;
-        height: 76px;
-        margin-bottom: 0.8rem;
-
-        .message-textarea {
-          width: 100%;
-          padding: 0.5rem;
-
-          border: 1px solid #e0e0e0;
-          border-radius: 8px;
-          font-size: 1rem;
-          color: #222222;
-          font-family: inherit;
-          resize: vertical;
-          min-height: 100px;
-          box-sizing: border-box;
-
-          &::placeholder {
-            color: #6f6f6f;
-          }
-          &:focus {
-            outline: none;
-            border-color: #222222;
-            box-shadow: 0 0 0 1px #222222;
-          }
-        }
-
-        .textarea-icons {
-          position: absolute;
-          bottom: 0.75rem;
-          right: 0.75rem;
-          display: flex;
-          gap: 0.5rem;
-
-          .icon-button {
-            background: none;
-            border: none;
-            padding: 0.25rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            font-size: 1rem;
-            line-height: 1;
-
-            &:hover {
-              background-color: #f7f7f7;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  /* -------------------------------------------------------------------------
-     STEP FOOTER (Done button)
-     ------------------------------------------------------------------------- */
-  .step-footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 1.5rem 1.5rem 1.5rem;
-
-    .done-button {
-      background-color: #222222;
-      color: #ffffff;
-      border: none;
-      padding: 0.75rem 1.75rem;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
       cursor: pointer;
-      transition: background-color 0.2s;
-
-      &:hover {
-        background-color: #484848;
-      }
-
-      &:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-      }
-    }
-  }
-}
-
-/* -------------------------------------------------------------------------
-   Collapsed summary (for Steps 1–3 when inactive or completed)
-   ------------------------------------------------------------------------- */
-.collapsed-summary {
-  background-color: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 20px;
-  width: 524px;
-  height: 98px;
-  //   padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .summary-left {
-    display: flex;
-    flex-direction: column;
-
-    .step-title {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 600;
-      margin-top: 4px;
-      margin-left: 25px;
       color: #222222;
-    }
-
-    .summary-text {
-      font-size: 0.875rem; /* ≈14px */
-      color: #717171;
-      margin-top: 4px;
-      margin-left: 25px;
-    }
-  }
-
-  .change-button {
-    background: #f2f2f2;
-    border-radius: 6px;
-    width: 75px;
-    height: 32px;
-    color: #222222;
-    font-size: 14px;
-
-    text-decoration: none;
-    cursor: pointer;
-    padding: 0;
-    margin-right: 25px;
-
-    &:hover {
-      color: #717171;
-    }
-  }
-
-  &.inactive {
-    opacity: 0.6;
-    cursor: default;
-
-    .change-button {
-      display: none;
-    }
-  }
-}
-
-/* -------------------------------------------------------------------------
-   STEP 4: “Review your request” (expanded content)
-   ------------------------------------------------------------------------- */
-.review-content {
-  .review-info {
-    color: #222222;
-    font-size: 0.875rem; /* ≈14px */
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-
-  .terms-text {
-    color: #717171;
-    font-size: 0.875rem; /* ≈14px */
-    margin-bottom: 1.5rem;
-    line-height: 1.4;
-
-    .terms-link {
-      color: #222222;
-      text-decoration: underline;
-      cursor: pointer;
+      background-color: #f7f7f7;
+      border-radius: 100%;
+      pointer-events: auto;
 
       &:hover {
         color: #717171;
@@ -578,71 +33,68 @@
     }
   }
 
-  .confirm-button {
-    width: 100%;
-    background-color: #000000;
-    color: #ffffff;
-    border: none;
-    padding: 1rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+  .reserve-header {
+    padding: 1.5rem 1.5rem;
+    padding-top: 2rem;
+    background-color: #ffffff;
 
-    .gpay-icon {
-      font-size: 1.25rem;
-      font-weight: bold;
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 4rem;
+      display: flex;
+      align-items: center;
     }
 
-    &:hover {
-      background-color: #333333;
+    .page-title {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 600;
+      color: #222222;
     }
   }
 }
 
-/* -------------------------------------------------------------------------
-   Right sidebar (placeholder)
-   ------------------------------------------------------------------------- */
-.reserve-sidebar {
-  position: sticky;
-  top: 0;
+.reserve-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 
-  .sidebar-placeholder {
-    background-color: #ffffff;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
-    // min-height: 300px;
-    height: 500px;
+  .reserve-grid {
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 2rem;
-    box-sizing: border-box;
+    gap: 80px;
+    align-items: start;
+  }
+}
 
-    .placeholder-content {
-      text-align: center;
-      color: #717171;
+.reserve-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
-      .placeholder-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+@media (max-width: 950px) {
+  .reserve-page {
+    .sticky-arrow-wrapper {
+      .back-arrow {
+        left: 9rem;
+        top: 2.5rem;
       }
+    }
 
-      .placeholder-text {
-        font-size: 1rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
+    .reserve-header {
+      .header-container {
+        padding-left: 10.3rem;
       }
-
-      .placeholder-subtext {
-        font-size: 0.875rem;
-        color: #aaaaaa;
-      }
+    }
+  }
+  .reserve-container {
+    .reserve-grid {
+      align-items: center;
+      flex-direction: column-reverse;
+      gap: 2rem;
     }
   }
 }
