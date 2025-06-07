@@ -9,12 +9,10 @@ import { useState } from 'react'
 import { logoSvg } from '../../data/svgExport.jsx'
 import { humburgerSvg } from '../../data/svgExport.jsx'
 
-
 export function AppHeader() {
   const user = useSelector(storeState => storeState.userModule.user)
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
   const navigate = useNavigate()
-
 
   function onToggleCalendar() {
     setIsCalendarOpen(!isCalendarOpen)
@@ -33,8 +31,8 @@ export function AppHeader() {
   return (
     <header className="app-header main-container full">
       <nav>
-        <div className='logo'>
-          <NavLink to="/stay" className="/logo">
+        <div className="logo">
+          <NavLink to="/" className="/logo">
             {logoSvg}
             <span>airstay</span>
           </NavLink>
@@ -47,11 +45,9 @@ export function AppHeader() {
           Login
           </NavLink>
           )} */}
-        <section className='btns flex'>
-          <button className='host-guest-btn'>Become a host</button>
-          <button className='menue-btn'>
-           {humburgerSvg}
-          </button>
+        <section className="btns flex">
+          <button className="host-guest-btn">Become a host</button>
+          <button className="menue-btn">{humburgerSvg}</button>
         </section>
 
         {isCalendarOpen && <FilterCalender />}
