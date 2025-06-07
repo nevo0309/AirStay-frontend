@@ -19,17 +19,14 @@ export function StepChoosePayment({
 
   console.log('paydate', payDateStr)
 
-  const summaryText =
-    paymentOption === 'full'
-      ? `Pay ₪${totalPrice.toFixed(2)} now`
-      : `Pay part now, part on ${payDateStr}`
+  const summaryText = `Pay ₪${totalPrice.toFixed(2)} now`
 
   return (
     <StepCard
       stepNumber={1}
       title="Choose when to pay"
       isOpen={isOpen}
-      summaryText={summaryText}
+      summaryText=""
       onChange={() => setCurrentStep(1)}
       disabled={false}
       bodyContent={
