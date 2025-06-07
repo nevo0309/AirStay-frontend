@@ -30,10 +30,31 @@
   color: #fff;
   cursor: pointer;
   transition: filter 0.2s;
-  background: radial-gradient(circle at var(--x) var(--y), #ff7c4c30, transparent 40%),
-    linear-gradient(90deg, $clr1 0%, $clr1st 100%);
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    #ff385c 0%,
+    #e61e4d 27.5%,
+    #e31c5f 40%,
+    #d70466 57.5%,
+    #bd1e59 75%,
+    #bd1e59 100%
+  );
+  // background: radial-gradient(circle at var(--x) var(--y), #ff7c4c52, transparent 40%),
+  //   linear-gradient(90deg, $clr1se 0%, $clr1st 100%);
+  background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
 }
 
 .reserve-btn-details:hover {
-  filter: brightness(1.1);
+  background: radial-gradient(
+    circle at circle,
+    #ff7c4c52,
+    transparent 40%,
+    #ff385c 0%,
+    #e61e4d 27.5%,
+    #e31c5f 40%,
+    #d70466 57.5%,
+    #bd1e59 75%,
+    #bd1e59 100%
+  );
+  // filter: brightness(1.1);
 }
