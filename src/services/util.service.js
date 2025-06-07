@@ -93,6 +93,24 @@ export function calculateNights(startDateStr, endDateStr) {
   const nights = Math.round(diffMs / (1000 * 60 * 60 * 24))
   return nights > 0 ? nights : 0
 }
+export function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00')
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
+  return `${months[d.getMonth()]} ${d.getDate()}`
+}
 
 export function formatDateRange(startDateStr, endDateStr) {
   const start = new Date(startDateStr + 'T00:00:00')
