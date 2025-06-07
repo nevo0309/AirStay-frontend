@@ -1,0 +1,42 @@
+.details-amenities {
+  padding: 24px 0;
+  @include section-divider;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  color: #222222;
+}
+
+.amenities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.amenities-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  transition: box-shadow 0.2s ease;
+
+  .amenities-label {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .amenities-tittle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+    margin: 0;
+  }
+}
