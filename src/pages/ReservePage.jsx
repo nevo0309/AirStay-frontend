@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
 import { stayService } from '../services/stay/stay.service.local'
@@ -16,13 +16,33 @@ import { StepReview } from '../cmps/steps/StepReview'
 export function ReservePage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
   const { stayId } = useParams()
 
-  const [stay, setStay] = useState(null)
-  const [loadingStay, setLoadingStay] = useState(true)
+  // console.log('🔍 location.state →', location.state)
+
+  const {
+    stay: locationStay,
+    startDate: locationStart,
+    endDate: locationEnd,
+    guests: locationGuests,
+  } = location.state || {}
+
+  const [stay, setStay] = useState(locationStay || null)
+  const [loadingStay, setLoadingStay] = useState(!locationStay)
+  const [startDate, setStartDate] = useState(locationStart || '2025-12-04')
+  const [endDate, setEndDate] = useState(locationEnd || '2025-12-06')
+  const [guests, setGuests] = useState(locationGuests || { adults: 1, kids: 0 })
+
+  const endDateMinus2 = (() => {
+    const d = new Date(endDate + 'T00:00:00')
+    d.setDate(d.getDate() - 2)
+    return d.toISOString().split('T')[0]
+  })()
 
   useEffect(() => {
     async function loadStay() {
+      if (locationStay) return setLoadingStay(false)
       try {
         const fetched = await stayService.getById(stayId)
         setStay(fetched)
@@ -33,7 +53,7 @@ export function ReservePage() {
       }
     }
     loadStay()
-  }, [stayId])
+  }, [stayId, locationStay])
 
   // ── Wizard state
   const [currentStep, setCurrentStep] = useState(1)
@@ -47,11 +67,6 @@ export function ReservePage() {
     country: 'Israel',
   })
   const [message, setMessage] = useState('')
-
-  // ── Booking details for sidebar (hard‐coded )
-  const [startDate] = useState('2025-07-04')
-  const [endDate] = useState('2025-07-06')
-  const [guests] = useState({ adults: 1, kids: 0 })
 
   const handleBackArrow = () => {
     navigate(-1)
@@ -68,10 +83,10 @@ export function ReservePage() {
     return base + cleaningFee + serviceFee
   }
 
-  // ── Final confirmation: save order ────────────────────────
+  const totalPrice = calculateTotalPrice(stay.price, startDate, endDate)
+  // ── Final confirmation save the order
   const handleConfirm = async () => {
     if (!stay) return
-    const totalPrice = calculateTotalPrice(stay.price, startDate, endDate)
 
     const orderData = {
       paymentOption,
@@ -105,7 +120,7 @@ export function ReservePage() {
       const savedOrder = await orderService.save(orderData)
       dispatch({ type: ADD_ORDER, order: savedOrder })
 
-      // Reset wizard
+      // Reset
       setCurrentStep(1)
       setPaymentOption('full')
       setPaymentMethod('card')
@@ -152,6 +167,8 @@ export function ReservePage() {
               setCurrentStep={setCurrentStep}
               paymentOption={paymentOption}
               setPaymentOption={setPaymentOption}
+              totalPrice={totalPrice}
+              endDayToPay={endDateMinus2}
             />
 
             <StepPaymentMethod
