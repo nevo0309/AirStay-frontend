@@ -1,14 +1,20 @@
-// src/components/TripsPage.jsx
-import React from 'react'
+// src/cmps/TripsPage.jsx
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadOrders } from '../store/order.actions'
 
-export function TripsPage({ orders }) {
-  const list = orders ?? []
+export function TripsPage() {
+  useEffect(() => {
+    loadOrders()
+  }, [])
+
+  const orders = useSelector(store => store.orderModule.orders)
 
   return (
     <div className="trips-page">
       <h1 className="trips-heading">Trips</h1>
       <p className="trips-count">
-        {list.length} {list.length === 1 ? 'trip' : 'trips'}
+        {orders.length} {orders.length === 1 ? 'trip' : 'trips'}
       </p>
 
       <table className="trips-table">
@@ -16,23 +22,22 @@ export function TripsPage({ orders }) {
           <tr>
             <th className="th-destination">Destination</th>
             <th className="th-host">Host</th>
-            <th className="th-checkin">Check‐in</th>
+            <th className="th-checkin">Check-in</th>
             <th className="th-checkout">Checkout</th>
             <th className="th-guests">Guests</th>
             <th className="th-price">Total Price</th>
             <th className="th-status">Status</th>
           </tr>
         </thead>
-
         <tbody>
-          {list.length === 0 ? (
+          {orders.length === 0 ? (
             <tr>
               <td colSpan="7" className="no-trips">
                 No trips to display.
               </td>
             </tr>
           ) : (
-            list.map(order => {
+            orders.map(order => {
               const {
                 _id,
                 stay: { name: stayName, imgUrl: stayImg },
@@ -44,10 +49,8 @@ export function TripsPage({ orders }) {
                 status,
               } = order
 
-              const priceFormatted = `$${totalPrice.toFixed(2)}`
-
-              const statusText = status.charAt(0).toUpperCase() + status.slice(1)
-
+              const priceFormatted = `₪${totalPrice.toFixed(2)}`
+              const statusText = status[0].toUpperCase() + status.slice(1)
               const statusClass =
                 status.toLowerCase() === 'pending' ? 'status-pending' : 'status-completed'
 
@@ -59,25 +62,14 @@ export function TripsPage({ orders }) {
                       <span className="trip-title">{stayName}</span>
                     </div>
                   </td>
-
-                  {/* Host */}
                   <td className="td-host">{hostName}</td>
-
-                  {/* Check‐in */}
                   <td className="td-checkin">{startDate}</td>
-
-                  {/* Checkout */}
                   <td className="td-checkout">{endDate}</td>
-
-                  {/* Guests */}
                   <td className="td-guests">
-                    {adults} adult{adults !== 1 ? 's' : ''}, {kids} kid{kids !== 1 ? 's' : ''}
+                    {adults} adult{adults !== 1 ? 's' : ''}, {kids} kid
+                    {kids !== 1 ? 's' : ''}
                   </td>
-
-                  {/* Total Price */}
                   <td className="td-price">{priceFormatted}</td>
-
-                  {/* Status */}
                   <td className={`td-status ${statusClass}`}>{statusText}</td>
                 </tr>
               )
