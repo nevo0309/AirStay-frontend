@@ -5,15 +5,25 @@
             hsla(0, 0%, 100%, 1) 100%);
     border-bottom: 1px solid #EBEBEB;
     padding-block: 1.2rem;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+
+    &.closed {
+        height: 5rem;
+        align-content: center;
+
+    }
 
     nav {
         // justify-content: space-between;
         display: grid;
         grid-template-areas:
-            'logo . btns'
+            'logo filter-closed btns'
             'filter filter filter'
-           ;
-            
+        ;
+
         width: 100%;
         align-items: center;
         font-size: 0.9em;
