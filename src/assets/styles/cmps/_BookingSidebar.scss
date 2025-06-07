@@ -1,8 +1,6 @@
 .booking-sidebar {
-  position: sticky;
   top: 0;
-  width: 372px;
-  height: 540px;
+  width: 440px;
   border: 1px solid #dddddd;
   border-radius: 25px;
   padding: 3px;
@@ -231,5 +229,12 @@
         color: #717171;
       }
     }
+  }
+}
+@media (min-width: 950px) {
+  .booking-sidebar {
+    position: sticky;
+    width: 372px;
+    height: 540px;
   }
 }

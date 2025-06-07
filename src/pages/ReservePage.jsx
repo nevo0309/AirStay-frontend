@@ -147,13 +147,16 @@ export function ReservePage() {
 
   return (
     <div className="reserve-page">
+      <div className="sticky-arrow-wrapper">
+        <div className="back-arrow" onClick={handleBackArrow}>
+          <ArrowLeft />
+        </div>
+      </div>
+
       {/* ── HEADER ────────────────────────────────────────────── */}
       <div className="reserve-container">
         <div className="reserve-header">
           <div className="header-container">
-            <div className="back-arrow" onClick={handleBackArrow}>
-              <ArrowLeft />
-            </div>
             <h1 className="page-title">Request to book</h1>
           </div>
         </div>

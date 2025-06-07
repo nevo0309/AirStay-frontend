@@ -128,3 +128,9 @@
     }
   }
 }
+@media (max-width: 950px) {
+  .step-card,
+  .collapsed-summary {
+    width: 440px;
+  }
+}

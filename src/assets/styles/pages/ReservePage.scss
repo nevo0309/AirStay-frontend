@@ -1,6 +1,37 @@
 /* ReservePage.scss */
 .reserve-page {
   min-height: 100vh;
+  position: relative;
+
+  .sticky-arrow-wrapper {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 100;
+    pointer-events: none;
+
+    .back-arrow {
+      position: absolute;
+      top: 2.5rem;
+      left: 7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      cursor: pointer;
+      color: #222222;
+      background-color: #f7f7f7;
+      border-radius: 100%;
+      pointer-events: auto;
+
+      &:hover {
+        color: #717171;
+      }
+    }
+  }
 
   .reserve-header {
     padding: 1.5rem 1.5rem;
@@ -14,26 +45,6 @@
       padding-left: 4rem;
       display: flex;
       align-items: center;
-    }
-
-    .back-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.5rem;
-      height: 2.5rem;
-      cursor: pointer;
-      color: #222222;
-      background-color: #f7f7f7;
-      border-radius: 100%;
-      position: absolute;
-      left: -0.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-
-      &:hover {
-        color: #717171;
-      }
     }
 
     .page-title {
@@ -55,11 +66,6 @@
     justify-content: center;
     gap: 80px;
     align-items: start;
-
-    @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: 2rem;
-    }
   }
 }
 
@@ -67,4 +73,28 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+@media (max-width: 950px) {
+  .reserve-page {
+    .sticky-arrow-wrapper {
+      .back-arrow {
+        left: 9rem;
+        top: 2.5rem;
+      }
+    }
+
+    .reserve-header {
+      .header-container {
+        padding-left: 10.3rem;
+      }
+    }
+  }
+  .reserve-container {
+    .reserve-grid {
+      align-items: center;
+      flex-direction: column-reverse;
+      gap: 2rem;
+    }
+  }
 }
