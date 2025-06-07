@@ -127,3 +127,11 @@ export function formatDateRange(startDateStr, endDateStr) {
   const endMonth = months[end.getMonth()]
   return `${startMonth} ${startDay} – ${endMonth} ${endDay}, ${year}`
 }
+
+export function handleButtonMouseMove(e) {
+  const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
+  const x = ((e.clientX - left) / width) * 100
+  const y = ((e.clientY - top) / height) * 100
+  e.currentTarget.style.setProperty('--x', `${x}%`)
+  e.currentTarget.style.setProperty('--y', `${y}%`)
+}
