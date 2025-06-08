@@ -1,22 +1,21 @@
-import { doorSvg } from "../../../data/svgExport"
+import { iconLibrary } from "../../../data/svgExport"
 
 export function DetailsHighlights() {
   const highlights = [
     {
       title: "Self check-in",
       description: "Check yourself in with the lockbox.",
-      icon: "lock"
+      icon: "Key"
     },
     {
-      title: "Dedicated workspace",
-      description: "A common area with wifi that's well-suited for working.",
-      icon: "laptop"
+      title: "Peace and quiet",
+      description: "Guests say this home is in a quiet area.",
+      icon: "Location"
     },
     {
-      title: "Great location",
-      description:
-        "Guests who stayed here in the past year loved the location.",
-      icon: "map-marker"
+      title: "Free cancellation before Dec 4",
+      description: "Get a full refund if you change your mind.",
+      icon: "Calendar"
     }
   ]
 
@@ -24,7 +23,7 @@ export function DetailsHighlights() {
     <section className='stay-highlights'>
       {highlights.map((highlight, idx) => (
         <div className='highlight-host' key={idx}>
-          <div className='highlight-icon'>{doorSvg}</div>
+          <div className='highlight-icon'>{iconLibrary[highlight.icon]}</div>
           <div className='highlight-text'>
             <h4 className='highligh-title'>{highlight.title}</h4>
             <p className='highlight-description'>{highlight.description}</p>

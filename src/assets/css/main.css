@@ -261,7 +261,6 @@ form > * {
   padding: 24px;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 32px;
 }
 @media (max-width: 768px) {
   .stay-details {
@@ -272,7 +271,6 @@ form > * {
 .details-content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
 }
 
 .reserve-btn-details {
@@ -364,6 +362,15 @@ form > * {
   gap: 1.5rem;
 }
 
+@media (min-width: 950px) and (max-width: 1190px) {
+  .reserve-page .sticky-arrow-wrapper .back-arrow {
+    left: 0.5rem;
+    top: 2.5rem;
+  }
+  .reserve-page .reserve-header .header-container {
+    padding-left: 1.5rem;
+  }
+}
 @media (max-width: 950px) {
   .reserve-page .sticky-arrow-wrapper .back-arrow {
     left: 9rem;
@@ -705,6 +712,15 @@ form > * {
   gap: 1.5rem;
 }
 
+@media (min-width: 950px) and (max-width: 1190px) {
+  .reserve-page .sticky-arrow-wrapper .back-arrow {
+    left: 0.5rem;
+    top: 2.5rem;
+  }
+  .reserve-page .reserve-header .header-container {
+    padding-left: 1.5rem;
+  }
+}
 @media (max-width: 950px) {
   .reserve-page .sticky-arrow-wrapper .back-arrow {
     left: 9rem;
@@ -1403,8 +1419,9 @@ form > * {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  width: 100vw;
-  padding: 0 48px;
+  width: 99vw;
+  padding-right: 38px;
+  padding-left: 48px;
 }
 .carousel-section .embla-header {
   display: flex;
@@ -1818,6 +1835,9 @@ form > * {
 }
 .details-amenities {
   padding: 24px 0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 h3 {
@@ -1832,7 +1852,7 @@ h3 {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 16px;
 }
 
@@ -1872,6 +1892,9 @@ h3 {
 
 .details-overview {
   margin-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 .details-overview .overview-header .overview-location {
   font-size: 1.625rem;
@@ -1898,6 +1921,9 @@ h3 {
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin: 2rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .highlight-host {
