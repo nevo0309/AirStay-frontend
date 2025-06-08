@@ -2,25 +2,48 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
+}
+
+.stay-details-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.details-content {
+.details-left {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
 }
+
+// .booking-sidebar {
+//   background-color: #f9f9f9;
+//   padding: 1rem;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//   align-self: start;
+//   position: sticky;
+//   top: 24px;
+//   z-index: 10;
+// }
+
+// @media (max-width: 768px) {
+//   .stay-details-grid {
+//     grid-template-columns: 1fr;
+//   }
+
+//   .booking-sidebar {
+//     width: 100%;
+//   }
+// }
 
 .reserve-btn-details {
   --x: 70%;
   --y: 50%;
 
   overflow: hidden;
-  width: 300px;
+  width: 200px;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 0.375rem;
