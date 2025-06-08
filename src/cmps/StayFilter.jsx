@@ -8,7 +8,9 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
   // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
   const [isAddGuestsOpen, setIsAddGuestsOpen] = useState(false)
   const [isSearchDesOpen, setIsSearchDesOpen] = useState(false)
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false)
+  const [isCalendarOpenCheckIn, setIsCalendarOpenCheckIn] = useState(false)
+  const [isCalendarOpenCheckOut, setIsCalendarOpenCheckOut] = useState(false)
+
   // useEffect(() => {
   //   onSetFilterBy(filterToEdit)
   // }, [filterToEdit])
@@ -34,24 +36,43 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
 
   function onToggleAddGuests() {
     setIsSearchDesOpen(false)
-    setIsCalendarOpen(false)
+    setIsCalendarOpenCheckIn(false)
+    setIsCalendarOpenCheckOut(false)
     setIsAddGuestsOpen(!isAddGuestsOpen)
   }
   function onToggleSearchDes() {
     setIsAddGuestsOpen(false)
-    setIsCalendarOpen(false)
+    setIsCalendarOpenCheckIn(false)
+    setIsCalendarOpenCheckOut(false)
     setIsSearchDesOpen(!isSearchDesOpen)
   }
-  function onToggleCalendar() {
+  function onToggleCalendarCheckIn() {
     setIsAddGuestsOpen(false)
     setIsSearchDesOpen(false)
-    setIsCalendarOpen(!isCalendarOpen)
+
+    if (setIsCalendarOpenCheckOut) {
+      setIsCalendarOpenCheckIn(!isCalendarOpenCheckIn)
+      setIsCalendarOpenCheckOut(false)
+    } else {
+      setIsCalendarOpenCheckIn(!isCalendarOpenCheckIn)
+    }
+  }
+  function onToggleCalendarCheckOut() {
+    setIsAddGuestsOpen(false)
+    setIsSearchDesOpen(false)
+
+    if (isCalendarOpenCheckIn) {
+      setIsCalendarOpenCheckOut(!isCalendarOpenCheckOut)
+      setIsCalendarOpenCheckIn(false)
+    } else {
+      setIsCalendarOpenCheckOut(!isCalendarOpenCheckOut)
+    }
   }
 
-  const isAnyInputActive = isAddGuestsOpen || isCalendarOpen || isSearchDesOpen ? true : false
+  const isAnyInputActive = isAddGuestsOpen || isCalendarOpenCheckIn || isSearchDesOpen || isCalendarOpenCheckOut ? true : false
 
   return (
-    <section className={'stay-filter ' + (isAnyInputActive ? 'open': '')}>
+    <section className={'stay-filter ' + (isAnyInputActive ? 'open' : '')}>
       <div className={'input-section flex column ' + (isSearchDesOpen ? 'active' : '')} onClick={onToggleSearchDes}>
         <label>Where</label>
         <input
@@ -64,14 +85,14 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
         />
       </div>
 
-      <div className={'input-section flex column ' + (isCalendarOpen ? 'active' : '')} onClick={onToggleCalendar}>
+      <div className={'input-section flex column ' + (isCalendarOpenCheckIn ? 'active' : '')} onClick={onToggleCalendarCheckIn}>
         <label>
           Check in
         </label>
         <p>Add dates</p>
       </div>
 
-      <div className='input-section flex column' onClick={onToggleCalendar}>
+      <div className={'input-section flex column ' + (isCalendarOpenCheckOut ? 'active' : '')} onClick={onToggleCalendarCheckOut}>
         <label>
           Check out
         </label>
@@ -91,7 +112,7 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
 
       {isAddGuestsOpen && <AddGuests />}
       {isSearchDesOpen && <SearchDes />}
-      {isCalendarOpen && <FilterCalender />}
+      {(isCalendarOpenCheckIn || isCalendarOpenCheckOut) && <FilterCalender />}
 
     </section>
   )
