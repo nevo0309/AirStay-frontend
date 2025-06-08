@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router'
+import { useLocation } from 'react-router-dom'
 
 import { userService } from './services/user'
 import { HomePage } from './pages/HomePage'
@@ -20,11 +21,21 @@ import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { ReservePage } from './pages/ReservePage.jsx'
 import { TripsPage } from './pages/TripsPage.jsx'
+import { ReservationAppHeader } from './cmps/ReservationAppHeader.jsx'
+import { use } from 'react'
 
 export function RootCmp() {
+  const location = useLocation()
+  const [isBookingPage, setIsBookingPage] = useState(true)
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/book/stay')) setIsBookingPage(true)
+    else setIsBookingPage(false)
+  }, [location.pathname])
+
   return (
     <div className="main-container">
-      <AppHeader />
+      {isBookingPage ? <ReservationAppHeader /> : <AppHeader />}
       <UserMsg />
 
       <main>
