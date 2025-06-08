@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
@@ -15,13 +15,17 @@ export function AppHeader() {
   const user = useSelector(storeState => storeState.userModule.user)
   const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
   const navigate = useNavigate()
+  const location = useLocation()
 
-  console.log(isStayFilterOpen)
+  useEffect(() => {
+    if (location.pathname.startsWith('/stay')) setIsStayFilterOpen(false)
+    else (setIsStayFilterOpen(true))
+  }, [location.pathname])
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      console.log(scrollY)
-
+      if (location.pathname.startsWith('/stay')) return
       if (scrollY > 1) {
         setIsStayFilterOpen(false);
       } else {
@@ -31,7 +35,8 @@ export function AppHeader() {
     window.addEventListener('scroll', handleScroll);
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isStayFilterOpen]);
+  }, [isStayFilterOpen, location.pathname])
+
 
   async function onLogout() {
     try {
@@ -44,7 +49,7 @@ export function AppHeader() {
   }
 
   return (
-    <header className={'app-header main-container full ' + (isStayFilterOpen ? '' : 'closed')}>
+    <header className={'app-header main-container full ' + (isStayFilterOpen ? '' : 'closed')} style={location.pathname.startsWith('/stay') ? { position: 'static' } : { position: 'fixed' }}>
       <nav>
         <div className='logo'>
           <NavLink to="/" className="/logo">

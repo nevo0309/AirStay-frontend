@@ -1,0 +1,13 @@
+.reserve-app-header {
+    height: 80px;
+    border-bottom: 1px solid #EBEBEB;
+    grid-column: 1/3;
+    align-items: center;
+
+        svg {
+            grid-column: 2;
+            color: #FF385C;
+
+        }
+    
+}
