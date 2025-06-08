@@ -2,11 +2,12 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin: 2rem 0;
-  @include section-divider // @media (min-width: 768px) {
-    //   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    // }
-;
+
+  @include section-divider;
+
+  // @media (min-width: 1024px) {
+  //   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  // }
 }
 .highlight-host {
   display: flex;

@@ -162,7 +162,7 @@ export const stays = [
       'Wifi',
       "AC",
       'Kitchen',
-      'washerherher',
+      'Hangers',
       'Dryer',
       "Pets",
       "Parking"
@@ -742,11 +742,10 @@ export const stays = [
       'Wifi',
       "AC",
       'Kitchen',
-      'washerherher',
+      'Hangers',
       'Dryer',
       "Pets",
       "Parking"
-
     ],
     bathrooms: 1,
     bedrooms: 1,
@@ -815,7 +814,7 @@ export const stays = [
       'Wifi',
       "AC",
       'Kitchen',
-      'washerherher',
+      'Hangers',
       'Dryer',
       "Pets",
       "Parking"
@@ -1069,7 +1068,7 @@ export const stays = [
       'Wifi',
       "AC",
       'Kitchen',
-      'washerherher',
+      'Hangers',
       'Dryer',
       "Pets",
       "Parking",
@@ -1323,7 +1322,7 @@ export const stays = [
       'Wifi',
       "AC",
       'Kitchen',
-      'washerherher',
+      'Hangers',
       'Dryer',
       "Pets",
       "Parking"

@@ -1,6 +1,9 @@
 .details-overview {
   margin-bottom: 1rem;
-  @include section-divider;
+
+  border-bottom: 1px solid #ddd;
+
+  width: 100%;
   .overview-header {
     .overview-location {
       font-size: 1.625rem;
