@@ -1,0 +1,28 @@
+.details-overview {
+  margin-bottom: 1rem;
+  @include section-divider;
+  .overview-header {
+    .overview-location {
+      font-size: 1.625rem;
+      margin-bottom: 0.5rem;
+      color: #222;
+    }
+
+    .overview-info {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .stay-rating {
+      font-size: 1rem;
+      color: #222222;
+
+      .star {
+        color: #ff5a5f;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
