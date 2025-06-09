@@ -80,7 +80,10 @@
 
 .rdrDayDisabled {
     background-color: inherit;
-    color: #d4d4d4;
+
+    .rdrDayNumber span {
+        color: #d4d4d4 !important;
+    }
 }
 
 .rdrWeekDay {
@@ -117,9 +120,14 @@
 
 }
 
+.chosen {
+    .rdrInRange {
+        background: #f7f7f7!important;
+    }
+}
 
 .rdrInRange {
-    background: #f7f7f7 !important;
+    background: white !important;
     border-radius: 0 !important;
     right: 0 !important;
     left: 0 !important;
@@ -146,7 +154,7 @@
 
 .rdrNextPrevButton {
     background-color: transparent;
-    
+
 }
 
 .rdrDayInPreview {
@@ -154,20 +162,24 @@
 
 }
 
-.rdrDayToday .rdrDayNumber span:after {
+.rdrDayToday .rdrDayNumber span {
+    font-weight: 600;
+    &:after {
     display: none;
+
+}
 }
 
 .rdrMonthAndYearPickers {
     display: none;
 }
 
-.rdrMonthAndYearWrapper{
+.rdrMonthAndYearWrapper {
     position: absolute;
-top: 40px;
-    .rdrNextButton{
+    top: 40px;
+
+    .rdrNextButton {
         position: absolute;
         left: 520px;
     }
 }
-

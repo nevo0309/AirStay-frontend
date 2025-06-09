@@ -1,12 +1,27 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 
 
 
-export function AddGuests() {
+export function AddGuests({ setGuest }) {
     const [adultsCount, setAdultsCount] = useState(0)
     const [childrenCount, setChildrenCount] = useState(0)
     const [infantsCount, setInfantsCount] = useState(0)
     const [petsCount, setPetsCount] = useState(0)
+
+    const isFirstRender = useRef(true)
+
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false
+            return
+        }
+        setGuest({
+            adults: adultsCount,
+            children: childrenCount,
+            infants: infantsCount,
+            pet: petsCount
+        })
+    }, [adultsCount, childrenCount, infantsCount, petsCount])
 
     function addGuests(guestType, diff) {
         if (guestType === 'adults') {
@@ -22,6 +37,8 @@ export function AddGuests() {
             if (petsCount === 0 && diff === -1) return
             setPetsCount(prevCount => prevCount + diff)
         }
+
+
     }
 
     return <section className="add-guests">

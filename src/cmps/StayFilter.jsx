@@ -3,11 +3,32 @@ import { searchSvg } from '../../data/svgExport'
 import { AddGuests } from './AddGuests'
 import { SearchDes } from './SearchDes'
 import { FilterCalender } from './calender/FilterCaleder.jsx'
+import { gu } from 'date-fns/locale'
 
 export function StayFilter({ filterBy, onSetFilterBy }) {
   // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
 
   const [openModal, setOpenModal] = useState('')
+  const [location, setLocation] = useState('')
+  const [guest, setGuest] = useState('')
+
+  const [range, setRange] = useState([
+    {
+      startDate: null,
+      endDate: null,
+      key: 'selection'
+    }
+  ])
+
+  console.log(range)
+
+  function formatRangeDates(date) {
+    const options = { month: 'short', day: 'numeric' }
+    const dateToShow = date.toLocaleDateString('en-US', options)
+
+    return dateToShow;
+  }
+
   // console.log(openModal)
   // console.log(openModal === 'calenderCheckIn')
   // useEffect(() => {
@@ -38,6 +59,28 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
     else setOpenModal(modal)
   }
 
+  const guestsToShow = ''
+
+
+  function guestSummary() {
+    const labelMap = {
+      adults: ['Adult', 'Adults'],
+      children: ['Child', 'Children'],
+      infants: ['Infant', 'Infants'],
+      pet: ['Pet', 'Pets']
+    };
+
+    return Object.entries(guest)
+      .filter(([_, count]) => count > 0)
+      .map(([key, count]) => {
+        const [singular, plural] = labelMap[key]
+        const label = count === 1 ? singular : plural
+        return `${count} ${label}`
+      })
+      .join(', ')
+  }
+
+
 
   const isAnyInputActive = openModal ? true : false
 
@@ -49,8 +92,8 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <input
           type="text"
           name="txt"
-          // value={filterToEdit.txt}
-          placeholder="Search Destinations"
+          value={location}
+          placeholder= "Search Destinations"
           onChange={handleChange}
           required
         />
@@ -61,7 +104,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <label>
           Check in
         </label>
-        <p>Add dates</p>
+        <p className={range[0].startDate? 'chosen-value':''}>{range[0].startDate? formatRangeDates(range[0].startDate):'Add dates'}</p>
       </div>
 
       <div className={'input-section flex column ' + (openModal === 'calenderCheckOut' ? 'active' : '')}
@@ -69,7 +112,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <label>
           Check out
         </label>
-        <p>Add dates</p>
+        <p className={range[0].startDate? 'chosen-value':''}>{range[0].endDate? formatRangeDates(range[0].endDate):'Add dates'}</p>
       </div>
 
 
@@ -78,15 +121,15 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <label>
           Who
         </label>
-        <p>Add guests</p>
+        <p className={guest? 'chosen-value':''}>{guest ? guestSummary() : 'Add guests'}</p>
       </div>
 
       <button className="search-btn">{searchSvg}</button>
 
 
-      {openModal === 'guests' && <AddGuests />}
-      {openModal === 'search' && <SearchDes />}
-      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender />}
+      {openModal === 'guests' && <AddGuests setGuest={setGuest} />}
+      {openModal === 'search' && <SearchDes setLocation={setLocation} setOpenModal={setOpenModal} />}
+      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} />}
 
     </section>
   )

@@ -7,20 +7,14 @@ import { addDays } from 'date-fns';
 import { useState } from 'react';
 
 
-export function FilterCalender() {
-    const [range, setRange] = useState([
-        {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 7),
-            key: 'selection'
-        }
-    ])
+export function FilterCalender({range,setRange}) {
 
     // const { startDate, endDate } = range[0];
     // console.log(endDate.toLocaleDateString('he-IL'))
+   console.log( range)
 
 
-    return <section className='calender' >
+    return <section className={'calender '+ (range[0] .startDate? 'chosen':'')} >
         <DateRange
             onChange={item => setRange([item.selection])}
             showSelectionPreview={true}
