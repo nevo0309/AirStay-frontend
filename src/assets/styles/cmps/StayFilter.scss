@@ -19,12 +19,45 @@
     background-color: #EBEBEB;
     z-index: 10;
 
+    .search-btn {
+      background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+      border-radius: 24px;
+      width: 100px;
+      transition: linear 200ms;
+
+      svg {
+        justify-self: start;
+        position: relative;
+
+      }
+
+      &::after {
+        content: 'Search';
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 0.8px;
+        position: absolute;
+        top: 13px;
+        right: 15px;
+        opacity: 0;
+        animation: fadeIn 200ms ease forwards;
+        animation-delay: 100ms;
+
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+
     input {
       background-color: #EBEBEB;
     }
 
-    
-    
+
+
     .input-section:hover {
       background-color: #DDDDDD;
       position: relative;
@@ -45,6 +78,8 @@
       input {
         background-color: #DDDDDD;
       }
+
+
     }
   }
 
@@ -161,20 +196,21 @@
   }
 
   .search-btn {
-    display: flex;
+    // display: flex;
     position: absolute;
     right: 10px;
-    border-radius: 50%;
-    aspect-ratio: 1;
+    border-radius: 50px;
     height: 48px;
-    justify-content: center;
-    align-items: center;
+    width: 48px;
     background-color: #FF385C;
-z-index: 100;
-    svg {
-      color: white;
-    }
+    color: white;
+    z-index: 100;
+    transition: width 200ms linear;
 
+
+    svg {
+      justify-self: center;
+    }
   }
 
 

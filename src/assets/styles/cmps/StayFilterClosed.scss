@@ -9,6 +9,7 @@
     height: 3rem;
 
     div > h1 {
+        padding-inline-start: 0;
         &::after {
             content: '';
             position: absolute;
@@ -22,7 +23,7 @@
 
     img {
         height: 48px;
-        margin-inline: 0.5rem;
+        margin-inline-start: 0.5rem;
     }
 
     h1 {
@@ -59,6 +60,7 @@
 
         svg {
             color: white;
+            height: 0.75rem!important;
         }
     }
 }
