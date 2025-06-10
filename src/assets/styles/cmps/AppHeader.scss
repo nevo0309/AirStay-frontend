@@ -12,14 +12,19 @@
 
     &.closed {
         height: 5rem;
-        align-content: center;        
+        align-content: center;
     }
-    
-    &.static{
+
+    &.static {
         position: static;
-        padding-inline: 24px;
+
+        nav {
+            max-width: 1200px;
+            padding: 24px;
+            justify-self: center;
+        }
     }
-    
+
 
     nav {
         display: grid;
