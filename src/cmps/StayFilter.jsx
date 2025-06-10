@@ -11,7 +11,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
   const [openModal, setOpenModal] = useState('')
   const [location, setLocation] = useState('')
   const [guest, setGuest] = useState('')
-
+  console.log(guest)
   const [range, setRange] = useState([
     {
       startDate: null,
@@ -93,7 +93,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
           type="text"
           name="txt"
           value={location}
-          placeholder= "Search Destinations"
+          placeholder="Search Destinations"
           onChange={handleChange}
           required
         />
@@ -104,7 +104,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <label>
           Check in
         </label>
-        <p className={range[0].startDate? 'chosen-value':''}>{range[0].startDate? formatRangeDates(range[0].startDate):'Add dates'}</p>
+        <p className={range[0].startDate ? 'chosen-value' : ''}>{range[0].startDate ? formatRangeDates(range[0].startDate) : 'Add dates'}</p>
       </div>
 
       <div className={'input-section flex column ' + (openModal === 'calenderCheckOut' ? 'active' : '')}
@@ -112,7 +112,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <label>
           Check out
         </label>
-        <p className={range[0].startDate? 'chosen-value':''}>{range[0].endDate? formatRangeDates(range[0].endDate):'Add dates'}</p>
+        <p className={range[0].startDate ? 'chosen-value' : ''}>{range[0].endDate ? formatRangeDates(range[0].endDate) : 'Add dates'}</p>
       </div>
 
 
@@ -121,7 +121,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <label>
           Who
         </label>
-        <p className={guest? 'chosen-value':''}>{guest ? guestSummary() : 'Add guests'}</p>
+        <p className={guest ? 'chosen-value' : ''}>{guest ? guestSummary() : 'Add guests'}</p>
       </div>
 
       <button className="search-btn">{searchSvg}</button>
@@ -129,7 +129,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
 
       {openModal === 'guests' && <AddGuests setGuest={setGuest} />}
       {openModal === 'search' && <SearchDes setLocation={setLocation} setOpenModal={setOpenModal} />}
-      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} setOpenModal={setOpenModal} openModal={openModal}/>}
+      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} setOpenModal={setOpenModal} openModal={openModal} />}
 
     </section>
   )

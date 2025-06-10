@@ -7,20 +7,19 @@ export function AddGuests({ setGuest }) {
     const [childrenCount, setChildrenCount] = useState(0)
     const [infantsCount, setInfantsCount] = useState(0)
     const [petsCount, setPetsCount] = useState(0)
-
-    const isFirstRender = useRef(true)
-
+    
     useEffect(() => {
-        if (isFirstRender.current) {
-            isFirstRender.current = false
-            return
+
+        if (adultsCount !== 0 || childrenCount !== 0 || infantsCount !== 0 || petsCount !== 0) {
+            setGuest({
+                adults: adultsCount,
+                children: childrenCount,
+                infants: infantsCount,
+                pet: petsCount
+            })
+        } else {
+            setGuest('')
         }
-        setGuest({
-            adults: adultsCount,
-            children: childrenCount,
-            infants: infantsCount,
-            pet: petsCount
-        })
     }, [adultsCount, childrenCount, infantsCount, petsCount])
 
     function addGuests(guestType, diff) {
