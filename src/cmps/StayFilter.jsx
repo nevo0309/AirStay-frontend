@@ -129,7 +129,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
 
       {openModal === 'guests' && <AddGuests setGuest={setGuest} />}
       {openModal === 'search' && <SearchDes setLocation={setLocation} setOpenModal={setOpenModal} />}
-      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} />}
+      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} setOpenModal={setOpenModal} openModal={openModal}/>}
 
     </section>
   )
