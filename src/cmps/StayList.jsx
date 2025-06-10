@@ -17,7 +17,7 @@ export function StayList({ stays }) {
   ]
 
   return (
-    <section className="explor-lists">
+    <section className="explor-lists main-container">
       {sections.map((title, idx) => (
         <StayCarousel key={idx} stays={stays} title={title} />
       ))}
