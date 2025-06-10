@@ -126,9 +126,9 @@ $slidesToShow: 7;
 
           h3 {
             margin: 0;
-            font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+            font-size: clamp(0.65rem, 0.75rem, 0.8rem);
             line-height: 1.2;
-            font-weight: 500;
+            font-weight: 600;
             overflow: hidden;
             text-overflow: ellipsis;
           }
