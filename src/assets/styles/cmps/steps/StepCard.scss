@@ -18,7 +18,7 @@
     background-color: #ffffff;
 
     .step-title {
-      font-size: 1.375rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: #222222;
       margin: 0;
@@ -128,8 +128,10 @@
     }
   }
 }
-@media (max-width: 950px) {
-  .step-card,
+@media (max-width: 1190px) {
+  .step-card {
+    width: 440px;
+  }
   .collapsed-summary {
     width: 440px;
   }

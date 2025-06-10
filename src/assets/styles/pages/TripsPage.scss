@@ -1,5 +1,3 @@
-// src/components/TripsPage.scss
-
 .trips-page {
   max-width: 1200px;
   margin: 0 auto;
@@ -35,8 +33,8 @@
         white-space: nowrap;
       }
 
-      // Column-specific min-widths
       .th-destination {
+        padding-left: 0;
         min-width: 250px;
       }
       .th-host {
@@ -53,9 +51,10 @@
       }
       .th-price {
         min-width: 120px;
-        text-align: right;
+        text-align: center;
       }
       .th-status {
+        text-align: end;
         min-width: 100px;
       }
     }
@@ -74,6 +73,9 @@
         vertical-align: middle;
         font-size: 16px;
         color: #222222;
+        &:first-child {
+          padding-left: 0;
+        }
       }
 
       .no-trips {
@@ -87,15 +89,16 @@
   .trip-destination {
     display: flex;
     align-items: center;
+    padding-left: 0;
     gap: 1rem;
 
     .trip-image {
-      width: 120px;
-      height: 80px;
+      width: 80px;
+      height: 75px;
       border-radius: 8px;
       object-fit: cover;
       flex-shrink: 0;
-      background-color: #f0f0f0; /* fallback if the image URL is missing */
+      background-color: #f0f0f0;
     }
 
     .trip-title {
@@ -126,10 +129,12 @@
   .td-price {
     color: #222222;
     font-size: 16px;
-    text-align: right;
+    font-weight: 500;
+    text-align: center;
   }
 
   .td-status {
+    text-align: end;
     font-size: 16px;
     font-weight: 500;
     text-transform: capitalize;
