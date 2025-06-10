@@ -1,63 +1,74 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { loadStays, addStay, updateStay, removeStay, addStayMsg } from '../store/stay.actions'
-
+import { loadStays, removeStay, addStay, updateStay } from '../store/stay.actions'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay'
-import { userService } from '../services/user'
-
 import { StayList } from '../cmps/StayList'
-import { StayFilter } from '../cmps/StayFilter'
+import { StayListSkeleton } from '../cmps/carousel/StayListSkeleton'
 
 export function StayIndex() {
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+  const [loading, setLoading] = useState(true)
+
   const stays = useSelector(storeState => storeState.stayModule.stays)
 
   useEffect(() => {
-    loadStays(filterBy)
+    async function fetch() {
+      setLoading(true)
+      try {
+        await loadStays(filterBy)
+      } catch (err) {
+        console.error('Could not load stays', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetch()
   }, [filterBy])
 
-  function onSetFilterBy(filterBy) {
-    setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
+  function onSetFilterBy(updatedFilter) {
+    setFilterBy(prev => ({ ...prev, ...updatedFilter }))
   }
 
   async function onRemoveStay(stayId) {
     try {
       await removeStay(stayId)
       showSuccessMsg('Stay removed')
-    } catch (err) {
+    } catch {
       showErrorMsg('Cannot remove stay')
     }
   }
 
-  async function onAddStay() {
-    const stay = stayService.getEmptyStay()
-    stay.vendor = prompt('Vendor?')
-    try {
-      const savedStay = await addStay(stay)
-      showSuccessMsg(`Stay added (id: ${savedStay._id})`)
-    } catch (err) {
-      showErrorMsg('Cannot add stay')
-    }
-  }
+  // async function onAddStay() {
+  //   const stay = stayService.getEmptyStay()
+
+  //   try {
+  //     const saved = await addStay(stay)
+  //     showSuccessMsg(`Stay added (id: ${saved._id})`)
+  //   } catch {
+  //     showErrorMsg('Cannot add stay')
+  //   }
+  // }
 
   async function onUpdateStay(stay) {
     const speed = +prompt('New speed?', stay.speed)
     if (!speed) return
-    const stayToSave = { ...stay, speed }
     try {
-      const savedStay = await updateStay(stayToSave)
-      showSuccessMsg(`Stay updated, new speed: ${savedStay.speed}`)
-    } catch (err) {
+      const saved = await updateStay({ ...stay, speed })
+      showSuccessMsg(`Stay updated, new speed: ${saved.speed}`)
+    } catch {
       showErrorMsg('Cannot update stay')
     }
   }
 
   return (
     <main className="stay-index">
-      {/* <StayFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} /> */}
-      <StayList stays={stays} onRemoveStay={onRemoveStay} onUpdateStay={onUpdateStay} />
+      {loading ? (
+        <StayListSkeleton />
+      ) : (
+        <StayList stays={stays} onRemoveStay={onRemoveStay} onUpdateStay={onUpdateStay} />
+      )}
     </main>
   )
 }
