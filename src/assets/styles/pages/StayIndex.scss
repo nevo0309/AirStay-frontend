@@ -1,5 +1,10 @@
 .stay-index {
-    padding-block-start: 200px;
+  padding-block-start: 200px;
+
+  &.after-closed-header {
+    padding-block-start: 80px;
+  }
+
   header {
     display: flex;
     align-items: center;

@@ -9,6 +9,7 @@
     height: 3rem;
 
     div > h1 {
+        padding-inline-start: 0;
         &::after {
             content: '';
             position: absolute;
@@ -22,7 +23,7 @@
 
     img {
         height: 48px;
-        margin-inline: 0.5rem;
+        margin-inline-start: 0.5rem;
     }
 
     h1 {
@@ -48,17 +49,18 @@
 
     .search-btn {
         display: flex;
-        margin-inline: 10px;
-        border-radius: 50%;
-        height: 32px;
-        padding: 0;
-        aspect-ratio: 1;
         justify-content: center;
         align-items: center;
+        height: 32px;
+        aspect-ratio: 1;
+        padding: 0;
+        margin-inline: 10px;
+        border-radius: 50%;
         background-color: #FF385C;
 
         svg {
             color: white;
+            height: 0.75rem!important;
         }
     }
 }

@@ -3,14 +3,34 @@ import { searchSvg } from '../../data/svgExport'
 import { AddGuests } from './AddGuests'
 import { SearchDes } from './SearchDes'
 import { FilterCalender } from './calender/FilterCaleder.jsx'
+import { gu } from 'date-fns/locale'
 
-export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
+export function StayFilter({ filterBy, onSetFilterBy }) {
   // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
-  const [isAddGuestsOpen, setIsAddGuestsOpen] = useState(false)
-  const [isSearchDesOpen, setIsSearchDesOpen] = useState(false)
-  const [isCalendarOpenCheckIn, setIsCalendarOpenCheckIn] = useState(false)
-  const [isCalendarOpenCheckOut, setIsCalendarOpenCheckOut] = useState(false)
 
+  const [openModal, setOpenModal] = useState('')
+  const [location, setLocation] = useState('')
+  const [guest, setGuest] = useState('')
+  console.log(guest)
+  const [range, setRange] = useState([
+    {
+      startDate: null,
+      endDate: null,
+      key: 'selection'
+    }
+  ])
+
+  console.log(range)
+
+  function formatRangeDates(date) {
+    const options = { month: 'short', day: 'numeric' }
+    const dateToShow = date.toLocaleDateString('en-US', options)
+
+    return dateToShow;
+  }
+
+  // console.log(openModal)
+  // console.log(openModal === 'calenderCheckIn')
   // useEffect(() => {
   //   onSetFilterBy(filterToEdit)
   // }, [filterToEdit])
@@ -34,85 +54,82 @@ export function StayFilter({ filterBy, onSetFilterBy, onToggleCalendar }) {
     // setFilterToEdit({ ...filterToEdit, [field]: value })
   }
 
-  function onToggleAddGuests() {
-    setIsSearchDesOpen(false)
-    setIsCalendarOpenCheckIn(false)
-    setIsCalendarOpenCheckOut(false)
-    setIsAddGuestsOpen(!isAddGuestsOpen)
-  }
-  function onToggleSearchDes() {
-    setIsAddGuestsOpen(false)
-    setIsCalendarOpenCheckIn(false)
-    setIsCalendarOpenCheckOut(false)
-    setIsSearchDesOpen(!isSearchDesOpen)
-  }
-  function onToggleCalendarCheckIn() {
-    setIsAddGuestsOpen(false)
-    setIsSearchDesOpen(false)
-
-    if (setIsCalendarOpenCheckOut) {
-      setIsCalendarOpenCheckIn(!isCalendarOpenCheckIn)
-      setIsCalendarOpenCheckOut(false)
-    } else {
-      setIsCalendarOpenCheckIn(!isCalendarOpenCheckIn)
-    }
-  }
-  function onToggleCalendarCheckOut() {
-    setIsAddGuestsOpen(false)
-    setIsSearchDesOpen(false)
-
-    if (isCalendarOpenCheckIn) {
-      setIsCalendarOpenCheckOut(!isCalendarOpenCheckOut)
-      setIsCalendarOpenCheckIn(false)
-    } else {
-      setIsCalendarOpenCheckOut(!isCalendarOpenCheckOut)
-    }
+  function openFilterModal(modal) {
+    if (openModal === modal) setOpenModal('')
+    else setOpenModal(modal)
   }
 
-  const isAnyInputActive = isAddGuestsOpen || isCalendarOpenCheckIn || isSearchDesOpen || isCalendarOpenCheckOut ? true : false
+  const guestsToShow = ''
+
+
+  function guestSummary() {
+    const labelMap = {
+      adults: ['Adult', 'Adults'],
+      children: ['Child', 'Children'],
+      infants: ['Infant', 'Infants'],
+      pet: ['Pet', 'Pets']
+    };
+
+    return Object.entries(guest)
+      .filter(([_, count]) => count > 0)
+      .map(([key, count]) => {
+        const [singular, plural] = labelMap[key]
+        const label = count === 1 ? singular : plural
+        return `${count} ${label}`
+      })
+      .join(', ')
+  }
+
+
+
+  const isAnyInputActive = openModal ? true : false
 
   return (
     <section className={'stay-filter ' + (isAnyInputActive ? 'open' : '')}>
-      <div className={'input-section flex column ' + (isSearchDesOpen ? 'active' : '')} onClick={onToggleSearchDes}>
+      <div className={'input-section flex column ' + (openModal === 'search' ? 'active' : '')}
+        onClick={() => openFilterModal('search')}>
         <label>Where</label>
         <input
           type="text"
           name="txt"
-          // value={filterToEdit.txt}
+          value={location}
           placeholder="Search Destinations"
           onChange={handleChange}
           required
         />
       </div>
 
-      <div className={'input-section flex column ' + (isCalendarOpenCheckIn ? 'active' : '')} onClick={onToggleCalendarCheckIn}>
+      <div className={'input-section flex column ' + (openModal === 'calenderCheckIn' ? 'active' : '')}
+        onClick={() => openFilterModal('calenderCheckIn')}>
         <label>
           Check in
         </label>
-        <p>Add dates</p>
+        <p className={range[0].startDate ? 'chosen-value' : ''}>{range[0].startDate ? formatRangeDates(range[0].startDate) : 'Add dates'}</p>
       </div>
 
-      <div className={'input-section flex column ' + (isCalendarOpenCheckOut ? 'active' : '')} onClick={onToggleCalendarCheckOut}>
+      <div className={'input-section flex column ' + (openModal === 'calenderCheckOut' ? 'active' : '')}
+        onClick={() => openFilterModal('calenderCheckOut')}>
         <label>
           Check out
         </label>
-        <p>Add dates</p>
+        <p className={range[0].startDate ? 'chosen-value' : ''}>{range[0].endDate ? formatRangeDates(range[0].endDate) : 'Add dates'}</p>
       </div>
 
 
-      <div className={'input-section flex column ' + (isAddGuestsOpen ? 'active' : '')} onClick={onToggleAddGuests}>
+      <div className={'input-section flex column ' + (openModal === 'guests' ? 'active' : '')}
+        onClick={() => openFilterModal('guests')}>
         <label>
           Who
         </label>
-        <p>Add guests</p>
+        <p className={guest ? 'chosen-value' : ''}>{guest ? guestSummary() : 'Add guests'}</p>
       </div>
 
       <button className="search-btn">{searchSvg}</button>
 
 
-      {isAddGuestsOpen && <AddGuests />}
-      {isSearchDesOpen && <SearchDes />}
-      {(isCalendarOpenCheckIn || isCalendarOpenCheckOut) && <FilterCalender />}
+      {openModal === 'guests' && <AddGuests setGuest={setGuest} />}
+      {openModal === 'search' && <SearchDes setLocation={setLocation} setOpenModal={setOpenModal} />}
+      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} setOpenModal={setOpenModal} openModal={openModal} />}
 
     </section>
   )

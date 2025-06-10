@@ -7,7 +7,7 @@ import { stayService } from '../services/stay'
 import { StayList } from '../cmps/StayList'
 import { StayListSkeleton } from '../cmps/carousel/StayListSkeleton'
 
-export function StayIndex() {
+export function StayIndex({ isStayFilterOpen }) {
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
   const [loading, setLoading] = useState(true)
 
@@ -63,7 +63,7 @@ export function StayIndex() {
   }
 
   return (
-    <main className="stay-index">
+    <main className={'stay-index ' + (isStayFilterOpen ? '' : 'after-closed-header')}>
       {loading ? (
         <StayListSkeleton />
       ) : (

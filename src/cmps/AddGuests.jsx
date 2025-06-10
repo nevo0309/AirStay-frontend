@@ -1,12 +1,26 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 
 
 
-export function AddGuests() {
+export function AddGuests({ setGuest }) {
     const [adultsCount, setAdultsCount] = useState(0)
     const [childrenCount, setChildrenCount] = useState(0)
     const [infantsCount, setInfantsCount] = useState(0)
     const [petsCount, setPetsCount] = useState(0)
+    
+    useEffect(() => {
+
+        if (adultsCount !== 0 || childrenCount !== 0 || infantsCount !== 0 || petsCount !== 0) {
+            setGuest({
+                adults: adultsCount,
+                children: childrenCount,
+                infants: infantsCount,
+                pet: petsCount
+            })
+        } else {
+            setGuest('')
+        }
+    }, [adultsCount, childrenCount, infantsCount, petsCount])
 
     function addGuests(guestType, diff) {
         if (guestType === 'adults') {
@@ -22,51 +36,53 @@ export function AddGuests() {
             if (petsCount === 0 && diff === -1) return
             setPetsCount(prevCount => prevCount + diff)
         }
+
+
     }
 
     return <section className="add-guests">
-        <div className="guest-counter-card">
+        <div className="guest-counter-card flex">
             <div className="guest">
                 <h1>Adults</h1>
                 <p>Ages 13 or above</p>
             </div>
-            <div className="counter">
+            <div className="counter flex">
                 <button className={adultsCount === 0 ? 'blocked' : ''} onClick={() => addGuests('adults', -1)}>-</button>
                 <h2>{adultsCount}</h2>
                 <button onClick={() => addGuests('adults', 1)}>+</button>
             </div>
         </div>
 
-        <div className="guest-counter-card">
+        <div className="guest-counter-card flex">
             <div className="guest">
                 <h1>Children</h1>
                 <p>Ages 2-12</p>
             </div>
-            <div className="counter">
+            <div className="counter flex">
                 <button className={childrenCount === 0 ? 'blocked' : ''} onClick={() => addGuests('children', -1)}>-</button>
                 <h2>{childrenCount}</h2>
                 <button onClick={() => addGuests('children', 1)}>+</button>
             </div>
         </div>
 
-        <div className="guest-counter-card">
+        <div className="guest-counter-card flex">
             <div className="guest">
                 <h1>Infants</h1>
                 <p>under 2</p>
             </div>
-            <div className="counter">
+            <div className="counter flex">
                 <button className={infantsCount === 0 ? 'blocked' : ''} onClick={() => addGuests('infants', -1)}>-</button>
                 <h2>{infantsCount}</h2>
                 <button onClick={() => addGuests('infants', 1)}>+</button>
             </div>
         </div>
 
-        <div className="guest-counter-card">
+        <div className="guest-counter-card flex">
             <div className="guest">
                 <h1>Pets</h1>
                 <h2>Bringing a service animal?</h2>
             </div>
-            <div className="counter">
+            <div className="counter flex">
                 <button className={petsCount === 0 ? 'blocked' : ''} onClick={() => addGuests('pets', -1)}>-</button>
                 <h2>{petsCount}</h2>
                 <button onClick={() => addGuests('pets', 1)}>+</button>

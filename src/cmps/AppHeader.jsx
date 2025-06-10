@@ -11,9 +11,8 @@ import { logoSvg } from '../../data/svgExport.jsx'
 import { humburgerSvg } from '../../data/svgExport.jsx'
 
 
-export function AppHeader() {
+export function AppHeader({isStayFilterOpen,setIsStayFilterOpen}) {
   const user = useSelector(storeState => storeState.userModule.user)
-  const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -48,8 +47,11 @@ export function AppHeader() {
     }
   }
 
+
   return (
-    <header className={'app-header main-container full ' + (isStayFilterOpen ? '' : 'closed')} style={location.pathname.startsWith('/stay') ? { position: 'static' } : { position: 'fixed' }}>
+    <header className={'app-header main-container full ' +
+     (isStayFilterOpen ? '' : 'closed')+
+     (location.pathname.startsWith('/stay')? ' static' : '')}>
       <nav>
         <div className='logo'>
           <NavLink to="/" className="/logo">
