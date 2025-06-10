@@ -33,15 +33,16 @@ function ScrollToTop() {
 export function RootCmp() {
   const location = useLocation()
   const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
+  const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
 
   useEffect(() => {
-    if (location.pathname.startsWith('/book/stay')|| location.pathname.startsWith('/trips')) setIsBookingOrDetailsPage(true)
+    if (location.pathname.startsWith('/book/stay') || location.pathname.startsWith('/trips')) setIsBookingOrDetailsPage(true)
     else setIsBookingOrDetailsPage(false)
   }, [location.pathname])
 
   return (
     <div className="main-container">
-      {isBookingOrDetailsPage ? <ReservationAppHeader/> : <AppHeader/>}
+      {isBookingOrDetailsPage ? <ReservationAppHeader /> : <AppHeader isStayFilterOpen={isStayFilterOpen} setIsStayFilterOpen={setIsStayFilterOpen}/>}
       <UserMsg />
       <ScrollToTop />
       <main>
@@ -51,7 +52,7 @@ export function RootCmp() {
           {/* <Route path="team" element={<AboutTeam />} /> */}
           {/* <Route path="vision" element={<AboutVision />} /> */}
           {/* </Route> */}
-          <Route path="/" element={<StayIndex />} />
+          <Route path="/" element={<StayIndex isStayFilterOpen={isStayFilterOpen}/>} />
           <Route path="stay/:stayId" element={<StayDetails />} />
           <Route path="book/stay/:stayId" element={<ReservePage />} />
           <Route path="/trips" element={<TripsPage />} />
