@@ -1,6 +1,5 @@
-// src/cmps/TripsPage.jsx
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { loadOrders } from '../store/order.actions'
 
 export function TripsPage() {
@@ -24,11 +23,12 @@ export function TripsPage() {
             <th className="th-host">Host</th>
             <th className="th-checkin">Check-in</th>
             <th className="th-checkout">Checkout</th>
-            <th className="th-guests">Guests</th>
+            <th className="th-booked">Booked</th>
             <th className="th-price">Total Price</th>
             <th className="th-status">Status</th>
           </tr>
         </thead>
+
         <tbody>
           {orders.length === 0 ? (
             <tr>
@@ -44,16 +44,16 @@ export function TripsPage() {
                 host: { fullname: hostName },
                 startDate,
                 endDate,
-                guests: { adults, kids },
+
+                createdAt,
                 totalPrice,
                 status,
               } = order
 
               const priceFormatted = `₪${totalPrice.toFixed(2)}`
+              const statusClass = status === 'pending' ? 'status-pending' : 'status-completed'
               const statusText = status[0].toUpperCase() + status.slice(1)
-              const statusClass =
-                status.toLowerCase() === 'pending' ? 'status-pending' : 'status-completed'
-
+              const orderDate = new Date(createdAt).toLocaleDateString('en-GB').replace(/\//g, '-')
               return (
                 <tr key={_id}>
                   <td>
@@ -65,10 +65,7 @@ export function TripsPage() {
                   <td className="td-host">{hostName}</td>
                   <td className="td-checkin">{startDate}</td>
                   <td className="td-checkout">{endDate}</td>
-                  <td className="td-guests">
-                    {adults} adult{adults !== 1 ? 's' : ''}, {kids} kid
-                    {kids !== 1 ? 's' : ''}
-                  </td>
+                  <td className="td-booked">{orderDate}</td>
                   <td className="td-price">{priceFormatted}</td>
                   <td className={`td-status ${statusClass}`}>{statusText}</td>
                 </tr>
