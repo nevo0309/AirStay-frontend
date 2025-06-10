@@ -11,9 +11,8 @@ import { logoSvg } from '../../data/svgExport.jsx'
 import { humburgerSvg } from '../../data/svgExport.jsx'
 
 
-export function AppHeader() {
+export function AppHeader({isStayFilterOpen,setIsStayFilterOpen}) {
   const user = useSelector(storeState => storeState.userModule.user)
-  const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
 

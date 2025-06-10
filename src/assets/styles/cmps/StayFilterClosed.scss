@@ -49,13 +49,13 @@
 
     .search-btn {
         display: flex;
-        margin-inline: 10px;
-        border-radius: 50%;
-        height: 32px;
-        padding: 0;
-        aspect-ratio: 1;
         justify-content: center;
         align-items: center;
+        height: 32px;
+        aspect-ratio: 1;
+        padding: 0;
+        margin-inline: 10px;
+        border-radius: 50%;
         background-color: #FF385C;
 
         svg {

@@ -22,7 +22,6 @@
     
 
     nav {
-        // justify-content: space-between;
         display: grid;
         grid-template-areas:
             'logo filter-closed btns'
@@ -55,7 +54,6 @@
 
             span {
                 display: inline;
-
             }
         }
 
@@ -71,9 +69,9 @@
 
             .menue-btn {
                 background-color: #f2f2f2;
-                border-radius: 50%;
                 min-height: 40px;
                 min-width: 40px;
+                border-radius: 50%;
 
                 svg {
                     justify-self: center;
@@ -85,7 +83,6 @@
         button {
             font-family: poppins;
             margin-inline-end: 0;
-
             color: $clr7
         }
     }

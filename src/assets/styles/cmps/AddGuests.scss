@@ -1,32 +1,26 @@
 .add-guests {
-    display: grid;
-    // grid-template-columns: 1fr 1fr;
-    // grid-template-rows: repeat(4, 91px);
     position: absolute;
     top: 80px;
-    background-color: white;
-    z-index: 10;
     right: 0;
-    border-radius: 30px;
-    padding: 16px 38px;
     width: 425px;
+    padding: 16px 38px;
+    z-index: 10;
+    border-radius: 30px;
+    background-color: white;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.14));
 
     .guest-counter-card {
-        display: flex;
         justify-content: space-between;
 
         &:not(:last-child) {
             border-bottom: 1px solid #EBEBEB;
         }
 
-
         .counter {
-            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
             justify-self: end;
+            gap: 1rem;
 
 
             h2 {
@@ -37,12 +31,12 @@
             }
 
             button {
+                margin: 0;
                 border-radius: 50%;
                 aspect-ratio: 1;
                 height: 1.875rem;
                 background-color: white;
                 border: 1px solid #909090;
-                margin: 0;
             }
 
             .blocked {
@@ -77,6 +71,4 @@
             }
         }
     }
-
-
 }
