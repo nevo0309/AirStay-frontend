@@ -32,16 +32,16 @@ function ScrollToTop() {
 
 export function RootCmp() {
   const location = useLocation()
-  const [isBookingPage, setIsBookingPage] = useState(true)
+  const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
 
   useEffect(() => {
-    if (location.pathname.startsWith('/book/stay')) setIsBookingPage(true)
-    else setIsBookingPage(false)
+    if (location.pathname.startsWith('/book/stay')|| location.pathname.startsWith('/trips')) setIsBookingOrDetailsPage(true)
+    else setIsBookingOrDetailsPage(false)
   }, [location.pathname])
 
   return (
     <div className="main-container">
-      {isBookingPage ? <ReservationAppHeader /> : <AppHeader />}
+      {isBookingOrDetailsPage ? <ReservationAppHeader/> : <AppHeader/>}
       <UserMsg />
       <ScrollToTop />
       <main>

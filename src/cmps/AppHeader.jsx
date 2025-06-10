@@ -48,8 +48,11 @@ export function AppHeader() {
     }
   }
 
+
   return (
-    <header className={'app-header main-container full ' + (isStayFilterOpen ? '' : 'closed')} style={location.pathname.startsWith('/stay') ? { position: 'static' } : { position: 'fixed' }}>
+    <header className={'app-header main-container full ' +
+     (isStayFilterOpen ? '' : 'closed')+
+     (location.pathname.startsWith('/stay')? ' static' : '')}>
       <nav>
         <div className='logo'>
           <NavLink to="/" className="/logo">

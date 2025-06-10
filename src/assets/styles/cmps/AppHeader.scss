@@ -12,9 +12,14 @@
 
     &.closed {
         height: 5rem;
-        align-content: center;
-
+        align-content: center;        
     }
+    
+    &.static{
+        position: static;
+        padding-inline: 24px;
+    }
+    
 
     nav {
         // justify-content: space-between;
