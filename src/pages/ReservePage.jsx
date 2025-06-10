@@ -145,7 +145,7 @@ export function ReservePage() {
   if (!stay) return <div>Stay not found.</div>
 
   return (
-    <div className="reserve-page">
+    <div className="reserve-page ">
       <div className="sticky-arrow-wrapper">
         <div className="back-arrow" onClick={handleBackArrow}>
           <ArrowLeft />
@@ -156,7 +156,7 @@ export function ReservePage() {
       <div className="reserve-container">
         <div className="reserve-header">
           <div className="header-container">
-            <h1 className="page-title">Request to book</h1>
+            <h1 className="page-title">Confirm and pay</h1>
           </div>
         </div>
 
