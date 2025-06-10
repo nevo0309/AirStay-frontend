@@ -1,0 +1,54 @@
+$header-base: #d1d1d1;
+$header-shine: #b3b3b3;
+$image-base: #e8e8e8;
+$image-shine: #dfe2e5;
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-header-title {
+  height: 104px;
+  width: 250px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, $header-base 25%, $header-shine 50%, $header-base 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+}
+
+.skeleton-image {
+  width: 100%;
+  aspect-ratio: 20 / 19;
+  border-radius: 15px;
+  background: linear-gradient(90deg, $image-base 25%, $image-shine 50%, $image-base 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+}
+
+.skeleton-text {
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, $image-base 25%, $image-shine 50%, $image-base 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  margin-bottom: 6px;
+}
+
+.skeleton-text.skeleton-title {
+  width: 80%;
+  height: 14px;
+  margin-top: 8px;
+}
+.skeleton-text.skeleton-subtitle {
+  width: 60%;
+}
+.skeleton-text.skeleton-price {
+  width: 40%;
+  margin-bottom: 0;
+}
