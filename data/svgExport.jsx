@@ -125,8 +125,8 @@ export const iconLibrary = {
         height: " 24px",
         width: "24px",
         fill: "currentcolor",
-        width: "32px",
-        height: "32px"
+        width: "24px",
+        height: "24px"
       }}
     >
       <path
@@ -147,8 +147,8 @@ export const iconLibrary = {
         height: " 24px",
         width: "24px",
         fill: "currentcolor",
-        width: "32px",
-        height: "32px"
+        width: "24px",
+        height: "24px"
       }}
     >
       <path
@@ -169,8 +169,8 @@ export const iconLibrary = {
         height: " 24px",
         width: "24px",
         fill: "currentcolor",
-        width: "32px",
-        height: "32px"
+        width: "24px",
+        height: "24px"
       }}
     >
       <path
@@ -190,8 +190,8 @@ export const AmenityIcon = ({ type }) => {
     focusable: false,
     style: {
       display: "block",
-      width: "32px",
-      height: "32px",
+      width: "24px",
+      height: "24px",
       fill: "currentColor"
     }
   }

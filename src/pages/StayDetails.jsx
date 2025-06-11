@@ -32,21 +32,25 @@ export function StayDetails() {
 
   return (
     <section className='stay-details'>
-      <div className='details-content'>
-        <DetailsHeader name={stay.name} />
-        <DetailsImageGallery images={stay.imgUrls} />
-        <DetailsOverview stay={stay} />
-        <DetailsHighlights />
-        <DetailsAmenities amenities={stay.amenities} />
-      </div>
-      <div className='booking-sidebar'>
-        <button
-          className='reserve-btn-details'
-          onClick={onReserve}
-          onMouseMove={handleButtonMouseMove}
-        >
-          Reserve
-        </button>
+      <DetailsHeader name={stay.name} />
+      <DetailsImageGallery images={stay.imgUrls} />
+
+      <div className='stay-details-grid'>
+        <div className='details-left'>
+          <DetailsOverview stay={stay} />
+          <DetailsHighlights />
+          <DetailsAmenities amenities={stay.amenities} />
+        </div>
+
+        <div className='booking-sidebar'>
+          <button
+            className='reserve-btn-details'
+            onClick={onReserve}
+            onMouseMove={handleButtonMouseMove}
+          >
+            Reserve
+          </button>
+        </div>
       </div>
     </section>
   )

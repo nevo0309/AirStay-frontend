@@ -1,58 +1,98 @@
 .stay-details {
-  max-width: 1200px;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1120px;
+  // max-inline-size: 1280px;
   margin: 0 auto;
-  padding: 24px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+  // @media (min-width: 1440px) {
+  //   max-width: none;
+  //   padding-left: var(80px);
+  //   padding-right: var(80px);
+  // }
+
+  // @media (min-width: 1128px) {
+  //   max-width: 1120px;
+  //   padding-left: var(80px);
+  //   padding-right: var(80px);
+  // }
+  // @media (min-width: 950px) {
+  //   padding-left: var(40px);
+  //   padding-right: var(40px);
+  // }
+  // @media (min-width: 744px) {
+  //   padding-left: var(40px);
+  //   padding-right: var(40px);
+  // }
+  // @media (min-width: 375px) {
+  //   padding-left: var(24px);
+  //   padding-right: var(24px);
+  // }
+
+  // .stay-details {
+  //   max-width: 1200px;
+  //   margin: 0 auto;
+  //   padding: 80px;
+  // }
+
+  .stay-details-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .details-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }
 
-.details-content {
-  display: flex;
-  flex-direction: column;
+.booking-sidebar {
+  padding: 32px 0 0;
 }
+// .reserve-btn-details {
+//   --x: 70%;
+//   --y: 50%;
 
-.reserve-btn-details {
-  --x: 70%;
-  --y: 50%;
+//   overflow: hidden;
+//   width: 200px;
+//   padding: 0.75rem 1.5rem;
+//   border: none;
+//   border-radius: 0.375rem;
+//   color: #fff;
+//   cursor: pointer;
+//   transition: filter 0.2s;
+//   background: radial-gradient(
+//     circle at var(--x) var(--y),
+//     #ff385c 0%,
+//     #e61e4d 27.5%,
+//     #e31c5f 40%,
+//     #d70466 57.5%,
+//     #bd1e59 75%,
+//     #bd1e59 100%
+//   );
+//   // background: radial-gradient(circle at var(--x) var(--y), #ff7c4c52, transparent 40%),
+//   //   linear-gradient(90deg, $clr1se 0%, $clr1st 100%);
+//   background-position: calc((100 - var(--mouse-x, 0)) * 1%)
+//     calc((100 - var(--mouse-y, 0)) * 1%);
+// }
 
-  overflow: hidden;
-  width: 300px;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 0.375rem;
-  color: #fff;
-  cursor: pointer;
-  transition: filter 0.2s;
-  background: radial-gradient(
-    circle at var(--x) var(--y),
-    #ff385c 0%,
-    #e61e4d 27.5%,
-    #e31c5f 40%,
-    #d70466 57.5%,
-    #bd1e59 75%,
-    #bd1e59 100%
-  );
-  // background: radial-gradient(circle at var(--x) var(--y), #ff7c4c52, transparent 40%),
-  //   linear-gradient(90deg, $clr1se 0%, $clr1st 100%);
-  background-position: calc((100 - var(--mouse-x, 0)) * 1%)
-    calc((100 - var(--mouse-y, 0)) * 1%);
-}
-
-.reserve-btn-details:hover {
-  background: radial-gradient(
-    circle at circle,
-    #ff7c4c52,
-    transparent 40%,
-    #ff385c 0%,
-    #e61e4d 27.5%,
-    #e31c5f 40%,
-    #d70466 57.5%,
-    #bd1e59 75%,
-    #bd1e59 100%
-  );
-  // filter: brightness(1.1);
-}
+// .reserve-btn-details:hover {
+//   background: radial-gradient(
+//     circle at circle,
+//     #ff7c4c52,
+//     transparent 40%,
+//     #ff385c 0%,
+//     #e61e4d 27.5%,
+//     #e31c5f 40%,
+//     #d70466 57.5%,
+//     #bd1e59 75%,
+//     #bd1e59 100%
+//   );
+//   // filter: brightness(1.1);
+// }
