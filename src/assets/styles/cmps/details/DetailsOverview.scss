@@ -1,30 +1,31 @@
 .details-overview {
-  margin-bottom: 1rem;
-
   border-bottom: 1px solid #ddd;
-
   width: 100%;
+
   .overview-header {
+    padding: 32px 0;
+
     .overview-location {
-      font-size: 1.625rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.375rem;
+      margin: 0;
       color: #222;
     }
 
     .overview-info {
       font-size: 1rem;
       color: #444;
-      margin-bottom: 0.5rem;
+
+      margin: 0;
       line-height: 1.4;
     }
 
     .stay-rating {
+      margin: 8px 0 0;
       font-size: 1rem;
       color: #222222;
 
       .star {
         color: #ff5a5f;
-        margin-right: 0.25rem;
       }
     }
   }
