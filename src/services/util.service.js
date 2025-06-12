@@ -153,3 +153,26 @@ export function handleButtonMouseMove(ev) {
   ev.currentTarget.style.setProperty('--x', `${x}%`)
   ev.currentTarget.style.setProperty('--y', `${y}%`)
 }
+
+
+
+//Input: "2025-06-12" and "2025-06-14"
+//Output: "Jun 12–14"
+//Input: "2025-06-28" and "2025-07-02"
+//Output: "Jun 28–Jul 2"
+export function forDateRange(startDate, endDate) {
+  const start = new Date(startDate)
+  const end = new Date(endDate)
+
+  const optionsStart = { month: 'short', day: 'numeric' }
+  const optionsEnd = { day: 'numeric' }
+
+  const sameMonth = start.getMonth() === end.getMonth()
+
+  if (sameMonth) {
+    return `${start.toLocaleDateString('en-US', optionsStart)}–${end.toLocaleDateString('en-US', optionsEnd)}`
+  } else {
+    return `${start.toLocaleDateString('en-US', optionsStart)}–${end.toLocaleDateString('en-US', optionsStart)}`
+  }
+}
+
