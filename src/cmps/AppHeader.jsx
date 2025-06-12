@@ -1,66 +1,71 @@
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { Link, NavLink, useLocation } from "react-router-dom"
+import { useNavigate } from "react-router"
+import { useSelector } from "react-redux"
+import { useState, useEffect } from "react"
 
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { logout } from '../store/user.actions'
-import { StayFilter } from '../cmps/StayFilter.jsx'
-import { StayFilterClosed } from './StayFilterClosed.jsx'
-import { logoSvg } from '../../data/svgExport.jsx'
-import { humburgerSvg } from '../../data/svgExport.jsx'
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
+import { logout } from "../store/user.actions"
+import { StayFilter } from "../cmps/StayFilter.jsx"
+import { StayFilterClosed } from "./StayFilterClosed.jsx"
+import { logoSvg } from "../../data/svgExport.jsx"
+import { humburgerSvg } from "../../data/svgExport.jsx"
 
-
-export function AppHeader({isStayFilterOpen,setIsStayFilterOpen}) {
-  const user = useSelector(storeState => storeState.userModule.user)
+export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
+  const user = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
   const location = useLocation()
 
   useEffect(() => {
-    if (location.pathname.startsWith('/stay')) setIsStayFilterOpen(false)
-    else (setIsStayFilterOpen(true))
+    if (location.pathname.startsWith("/stay")) setIsStayFilterOpen(false)
+    else setIsStayFilterOpen(true)
   }, [location.pathname])
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (location.pathname.startsWith('/stay')) return
+      const scrollY = window.scrollY
+      if (location.pathname.startsWith("/stay")) return
       if (scrollY > 1) {
-        setIsStayFilterOpen(false);
+        setIsStayFilterOpen(false)
       } else {
-        setIsStayFilterOpen(true);
+        setIsStayFilterOpen(true)
       }
-    };
-    window.addEventListener('scroll', handleScroll);
+    }
+    window.addEventListener("scroll", handleScroll)
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [isStayFilterOpen, location.pathname])
-
 
   async function onLogout() {
     try {
       await logout()
-      navigate('/')
+      navigate("/")
       showSuccessMsg(`Bye now`)
     } catch (err) {
-      showErrorMsg('Cannot logout')
+      showErrorMsg("Cannot logout")
     }
   }
 
-
   return (
-    <header className={'app-header main-container full ' +
-     (isStayFilterOpen ? '' : 'closed')+
-     (location.pathname.startsWith('/stay')? ' static' : '')}>
+    <header
+      className={
+        "app-header main-container full " +
+        (isStayFilterOpen ? "" : "closed") +
+        (location.pathname.startsWith("/stay") ? " static" : "")
+      }
+    >
       <nav>
         <div className='logo'>
-          <NavLink to="/" className="/logo">
+          <NavLink to='/' className='/logo'>
             {logoSvg}
             <span>airstay</span>
           </NavLink>
         </div>
 
-        {isStayFilterOpen ? <StayFilter /> : <StayFilterClosed setIsStayFilterOpen={setIsStayFilterOpen} />}
+        {isStayFilterOpen ? (
+          <StayFilter />
+        ) : (
+          <StayFilterClosed setIsStayFilterOpen={setIsStayFilterOpen} />
+        )}
 
         {/* {!user && (
           <NavLink to="login" className="login-link">
@@ -68,13 +73,24 @@ export function AppHeader({isStayFilterOpen,setIsStayFilterOpen}) {
           </NavLink>
           )} */}
         <section className='btns flex'>
-          <button className='host-guest-btn'>Become a host</button>
-          <button className='menue-btn'>
-            {humburgerSvg}
+          {/* <button className='host-guest-btn'>Become a host</button> */}
+
+          <button
+            className='host-guest-btn'
+            onClick={() =>
+              navigate(
+                location.pathname.startsWith("/stay/hosting/order")
+                  ? "/"
+                  : "stay/hosting/order"
+              )
+            }
+          >
+            {location.pathname.startsWith("/hosting/order")
+              ? "Switch to guest"
+              : "Switch to Hosting"}
           </button>
+          <button className='menue-btn'>{humburgerSvg}</button>
         </section>
-
-
 
         {/* {user && (
           <div className="user-info">

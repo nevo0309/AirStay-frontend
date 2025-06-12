@@ -39,8 +39,7 @@ export function RootCmp() {
   useEffect(() => {
     if (
       location.pathname.startsWith("/book/stay") ||
-      location.pathname.startsWith("/trips") ||
-      location.pathname.startsWith("/orders")
+      location.pathname.startsWith("/trips")
     )
       setIsBookingOrDetailsPage(true)
     else setIsBookingOrDetailsPage(false)
@@ -72,7 +71,7 @@ export function RootCmp() {
           <Route path='stay/:stayId' element={<StayDetails />} />
           <Route path='book/stay/:stayId' element={<ReservePage />} />
           <Route path='/trips' element={<TripsPage />} />
-          <Route path='/orders' element={<OrdersPage />} />
+          <Route path='stay/hosting/order' element={<OrdersPage />} />
           {/* <Route path="user/:id" element={<UserDetails />} /> */}
           {/* <Route path="review" element={<ReviewIndex />} /> */}
           {/* <Route path="chat" element={<ChatApp />} /> */}
