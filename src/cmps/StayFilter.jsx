@@ -59,26 +59,67 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
     else setOpenModal(modal)
   }
 
-  const guestsToShow = ''
+
+  function handleSelect(ranges) {
+    const { startDate, endDate } = ranges.selection;
+    const currentStart = range[0].startDate;
+    const currentEnd = range[0].endDate;
+
+    if (!currentStart || (currentStart && !currentEnd)) {
+      // Initial selection or selecting the end date
+      setRange([{
+        ...range[0],
+        startDate,
+        endDate: startDate === endDate ? null : endDate,
+      }])
+    } else {
+      // If user clicks a new date AFTER current start date, update endDate
+      if (startDate > currentStart) {
+        setRange([{
+          ...range[0],
+          startDate: currentStart,
+          endDate: startDate,
+        }])
+      } else {
+        // If clicked date is before or same as current start, treat it as a new start
+        setRange([{
+          startDate,
+          endDate: null,
+          key: 'selection',
+        }])
+      }
+    }
+  }
 
 
   function guestSummary() {
     const labelMap = {
-      adults: ['Adult', 'Adults'],
-      children: ['Child', 'Children'],
-      infants: ['Infant', 'Infants'],
-      pet: ['Pet', 'Pets']
+      guests: ['guest', 'guests'],
+      infants: ['infant', 'infants'],
+      pet: ['pet', 'pets']
     };
 
-    return Object.entries(guest)
-      .filter(([_, count]) => count > 0)
-      .map(([key, count]) => {
-        const [singular, plural] = labelMap[key]
-        const label = count === 1 ? singular : plural
-        return `${count} ${label}`
-      })
-      .join(', ')
+    const totalGuests = (guest.adults) + (guest.children)
+    const totalGuestsSummary = [];
+
+    if (totalGuests > 0) {
+      const [singular, plural] = labelMap.guests;
+      const label = totalGuests === 1 ? singular : plural
+      totalGuestsSummary.push(`${totalGuests} ${label}`)
+    }
+
+    ['infants', 'pet'].forEach((key) => {
+      const count = guest[key] || 0
+      if (count > 0) {
+        const [singular, plural] = labelMap[key];
+        const label = count === 1 ? singular : plural;
+        totalGuestsSummary.push(`${count} ${label}`);
+      }
+    });
+
+    return totalGuestsSummary.join(', ')
   }
+
 
 
 
@@ -129,7 +170,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
 
       {openModal === 'guests' && <AddGuests setGuest={setGuest} />}
       {openModal === 'search' && <SearchDes setLocation={setLocation} setOpenModal={setOpenModal} />}
-      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} setOpenModal={setOpenModal} openModal={openModal} />}
+      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={handleSelect} setOpenModal={setOpenModal} openModal={openModal} />}
 
     </section>
   )

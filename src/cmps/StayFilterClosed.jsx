@@ -5,7 +5,7 @@ export function StayFilterClosed({setIsStayFilterOpen}) {
 
     return <section className="stay-filter-closed flex align-center" onClick={() => setIsStayFilterOpen(true)}>
         <div className='flex'>
-            <img src="public/img/filter.png" alt="" />
+            <img src="/public/img/filter.png" alt="" />
             <h1>Anywhere</h1>
         </div>
         <h1>Anytime</h1>
