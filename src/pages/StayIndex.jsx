@@ -8,11 +8,14 @@ import { StayList } from '../cmps/StayList'
 import { StayListSkeleton } from '../cmps/carousel/StayListSkeleton'
 
 export function StayIndex({ isStayFilterOpen }) {
-  const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+  // const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+
+  const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   const [loading, setLoading] = useState(true)
 
   const stays = useSelector(storeState => storeState.stayModule.stays)
 
+  console.log(filterBy)
   useEffect(() => {
     async function fetch() {
       setLoading(true)

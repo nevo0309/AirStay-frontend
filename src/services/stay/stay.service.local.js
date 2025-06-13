@@ -13,6 +13,7 @@ export const stayService = {
   save,
   remove,
   addStayMsg,
+  getDefaultFilter
 }
 window.cs = stayService
 
@@ -95,4 +96,10 @@ function _createStays() {
       gStays = storedStays
     }
   })
+}
+
+
+
+function getDefaultFilter() {
+    return { location: '', checkIn: '',checkOut:'' , guest: {}}
 }

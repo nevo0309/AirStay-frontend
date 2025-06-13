@@ -7,9 +7,11 @@ import {
   SET_STAY,
   UPDATE_STAY,
   ADD_STAY_MSG,
+  SET_FILTER_BY
 } from './stay.reducer'
 
-export async function loadStays(filterBy) {
+export async function loadStays() {
+  const filterBy = store.getState().stayModule.filterBy
   try {
     const stays = await stayService.query(filterBy)
     store.dispatch(getCmdSetStays(stays))
@@ -72,6 +74,10 @@ export async function addStayMsg(stayId, txt) {
   }
 }
 
+export function setFilterBy(filterBy) {
+  store.dispatch(getCmdFilterBy(filterBy))
+}
+
 // Command Creators:
 function getCmdSetStays(stays) {
   return {
@@ -109,6 +115,12 @@ function getCmdAddStayMsg(msg) {
     msg,
   }
 }
+function getCmdFilterBy(filterBy) {
+  return {
+    type: SET_FILTER_BY,
+    filterBy
+  }
+}
 
 // unitTestActions()
 // async function unitTestActions() {
@@ -121,3 +133,4 @@ function getCmdAddStayMsg(msg) {
 //   await removeStay('m1oC7')
 //   // TODO unit test addStayMsg
 // }
+
