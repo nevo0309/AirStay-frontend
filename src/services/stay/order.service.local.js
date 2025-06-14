@@ -2,8 +2,8 @@
 
 import { storageService } from '../async-storage.service.js'
 import { makeId } from '../../services/util.service.js'
-import { userService } from '../user'
-import { orders, stays } from '../../../data/stay-demo'
+
+
 
 const STORAGE_KEY = 'orderDB'
 
@@ -75,3 +75,5 @@ function getEmptyOrder() {
     createdAt: Date.now(),
   }
 }
+
+

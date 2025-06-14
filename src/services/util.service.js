@@ -161,3 +161,46 @@ export function formatFullDate(dateStr) {
   return date.toLocaleDateString(undefined, options)
 }
 
+// mock data
+export function generateRandomOrders(count = 10) {
+  const guestNames = [
+    "Alex Morgan", "Jamie Fox", "Taylor Swift", "Jordan Peele", "Riley Ray",
+    "Morgan Lake", "Sasha Sky", "Cameron Reed", "Avery Blue", "Drew Snow"
+  ]
+
+  const stayNames = [
+    "Ocean Breeze Villa", "Rustic Barn", "City Penthouse", "Forest Hideaway",
+    "Sunny Studio", "Lakeside Lodge", "Modern Loft", "Tiny Treehouse",
+    "Mountain Cabin", "Beach Bungalow"
+  ]
+
+  const statuses = ["Approved", "Pending", "Declined"]
+
+  const getRandomDate = (start, end) => {
+    const date = new Date(+start + Math.random() * (end - start))
+    return date.toISOString().split("T")[0].replace(/-/g, "/")
+  }
+
+  const orders = []
+
+  for (let i = 1; i <= count; i++) {
+    const guest = { fullname: guestNames[Math.floor(Math.random() * guestNames.length)] }
+    const stay = { name: stayNames[Math.floor(Math.random() * stayNames.length)] }
+    const start = getRandomDate(new Date(2025, 5, 10), new Date(2025, 8, 1))
+    const end = getRandomDate(new Date(start), new Date(new Date(start).getTime() + 1000 * 60 * 60 * 24 * 10))
+    const totalPrice = Math.floor(100 + Math.random() * 900)
+    const status = statuses[Math.floor(Math.random() * statuses.length)]
+
+    orders.push({
+      _id: `o${1000 + i}`,
+      guest,
+      stay,
+      startDate: start,
+      endDate: end,
+      totalPrice,
+      status
+    })
+  }
+
+  return orders
+}

@@ -20,41 +20,56 @@ export function OrdersTable({ orders = [], onStatusChange }) {
           </tr>
         </thead>
         <tbody>
-          {orders.map((order) => (
-            <tr key={order._id}>
-              <td>{order.guest?.fullname}</td>
-              <td>{order.stay?.name}</td>
-              <td>{formatFullDate(order.startDate)}</td>
-              <td>{formatFullDate(order.endDate)}</td>
-              <td>${order.totalPrice}</td>
-              <td>
-                <span
-                  className={`status-cell status-${order.status.toLowerCase()}`}
-                >
-                  {order.status}
-                </span>
-              </td>
+          {orders.map((order) => {
+            const guestName = order.guest?.fullname || "Unknown Guest"
+            const stayName = order.stay?.name || "Unknown Stay"
+            const checkIn = formatFullDate(order.startDate)
+            const checkOut = formatFullDate(order.endDate)
+            const status = order.status || "Unknown"
 
-              <td>
-                {order.status === "Pending" ? (
-                  <>
-                    <button
-                      onClick={() => handleStatusChange(order._id, "Approved")}
-                    >
-                      Approve
-                    </button>
-                    <button
-                      onClick={() => handleStatusChange(order._id, "Declined")}
-                    >
-                      Decline
-                    </button>
-                  </>
-                ) : (
-                  <span>—</span>
-                )}
-              </td>
-            </tr>
-          ))}
+            return (
+              <tr key={order._id}>
+                <td>{guestName}</td>
+                <td>{stayName}</td>
+                <td>{checkIn}</td>
+                <td>{checkOut}</td>
+                <td>${order.totalPrice}</td>
+                <td>
+                  <span
+                    className={`status-cell status-${status.toLowerCase()}`}
+                  >
+                    {status}
+                  </span>
+                </td>
+                <td>
+                  {status === "Pending" ? (
+                    <div className='action-buttons'>
+                      <button
+                        className='btn-approve'
+                        onClick={() =>
+                          handleStatusChange(order._id, "Approved")
+                        }
+                        aria-label={`Approve reservation for ${guestName}`}
+                      >
+                        Approve
+                      </button>
+                      <button
+                        className='btn-decline'
+                        onClick={() =>
+                          handleStatusChange(order._id, "Declined")
+                        }
+                        aria-label={`Decline reservation for ${guestName}`}
+                      >
+                        Decline
+                      </button>
+                    </div>
+                  ) : (
+                    <span>—</span>
+                  )}
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>
