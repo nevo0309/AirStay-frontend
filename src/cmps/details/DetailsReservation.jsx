@@ -6,7 +6,7 @@ export function DetailsReservation({ onReserve }) {
     const stay = useSelector((storeState) => storeState.stayModule.stay)
     const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
     const [totalPrice, setTotalPrice] = useState(null)
-    const CleaningFee = totalPrice * 0.1
+    const cleaningFee = totalPrice * 0.1
 
     useEffect(() => {
         setTotalPrice(sumNights(filterBy.checkIn, filterBy.checkOut) * stay.price)
@@ -15,10 +15,11 @@ export function DetailsReservation({ onReserve }) {
 
 
     function formatRangeDates(date) {
-        const options = { month: 'short', day: 'numeric', year: 'numeric' }
-        const dateToShow = date.toLocaleDateString('en-US', options)
+        const day = String(date.getDate()).padStart(2, '0')
+        const month = String(date.getMonth() + 1).padStart(2, '0') // חודשים מתחילים מ־0
+        const year = date.getFullYear()
 
-        return dateToShow;
+        return `${day}/${month}/${year}`
     }
 
 
@@ -55,27 +56,28 @@ export function DetailsReservation({ onReserve }) {
     }
 
     return (
-        <div className='details-reservation'>
-            <h1>{`₪${stay.price}`}<span>night</span></h1>
-            <div>
-                <label>
-                    Check in
-                </label>
-                <p>{filterBy.checkIn ? formatRangeDates(filterBy.checkIn) : 'Add dates'}</p>
-            </div>
+        <div className='details-reservation flex column'>
+            <h1>{`₪${stay.price}`} <span>night </span></h1>
+            <div className="reservation-options">
+                <div className="flex column">
+                    <label>
+                        CHECK-IN
+                    </label>
+                    <p>{filterBy.checkIn ? formatRangeDates(filterBy.checkIn) : 'Add dates'}</p>
+                </div>
 
-            <div >
-                <label>
-                    Check out
-                </label>
-                <p> {filterBy.checkOut ? formatRangeDates(filterBy.checkOut) : 'Add dates'}</p>
-            </div>
+                <div  className="flex column">
+                    <label>
+                        CHECK-OUT
+                    </label>
+                    <p> {filterBy.checkOut ? formatRangeDates(filterBy.checkOut) : 'Add dates'}</p>
+                </div>
 
-            <div>
-                <label>
-                    Guests
-                </label>
-                <p>{guestSummary(filterBy.guest)}</p>
+                <div  className="flex column">
+                    <label>
+                        GUESTS                    </label>
+                    <p>{guestSummary(filterBy.guest)}</p>
+                </div>
             </div>
 
             <button
@@ -87,11 +89,15 @@ export function DetailsReservation({ onReserve }) {
             </button>
 
             <p>You won't be charged yet</p>
-            <p>{`₪${stay.price}X ${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</p>
-            {totalPrice && <p>{`₪${totalPrice}`}</p>}
-            <p>Cleaning fee</p>
-            {totalPrice && <p> {`₪${CleaningFee}`}</p>}
-            <p>Total</p>
-            {totalPrice && <p>{`₪${totalPrice + CleaningFee}`}</p>}
+            <div className="prices">
+                <h2>{`₪${stay.price}`}<span> X </span> {`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
+                {totalPrice && <p>{`₪${totalPrice}`}</p>}
+                <h2>Cleaning fee</h2>
+                {totalPrice && <p> {`₪${cleaningFee}`}</p>}
+            </div>
+            <div className="total-price flex">
+                <h2 >Total</h2>
+                {totalPrice && <p>{`₪${totalPrice + cleaningFee}`}</p>}
+            </div>
         </div >)
 }
