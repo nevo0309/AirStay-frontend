@@ -6,9 +6,12 @@ export const SET_ORDER = 'SET_ORDER'
 export const ADD_ORDER = 'ADD_ORDER'
 export const UPDATE_ORDER = 'UPDATE_ORDER'
 export const REMOVE_ORDER = 'REMOVE_ORDER'
+export const SET_HOST_ORDERS = 'SET_HOST_ORDERS'
+export const UPDATE_ORDER_STATUS = 'UPDATE_ORDER_STATUS'
 
 const initialState = {
   orders: [], // array of all orders
+  hostOrders: [], // Orders for listings hosted by current host
   order: null, // the currently‐loaded single order (if any)
 }
 
@@ -19,6 +22,10 @@ export function orderReducer(state = initialState, action) {
   switch (action.type) {
     case SET_ORDERS:
       newState = { ...state, orders: action.orders }
+      break
+
+    case SET_HOST_ORDERS:
+      newState = { ...state, hostOrders: action.orders }
       break
 
     case SET_ORDER:
@@ -34,9 +41,23 @@ export function orderReducer(state = initialState, action) {
       newState = { ...state, orders }
       break
 
+    case UPDATE_ORDER_STATUS:
+      newState = {
+        ...state,
+        hostOrders: state.hostOrders.map(o =>
+          o._id === action.updatedOrder._id ? action.updatedOrder : o
+        ),
+        orders: state.orders.map(o =>
+          o._id === action.updatedOrder._id ? action.updatedOrder : o
+        )
+      }
+      break
+
     case REMOVE_ORDER:
-      orders = state.orders.filter(o => o._id !== action.orderId)
-      newState = { ...state, orders }
+      newState = {
+        ...state, orders: state.orders.filter(o => o._id !== action.orderId),
+        hostOrders: state.hostOrders.filter(o => o._id !== action.orderId)
+      }
       break
 
     default:

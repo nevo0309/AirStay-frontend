@@ -1,80 +1,81 @@
 // Setup
-@import 'setup/variables';
-@import 'setup/functions';
-@import 'setup/mixins';
-@import 'setup/typography';
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
 
 // Basics
-@import 'basics/helpers';
-@import 'basics/layout';
-@import 'basics/base';
-@import 'basics/links';
-@import 'basics/forms';
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/forms";
 
 // pages
-@import 'RootCmp';
+@import "RootCmp";
 
-@import 'pages/AboutUs';
-@import 'pages/HomePage';
-@import 'pages/StayIndex';
-@import 'pages/StayDetails';
+@import "pages/AboutUs";
+@import "pages/HomePage";
+@import "pages/StayIndex";
+@import "pages/StayDetails";
+@import "pages/Dashbord";
 
-@import 'pages/ReservePage';
-@import 'pages/ReviewIndex';
-@import 'pages/UserDetails';
-@import 'pages/AdminIndex';
-@import 'pages/TaskDetails';
-@import 'pages/LoginSignup';
-@import 'pages/Chat';
-@import 'pages/AboutUs';
-@import 'pages/HomePage';
-@import 'pages/StayIndex';
-@import 'pages/TripsPage';
-@import 'pages/ReservePage';
-@import 'pages/ReviewIndex';
-@import 'pages/UserDetails';
-@import 'pages/AdminIndex';
-@import 'pages/TaskDetails';
-@import 'pages/LoginSignup';
-@import 'pages/Chat';
+@import "pages/ReservePage";
+@import "pages/ReviewIndex";
+@import "pages/UserDetails";
+@import "pages/AdminIndex";
+@import "pages/TaskDetails";
+@import "pages/LoginSignup";
+@import "pages/Chat";
+@import "pages/AboutUs";
+@import "pages/HomePage";
+@import "pages/StayIndex";
+@import "pages/TripsPage";
+@import "pages/ReservePage";
+@import "pages/ReviewIndex";
+@import "pages/UserDetails";
+@import "pages/AdminIndex";
+@import "pages/TaskDetails";
+@import "pages/LoginSignup";
+@import "pages/Chat";
 
 // Components
-@import 'cmps/list';
-@import 'cmps/preview';
-@import 'cmps/BookingSidebar';
+@import "cmps/list";
+@import "cmps/preview";
+@import "cmps/BookingSidebar";
 
-@import 'cmps/AppHeader';
-@import 'cmps/AppFooter';
-@import 'cmps/UserMsg';
+@import "cmps/AppHeader";
+@import "cmps/AppFooter";
+@import "cmps/UserMsg";
 
-@import 'cmps/StayFilter';
-@import 'cmps/StayFilterClosed.scss';
-@import 'cmps/ReviewEdit';
-@import 'cmps/ReviewList';
-@import 'cmps/ReviewPreview';
+@import "cmps/StayFilter";
+@import "cmps/StayFilterClosed.scss";
+@import "cmps/ReviewEdit";
+@import "cmps/ReviewList";
+@import "cmps/ReviewPreview";
 
-@import 'cmps/Carousel';
-@import 'cmps/SkeletonCarousel';
-@import 'cmps/FilterCalender.scss';
+@import "cmps/Carousel";
+@import "cmps/SkeletonCarousel";
+@import "cmps/FilterCalender.scss";
 
-@import 'cmps/details/DetailsImageGallery';
-@import 'cmps/details/DetailsAmenities';
-@import 'cmps/details/DetailsHeader';
-@import 'cmps/details/DetailsOverview';
-@import 'cmps/details/DetailsHighlights';
-@import 'cmps/details/DetailsSummary';
-@import 'cmps/details/DetailsReview';
-@import 'cmps/details/DetailsReservation.scss';
+@import "cmps/details/DetailsImageGallery";
+@import "cmps/details/DetailsAmenities";
+@import "cmps/details/DetailsHeader";
+@import "cmps/details/DetailsOverview";
+@import "cmps/details/DetailsHighlights";
+@import "cmps/details/DetailsSummary";
+@import "cmps/details/DetailsReview";
+@import "cmps/details/DetailsReservation.scss";
 
-@import 'cmps/steps/StepChoosePayment';
-@import 'cmps/steps/StepMessage';
-@import 'cmps/steps/StepPaymentMethod';
-@import 'cmps/steps/StepReview';
-@import 'cmps/steps/StepCard.scss';
+@import "cmps/steps/StepChoosePayment";
+@import "cmps/steps/StepMessage";
+@import "cmps/steps/StepPaymentMethod";
+@import "cmps/steps/StepReview";
+@import "cmps/steps/StepCard.scss";
 
-@import 'cmps/AddGuests.scss';
-@import 'cmps/SeachDes.scss';
-@import 'cmps/ReservationAppHeader.scss';
+@import "cmps/AddGuests.scss";
+@import "cmps/SeachDes.scss";
+@import "cmps/ReservationAppHeader.scss";
 
 // @import "cmps/StayList";
 // @import "cmps/StayPreview";
