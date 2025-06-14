@@ -85,7 +85,7 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
               )
             }
           >
-            {location.pathname.startsWith("/hosting/order")
+            {location.pathname.startsWith("/stay/hosting/order")
               ? "Switch to guest"
               : "Switch to Hosting"}
           </button>
