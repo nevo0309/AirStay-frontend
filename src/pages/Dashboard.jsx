@@ -151,7 +151,7 @@ export function Dashboard() {
         return true
       })
 
-      await new Promise((resolve) => setTimeout(resolve, 400)) // simulate async delay
+      // await new Promise((resolve) => setTimeout(resolve, 700)) // simulate async delay
       setFilteredOrders(result)
       setLoading(false)
     }
