@@ -8,7 +8,7 @@ import { DetailsAmenities } from "../cmps/details/DetailsAmenities"
 import { DetailsHeader } from "../cmps/details/DetailsHeader"
 import { DetailsOverview } from "../cmps/details/DetailsOverview"
 import { DetailsHighlights } from "../cmps/details/DetailsHighlights"
-
+import { DetailsReservation } from "../cmps/details/DetailsReservation"
 import { handleButtonMouseMove } from "../services/util.service"
 
 export function StayDetails() {
@@ -42,15 +42,7 @@ export function StayDetails() {
           <DetailsAmenities amenities={stay.amenities} />
         </div>
 
-        <div className='booking-sidebar'>
-          <button
-            className='reserve-btn-details'
-            onClick={onReserve}
-            onMouseMove={handleButtonMouseMove}
-          >
-            Reserve
-          </button>
-        </div>
+        <DetailsReservation onReserve={onReserve}/>
       </div>
     </section>
   )
