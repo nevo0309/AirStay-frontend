@@ -174,10 +174,9 @@ export function StayFilter() {
 
 
       {openModal === 'guests' && <AddGuests setGuest={setGuest} />}
-      {openModal === 'search' && <SearchDes setLocation={setLocation} setOpenModal={setOpenModal} />}
       {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={handleSelect} setOpenModal={setOpenModal} openModal={openModal} />}
       {openModal === 'search' && <SearchDes setLocation={setLocationToSearch} setOpenModal={setOpenModal} />}
-      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} setOpenModal={setOpenModal} openModal={openModal} />}
+
 
     </section>
   )
