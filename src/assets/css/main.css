@@ -284,44 +284,47 @@ form > * {
 }
 
 .dashboard-container {
-  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  font-family: poppins;
+  min-height: 100vh;
   padding: 20px;
 }
-
-.dashboard-header {
+.dashboard-container .dashboard-header {
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
 }
-
-.dashboard-nav {
+.dashboard-container .dashboard-nav {
   display: flex;
   gap: 20px;
 }
-
-.nav-item {
+.dashboard-container .dashboard-nav .nav-item {
   cursor: pointer;
   font-weight: 500;
 }
-
-.nav-item.active {
+.dashboard-container .dashboard-nav .nav-item.active {
   border-bottom: 2px solid black;
 }
-
-.dashboard-main h1 {
+.dashboard-container .dashboard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-container .dashboard-main h1 {
   margin-top: 20px;
 }
-
-.reservations-section {
+.dashboard-container .dashboard-main .reservations-section {
   margin-top: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
-
-.tabs {
+.dashboard-container .dashboard-main .reservations-section .tabs {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
-
-.tab-btn {
+.dashboard-container .dashboard-main .reservations-section .tabs .tab-btn {
   border: 1px solid #ccc;
   background: #fff;
   color: #222;
@@ -329,33 +332,33 @@ form > * {
   border-radius: 20px;
   cursor: pointer;
 }
-
-.tab-btn.active {
+.dashboard-container .dashboard-main .reservations-section .tabs .tab-btn.active {
   border-color: black;
 }
-
-.empty-state {
+.dashboard-container .dashboard-main .reservations-section .empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 40px;
   background: #f9f9f9;
   text-align: center;
   border-radius: 10px;
   margin-bottom: 20px;
 }
-
-.icon-placeholder {
+.dashboard-container .dashboard-main .reservations-section .empty-state .icon-placeholder {
   font-size: 32px;
   margin-bottom: 10px;
 }
-
-.all-reservations-link {
+.dashboard-container .dashboard-main .reservations-section .all-reservations-link {
   display: inline-block;
   margin-top: 10px;
   font-weight: bold;
   text-decoration: underline;
   color: #000;
 }
-
-.complete-listing-btn {
+.dashboard-container .dashboard-main .reservations-section .complete-listing-btn {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: #fff;
@@ -363,22 +366,80 @@ form > * {
   border-radius: 6px;
   cursor: pointer;
 }
-
-.dashboard-footer {
+.dashboard-container .dashboard-footer {
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
   border-top: 1px solid #eee;
   padding-top: 20px;
 }
-
-.footer-column ul {
+.dashboard-container .dashboard-footer .footer-column ul {
   list-style: none;
   padding: 0;
 }
-
-.footer-column li {
+.dashboard-container .dashboard-footer .footer-column ul li {
   margin-bottom: 8px;
+}
+
+.status-cell {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+.status-cell.status-approved {
+  color: #0f5132;
+  background-color: #d1e7dd;
+}
+.status-cell.status-declined {
+  color: #842029;
+  background-color: #f8d7da;
+}
+.status-cell.status-pending {
+  color: #664d03;
+  background-color: #fff3cd;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.action-buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+.action-buttons button:hover {
+  transform: translateY(-1px);
+}
+.action-buttons button:active {
+  transform: translateY(0);
+}
+.action-buttons .btn-approve {
+  background-color: #28a745;
+  color: white;
+}
+.action-buttons .btn-approve:hover {
+  background-color: #218838;
+}
+.action-buttons .btn-approve:focus {
+  outline: 2px solid #1e7e34;
+  outline-offset: 2px;
+}
+.action-buttons .btn-decline {
+  background-color: #dc3545;
+  color: white;
+}
+.action-buttons .btn-decline:hover {
+  background-color: #c82333;
+}
+.action-buttons .btn-decline:focus {
+  outline: 2px solid #bd2130;
+  outline-offset: 2px;
 }
 
 .reserve-page {

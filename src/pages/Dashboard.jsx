@@ -13,100 +13,100 @@ export function Dashboard() {
     { label: "Pending review", filter: "Pending" }
   ]
 
-  const initialOrders = generateRandomOrders(15)
+  // const initialOrders = generateRandomOrders(15)
 
-  // const initialOrders = [
-  //   {
-  //     _id: "o1001",
-  //     guest: { fullname: "Lena Sparks" },
-  //     stay: { name: "Hilltop Haven" },
-  //     totalPrice: 245,
-  //     startDate: "2025/06/15",
-  //     endDate: "2025/06/18",
-  //     status: "Approved"
-  //   },
-  //   {
-  //     _id: "o1002",
-  //     guest: { fullname: "Mark Twain" },
-  //     stay: { name: "Seaside Cottage" },
-  //     totalPrice: 420,
-  //     startDate: "2025/07/01",
-  //     endDate: "2025/07/06",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     _id: "o1003",
-  //     guest: { fullname: "Sophie Sky" },
-  //     stay: { name: "Downtown Loft" },
-  //     totalPrice: 330,
-  //     startDate: "2025/06/13",
-  //     endDate: "2025/06/16",
-  //     status: "Approved"
-  //   },
-  //   {
-  //     _id: "o1004",
-  //     guest: { fullname: "Nathan Drift" },
-  //     stay: { name: "Lakeview Bungalow" },
-  //     totalPrice: 520,
-  //     startDate: "2025/08/03",
-  //     endDate: "2025/08/10",
-  //     status: "Declined"
-  //   },
-  //   {
-  //     _id: "o1005",
-  //     guest: { fullname: "Tina Moon" },
-  //     stay: { name: "Garden Studio" },
-  //     totalPrice: 180,
-  //     startDate: "2025/06/14",
-  //     endDate: "2025/06/15",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     _id: "o1006",
-  //     guest: { fullname: "Jasper Vale" },
-  //     stay: { name: "Treehouse Escape" },
-  //     totalPrice: 610,
-  //     startDate: "2025/06/12",
-  //     endDate: "2025/06/17",
-  //     status: "Approved"
-  //   },
-  //   {
-  //     _id: "o1007",
-  //     guest: { fullname: "Rachel Fern" },
-  //     stay: { name: "Alpine Chalet" },
-  //     totalPrice: 800,
-  //     startDate: "2025/07/20",
-  //     endDate: "2025/07/30",
-  //     status: "Approved"
-  //   },
-  //   {
-  //     _id: "o1008",
-  //     guest: { fullname: "Brian West" },
-  //     stay: { name: "Modern Condo" },
-  //     totalPrice: 275,
-  //     startDate: "2025/06/18",
-  //     endDate: "2025/06/20",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     _id: "o1009",
-  //     guest: { fullname: "Isla Breeze" },
-  //     stay: { name: "Zen Retreat" },
-  //     totalPrice: 500,
-  //     startDate: "2025/07/05",
-  //     endDate: "2025/07/10",
-  //     status: "Approved"
-  //   },
-  //   {
-  //     _id: "o1010",
-  //     guest: { fullname: "Oliver Stone" },
-  //     stay: { name: "Beachfront Suite" },
-  //     totalPrice: 950,
-  //     startDate: "2025/06/30",
-  //     endDate: "2025/07/04",
-  //     status: "Declined"
-  //   }
-  // ]
+  const initialOrders = [
+    {
+      _id: "o1001",
+      guest: { fullname: "Lena Sparks" },
+      stay: { name: "Hilltop Haven" },
+      totalPrice: 245,
+      startDate: "2025/06/15",
+      endDate: "2025/06/18",
+      status: "Approved"
+    },
+    {
+      _id: "o1002",
+      guest: { fullname: "Mark Twain" },
+      stay: { name: "Seaside Cottage" },
+      totalPrice: 420,
+      startDate: "2025/07/01",
+      endDate: "2025/07/06",
+      status: "Pending"
+    },
+    {
+      _id: "o1003",
+      guest: { fullname: "Sophie Sky" },
+      stay: { name: "Downtown Loft" },
+      totalPrice: 330,
+      startDate: "2025/06/13",
+      endDate: "2025/06/16",
+      status: "Approved"
+    },
+    {
+      _id: "o1004",
+      guest: { fullname: "Nathan Drift" },
+      stay: { name: "Lakeview Bungalow" },
+      totalPrice: 520,
+      startDate: "2025/08/03",
+      endDate: "2025/08/10",
+      status: "Declined"
+    },
+    {
+      _id: "o1005",
+      guest: { fullname: "Tina Moon" },
+      stay: { name: "Garden Studio" },
+      totalPrice: 180,
+      startDate: "2025/06/14",
+      endDate: "2025/06/15",
+      status: "Pending"
+    },
+    {
+      _id: "o1006",
+      guest: { fullname: "Jasper Vale" },
+      stay: { name: "Treehouse Escape" },
+      totalPrice: 610,
+      startDate: "2025/06/12",
+      endDate: "2025/06/17",
+      status: "Approved"
+    },
+    {
+      _id: "o1007",
+      guest: { fullname: "Rachel Fern" },
+      stay: { name: "Alpine Chalet" },
+      totalPrice: 800,
+      startDate: "2025/07/20",
+      endDate: "2025/07/30",
+      status: "Approved"
+    },
+    {
+      _id: "o1008",
+      guest: { fullname: "Brian West" },
+      stay: { name: "Modern Condo" },
+      totalPrice: 275,
+      startDate: "2025/06/18",
+      endDate: "2025/06/20",
+      status: "Pending"
+    },
+    {
+      _id: "o1009",
+      guest: { fullname: "Isla Breeze" },
+      stay: { name: "Zen Retreat" },
+      totalPrice: 500,
+      startDate: "2025/07/05",
+      endDate: "2025/07/10",
+      status: "Approved"
+    },
+    {
+      _id: "o1010",
+      guest: { fullname: "Oliver Stone" },
+      stay: { name: "Beachfront Suite" },
+      totalPrice: 950,
+      startDate: "2025/06/30",
+      endDate: "2025/07/04",
+      status: "Declined"
+    }
+  ]
 
   const [orders, setOrders] = useState(initialOrders)
   const [activeTab, setActiveTab] = useState(0)
@@ -197,12 +197,12 @@ export function Dashboard() {
         <div className='footer-column'>
           <h4>Hosting</h4>
           <ul>
-            <li>Airbnb your home</li>
+            <li>Airstay your home</li>
             <li>AirCover for Hosts</li>
             <li>Hosting resources</li>
             <li>Community forum</li>
             <li>Hosting responsibly</li>
-            <li>Airbnb-friendly apartments</li>
+            <li>Airstay-friendly apartments</li>
           </ul>
         </div>
         <div className='footer-column'>
