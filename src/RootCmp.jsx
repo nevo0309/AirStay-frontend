@@ -23,7 +23,8 @@ import { ReservePage } from "./pages/ReservePage.jsx"
 import { TripsPage } from "./pages/TripsPage.jsx"
 import { ReservationAppHeader } from "./cmps/ReservationAppHeader.jsx"
 import { use } from "react"
-import { OrdersPage } from "./pages/OrdersPage.jsx"
+
+import { Dashboard } from "./pages/dashboard.jsx"
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -71,7 +72,7 @@ export function RootCmp() {
           <Route path='stay/:stayId' element={<StayDetails />} />
           <Route path='book/stay/:stayId' element={<ReservePage />} />
           <Route path='/trips' element={<TripsPage />} />
-          <Route path='stay/hosting/order' element={<OrdersPage />} />
+          <Route path='stay/hosting/order' element={<Dashboard />} />
           {/* <Route path="user/:id" element={<UserDetails />} /> */}
           {/* <Route path="review" element={<ReviewIndex />} /> */}
           {/* <Route path="chat" element={<ChatApp />} /> */}

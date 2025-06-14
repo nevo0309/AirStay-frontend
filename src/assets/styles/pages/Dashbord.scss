@@ -1,0 +1,119 @@
+.dashboard-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.dashboard-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.dashboard-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.nav-item.active {
+  border-bottom: 2px solid black;
+}
+
+.dashboard-main h1 {
+  margin-top: 20px;
+}
+
+.reservations-section {
+  margin-top: 30px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #222;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  border-color: black;
+}
+
+.empty-state {
+  padding: 40px;
+  background: #f9f9f9;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.icon-placeholder {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.all-reservations-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #000;
+}
+
+.complete-listing-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dashboard-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.status-cell {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.status-approved {
+  color: #0f5132;
+  background-color: #d1e7dd;
+}
+
+.status-declined {
+  color: #842029;
+  background-color: #f8d7da;
+}
+
+.status-pending {
+  color: #664d03;
+  background-color: #fff3cd;
+}
