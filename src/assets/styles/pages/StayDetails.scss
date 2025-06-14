@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 100%;
-  max-width: 1120px;
+  max-width: 1150px;
   // max-inline-size: 1280px;
   margin: 0 auto;
 
@@ -49,6 +49,43 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+  }
+}
+// Housted By.....................
+.housted-by {
+  display: flex;
+  // width: 80%;
+  border-bottom: 1px solid $gray1;
+
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .host-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+
+    > div:first-child {
+      margin-bottom: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #222;
+    }
+    > div:last-child {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: #717171;
+    }
   }
 }
 

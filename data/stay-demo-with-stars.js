@@ -36,8 +36,8 @@ export const stays = [
       countryCode: 'US',
       city: 'Maui',
       address: 'Lahaina, HI, United States',
-      lat: 20.93792,
-      lng: -156.6917,
+      lat: -156.6917,
+      lan: 20.93792,
     },
     reviews: [
       {
@@ -178,8 +178,8 @@ export const stays = [
       countryCode: 'CA',
       city: 'Montreal',
       address: 'Montréal, QC, Canada',
-      lat: 45.52797,
-      lng: -73.54985,
+      lat: -73.54985,
+      lan: 45.52797,
     },
     reviews: [
       {
@@ -267,8 +267,8 @@ export const stays = [
       countryCode: 'PT',
       city: 'Porto',
       address: 'Porto, Porto, Portugal',
-      lat: 41.14834,
-      lng: -8.60154,
+      lat: -8.60154,
+      lan: 41.14834,
     },
     reviews: [
       {
@@ -510,8 +510,8 @@ export const stays = [
       countryCode: 'US',
       city: 'New York',
       address: 'Brooklyn, NY, United States',
-      lat: 40.68683,
-      lng: -73.92922,
+      lat: -73.92922,
+      lan: 40.68683,
     },
     reviews: [
       {
@@ -773,8 +773,8 @@ export const stays = [
       countryCode: 'ES',
       city: 'Barcelona',
       address: 'Barcelona, Catalunya, Spain',
-      lat: 41.38371,
-      lng: 2.16685,
+      lat: 2.16685,
+      lan: 41.38371,
     },
     reviews: [
       {
@@ -840,8 +840,8 @@ export const stays = [
       countryCode: 'ES',
       city: 'Barcelona',
       address: 'Barcelona, Catalonia, Spain',
-      lat: 41.38701,
-      lng: 2.17561,
+      lat: 2.17561,
+      lan: 41.38701,
     },
     reviews: [
       {
@@ -1105,8 +1105,8 @@ export const stays = [
       countryCode: 'ES',
       city: 'Barcelona',
       address: 'Barcelona, Catalunya, Spain',
-      lat: 41.38005,
-      lng: 2.15395,
+      lat: 2.15395,
+      lan: 41.38005,
     },
     reviews: [
       {
@@ -1369,8 +1369,8 @@ export const stays = [
       countryCode: 'HK',
       city: 'Hong Kong',
       address: 'Hong Kong, Kowloon, Hong Kong',
-      lat: 22.29937,
-      lng: 114.17546,
+      lat: 114.17546,
+      lan: 22.29937,
     },
     reviews: [
       {
