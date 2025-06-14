@@ -1,8 +1,9 @@
 .stay-highlights {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  padding: 32px 0;
+  border-bottom: 1px solid $gray1;
+
+  padding: 10px 0;
   font-size: 0.875rem;
 
   .highlight-host {
@@ -10,6 +11,7 @@
     align-items: flex-start;
     column-gap: 24px;
     gap: 16px;
+    padding-bottom: 5px;
 
     .highlight-icon {
       font-size: 1.5rem;

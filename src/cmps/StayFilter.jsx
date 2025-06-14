@@ -1,17 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { searchSvg } from '../../data/svgExport'
 import { AddGuests } from './AddGuests'
 import { SearchDes } from './SearchDes'
 import { FilterCalender } from './calender/FilterCaleder.jsx'
+import { setFilterBy } from '../store/stay.actions.js'
+import { useSelector } from 'react-redux'
 import { gu } from 'date-fns/locale'
 
-export function StayFilter({ filterBy, onSetFilterBy }) {
+export function StayFilter() {
+  const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   // const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
-
   const [openModal, setOpenModal] = useState('')
-  const [location, setLocation] = useState('')
+  const [locationToSearch, setLocationToSearch] = useState('')
   const [guest, setGuest] = useState('')
-  console.log(guest)
+
   const [range, setRange] = useState([
     {
       startDate: null,
@@ -19,9 +21,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
       key: 'selection'
     }
   ])
-
-  console.log(range)
-
+  
   function formatRangeDates(date) {
     const options = { month: 'short', day: 'numeric' }
     const dateToShow = date.toLocaleDateString('en-US', options)
@@ -51,7 +51,7 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         value = +ev.target.value
         break
     }
-    // setFilterToEdit({ ...filterToEdit, [field]: value })
+    // setFilterByToEdit({ ...filterByToEdit, [field]: value })
   }
 
   function openFilterModal(modal) {
@@ -121,10 +121,15 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
   }
 
 
+  function onSearchFilter(){
+    openFilterModal('')
+    setFilterBy({location: locationToSearch ,checkIn:range[0].startDate ,checkOut:range[0].endDate,guest })
+  }
 
 
   const isAnyInputActive = openModal ? true : false
 
+ 
   return (
     <section className={'stay-filter ' + (isAnyInputActive ? 'open' : '')}>
       <div className={'input-section flex column ' + (openModal === 'search' ? 'active' : '')}
@@ -132,8 +137,8 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <label>Where</label>
         <input
           type="text"
-          name="txt"
-          value={location}
+          name="location"
+          value={locationToSearch}
           placeholder="Search Destinations"
           onChange={handleChange}
           required
@@ -165,12 +170,14 @@ export function StayFilter({ filterBy, onSetFilterBy }) {
         <p className={guest ? 'chosen-value' : ''}>{guest ? guestSummary() : 'Add guests'}</p>
       </div>
 
-      <button className="search-btn">{searchSvg}</button>
+      <button className="search-btn" onClick={onSearchFilter}>{searchSvg}</button>
 
 
       {openModal === 'guests' && <AddGuests setGuest={setGuest} />}
       {openModal === 'search' && <SearchDes setLocation={setLocation} setOpenModal={setOpenModal} />}
       {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={handleSelect} setOpenModal={setOpenModal} openModal={openModal} />}
+      {openModal === 'search' && <SearchDes setLocation={setLocationToSearch} setOpenModal={setOpenModal} />}
+      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={setRange} setOpenModal={setOpenModal} openModal={openModal} />}
 
     </section>
   )
