@@ -11,6 +11,7 @@ import { handleButtonMouseMove, getRandomImageNumber } from '../services/util.se
 import { DetailsSummary } from '../cmps/details/DetailsSummary'
 import { DetailsReviews } from '../cmps/details/DetailsReview'
 import { DetailsMap } from '../cmps/details/DetailsMap'
+import { DetailsReservation } from '../cmps/details/DetailsReservation'
 import { DetailsMoreInfo } from '../cmps/details/DetailsMoreInfo'
 import { DetailsReviewSummary } from '../cmps/details/DetailsReviewSummary'
 
@@ -51,15 +52,8 @@ export function StayDetails() {
           <DetailsSummary summary={stay.summary} />
           <DetailsAmenities amenities={stay.amenities} />
         </div>
-        <div className="booking-sidebar">
-          <button
-            className="reserve-btn-details"
-            onClick={onReserve}
-            onMouseMove={handleButtonMouseMove}
-          >
-            Reserve
-          </button>
-        </div>
+
+        <DetailsReservation onReserve={onReserve} />
       </div>
       <DetailsReviewSummary stay={stay} />
       <DetailsReviews reviews={stay.reviews} stayId={stay._id} />

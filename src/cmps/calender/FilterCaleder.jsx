@@ -13,16 +13,19 @@ export function FilterCalender({ range, setRange, setOpenModal, openModal }) {
     // console.log(endDate.toLocaleDateString('he-IL'))
 
     function onOpenNextModal() {
-   if( openModal === 'calenderCheckIn')setOpenModal('calenderCheckOut')
-    else if (openModal === 'calenderCheckOut') setOpenModal('guests')
+        if (openModal === 'calenderCheckIn') setOpenModal('calenderCheckOut')
+        else if (openModal === 'calenderCheckOut') setOpenModal('guests')
     }
+
+    function onHandleChnage(ranges) {
+        setRange(ranges)
+        onOpenNextModal()
+    }
+
 
     return <section className={'calender ' + (range[0].startDate ? 'chosen' : '')} >
         <DateRange
-            onChange={item => {
-                setRange([item.selection])
-                onOpenNextModal()
-            }}
+            onChange={(ranges) => onHandleChnage(ranges)}
             showSelectionPreview={true}
             moveRangeOnFirstSelection={false}
             months={2}

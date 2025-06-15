@@ -2,7 +2,15 @@
 
 import { orderService } from '../services/stay/order.service.local.js'
 import { store } from './store.js' // adjust path if needed
-import { SET_ORDERS, SET_ORDER, ADD_ORDER, UPDATE_ORDER, REMOVE_ORDER } from './order.reducer.js'
+import {
+  SET_ORDERS,
+  SET_ORDER,
+  ADD_ORDER,
+  UPDATE_ORDER,
+  REMOVE_ORDER,
+  SET_HOST_ORDERS,
+  UPDATE_ORDER_STATUS,
+} from './order.reducer.js'
 
 // === Action Creators ===
 function _setOrders(orders) {
@@ -93,5 +101,30 @@ export async function removeOrder(orderId) {
   } catch (err) {
     console.error('Cannot remove order', err)
     throw err
+  }
+}
+// 6. Load host-specific orders by stay ID
+export function loadHostOrders(stayId) {
+  return async dispatch => {
+    try {
+      const orders = await orderService.query({ stayId })
+      // dispatch(_setHostOrders(orders))
+      // Note: Adjust for User Type   
+      dispatch({ type: SET_HOST_ORDERS, orders })
+    } catch (err) {
+      console.error('Failed to load host orders:', err)
+    }
+  }
+}
+// 7. Update order status (Approve / Decline)
+export function updateOrderStatus(orderId, newStatus) {
+  return async dispatch => {
+    try {
+      const updatedOrder = await orderService.updateStatus(orderId, newStatus)
+      // dispatch(_updateOrderStatus(updatedOrder))
+      dispatch({ type: UPDATE_ORDER_STATUS, updatedOrder })
+    } catch (err) {
+      console.error('Failed to update order status:', err)
+    }
   }
 }

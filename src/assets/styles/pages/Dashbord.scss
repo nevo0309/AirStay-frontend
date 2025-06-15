@@ -1,0 +1,213 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+
+  .custom-font {
+    font-family: "poppins";
+  }
+  .dashboard-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .dashboard-nav {
+    display: flex;
+    gap: 20px;
+
+    .nav-item {
+      cursor: pointer;
+      font-weight: 500;
+
+      &.active {
+        border-bottom: 2px solid black;
+      }
+    }
+  }
+
+  .dashboard-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    .reservations-section {
+      margin-top: 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+
+        .tab-btn {
+          border: 1px solid #ccc;
+          background: #fff;
+          color: #222;
+          padding: 8px 14px;
+          border-radius: 20px;
+          cursor: pointer;
+
+          &.active {
+            border-color: black;
+          }
+        }
+      }
+
+      .empty-state {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        background: #f9f9f9;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+
+        .icon-placeholder {
+          font-size: 32px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .all-reservations-link {
+        display: inline-block;
+        margin-top: 10px;
+        font-weight: bold;
+        text-decoration: underline;
+        color: #000;
+      }
+
+      .complete-listing-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #fff;
+        border: 1px solid black;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .guest-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .guest-text {
+      .guest-name {
+        font-weight: 600;
+        color: #222;
+      }
+
+      .guest-role {
+        font-size: 0.85rem;
+        color: #666;
+      }
+    }
+  }
+
+  .dashboard-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+
+    .footer-column {
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+
+.status-cell {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+
+  &.status-approved {
+    color: #28a745; // green
+  }
+
+  &.status-declined {
+    color: #dc3545; // red
+  }
+
+  &.status-pending {
+    color: #ffc107; // yellow
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.1s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .btn-approve {
+    background-color: #28a745;
+    color: white;
+
+    &:hover {
+      background-color: #218838;
+    }
+
+    &:focus {
+      outline: 2px solid #1e7e34;
+      outline-offset: 2px;
+    }
+  }
+
+  .btn-decline {
+    background-color: #dc3545;
+    color: white;
+
+    &:hover {
+      background-color: #c82333;
+    }
+
+    &:focus {
+      outline: 2px solid #bd2130;
+      outline-offset: 2px;
+    }
+  }
+}
