@@ -20,12 +20,11 @@ export const stays = [
     roomType: 'Entire home/apt',
     host: {
       _id: '622f3403e36c59e6164faf93',
-      fullname: 'Patty And Beckett',
+      fullname: 'Patty',
       location: 'Eureka, California, United States',
       about: 'Adventurous couple loves to travel :)',
       responseTime: 'within an hour',
-      thumbnailUrl:
-        'https://a0.muscache.com/im/pictures/542dba0c-eb1b-4ab3-85f3-94d3cc8f87a4.jpg?aki_policy=profile_small',
+      thumbnailUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
       pictureUrl:
         'https://a0.muscache.com/im/pictures/542dba0c-eb1b-4ab3-85f3-94d3cc8f87a4.jpg?aki_policy=profile_x_medium',
       isSuperhost: true,
@@ -46,7 +45,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fc004',
           fullname: 'Kiesha',
-          imgUrl: 'https://robohash.org/10711825?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '10711825',
         },
         txt: 'I had a great experience working with Patty and Peter.  Both were very attentive in sorting out the booking details and following up directly when I had questions.  I rented a 2 bedroom unit at the Westin Villas  in Maui and both the unit and property was absolutely amazing.  I think we had the best unit on the resort complete with 2 outdoor patios with direct access  to  the  beach.  I would HIGHLY recommend renting with Patty and Peter.',
@@ -57,7 +56,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb204',
           fullname: 'Chris',
-          imgUrl: 'https://robohash.org/70072865?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/10_ztpv4k.png',
           id: '70072865',
         },
         txt: 'Peter quickly responded to any questions I had before, and during the trip. Will use again, highly recommend. ',
@@ -68,7 +67,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb703',
           fullname: 'Kim',
-          imgUrl: 'https://robohash.org/71179725?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/10_ztpv4k.png',
           id: '71179725',
         },
         txt: 'We had the perfect location for a room, first floor right in front of the pool. The resort is beautiful, and the staff is so friendly! I enjoyed it so much, we talked about buying a timeshare ourselves.',
@@ -79,7 +78,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb37f',
           fullname: 'Tracy',
-          imgUrl: 'https://robohash.org/65593239?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/11_g4xzby.png',
           id: '65593239',
         },
         txt: 'Beautiful location. Patty & Peter were super helpful and easy to work with!',
@@ -90,7 +89,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb105',
           fullname: 'Duyen',
-          imgUrl: 'https://robohash.org/26215688?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/7_c2aonf.png',
           id: '26215688',
         },
         txt: 'Great spot for the kids and family and close to beach and everything at the resort. We will definitely be back.',
@@ -101,7 +100,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fabbe',
           fullname: 'Binh',
-          imgUrl: 'https://robohash.org/117390236?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '117390236',
         },
         txt: 'The unit and the Westin offer variety of amenities you can possibly ask for. Sofa beds are very comfortable to sleep in. But there is charge for ocean view upgrade. Overall, I highly recommend to book with Patty and Peter. ',
@@ -112,7 +111,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb4af',
           fullname: 'Samy',
-          imgUrl: 'https://robohash.org/15143517?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '15143517',
         },
         txt: "We spent a great week at Patty and Peter's place. The place was exactly as shown in the pictures, very comfortable, nice view, with all amenities. The resort is great with several pools, a long beach, many restaurants, and of course a lot of great activities all around.",
@@ -123,7 +122,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb87b',
           fullname: 'Breanne',
-          imgUrl: 'https://robohash.org/78173091?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/6_er0xrm.png',
           id: '78173091',
         },
         txt: 'This place was perfect for my family. We had plenty of room to spread out and the service could not have been any better',
@@ -134,7 +133,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb713',
           fullname: 'Kimberly',
-          imgUrl: 'https://robohash.org/100535039?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/5_j6vohl.png',
           id: '100535039',
         },
         txt: 'We love Westin Kaanapalli',
@@ -166,8 +165,7 @@ export const stays = [
       fullname: 'Angel',
       location: 'Montreal, Québec, Canada',
       about: '',
-      thumbnailUrl:
-        'https://a0.muscache.com/im/pictures/12be1141-74de-4f04-bf28-82c3ed589d11.jpg?aki_policy=profile_small',
+      thumbnailUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/6_er0xrm.png',
       pictureUrl:
         'https://a0.muscache.com/im/pictures/12be1141-74de-4f04-bf28-82c3ed589d11.jpg?aki_policy=profile_x_medium',
       isSuperhost: false,
@@ -188,7 +186,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fc058',
           fullname: 'Rowan',
-          imgUrl: 'https://robohash.org/81703602?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '81703602',
         },
         txt: 'The place was great, as was the host! I would recommend staying here.',
@@ -199,7 +197,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb274',
           fullname: 'Adriana',
-          imgUrl: 'https://robohash.org/64310987?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/5_j6vohl.png',
           id: '64310987',
         },
         txt: "J'ai adoré rester là. Très acceuillant.",
@@ -210,7 +208,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb87c',
           fullname: 'Emma',
-          imgUrl: 'https://robohash.org/23709900?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '23709900',
         },
         txt: "Angel est un hôte très sympa et arrangeant ! L'appartement est agréable à vivre et propre. Proche du métro et du centre ville. Nous avons passé un très bon séjour !",
@@ -221,7 +219,7 @@ export const stays = [
         by: {
           _id: '622f3408e36c59e6164fc082',
           fullname: 'Jeffery',
-          imgUrl: 'https://robohash.org/44882622?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '44882622',
         },
         txt: "Angel was warm and welcoming and has a beautiful apartment. I'd recommend his place to anyone visiting downtown Montreal!",
@@ -255,8 +253,7 @@ export const stays = [
       about:
         'Simples, muito comunicativa, mas de elevado sentido de responsabilidade, de organização e de confiança.\r\nGosto muito de contacto humano, sem o qual não me sinto estável. Adoro conhecer pessoas de culturas diferentes.\r\nFaço várias viagens, mas de curta duração, pois tenho necessidade de sentir o lar e a família. Por ser assim, tento fazer tudo para que os meus hospedes se sintam confortáveis como em suas casas.',
       responseTime: 'within an hour',
-      thumbnailUrl:
-        'https://a0.muscache.com/im/pictures/c9b876fc-b30e-4951-8f88-af9add00939e.jpg?aki_policy=profile_small',
+      thumbnailUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/11_g4xzby.png',
       pictureUrl:
         'https://a0.muscache.com/im/pictures/c9b876fc-b30e-4951-8f88-af9add00939e.jpg?aki_policy=profile_x_medium',
       isSuperhost: true,
@@ -277,7 +274,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb090',
           fullname: 'Lina & Alexis',
-          imgUrl: 'https://robohash.org/19177194?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/9_kiemiw.png',
           id: '19177194',
         },
         txt: "Mes parents ont passé un excellent séjour à Porto dans l'appartement de Maria qui est bien équipé, confortable et très propre. Il est situé au coeur du centre ville et tout est accessible à pied. Si vous venez en voiture, prévoir de se garer dans le parking souterrain payant juste à côté. Mes parents remercient chaudement Maria et son mari qui ont été adorables, notamment par leur accueil chaleureux.",
@@ -288,7 +285,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb4e7',
           fullname: 'Mario R.',
-          imgUrl: 'https://robohash.org/81211152?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '81211152',
         },
         txt: 'El apartamento es perfecto para una  estancia, esta perfectamente dotado para cubrir las necesidades de un viaje de recreo, situado perfectamente para acceder a pie a las zonas más interesantes de Oporto. María una perfecta anfitriona que te facilitará una inolvidable estancia en Oporto. Ha sido una gran experiencia.',
@@ -299,7 +296,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb110',
           fullname: 'Patricia',
-          imgUrl: 'https://robohash.org/16580426?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '16580426',
         },
         txt: "Thierry, Patricia, Anaïs et Manon,\r\nMaria et son mari nous attendaient avec gentillesse et sourires, Maria a toujours répondu à mes mails et SMS en cours de voyage.   Ils nous ont aidé à monter les valises, Il y avait une bouteille d'eau au frais, très appréciable ainsi que des petits gâteaux et une bouteille de vin dans le frigo...L'appartement était très propre rien ne manquait, conforme à la description, bien situé, nous avons tout fait à pieds ...Très à l'écoute de nos demandes Maria et son mari sont charmants, nous nous sommes sentis en famille, nous reviendrons et je recommande fortement ce logement ...Nous avons pu apprécier notre séjour sans tracas.  ",
@@ -310,7 +307,7 @@ export const stays = [
         by: {
           _id: '622f3401e36c59e6164fab5b',
           fullname: 'Ingrid',
-          imgUrl: 'https://robohash.org/40501338?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/9_kiemiw.png',
           id: '40501338',
         },
         txt: 'Thanks Maria for your warm welcome. The appartement was really clean. It has everything that we needed for our stay and is really well located. It was easy to park for free near the appartement. Thanks!',
@@ -321,7 +318,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb27c',
           fullname: 'Marie Odile',
-          imgUrl: 'https://robohash.org/110925120?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '110925120',
         },
         txt: 'L appartement de Maria est tres bien situe, propre et surtout tres calme. Il ne manque rien . Maria nous a tres bien recus . Je recommande cet appartement.',
@@ -332,7 +329,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbd3c',
           fullname: 'Anne',
-          imgUrl: 'https://robohash.org/23040000?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '23040000',
         },
         txt: 'Maria is a great host and we loved this apartment! It was bright, clean, airy and well-equipped and Maria gave us a thorough introduction to how everything worked. The bed was comfortable (it is not made for tall people though) and nights were quiet as both living room and bedroom are facing the backyard, not the street. Only in the morning we could not sleep in as there was loud construction noise during the day. The metro station is only a few minutes walk away and the city center is at walking distance. We also got a sweet welcome with Portuguese wine.',
@@ -343,7 +340,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbd39',
           fullname: 'Armelle',
-          imgUrl: 'https://robohash.org/113337848?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '113337848',
         },
         txt: "Appartement très bien situé, tout le vieux porto se fait à pied. Très propre, indépendant et fonctionnel. Metro au pied en venant de l'aéroport, ligne directe 15 minutes environ.\nRestaurants et épiceries typiques au pied de l'immeuble. Climatisation et télé dans toutes les pièces, calme et quartier pittoresque. À recommander pour 3 ou 4. Accueil simple, gentil et efficace comme Maria la propriétaire.\n",
@@ -354,7 +351,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbc52',
           fullname: 'Domingo',
-          imgUrl: 'https://robohash.org/114367498?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '114367498',
         },
         txt: 'apartamento bien situado, agradable, bonito, muy limpio y con una anfitriona maravillosa dispuesta a resolver cualquier inconveniente que se pueda presentar. lo recomiendo sin lugar a dudas.\ngracias Mariapor su gentileza',
@@ -365,7 +362,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbb3f',
           fullname: 'Estelle',
-          imgUrl: 'https://robohash.org/123999116?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/9_kiemiw.png',
           id: '123999116',
         },
         txt: 'Appartement très propre et très bien situé, bien agencé. Quartier très vivant mais appartement calme car ne donne pas sur la rue. Nous avons passé un très bon séjour chez Maria qui nous a très bien accueilli.',
@@ -376,7 +373,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb06f',
           fullname: 'Alfredo Julio Leandro',
-          imgUrl: 'https://robohash.org/148979666?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/7_c2aonf.png',
           id: '148979666',
         },
         txt: 'Apartamento agradable, muy limpio y muy bien equipado, en zona tranquila pero accesible para llegar a todos lados de a pie. Maria y Arturo nos recibieron con un rico vino del Douro y galletitas y muy buenas recomendaciones para pasear y comer.',
@@ -387,7 +384,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb78f',
           fullname: 'Nataliia',
-          imgUrl: 'https://robohash.org/137603514?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/11_g4xzby.png',
           id: '137603514',
         },
         txt: 'Нам очень понравилась квартира,светлая,уютная,на 3-м этаже,с большим балконом,в квартире есть все самое необходимое,стиральная машина,утюг,кровати очень удобные,красивое постельное белье,вся обстановка в квартире сделана с душой,все время прибывания чувствовали себя как дома.\nМария по приезду подарила нам бутылку вина из долины реки Дору,из красивых бокалов мы его с удовольствием выпили,спасибо за презент.\nВ этой маленькой уютной квартире -3 телевизора!!!!Смотреть было некогда,наслаждались красивым городом и окрестностями Порту.',
@@ -398,7 +395,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fad62',
           fullname: 'Liz',
-          imgUrl: 'https://robohash.org/144054479?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '144054479',
         },
         txt: 'Muy contentos con todo. El piso estaba bastante cerca del centro, Maria y su marido estaban incluso antes de la hora de nuestra llegada. El piso esta muy bien equipado: cafetera, botiquín, lavadora etc. Super super limpio todo y las camas muy comodas y acogedores. Y al ser un piso interior, no se oia nada de ruido. Recomendable!',
@@ -409,7 +406,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb1c3',
           fullname: 'Ariadne',
-          imgUrl: 'https://robohash.org/151785573?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '151785573',
         },
         txt: 'Eu e minha amiga ficamos um mês no apartamento e foi uma otima experiencia!\nMuito bem localizado, perto de tudo! Não tivemos nenhuma dificuldade em encontrar o local, que fica a minutos da estação do metrô e é muito perto da região central.\nÓtima infraestrutura, limpeza e organização.\nFomos muito bem recebidas e bem auxiliadas pela Maria, que com certeza é uma ótima anfitriã!\nRecomendo muito a estadia, não poderia ter sido melhor!',
@@ -420,7 +417,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb5f5',
           fullname: 'Bruno',
-          imgUrl: 'https://robohash.org/169584809?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '169584809',
         },
         txt: 'Respostas sempre rápidas; excelente recepção ; sempre simpática e disponível.',
@@ -431,7 +428,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fad10',
           fullname: 'João',
-          imgUrl: 'https://robohash.org/43281546?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '43281546',
         },
         txt: 'Clean, quiet and centrally located. Very welcoming host as well.',
@@ -442,7 +439,7 @@ export const stays = [
         by: {
           _id: '622f3408e36c59e6164fc075',
           fullname: 'Alcides',
-          imgUrl: 'https://robohash.org/22956972?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '22956972',
         },
         txt: 'O Espaço de Maria é de extremo bom gosto. Tudo extremamente limpo, pratico e organizado nos mínimos detalhes.  Boa localização perto de tudo.  Sem falar na Simpatia e disponibilidade da Maria que com suas dicas tornou nossa estadia em Porto melhor do que esperávamos. Recomendadíssimo !',
@@ -453,7 +450,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbad8',
           fullname: 'Miguel Angel',
-          imgUrl: 'https://robohash.org/3708225?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/11_g4xzby.png',
           id: '3708225',
         },
         txt: 'Alojamiento coqueto y acogedor, muy limpio y bien ubicado, tiene 2 habitaciones y todo lo necesario para poder pasar unos días en Oporto, buena ubicación cerca de Sta Catarina. Nos ha gustado mucho la estancia, la atención de María inmejorable. Muchas gracias por su atención y amabilidad',
@@ -464,7 +461,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbede',
           fullname: 'Alessandro',
-          imgUrl: 'https://robohash.org/38271990?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '38271990',
         },
         txt: 'buena ubicación, piso acogedor, reformado, excelente servicio y recomendaciones',
@@ -520,7 +517,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbfd2',
           fullname: 'Nicolas',
-          imgUrl: 'https://robohash.org/4523027?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '4523027',
         },
         txt: "Shaila's place is amazing! It's new, it's clean and it's big! And Shaila is very accommodating, we found everything we needed (cooking, coffee) and more. Given that we were the first guests she hosted through airbnb I can say that she did an amazing job! \r\n",
@@ -531,7 +528,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb048',
           fullname: 'Jeff',
-          imgUrl: 'https://robohash.org/6443424?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '6443424',
         },
         txt: 'Great, quiet place to stay. It is great having Shaila just upstairs to answer any questions, and especially to give great tips on places to go. ',
@@ -542,7 +539,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fba55',
           fullname: 'Carla',
-          imgUrl: 'https://robohash.org/6121036?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/11_g4xzby.png',
           id: '6121036',
         },
         txt: "Shaila and Alex are wonderful hosts really, they helped us every time we needed with directions, the internet, the supermarket, the post office !!! (thank you guys !!!).The place and the neighbord are great, 8 blocks far from the apartment you have the subway and 30 min. later you are in the island, we moved early in the morning, late at night (sometimes we came back at 2am) and everything turned out great.Definetly I would come back to their apartment, It's bigger than ours in Argentina !!! I look forward to stay there again and, next time, go out with you guys and have a beer or anything.\r\nBye !!! - Guido and Carla - ",
@@ -553,7 +550,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbf76',
           fullname: 'Dan',
-          imgUrl: 'https://robohash.org/6460525?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '6460525',
         },
         txt: "Shaila and Alex were incredibly accommodating and me and my girlfriend enjoyed our stay thoroughly. Highly recommended. The place was very private and homely. I didn't really know anything about New York and was nervous about staying in bed stuy but it was safe and friendly everywhere I went. Very easy to get to the airport and manhattan by train.",
@@ -564,7 +561,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbe9d',
           fullname: 'Ariane',
-          imgUrl: 'https://robohash.org/6825718?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '6825718',
         },
         txt: 'Great place to stay in Brooklyn! Alex gave us a really useful list of nice restaurants and coffee places near the place (We are very happy to have discovered, the restaurant "Saraghina", thanks to Alex\'s map!).  The apartment is vast, furnished with taste and very convenient. We highly recommend!',
@@ -575,7 +572,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fad91',
           fullname: 'Ilka',
-          imgUrl: 'https://robohash.org/5823882?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '5823882',
         },
         txt: 'I can recommend to everyone to come to this beautiful apartment, Shaila and Alex are great hosts and the neighbourhood is very friendly everywhere we go.\r\nIt really felt like home.',
@@ -586,7 +583,7 @@ export const stays = [
         by: {
           _id: '622f3401e36c59e6164fab81',
           fullname: 'Kristy',
-          imgUrl: 'https://robohash.org/5729991?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '5729991',
         },
         txt: "My sister and I loved staying here! The apartment is very spacious and recently renovated so it looks amazing. The kitchen has everything you need with Alex and Shalia stocking it with a few basics. The neighbourhood is a little shabby, especially compared to the home we stayed in. We were told by some people in Manhattan that the neighbour of Bed-Stuy used to be very dangerous and just to be careful walking around at night. Walking from the subway after dark was a little daunting but we remained safe. We did catch a cab a few times from Manhattan as it was very late. Overall, it was a positive experience with Alex and Shalia being very helpful, even going out of their way to let us store our luggage at Shalia's work the day we were to fly out. They were great hosts.",
@@ -597,7 +594,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb785',
           fullname: 'Barbara',
-          imgUrl: 'https://robohash.org/6063814?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/5_j6vohl.png',
           id: '6063814',
         },
         txt: 'We just met Alex when we checked in, but anyhow he had been a very friendly and helpful host. He was reachable anytime and answered my mails prompt.\r\nThe apartment was great! It was really beautiful and big. It has a perfectly equipped kitchen and there are also a few basics for breakfast and cooking. The bed is very comfortable. It is not that soundproofed as we are accustomed to (the steps from upstairs waked me every day - my son slept well, he did not hear it), but I think that is normal for american houses. But apart from this it is very quiet.\r\nThe neighbourhood is great! It is very authentic, people are friendly and helpful if required, no problems even late at night. We loved staying there!\r\nIn any case: apartment, host and neighbourhood are high recommended! If we are in New York again, we certainly return to this place!',
@@ -608,7 +605,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb515',
           fullname: 'Gloria',
-          imgUrl: 'https://robohash.org/97251?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/1_i55inx.png',
           id: '97251',
         },
         txt: 'Hello! \n\nWe just spent 5 days in the big apple and we drove in to this Brooklyn location.  The host where incredibly attentive and just wonderful, the apartment spotless, hip & modern and really comfortable. \n\nDo not be intimidated by the transitioning neighborhood as we encountered that many residents are very friendly and helpful (directions) and this particular street has a real interest in making a real change hence empowering their community.\n\nThe subway is a little ways (12 to 15 min.) walk. We would use our vehicle to drive to the subway station (there are two corresponding)  and park nearby to facilitate the to and from.  If you need quick access to the subway at all hours of the day and night this may not be the place for you.\n\nThe apt. is an excellent value  for the money (as per  many  manhattan locations offer around  the same nightly  $$ rate but have to share their apt ).\n\n\n\n',
@@ -619,7 +616,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb079',
           fullname: 'Javier',
-          imgUrl: 'https://robohash.org/7055720?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/9_kiemiw.png',
           id: '7055720',
         },
         txt: 'We really had a wonderful time in NYC thanks to Alex’s house. It’s just as big, beautiful and clean as it seems in the pictures. Alex has an incredible apartment in the basement that makes you feel like home after being out all day knowing the big city. All the furniture and the kitchen appliances are new.\r\n\r\nThe location is perfect for visiting Brooklyn and Manhattan (only 15-20 to Brooklyn Bridge and South Manhattan or 25-30 min to Times Square in the underground).\r\n\r\nAlso, Alex gave us some good advices the first day for having all we needed in the neighbourhood. Don’t miss Saraghina’s brunch (10 minutes walking from the house)! He even let us to keep our luggage in the house until we left to the airport in the evening on our last day in the city.',
@@ -630,7 +627,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fabc4',
           fullname: 'Ivan',
-          imgUrl: 'https://robohash.org/8866660?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/7_c2aonf.png',
           id: '8866660',
         },
         txt: 'The appartment was really clean, pretty spacious and kitchen was very well equipped! Its totally in line with all the information posted. \r\n\r\nAlex was very nice host, even allowed us to keep the luggage  after check out as we had a flight in the evening. Thank you once again for that! \r\n\r\nThe neighboorhood itself was safe, we had no issues at all, however I`d prefer staying   in Brooklyn districts closer to Manhattan area next time as  we were travelling to Midtown up to 1h. Being a citizen of the huge city too (Moscow, Russia) , underground is not our favorite place to be  :) \r\n\r\nOverall , it was a great stay. \r\n\r\n\r\n\r\n',
@@ -641,7 +638,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fada2',
           fullname: 'India',
-          imgUrl: 'https://robohash.org/228580?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '228580',
         },
         txt: "Communication with Alex was spot on.  He happily answered any questions and made it easy for me to arrive late at night and went above and beyond to help me have a good stay. \r\nThe apartment has been tastefully refurbished.  Extremely clean, and with all you could need for cooking.  The bed is so comfy.  The apartment is peaceful at night and I slept so well.   Some noise travels from Alex' apartment upstairs but it is only a little during the day.\r\nThe area is a bit out of the main hub of Williamsburg and Bushwick but everything is easily accessible with a short walk or the subway about 8 mins walk away.\r\nAlex left me a list of great stores, cafes and restaurants in the immediate area.  \r\nSome people may be concerned about the area at face value as it is a white minority but I felt safe at all times.  People seemed friendly.\r\n\r\n",
@@ -652,7 +649,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fb9f9',
           fullname: 'Pamela',
-          imgUrl: 'https://robohash.org/8145538?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/1_i55inx.png',
           id: '8145538',
         },
         txt: 'washerher an amazing stay, we charm your apartment and were very friendly. Thank you for all your attentions.',
@@ -663,7 +660,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fae8c',
           fullname: 'Lindsay',
-          imgUrl: 'https://robohash.org/979464?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/6_er0xrm.png',
           id: '979464',
         },
         txt: "Shaila and Alex are wonderful hosts - very accommodating, friendly, and easy to communicate with. We found it fairly easy to get around the city from Bed-Stuy, even with the weekend subway schedule. The apartment is lovely, bright, and very clean, and overall it was a pleasure to stay for a few nights. It's been recently renovated and thoughtfully decorated - we felt quite comfortable during our stay and appreciated the art and other nice touches throughout. I'd highly recommend staying with Shaila and Alex.",
@@ -674,7 +671,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbf31',
           fullname: 'Nadia',
-          imgUrl: 'https://robohash.org/1133198?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/1_i55inx.png',
           id: '1133198',
         },
         txt: 'Great apartment, really spacious & has a lovely homely feel to it. Alex & Shaila were very helpful & welcoming, bed was really comfortable, good transport links, only a 20 min subway ride into manhattan, the area is really nice & quiet, unlike manhattan.\r\n\r\nThanks Alex & Shaila for having us ! Enjoy the Gin !! ',
@@ -685,7 +682,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbdab',
           fullname: 'Barbara',
-          imgUrl: 'https://robohash.org/8310069?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '8310069',
         },
         txt: 'The apartment is spacious and well furnished, the kitchen very well equipped and the bed very confortable. Sheila and alex were friendly and the comunication with them was easy.the neighborhood is very nice with typical town house, and very quite. Also the people Who lives there was very kind and helped us on many occasion. \nDefinitely raccommend you to spend your holidays in NY in the lovely apartment of sheila&alex! ',
@@ -696,7 +693,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb2c1',
           fullname: 'Chris',
-          imgUrl: 'https://robohash.org/9935301?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/5_j6vohl.png',
           id: '9935301',
         },
         txt: 'We had a great time staying with Alex & Shaila. The apartment is just as depicted in the photos. Lots of space and very comfortable.  The house is located really close to buses and subway which was very convenient. The neighbourhood is fine with a couple of nice places to eat nearby.\r\n\r\nShaila and alex were really friendly and easy to communicate with if needed.  \r\n\r\nWe stayed for 2 months and would recommend it to others who are looking for a place in Brooklyn.',
@@ -707,7 +704,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb8fc',
           fullname: 'Melody',
-          imgUrl: 'https://robohash.org/11278447?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '11278447',
         },
         txt: 'Upon arriving, Alex was very helpful giving directions to the location. , he gave us a brief overview of everything, and let us settle in. It was a very cozy place to come back to after long days out exploring New York. The subways are very close. We preferred heading up to broadway to catch our trains (Depending where we were going) only because it was much more pleasant on sunny days to be above grounds if we could. It was great to have all amenities available, and at such a reasonable price.The only thing I will mention is that if you do plan on sleeping in- it might not happen as they do have a newborn who you can sometimes hear in the morning if you are a light sleeper.\r\nOverall,  I would recommend you stay at Alex & Shailas airbnb! It was a great and pleasant environment.',
@@ -718,7 +715,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb41e',
           fullname: 'Carlos',
-          imgUrl: 'https://robohash.org/13281573?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '13281573',
         },
         txt: 'We felt very happy those days at the home of Alex and Shaila. It is a very warm and comfortable place, it was like being at home.',
@@ -729,7 +726,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb087',
           fullname: 'Sergei',
-          imgUrl: 'https://robohash.org/13487808?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '13487808',
         },
         txt: 'Great host. Very clean, nice place and friendly people. Thanks again!',
@@ -783,7 +780,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbebb',
           fullname: 'Rafaela',
-          imgUrl: 'https://robohash.org/65117711?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/11_g4xzby.png',
           id: '65117711',
         },
         txt: "Host: Marian gave us a warm welcome and treated us kindly from the very beginning. She offered us help, told us what to visit and even put water, milk and orange juice in the fridge! We could have breakfast at her place which was perfect because she has a little sweet balcony! \r\nLocation: calmly situated in a side street, very near to the Placa Catalunya, the Rambla and the gothic area of Barcelona (very beautiful:)) so you have the old cultural center as well as all the restaurants and bars just nearby.\r\nHouse/Room: the appartment is not a huge, but I think you have everything you need (beautiful sitting room, balcony, kitchen) in it. You have to share the appartment with Marian so pay attention and don't be too loud in the evening!!\r\ndisadvantage: the heat is terrible in summer and there is no air-condition..\r\n\r\nI would overall recommend it to everybody!! But if you want to party and stay up late, take a hostel or another appartment.",
@@ -794,7 +791,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164faf56',
           fullname: 'Pauline',
-          imgUrl: 'https://robohash.org/50303773?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/6_er0xrm.png',
           id: '50303773',
         },
         txt: "Nous avons passé un bon séjour, l'appartement est très bien situé. La chambre est agréable et plus grande que sur la photo. Seul point négatif pas de volets dans la chambre. ",
@@ -828,8 +825,7 @@ export const stays = [
       about:
         'Mi nombre es Isabel, pero me llamo Isa. Nací en Vigo (Galicia). Con 20 años me fuí a vivir a Madrid con intención de ser actriz; ahora resido en Barcelona desde los 28. Soy una joven de 43 años, cantante de Jazz. Me gusta salir, pero también quedarme en casa a leer o ver alguna buena película.\r\nHe compartido piso muchos años, pero estas serán mis primeras experiencias como anfitriona.\r\n\r\n¡Sed bienvenidos!\r\n',
       responseTime: 'within an hour',
-      thumbnailUrl:
-        'https://a0.muscache.com/im/pictures/72a579ce-37d7-466e-9c25-9876ee8de037.jpg?aki_policy=profile_small',
+      thumbnailUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/7_c2aonf.png',
       pictureUrl:
         'https://a0.muscache.com/im/pictures/72a579ce-37d7-466e-9c25-9876ee8de037.jpg?aki_policy=profile_x_medium',
       isSuperhost: false,
@@ -850,7 +846,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb95e',
           fullname: 'Pierre',
-          imgUrl: 'https://robohash.org/58999873?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/5_j6vohl.png',
           id: '58999873',
         },
         txt: 'Una instancia muy céntrica en uno de estos edificios antiguos del Barri Gotic. No es poco haber conseguido estars en el centro de Barcelona en la misma semana del Mobile World Congress. Isabel es un encanto de anfitrión.',
@@ -861,7 +857,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fafa6',
           fullname: 'Isabelle',
-          imgUrl: 'https://robohash.org/26247027?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/6_er0xrm.png',
           id: '26247027',
         },
         txt: 'The host canceled this reservation 2 days before arrival. This is an automated posting.',
@@ -872,7 +868,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbaf2',
           fullname: 'Hélène',
-          imgUrl: 'https://robohash.org/46103953?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/6_er0xrm.png',
           id: '46103953',
         },
         txt: "Chambre très bien située et hôtesse très sympathique. Merci encore Isabel pour l'accueil !",
@@ -883,7 +879,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbdc3',
           fullname: 'Daniel',
-          imgUrl: 'https://robohash.org/25801559?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/11_g4xzby.png',
           id: '25801559',
         },
         txt: "Sheets weren't clean... Shower has very low water pressure. Room is only good for sleeping. It's in a good location but that's about it. Isabel could've provided more information about what's around the house during check in... Overall just decent enough to sleep",
@@ -894,7 +890,7 @@ export const stays = [
         by: {
           _id: '622f3401e36c59e6164fabad',
           fullname: 'Maria Isabel',
-          imgUrl: 'https://robohash.org/60712702?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '60712702',
         },
         txt: "Isabel est accueillante. L'appartement est charmant, correspond aux images. Très bien situé, à côté de Palau de la musica, dans un vieil immeuble plein de charme un peu désuet. Amateurs de confort et décor \"tendance\" s'abstenir. Chez Isabel on se trouve dans une authentique ambiance d'artiste. Merci beaucoup, je garderai le souvenir de cet accueil lié aux souvenirs de Barcelone.",
@@ -905,7 +901,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb967',
           fullname: 'Aitana',
-          imgUrl: 'https://robohash.org/53206905?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/5_j6vohl.png',
           id: '53206905',
         },
         txt: 'Es un piso con mucho encanto, muy tranquilo y en un lugar inmejorable. La anfitriona, Isabel, es amable y facilitadora. El piso es una construcción antigua, lo que le da un ambiente genial pero también hace que el agua de la ducha salga con poquísima presión y sea un poco incómodo a veces. A parte de esto, si tuviese que poner alguna queja sería la hora del chekout, ya que las diez de la mañana me parece un poco pronto. \r\nEn conjunto tuvimos una muy buena experiencia y repetiríamos sin duda.',
@@ -916,7 +912,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbb88',
           fullname: 'Valentina',
-          imgUrl: 'https://robohash.org/69740054?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/10_ztpv4k.png',
           id: '69740054',
         },
         txt: "Isabel was a wonderful host even if she was not there. She was in touch with me by mobile constantly. Thank you so much!\r\nThe house it's nice and was very clean and quite in the night.Perfect location. All you need for few days in Barcelona!",
@@ -927,7 +923,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb715',
           fullname: 'Jeremy',
-          imgUrl: 'https://robohash.org/53581405?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '53581405',
         },
         txt: "Isabel's place was perfect. It was cozy, clean and quiet. She was a very gracious host and was always there to answer my questions about getting around Barcelona. ",
@@ -938,7 +934,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb0b2',
           fullname: 'Mei-Lin',
-          imgUrl: 'https://robohash.org/40994614?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '40994614',
         },
         txt: 'Great room with lots of sunlight in a charming apartment. Fantastic location.',
@@ -949,7 +945,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb1f7',
           fullname: 'Taneli',
-          imgUrl: 'https://robohash.org/8010736?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/11_g4xzby.png',
           id: '8010736',
         },
         txt: 'Isa was a kind and gracious host with a lovely appartment in a centric and vibrant area. We loved our stay and surely will visit again.',
@@ -960,7 +956,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb623',
           fullname: 'Natasha',
-          imgUrl: 'https://robohash.org/25592253?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '25592253',
         },
         txt: 'SUPER cute place with lots of charm!! Perfect for my first trip to Barcelona:) Amazing location! Gracias Isabel for helping me find last minute accommodations! \r\n',
@@ -971,7 +967,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fc013',
           fullname: 'Elizabeth',
-          imgUrl: 'https://robohash.org/78467282?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '78467282',
         },
         txt: "Isabel was a great host. She met me at the local bar where she worked and took me to her home a street away. The flight of stairs up to here place was a bit daunting but I can see why she lives up there.. It was beautiful! The room and whole place was clean, tidy and very welcoming. I saw Isabel twice, when I arrived and when I left, but it was perfect. \n\nThe facilities were great. The pressure in the shower was weak but it didn't bother me one bit. It is a bit noisy being in the heart of the city, but I can imagine it would be anywhere in this area. It was lovely to have a balcony, and the location was very convenient. Thanks.x",
@@ -982,7 +978,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb0af',
           fullname: 'Monika',
-          imgUrl: 'https://robohash.org/11966400?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/10_ztpv4k.png',
           id: '11966400',
         },
         txt: 'Isabel was good host. Location is perfect.',
@@ -993,7 +989,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb23a',
           fullname: 'Margaux',
-          imgUrl: 'https://robohash.org/78589438?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/11_g4xzby.png',
           id: '78589438',
         },
         txt: 'Super piso, super barrio! \r\nThe guest welcomed us well.',
@@ -1004,7 +1000,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb21c',
           fullname: 'Elisabeth',
-          imgUrl: 'https://robohash.org/4965921?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '4965921',
         },
         txt: 'It was really nice to stay at Isabels place. She is very uncomplicated and nice and the flat is super located for exploring bcn. For me it was perfect!:)',
@@ -1015,7 +1011,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbd7f',
           fullname: 'Ingrid',
-          imgUrl: 'https://robohash.org/6058273?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '6058273',
         },
         txt: "IT was the perfect stay to Discover the city-a super location with sometimes noisy tourists (even we we're tourists but hopefully not so noisy) but that's part of the location i guess :-). We loved the colourful house and we Will Be go back for a next stay. thank you!",
@@ -1026,7 +1022,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb1ac',
           fullname: 'Liliane',
-          imgUrl: 'https://robohash.org/27060110?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '27060110',
         },
         txt: "Isa is a very lovely, sensitive, artistic and gorgeous person. She is respectful of one's privacy but always ready to give support when asked upon. Be it in spoken or written form I always got my answers from her within no times. She also proofed to be very flexible in terms of arrival and departure times which I appreciated a great deal. If you are a fan of jazz music (like I am), make sure to double check ahead of time about her current concert dates so as not to miss your hostess on stage like I did (grumble ;-)).\n\nThe room I occupied was the smaller one of two that Isabel rents out. So if her flat is fully rented out there can be a maximum of 4 guests plus your hostess in the flat, which can cause some bathroom jam, especially during the hot and humid summer times, when the need for a cool shower is inherent to everyone's desire. \nMy room was as depicted. If you plan on using it for double occupancy, I recommend taking Isa's larger room (unless the two of you are very much in love and want to cuddle up close ;-)). Also, if you need a table for writing, ask for the larger room as well, which comes along with one.\nThe flat itself is absolutely enchanting and furnished with love and an artistic eye to details. It's location is a dream for touristic explorations with anything within walking distance. \nTherefore, I can easily recommend both Isabel and her flat to anyone wishing to immerge himself into the local customs and get a good doze of what it is like \"to live like a true Barcelonian\".  \n\nQuerida Isa, muchas gracias por tu hospedalid génial! Volveré a ciencia cierta!\nSaludos y besos\nLiliana",
@@ -1037,7 +1033,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb8e1',
           fullname: 'Murat',
-          imgUrl: 'https://robohash.org/35246459?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '35246459',
         },
         txt: "The apartment is very centrally located, in the heart of the gothic part of the city and a couple of blocks from the Placa de Catalunya which makes transportation and sightseeing very easy. It's a 20 minute walk from the beach which is a plus. It's located in a very old building on the top floor, so it is rather stuffy and warm in the apartment. The room overlooks a very narrow street/alley so it's rather dark and it's easy to hear the noise coming from the street and the neighboring apartments. There are a few other rooms in the house that are being rented out, so other people will be staying in the house which makes it a necessity to lock the room when you leave the apartment. \n\nIt's important to note that this place has a very strict check out time. On our last day, we had an evening flight but had to check out in the morning. When we asked if we could check out late, Isa told us to take our stuff to the train station and use the lockers there, but the train station does not have lockers. We ended up renting a locker  at a place called \"Barcelona lockers\". That, I would say changed all the plans for the last day. \n\n",
@@ -1048,7 +1044,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbcb4',
           fullname: 'Mina',
-          imgUrl: 'https://robohash.org/121053?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/4_xarf4n.png',
           id: '121053',
         },
         txt: "I was happy to experience Isabels home as described here. It was spacious, bright and original, with lovely colours and beautiful artwork surrounding me in every room. Isabel is a creative, sensitive and respectful person, with an open mind- yet she has the necessary boundaries that are required to organize an environment where so many different people are going to stay and hopefully enjoy. \nThe street itself is very lively, but the noises didn't bother me at all as i could easily block them out with earplugs. The location could not have been more sentral, still it's on \"the right side\" of the Rambla, where you can find more independent shops, restaurants, cafes and bars compared to the same leveled streets towards Raval. It is an old and very charming building, so if you want an minimalistic experience with cold, stainless steel and elevators this is not the place for you! And perhaps you are not the right person for this place either ;) I had to leave earlier due to illness, and was so sorry i couldn't stay throughout the whole month as planned. Hope to be seeing Isabel and her welcoming surroundings again one day ",
@@ -1059,7 +1055,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb85f',
           fullname: 'Jessy',
-          imgUrl: 'https://robohash.org/2935800?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '2935800',
         },
         txt: 'Isabel was an amazing host. She is incredible and super considerate. The apartment was by no means the best location in Barcelona, I walked everywhere and never needed a map or a taxi. Arriving late at night was always fine and there was never any disturbing street noise. The block is super cute with awesome little shops that are open during the day. Best neighborhood to be in and incredible city ! Muchísima gracias Isabel, estas invitada a visitar Los Ángeles, todo fue increíble !❤️',
@@ -1093,8 +1089,7 @@ export const stays = [
       about:
         'Hello I am Christophe, I am French and live in Barcelona since 8 years now. I know a reasonably well the city and I will be happy to advise you on places to visit, restaurant or where to have a nice drink. \r\n\r\nI work in sales and travel also a lot so I know the meaning of "feel like at home" when you travel somewhere.\r\n\r\nI really hope you will enjoy your stay in Barcelona.',
       responseTime: 'within an hour',
-      thumbnailUrl:
-        'https://a0.muscache.com/im/pictures/5d8f894f-0909-49f5-a1d1-6c7aabcf4a34.jpg?aki_policy=profile_small',
+      thumbnailUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/11_g4xzby.png',
       pictureUrl:
         'https://a0.muscache.com/im/pictures/5d8f894f-0909-49f5-a1d1-6c7aabcf4a34.jpg?aki_policy=profile_x_medium',
       isSuperhost: false,
@@ -1115,7 +1110,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fadf9',
           fullname: 'Mandy',
-          imgUrl: 'https://robohash.org/59331613?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/7_c2aonf.png',
           id: '59331613',
         },
         txt: 'I had a marvellous time staying in Barcelona and felt very at home x the apartment is fab with two roof terraces and the hospitality is even better.\nCapitaine checked I was ok regularly on my way to the apartment and gave transport, restaurant, general advice all the time I was there. I now have flat envy!! ',
@@ -1126,7 +1121,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb360',
           fullname: 'Serban',
-          imgUrl: 'https://robohash.org/60298523?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '60298523',
         },
         txt: 'My stay here was great. Just like the listing shows, the apartment is very tidy and has two amazing rooftop patios. Its close to a lot of tourist attractions and right next to the subway. The neighborhood is calm and quiet.',
@@ -1137,7 +1132,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fba74',
           fullname: 'Stephanie',
-          imgUrl: 'https://robohash.org/14624382?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/9_kiemiw.png',
           id: '14624382',
         },
         txt: 'Die Unterkunft bei Christoph war großartig! Alles so, wie auf den Fotos dargestellt. Meine Tochter und ich haben uns so wohlgefühlt, dass wir gar nicht wieder nach Hamburg zurück fliegen wollten. Christoph war total nett, zuverlässig und ein hilfsbereiter Gastgeber bei allem, was uns am Herzen lag. Wir werden gerne wiederkommen, Barcelona muss man einfach öfter erleben!',
@@ -1148,7 +1143,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb1c5',
           fullname: 'Joyce',
-          imgUrl: 'https://robohash.org/77290010?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '77290010',
         },
         txt: 'It was my first time in Spain and first time using airbnb and everything went amazing! Pretty good area for a lot of tourist attractions and the place itself is so clean and nice (his balconies have good views and are very pretty). My friends loved this place as well. Also, Capitaine is an amazing host, always asked me if I needed anything, offered a lot of stuff and even suggested me bars I can go. I would definitely want to stay here again if I visit Barcelona again :)',
@@ -1159,7 +1154,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb6ec',
           fullname: 'Mariella',
-          imgUrl: 'https://robohash.org/2283684?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/10_ztpv4k.png',
           id: '2283684',
         },
         txt: 'We had a great time staying in Christophe´s apartment. Christophe is a really nice and fun guy and was always extremely helpful and caring. The apartment is great, especially the two huge terraces. The room is perfect for 2 and has its own access to one of the terraces. There is no wardrobe in the room but we could use one in an other room which was fine. The apartment is located right next to a metro station and the airport bus stop is nearby too which is really convenient. The city center and areas with nice restaurants and bars are in walking distance which was perfect for us. We really enjoyed our stay and would definitely come again!',
@@ -1170,7 +1165,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb808',
           fullname: 'Lukas',
-          imgUrl: 'https://robohash.org/46347877?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '46347877',
         },
         txt: 'Die Unterkunft war sehr toll, vorallem die Terrassen waren wunderschön. Christoph war sehr freundlich und hilfsbereit, ich würde sofort wieder buchen.',
@@ -1181,7 +1176,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb69b',
           fullname: 'Jenny',
-          imgUrl: 'https://robohash.org/6227480?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/7_c2aonf.png',
           id: '6227480',
         },
         txt: 'First, I will starst by saying how accommodating he was. Second, the flat is as pictured. The views, the views, THE VIEWS. Great location, seconds from the metro and all in all a good stay!  ',
@@ -1192,7 +1187,7 @@ export const stays = [
         by: {
           _id: '622f3407e36c59e6164fbdd1',
           fullname: 'Hana',
-          imgUrl: 'https://robohash.org/39977214?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/10_ztpv4k.png',
           id: '39977214',
         },
         txt: "The best things of this house are amazing terrace and location. There are two terraces. One is common area which is very spacious and cozy. The other one is only for guest and we loved this place. Sunrise and sunset from terrace were unforgettable. The metro station is on same block, so very convenient. You can go to Katalunya station directly.(only 3 stops). Cristophe is nice guy and helpful! He is always willing to help us. \r\nI can't say the house is perfectly clean. A cleaness is ok but it can be improved. ",
@@ -1203,7 +1198,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb17a',
           fullname: 'Candice',
-          imgUrl: 'https://robohash.org/93446110?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/10_ztpv4k.png',
           id: '93446110',
         },
         txt: "Première expérience avec Airbnb, dans un appartement idéalement placé à Barcelone  ( place d'Espagne ) proche du métro, des bus desservant l'aéroport. ...L'appartement et surtout les 2 terrasses dont une privative mérite le détour. Christophe est un hôte très accueillant aux petits soins pour nous. Ravie de ce week end. ",
@@ -1214,7 +1209,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb41a',
           fullname: 'Martin',
-          imgUrl: 'https://robohash.org/10760807?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '10760807',
         },
         txt: "Truly one of the best Airbnb locations I have stayed at. Christophe is so warm and accommodating, and the flat can't be beat for its amazing patio spaces, comfort and ideal location. I only wish I would have been able to spend more evenings there on the patio enjoying the sunset.",
@@ -1225,7 +1220,7 @@ export const stays = [
         by: {
           _id: '622f3403e36c59e6164fb089',
           fullname: 'Jenika',
-          imgUrl: 'https://robohash.org/86285365?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/3_wceb97.png',
           id: '86285365',
         },
         txt: "We couldn't have had more a lovely stay. Our host made sure our space was impeccable and not only that he wanted our trip to be a fulfilled one, he had tips for us that even after we left we still followed. If only we could've stayed longer.",
@@ -1236,7 +1231,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb872',
           fullname: 'Anita',
-          imgUrl: 'https://robohash.org/90634617?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/6_er0xrm.png',
           id: '90634617',
         },
         txt: 'Capitaine is a lovely young man who was always available when needed without being intrusive during our stay. Our private room & terrace was lovely. Great views over Barcelona. We had the whole flat mainly to ourselves as Capitaine is a very busy young man on a project of constant improvement. Thanks for a lovely holiday. Anita & Al',
@@ -1247,7 +1242,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb8dd',
           fullname: 'Paulo',
-          imgUrl: 'https://robohash.org/13018218?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/9_kiemiw.png',
           id: '13018218',
         },
         txt: 'Espectacular experiencia en el Centro de Barcelona, donde logramos sentirnos en un barrio típico de esa ciudad.  La cercanía con la estación de Rocafort es genial además de la gran cantidad de cafés, restaurantes, pastelerías, supermercados, etc.  La atención de Christophe muy amable y servicial, muy acogedora, siempre atento a nuestras necesidades y consultas.  ',
@@ -1258,7 +1253,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb962',
           fullname: 'Cristina',
-          imgUrl: 'https://robohash.org/94354449?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/2_onmhs6.png',
           id: '94354449',
         },
         txt: 'Cristoph es un excelente anfitrión. Siempre estuvo disponible y atento para cualquier cosa que necesitáramos.  Las fotos reflejan el departamento tal cual es. Muy cómodo y luminoso al igual que su cocina. Las terrazas un verdadero placer!! y la cama muy cómoda. La zona donde está es muy práctica para desplazarse ya sea en metro como en bus. Tambien se puede ir caminando hasta la estación de tren. es una opción muy recomendable.',
@@ -1269,7 +1264,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbbc6',
           fullname: 'Dmitry',
-          imgUrl: 'https://robohash.org/387028?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '387028',
         },
         txt: 'Fantastic place and great host, extremely welcoming and caring',
@@ -1280,7 +1275,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164faeb6',
           fullname: 'Longhui',
-          imgUrl: 'https://robohash.org/36339703?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/6_er0xrm.png',
           id: '36339703',
         },
         txt: 'Christophe is a very nice person. We left the keys inside the house and he was in France at the moment, but he called his friends to open the door for us! The house is close to a metro station of L1. And 5 min walk to Spain square! ',
@@ -1291,7 +1286,7 @@ export const stays = [
         by: {
           _id: '622f3405e36c59e6164fb840',
           fullname: 'Sarah',
-          imgUrl: 'https://robohash.org/13852610?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/5_j6vohl.png',
           id: '13852610',
         },
         txt: "Christophe is a great host and really made me feel at home. The communication was really smooth and he helped me with every question I had. I really enjoyed staying at Christophe's nice apartment. I appreciated the comfortable bed, the silence and that he offered water, tea and coffee. He was even letting me cook und use from his own food so I hadn't got to rush out on the first evening and organize something. \nThe apartment is nicely furnished and the two terrasses are really amazing. Wished I had had more time to enjoy the wonderful terrasse. \nAnd although I haven't seen hin much I enjoyed the few conversations we had. Christophe is a very friendly person, charming and willing to help make your stay a great experience. \nThanks for everything, Christophe! Staying at your place was definitely a great airbnb experience!",
@@ -1302,7 +1297,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbada',
           fullname: 'Marc',
-          imgUrl: 'https://robohash.org/103826885?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '103826885',
         },
         txt: 'Christophe is very friendly and proactively asking for possible requests one might have. We had a good time living in his beautiful apartment. Our room and bed was in great condition and the highlight are the two specious Terraces, especially also for guests who like plants and flowers.\nThank you again Christophe, for having been such an excellent host.',
@@ -1313,7 +1308,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fbb4b',
           fullname: 'Moy',
-          imgUrl: 'https://robohash.org/86757234?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/8_dt1ox0.png',
           id: '86757234',
         },
         txt: 'I would definitely recommend this place!',
@@ -1324,7 +1319,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fac1b',
           fullname: 'Jenna',
-          imgUrl: 'https://robohash.org/61873820?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/12_pm9x9i.png',
           id: '61873820',
         },
         txt: 'Christophe is a wonderful host. His apartment was perfect for my stay in Barcelona--clean, comfortable, and gorgeous rooftop space. He left a large bottle of water, tea, and coffee in my room. I enjoyed spending time with Christophe and his friends. He is friendly, accommodating, and knowledgeable about Barcelona. I highly recommend his flat !! :)   ',
@@ -1357,8 +1352,7 @@ export const stays = [
       location: 'Hong Kong',
       about:
         "I'm a very open-minded person who loves other cultures and meeting new people. Originally I am Swiss and moved to Hong Kong 2,5 years ago for my job. HK is an amazing city - I love living and working here. ",
-      thumbnailUrl:
-        'https://a0.muscache.com/im/pictures/d39c333f-d8aa-42ad-944d-999faba9c155.jpg?aki_policy=profile_small',
+      thumbnailUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829243/5_j6vohl.png',
       pictureUrl:
         'https://a0.muscache.com/im/pictures/d39c333f-d8aa-42ad-944d-999faba9c155.jpg?aki_policy=profile_x_medium',
       isSuperhost: false,
@@ -1379,7 +1373,7 @@ export const stays = [
         by: {
           _id: '622f3402e36c59e6164fac86',
           fullname: 'Lydia',
-          imgUrl: 'https://robohash.org/20999063?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/9_kiemiw.png',
           id: '20999063',
         },
         txt: "Isabelle's apartment is cozy and close to everything. Even though we did not get the chance to meet her, we enjoy the facilities in the apartment. As a local Hong Konger, I will definitely recommend others and my friends to live in this apartment",
@@ -1390,7 +1384,7 @@ export const stays = [
         by: {
           _id: '622f3404e36c59e6164fb52a',
           fullname: 'Eslam',
-          imgUrl: 'https://robohash.org/6102166?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829244/7_c2aonf.png',
           id: '6102166',
         },
         txt: 'stayed here for 8 days. Highly recommend! the location is epic! and super easy to find.',
@@ -1401,7 +1395,7 @@ export const stays = [
         by: {
           _id: '622f3406e36c59e6164fba0a',
           fullname: 'Fai',
-          imgUrl: 'https://robohash.org/103964422?set=set1',
+          imgUrl: 'https://res.cloudinary.com/ds1tr9iln/image/upload/v1749829242/1_i55inx.png',
           id: '103964422',
         },
         txt: 'It is a very nice place. It is clean and very convenience.',
@@ -1410,3 +1404,102 @@ export const stays = [
     likedByUsers: [],
   },
 ]
+export const orders = [
+  {
+    _id: 'o1225',
+    host: { _id: 'u102', fullname: "Bob", imgUrl: "..." },
+    guest: { _id: 'u101', fullname: 'Emma Green' },
+    totalPrice: 160,
+    startDate: '2025/10/15',
+    endDate: '2025/10/17',
+    guests: { adults: 1, kids: 2 },
+    stay: {
+      _id: 'h102',
+      name: 'House Of Uncle My',
+      imgUrl: 'first img url',
+    },
+    msgs: [],
+    status: 'pending',
+  },
+  {
+    _id: 'o1226',
+    host: { _id: 'u103', fullname: "Alice", imgUrl: "..." },
+    guest: { _id: 'u104', fullname: 'John Doe' },
+    totalPrice: 420,
+    startDate: '2025/08/01',
+    endDate: '2025/08/05',
+    guests: { adults: 2, kids: 1 },
+    stay: {
+      _id: 'h103',
+      name: 'Seaside Escape',
+      imgUrl: 'https://example.com/seaside.jpg',
+    },
+    msgs: [],
+    status: 'approved',
+  },
+  {
+    _id: 'o1227',
+    host: { _id: 'u102', fullname: "Bob", imgUrl: "..." },
+    guest: { _id: 'u105', fullname: 'Emma Green' },
+    totalPrice: 300,
+    startDate: '2025/09/10',
+    endDate: '2025/09/13',
+    guests: { adults: 2, kids: 0 },
+    stay: {
+      _id: 'h104',
+      name: 'Urban Loft',
+      imgUrl: 'https://example.com/loft.jpg',
+    },
+    msgs: [],
+    status: 'rejected',
+  },
+  {
+    _id: 'o1228',
+    host: { _id: 'u106', fullname: "Karen", imgUrl: "..." },
+    guest: { _id: 'u101', fullname: 'David' },
+    totalPrice: 720,
+    startDate: '2025/12/24',
+    endDate: '2025/12/29',
+    guests: { adults: 3, kids: 2 },
+    stay: {
+      _id: 'h105',
+      name: 'Mountain Retreat',
+      imgUrl: 'https://example.com/mountain.jpg',
+    },
+    msgs: [],
+    status: 'approved',
+  },
+  {
+    _id: 'o1229',
+    host: { _id: 'u107', fullname: "David", imgUrl: "..." },
+    guest: { _id: 'u108', fullname: 'Laura Smith' },
+    totalPrice: 150,
+    startDate: '2025/07/20',
+    endDate: '2025/07/21',
+    guests: { adults: 1, kids: 0 },
+    stay: {
+      _id: 'h106',
+      name: 'Studio Zen',
+      imgUrl: 'https://example.com/studio.jpg',
+    },
+    msgs: [],
+    status: 'pending',
+  },
+  {
+    _id: 'o1230',
+    host: { _id: 'u103', fullname: "Alice", imgUrl: "..." },
+    guest: { _id: 'u109', fullname: 'Chris P. Bacon' },
+    totalPrice: 275,
+    startDate: '2025/11/05',
+    endDate: '2025/11/08',
+    guests: { adults: 2, kids: 1 },
+    stay: {
+      _id: 'h107',
+      name: 'Garden Villa',
+      imgUrl: 'https://example.com/villa.jpg',
+    },
+    msgs: [],
+    status: 'approved',
+  }
+]
+

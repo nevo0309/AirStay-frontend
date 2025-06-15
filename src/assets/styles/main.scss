@@ -18,6 +18,7 @@
 @import 'pages/HomePage';
 @import 'pages/StayIndex';
 @import 'pages/StayDetails';
+@import 'pages/Dashbord';
 
 @import 'pages/ReservePage';
 @import 'pages/ReviewIndex';
@@ -65,6 +66,8 @@
 @import 'cmps/details/DetailsSummary';
 @import 'cmps/details/DetailsReview';
 @import 'cmps/details/DetailsReservation.scss';
+@import 'cmps/details/DetailsMoreInfo';
+@import 'cmps/details/DetailsReviewSummary';
 
 @import 'cmps/steps/StepChoosePayment';
 @import 'cmps/steps/StepMessage';
