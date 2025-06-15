@@ -13,7 +13,7 @@ export function DetailsReservation({ onReserve }) {
     const [range, setRange] = useState([
         {
             startDate: filterBy.checkIn || null,
-            endDate: filterBy.checkOut ||  null,
+            endDate: filterBy.checkOut || null,
             key: 'selection'
         }
     ])
@@ -165,7 +165,7 @@ export function DetailsReservation({ onReserve }) {
                 <section className="calender-stay-options flex">
                     <div className="calender-stay-details">
                         <h2>{`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
-                        {filterBy.checkIn && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
+                        {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
                     </div>
                     <div className="calender-dates-input flex">
                         <div className="flex column" onClick={onOpenCalender}>
