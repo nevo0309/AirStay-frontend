@@ -29,7 +29,26 @@ export function OrdersTable({ orders = [], onStatusChange }) {
 
             return (
               <tr key={order._id}>
-                <td>{guestName}</td>
+                {/* <td>{guestName}</td> */}
+                <td className='guest-info'>
+                  <img
+                    src={
+                      order.guest?.imgUrl ||
+                      "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                    }
+                    alt={guestName}
+                    className='avatar'
+                    onError={(e) => {
+                      e.target.src =
+                        "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                    }}
+                  />
+                  <div className='guest-text'>
+                    <div className='guest-name'>{guestName}</div>
+                    <div className='guest-role'>Guest</div>
+                  </div>
+                </td>
+
                 <td>{stayName}</td>
                 <td>{checkIn}</td>
                 <td>{checkOut}</td>

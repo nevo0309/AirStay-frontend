@@ -95,6 +95,31 @@
     }
   }
 
+  .guest-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .guest-text {
+      .guest-name {
+        font-weight: 600;
+        color: #222;
+      }
+
+      .guest-role {
+        font-size: 0.85rem;
+        color: #666;
+      }
+    }
+  }
+
   .dashboard-footer {
     display: flex;
     justify-content: space-between;
