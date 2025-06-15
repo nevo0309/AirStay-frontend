@@ -1,5 +1,8 @@
 import React from 'react'
 import { format } from 'date-fns'
+import { useMemo } from 'react'
+
+import { getRandomImageNumber } from '../../services/util.service'
 
 function Stars({ count }) {
   return (
