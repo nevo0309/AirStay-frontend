@@ -150,26 +150,29 @@
         filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.14));
         position: absolute;
         top: 60px;
-        left: -290px;
+        left: -315px;
         z-index: 10;
         min-height: 460px;
         width: 660px;
 
         .calender-stay-options {
             justify-content: space-between;
-            margin: 1.5rem 1.5rem 0 1.5rem;
+            margin: 1.5rem 2rem 0 2rem;
+            padding-block-end: 1rem;
+            z-index: 5;
 
             .calender-stay-details {
-                h2{
+                h2 {
                     font-size: 1.375rem;
                 }
             }
 
             .calender-dates-input {
-                width:270px;
+                width: 287px;
+
                 &>div {
                     justify-content: end;
-                    height: 3.5rem;
+                    height: 3.625rem;
                     padding: 0 0.75rem 0.625rem 0.75rem;
                     width: 100%;
 
@@ -201,6 +204,7 @@
 
         .calender {
             width: 100%;
+            top: 90px
         }
 
         .rdrCalendarWrapper {
@@ -208,7 +212,7 @@
             font-family: poppins !important;
             filter: none;
             border-radius: 16px !important;
-            padding: 2rem;
+            padding: 0rem 2rem 2rem 2rem;
             height: 100%;
         }
 
@@ -221,8 +225,7 @@
         }
 
         .rdrDateDisplayWrapper {
-            background: none;
-            font-family: poppins;
+            display: none;
         }
 
         .rdrDateDisplayItem {
@@ -361,9 +364,24 @@
 
             .rdrNextButton {
                 position: absolute;
-                left: 520px;
+                left: 540px;
+                top:-30px
+            }
+            .rdrPprevButton {
+                position: absolute;
+                top:-30px
             }
         }
     }
+
+    .calender-open-backscreen {
+        background-color: transparent;
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
 
 }

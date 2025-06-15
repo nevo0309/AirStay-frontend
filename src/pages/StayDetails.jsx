@@ -35,7 +35,7 @@ export function StayDetails() {
   if (!stay) return <div>Loading...</div>
 
   return (
-    <div className="stay-details main-container">
+    <div className="stay-details">
       <DetailsHeader name={stay.name} />
       <DetailsImageGallery images={stay.imgUrls} />
       <div className="stay-details-grid">

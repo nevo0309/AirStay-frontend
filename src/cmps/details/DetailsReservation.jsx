@@ -185,5 +185,6 @@ export function DetailsReservation({ onReserve }) {
                 </section>
                 <FilterCalender range={range} setRange={handleSelect} cmp={'details-res'} />
             </section>}
+            <div className={isCalenderOpen && 'calender-open-backscreen'} onClick={()=>setIsCalenderOpen(false)}></div>
         </div >)
 }
