@@ -103,7 +103,7 @@
     gap: 12px;
 
     .avatar {
-      width: 42px;
+      width: 32px;
       height: 42px;
       border-radius: 50%;
       object-fit: cover;
@@ -149,18 +149,15 @@
   display: inline-block;
 
   &.status-approved {
-    color: #0f5132;
-    background-color: #d1e7dd;
+    color: #28a745; // green
   }
 
   &.status-declined {
-    color: #842029;
-    background-color: #f8d7da;
+    color: #dc3545; // red
   }
 
   &.status-pending {
-    color: #664d03;
-    background-color: #fff3cd;
+    color: #ffc107; // yellow
   }
 }
 
