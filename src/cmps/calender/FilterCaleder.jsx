@@ -7,7 +7,7 @@ import { addDays, set } from 'date-fns';
 import { useState } from 'react';
 
 
-export function FilterCalender({ range, setRange, setOpenModal, openModal }) {
+export function FilterCalender({ range, setRange, setOpenModal, openModal, cmp }) {
 
     // const { startDate, endDate } = range[0];
     // console.log(endDate.toLocaleDateString('he-IL'))
@@ -19,7 +19,7 @@ export function FilterCalender({ range, setRange, setOpenModal, openModal }) {
 
     function onHandleChnage(ranges) {
         setRange(ranges)
-        onOpenNextModal()
+        if (cmp === 'header') onOpenNextModal()
     }
 
 
