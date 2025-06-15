@@ -153,3 +153,16 @@ export function handleButtonMouseMove(ev) {
   ev.currentTarget.style.setProperty('--x', `${x}%`)
   ev.currentTarget.style.setProperty('--y', `${y}%`)
 }
+
+let availableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+export function getRandomImageNumber() {
+  if (availableNumbers.length === 0) {
+    availableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  }
+  const randomIndex = Math.floor(Math.random() * availableNumbers.length)
+  const pickedNumber = availableNumbers[randomIndex]
+  availableNumbers.splice(randomIndex, 1)
+
+  return pickedNumber
+}
