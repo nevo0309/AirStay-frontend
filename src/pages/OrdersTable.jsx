@@ -6,8 +6,8 @@ export function OrdersTable({ orders = [], onStatusChange }) {
   }
 
   return (
-    <div className='trips-page'>
-      <table className='trips-table'>
+    <div className='trips-page custom-font'>
+      <table className='trips-table custom-font'>
         <thead>
           <tr>
             <th>Guest</th>
@@ -64,7 +64,7 @@ export function OrdersTable({ orders = [], onStatusChange }) {
                   {status === "Pending" ? (
                     <div className='action-buttons'>
                       <button
-                        className='btn-approve'
+                        className='btn-approve custom-font'
                         onClick={() =>
                           handleStatusChange(order._id, "Approved")
                         }
@@ -73,7 +73,7 @@ export function OrdersTable({ orders = [], onStatusChange }) {
                         Approve
                       </button>
                       <button
-                        className='btn-decline'
+                        className='btn-decline custom-font'
                         onClick={() =>
                           handleStatusChange(order._id, "Declined")
                         }

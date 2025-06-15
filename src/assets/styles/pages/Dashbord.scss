@@ -1,10 +1,12 @@
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  font-family: poppins;
   min-height: 100vh;
   padding: 20px;
 
+  .custom-font {
+    font-family: "poppins";
+  }
   .dashboard-header {
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;

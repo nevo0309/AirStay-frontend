@@ -160,8 +160,8 @@ export function Dashboard() {
   }, [activeTab, orders])
 
   return (
-    <div className='dashboard-container'>
-      <main className='dashboard-main'>
+    <div className='dashboard-container custom-font'>
+      <main className='dashboard-main custom-font'>
         <h1>Welcome, {userName}!</h1>
         <section className='reservations-section'>
           <h2>Your reservations</h2>
@@ -179,7 +179,7 @@ export function Dashboard() {
           </div>
 
           {loading ? (
-            <div className='loading'>Loading reservations...</div>
+            <div className='loading'></div>
           ) : filteredOrders.length > 0 ? (
             <OrdersTable
               orders={filteredOrders}
@@ -193,7 +193,7 @@ export function Dashboard() {
           )}
         </section>
       </main>
-      <footer className='dashboard-footer'>
+      {/* <footer className='dashboard-footer'>
         <div className='footer-column'>
           <h4>Hosting</h4>
           <ul>
@@ -216,7 +216,7 @@ export function Dashboard() {
             <li>Gift cards</li>
           </ul>
         </div>
-      </footer>
+      </footer> */}
     </div>
   )
 }
