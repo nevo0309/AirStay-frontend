@@ -7,8 +7,10 @@ import { setFilterBy } from "../../store/stay.actions.js"
 export function DetailsReservation({ onReserve }) {
     const stay = useSelector((storeState) => storeState.stayModule.stay)
     const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
+    const [filterToEdit, setFilterToEdit] = useState(filterBy)
     const [totalPrice, setTotalPrice] = useState(null)
     const [isCalenderOpen, setIsCalenderOpen] = useState(false)
+    const [activeCalenderDate, setActiveCalenderDate] = useState('checkIn')
     const cleaningFee = totalPrice * 0.1
     const [range, setRange] = useState([
         {
@@ -20,11 +22,15 @@ export function DetailsReservation({ onReserve }) {
 
     useEffect(() => {
         console.log(range)
-        setFilterBy(prevFilterBy => ({
+        setFilterToEdit(prevFilterBy => ({
             ...prevFilterBy,
             checkIn: range[0].startDate, checkOut: range[0].endDate
         }))
     }, [range])
+
+    useEffect(() => {
+        setFilterBy(filterToEdit)
+    }, [filterToEdit])
 
     useEffect(() => {
         setTotalPrice(sumNights(filterBy.checkIn, filterBy.checkOut) * stay.price)
@@ -168,14 +174,14 @@ export function DetailsReservation({ onReserve }) {
                         {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
                     </div>
                     <div className="calender-dates-input flex">
-                        <div className="flex column" onClick={onOpenCalender}>
+                        <div className={"flex column " + (activeCalenderDate === 'checkIn' ? 'active' : '')} onClick={onOpenCalender}>
                             <label>
                                 CHECK-IN
                             </label>
                             <p>{filterBy.checkIn ? formatRangeDates(filterBy.checkIn) : 'Add dates'}</p>
                         </div>
 
-                        <div className="flex column">
+                        <div className={"flex column " + (activeCalenderDate === 'checkOut' ? 'active' : '')}>
                             <label>
                                 CHECK-OUT
                             </label>
@@ -183,8 +189,14 @@ export function DetailsReservation({ onReserve }) {
                         </div>
                     </div>
                 </section>
-                <FilterCalender range={range} setRange={handleSelect} cmp={'details-res'} />
+                <FilterCalender
+                    range={range}
+                    setRange={handleSelect}
+                    cmp={'details-res'}
+                    setIsCalenderOpen={setIsCalenderOpen}
+                    activeCalenderDate={activeCalenderDate}
+                    setActiveCalenderDate={setActiveCalenderDate} />
             </section>}
-            <div className={isCalenderOpen && 'calender-open-backscreen'} onClick={()=>setIsCalenderOpen(false)}></div>
+            <div className={isCalenderOpen ? 'calender-open-backscreen' : ''} onClick={() => setIsCalenderOpen(false)}></div>
         </div >)
 }
