@@ -3,6 +3,7 @@ import { handleButtonMouseMove } from "./../../services/util.service"
 import { useSelector } from "react-redux"
 import { FilterCalender } from '../calender/FilterCaleder.jsx'
 import { setFilterBy } from "../../store/stay.actions.js"
+import { AddGuests } from "../AddGuests.jsx"
 
 export function DetailsReservation({ onReserve }) {
     const stay = useSelector((storeState) => storeState.stayModule.stay)
@@ -11,7 +12,10 @@ export function DetailsReservation({ onReserve }) {
     const [totalPrice, setTotalPrice] = useState(null)
     const [isCalenderOpen, setIsCalenderOpen] = useState(false)
     const [activeCalenderDate, setActiveCalenderDate] = useState('checkIn')
+    const [guest, setGuest] = useState(filterBy.guest)
+    const [isAddGuestOpen, setIsAddGuestOpen] = useState(false)
     const cleaningFee = totalPrice * 0.1
+    const nightSum = sumNights(filterBy.checkIn, filterBy.checkOut)
     const [range, setRange] = useState([
         {
             startDate: filterBy.checkIn || null,
@@ -27,6 +31,22 @@ export function DetailsReservation({ onReserve }) {
             checkIn: range[0].startDate, checkOut: range[0].endDate
         }))
     }, [range])
+
+    useEffect(() => {
+        console.log(guest)
+        if (Object.keys(filterBy.guest).length === 0) {
+            setFilterToEdit(prevFilterBy => ({
+                ...prevFilterBy,
+                guest: { adults: 1, children: 0, infants: 0, pet: 0 }
+            }))
+        }
+        else {
+            setFilterToEdit(prevFilterBy => ({
+                ...prevFilterBy,
+                guest: guest
+            }))
+        }
+    }, [guest])
 
     useEffect(() => {
         setFilterBy(filterToEdit)
@@ -92,26 +112,31 @@ export function DetailsReservation({ onReserve }) {
 
     function guestSummary(guest) {
         const labelMap = {
-            adults: ['Adult', 'Adults'],
-            children: ['Child', 'Children'],
-            infants: ['Infant', 'Infants'],
-            pet: ['Pet', 'Pets']
+            guests: ['guest', 'guests'],
+            infants: ['infant', 'infants'],
+            pet: ['pet', 'pets']
         }
 
-        const totalCount = Object.values(guest).reduce((sum, count) => sum + count, 0)
+        const totalGuests = (guest.adults) + (guest.children)
+        const totalGuestsSummary = []
 
-        if (totalCount === 0) return '1 Guest'
+        if (totalGuests > 0) {
+            const [singular, plural] = labelMap.guests;
+            const label = totalGuests === 1 ? singular : plural
+            totalGuestsSummary.push(`${totalGuests} ${label}`)
+        }
 
-        return Object.entries(guest)
-            .filter(([_, count]) => count > 0)
-            .map(([key, count]) => {
-                const [singular, plural] = labelMap[key]
-                const label = count === 1 ? singular : plural
-                return `${count} ${label}`
-            })
-            .join(', ')
+        ['infants', 'pet'].forEach((key) => {
+            const count = guest[key] || 0
+            if (count > 0) {
+                const [singular, plural] = labelMap[key];
+                const label = count === 1 ? singular : plural;
+                totalGuestsSummary.push(`${count} ${label}`);
+            }
+        })
+
+        return totalGuestsSummary.join(', ')
     }
-
 
     function sumNights(startDate, endDate) {
         if (!startDate || !endDate) return 0
@@ -120,6 +145,12 @@ export function DetailsReservation({ onReserve }) {
         const diffMs = endDate - startDate
 
         return Math.max(0, Math.round(diffMs / oneDayMs))
+    }
+
+    function onClickBackDrop() {
+        console.log('ca')
+        if (isCalenderOpen) setIsCalenderOpen(false)
+        else if (isAddGuestOpen) setIsAddGuestOpen(false)
     }
 
     return (
@@ -140,10 +171,12 @@ export function DetailsReservation({ onReserve }) {
                     <p> {filterBy.checkOut ? formatRangeDates(filterBy.checkOut) : 'Add dates'}</p>
                 </div>
 
-                <div className="flex column">
+                <div className="flex column" onClick={(ev) => setIsAddGuestOpen(!isAddGuestOpen)}>
                     <label>
-                        GUESTS                    </label>
+                        GUESTS
+                    </label>
                     <p>{guestSummary(filterBy.guest)}</p>
+                    {isAddGuestOpen && <div className="details-res-add-guests" onClick={(ev) => ev.stopPropagation()}><AddGuests setGuest={setGuest} filterBy={filterBy} /></div>}
                 </div>
             </div>
 
@@ -157,7 +190,7 @@ export function DetailsReservation({ onReserve }) {
 
             <p>You won't be charged yet</p>
             <div className="prices">
-                <h2>{`₪${stay.price}`}<span> X </span> {`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
+                <h2>{`₪${stay.price}`}<span> X </span> {nightSum + ((nightSum < 1) ? ' night' : ' nights')}</h2>
                 {totalPrice && <p>{`₪${totalPrice}`}</p>}
                 <h2>Cleaning fee</h2>
                 {totalPrice && <p> {`₪${cleaningFee}`}</p>}
@@ -197,6 +230,7 @@ export function DetailsReservation({ onReserve }) {
                     activeCalenderDate={activeCalenderDate}
                     setActiveCalenderDate={setActiveCalenderDate} />
             </section>}
-            <div className={isCalenderOpen ? 'calender-open-backscreen' : ''} onClick={() => setIsCalenderOpen(false)}></div>
+            <div className={(isCalenderOpen || isAddGuestOpen) ? 'calender-open-backscreen' : ''} onClick={() => onClickBackDrop()}></div>
+
         </div >)
 }

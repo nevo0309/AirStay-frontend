@@ -3,7 +3,7 @@
     border-radius: 12px;
     padding: 24px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-    width: 337px;
+    width: 100%;
     height: 495px;
     position: sticky;
     top: 2rem;
@@ -70,11 +70,52 @@
         p {
             font-size: 0.875rem;
         }
+
+        .details-res-add-guests {
+            z-index: 1000;
+            .add-guests {
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+                top: 114px;
+                width: 100%;
+                border-radius: 4px;
+                padding: 1rem;
+
+                .guest-counter-card {
+                    border-bottom: none;
+
+                    .guest {
+                        margin-block: 0.75rem;
+                    }
+
+                    .counter {
+                        button {
+                            color: #909090;
+                        }
+                    }
+
+                    &:nth-of-type(1) {
+                        .guest {
+                            margin-block-start: 0.5rem;
+                            margin-block-end: 0.75rem;
+                        }
+                    }
+
+                    &:last-of-type {
+                        h2 {
+                            color: black;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+
+
+        }
     }
 
     .prices {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr auto;
         gap: 1rem;
         margin-block-start: 1rem;
 
