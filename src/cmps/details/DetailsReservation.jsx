@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import { FilterCalender } from '../calender/FilterCaleder.jsx'
 import { setFilterBy } from "../../store/stay.actions.js"
 import { AddGuests } from "../AddGuests.jsx"
+import { addDays } from "date-fns"
 
 export function DetailsReservation({ onReserve }) {
     const stay = useSelector((storeState) => storeState.stayModule.stay)
@@ -14,15 +15,16 @@ export function DetailsReservation({ onReserve }) {
     const [activeCalenderDate, setActiveCalenderDate] = useState('checkIn')
     const [guest, setGuest] = useState(filterBy.guest)
     const [isAddGuestOpen, setIsAddGuestOpen] = useState(false)
-    const cleaningFee = totalPrice * 0.1
     const nightSum = sumNights(filterBy.checkIn, filterBy.checkOut)
     const [range, setRange] = useState([
         {
-            startDate: filterBy.checkIn || null,
-            endDate: filterBy.checkOut || null,
+            startDate: filterBy.checkIn || new Date(),
+            endDate: filterBy.checkOut || addDays(new Date(), 2),
             key: 'selection'
         }
     ])
+    const cleaningFee = totalPrice * 0.1
+
 
     useEffect(() => {
         console.log(range)
@@ -31,6 +33,7 @@ export function DetailsReservation({ onReserve }) {
             checkIn: range[0].startDate, checkOut: range[0].endDate
         }))
     }, [range])
+
 
     useEffect(() => {
         console.log(guest)
@@ -48,18 +51,22 @@ export function DetailsReservation({ onReserve }) {
         }
     }, [guest])
 
+
     useEffect(() => {
         setFilterBy(filterToEdit)
     }, [filterToEdit])
+
 
     useEffect(() => {
         setTotalPrice(sumNights(filterBy.checkIn, filterBy.checkOut) * stay.price)
     }, [filterBy])
     console.log(filterBy)
 
+
     function onOpenCalender() {
         setIsCalenderOpen(true)
     }
+
 
     function handleSelect(ranges) {
         const { startDate, endDate } = ranges.selection;
@@ -106,7 +113,7 @@ export function DetailsReservation({ onReserve }) {
         const options = { month: 'short', day: 'numeric' }
         const dateToShow = date.toLocaleDateString('en-US', options)
 
-        return dateToShow;
+        return dateToShow
     }
 
 
@@ -164,7 +171,7 @@ export function DetailsReservation({ onReserve }) {
                     <p>{filterBy.checkIn ? formatRangeDates(filterBy.checkIn) : 'Add dates'}</p>
                 </div>
 
-                <div className="flex column">
+                <div className="flex column" onClick={onOpenCalender}>
                     <label>
                         CHECK-OUT
                     </label>
@@ -178,6 +185,37 @@ export function DetailsReservation({ onReserve }) {
                     <p>{guestSummary(filterBy.guest)}</p>
                     {isAddGuestOpen && <div className="details-res-add-guests" onClick={(ev) => ev.stopPropagation()}><AddGuests setGuest={setGuest} filterBy={filterBy} /></div>}
                 </div>
+
+                {isCalenderOpen && <section className="details-res-calender">
+                    <section className="calender-stay-options flex">
+                        <div className="calender-stay-details">
+                            <h2>{`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
+                            {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
+                        </div>
+                        <div className="calender-dates-input flex">
+                            <div className={"flex column " + (activeCalenderDate === 'checkIn' ? 'active' : '')} onClick={onOpenCalender}>
+                                <label>
+                                    CHECK-IN
+                                </label>
+                                <p>{filterBy.checkIn ? formatRangeDates(filterBy.checkIn) : 'Add dates'}</p>
+                            </div>
+
+                            <div className={"flex column " + (activeCalenderDate === 'checkOut' ? 'active' : '')}>
+                                <label>
+                                    CHECK-OUT
+                                </label>
+                                <p> {filterBy.checkOut ? formatRangeDates(filterBy.checkOut) : 'Add dates'}</p>
+                            </div>
+                        </div>
+                    </section>
+                    <FilterCalender
+                        range={range}
+                        setRange={handleSelect}
+                        cmp={'details-res'}
+                        setIsCalenderOpen={setIsCalenderOpen}
+                        activeCalenderDate={activeCalenderDate}
+                        setActiveCalenderDate={setActiveCalenderDate} />
+                </section>}
             </div>
 
             <button
@@ -200,36 +238,6 @@ export function DetailsReservation({ onReserve }) {
                 {totalPrice && <p>{`₪${totalPrice + cleaningFee}`}</p>}
             </div>
 
-            {isCalenderOpen && <section className="details-res-calender">
-                <section className="calender-stay-options flex">
-                    <div className="calender-stay-details">
-                        <h2>{`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
-                        {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
-                    </div>
-                    <div className="calender-dates-input flex">
-                        <div className={"flex column " + (activeCalenderDate === 'checkIn' ? 'active' : '')} onClick={onOpenCalender}>
-                            <label>
-                                CHECK-IN
-                            </label>
-                            <p>{filterBy.checkIn ? formatRangeDates(filterBy.checkIn) : 'Add dates'}</p>
-                        </div>
-
-                        <div className={"flex column " + (activeCalenderDate === 'checkOut' ? 'active' : '')}>
-                            <label>
-                                CHECK-OUT
-                            </label>
-                            <p> {filterBy.checkOut ? formatRangeDates(filterBy.checkOut) : 'Add dates'}</p>
-                        </div>
-                    </div>
-                </section>
-                <FilterCalender
-                    range={range}
-                    setRange={handleSelect}
-                    cmp={'details-res'}
-                    setIsCalenderOpen={setIsCalenderOpen}
-                    activeCalenderDate={activeCalenderDate}
-                    setActiveCalenderDate={setActiveCalenderDate} />
-            </section>}
             <div className={(isCalenderOpen || isAddGuestOpen) ? 'calender-open-backscreen' : ''} onClick={() => onClickBackDrop()}></div>
 
         </div >)
