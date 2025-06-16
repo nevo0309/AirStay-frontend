@@ -20,7 +20,7 @@ export function FilterCalender({ range, setRange, setOpenModal, openModal, cmp, 
     function onHandleChnage(ranges) {
         setRange(ranges)
         if (cmp === 'header') onOpenNextModal()
-        else if (cmp = 'details-res') {
+        else if (cmp === 'details-res') {
             activeCalenderDate === 'checkIn' ? setActiveCalenderDate('checkOut') : setIsCalenderOpen(false)
         }
     }

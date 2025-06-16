@@ -6,7 +6,7 @@ import { setFilterBy } from "../../store/stay.actions.js"
 import { AddGuests } from "../AddGuests.jsx"
 import { addDays } from "date-fns"
 
-export function DetailsReservation({ onReserve }) {
+export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalender }) {
     const stay = useSelector((storeState) => storeState.stayModule.stay)
     const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
     const [filterToEdit, setFilterToEdit] = useState(filterBy)
@@ -102,18 +102,10 @@ export function DetailsReservation({ onReserve }) {
 
     function formatRangeDates(date) {
         const day = String(date.getDate()).padStart(2, '0')
-        const month = String(date.getMonth() + 1).padStart(2, '0') // חודשים מתחילים מ־0
+        const month = String(date.getMonth() + 1).padStart(2, '0')
         const year = date.getFullYear()
 
         return `${day}/${month}/${year}`
-    }
-
-
-    function formatRangeDatesCalender(date) {
-        const options = { month: 'short', day: 'numeric' }
-        const dateToShow = date.toLocaleDateString('en-US', options)
-
-        return dateToShow
     }
 
 
@@ -145,14 +137,6 @@ export function DetailsReservation({ onReserve }) {
         return totalGuestsSummary.join(', ')
     }
 
-    function sumNights(startDate, endDate) {
-        if (!startDate || !endDate) return 0
-
-        const oneDayMs = 1000 * 60 * 60 * 24
-        const diffMs = endDate - startDate
-
-        return Math.max(0, Math.round(diffMs / oneDayMs))
-    }
 
     function onClickBackDrop() {
         console.log('ca')

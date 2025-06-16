@@ -49,8 +49,25 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    .details-calender {
+      .calender {
+        position: static;
+
+        .rdrCalendarWrapper {
+          filter: none;
+          padding: 1.5rem 0;
+          height: max-content;
+
+          .rdrDateDisplayWrapper {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }
+
 // Housted By.....................
 .housted-by {
   display: flex;
@@ -75,13 +92,14 @@
     flex-direction: column;
     line-height: 1.2;
 
-    > div:first-child {
+    >div:first-child {
       margin-bottom: 5px;
       font-size: 1rem;
       font-weight: 600;
       color: #222;
     }
-    > div:last-child {
+
+    >div:last-child {
       font-size: 0.875rem;
       font-weight: 400;
       color: #717171;
@@ -91,16 +109,19 @@
 
 .details-map {
   width: 100%;
+
   h2 {
     margin-top: 0.9rem;
     margin-bottom: 1rem;
     font-weight: 500;
     font-size: 1.3rem;
   }
+
   .location-address {
     display: flex;
     flex-direction: column;
   }
+
   p {
     font-size: 1rem;
   }
