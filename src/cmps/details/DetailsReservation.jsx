@@ -2,37 +2,18 @@ import { useEffect, useState } from "react"
 import { handleButtonMouseMove } from "./../../services/util.service"
 import { useSelector } from "react-redux"
 import { FilterCalender } from '../calender/FilterCaleder.jsx'
-import { setFilterBy } from "../../store/stay.actions.js"
 import { AddGuests } from "../AddGuests.jsx"
-import { addDays } from "date-fns"
 
-export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalender }) {
+export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalender, setFilterToEdit }) {
     const stay = useSelector((storeState) => storeState.stayModule.stay)
     const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
-    const [filterToEdit, setFilterToEdit] = useState(filterBy)
     const [totalPrice, setTotalPrice] = useState(null)
     const [isCalenderOpen, setIsCalenderOpen] = useState(false)
     const [activeCalenderDate, setActiveCalenderDate] = useState('checkIn')
     const [guest, setGuest] = useState(filterBy.guest)
     const [isAddGuestOpen, setIsAddGuestOpen] = useState(false)
     const nightSum = sumNights(filterBy.checkIn, filterBy.checkOut)
-    const [range, setRange] = useState([
-        {
-            startDate: filterBy.checkIn || new Date(),
-            endDate: filterBy.checkOut || addDays(new Date(), 2),
-            key: 'selection'
-        }
-    ])
     const cleaningFee = totalPrice * 0.1
-
-
-    useEffect(() => {
-        console.log(range)
-        setFilterToEdit(prevFilterBy => ({
-            ...prevFilterBy,
-            checkIn: range[0].startDate, checkOut: range[0].endDate
-        }))
-    }, [range])
 
 
     useEffect(() => {
@@ -53,11 +34,6 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
 
 
     useEffect(() => {
-        setFilterBy(filterToEdit)
-    }, [filterToEdit])
-
-
-    useEffect(() => {
         setTotalPrice(sumNights(filterBy.checkIn, filterBy.checkOut) * stay.price)
     }, [filterBy])
     console.log(filterBy)
@@ -66,39 +42,6 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
     function onOpenCalender() {
         setIsCalenderOpen(true)
     }
-
-
-    function handleSelect(ranges) {
-        const { startDate, endDate } = ranges.selection;
-        const currentStart = range[0].startDate;
-        const currentEnd = range[0].endDate;
-
-        if (!currentStart || (currentStart && !currentEnd)) {
-            // Initial selection or selecting the end date
-            setRange([{
-                ...range[0],
-                startDate,
-                endDate: startDate === endDate ? null : endDate,
-            }])
-        } else {
-            // If user clicks a new date AFTER current start date, update endDate
-            if (startDate > currentStart) {
-                setRange([{
-                    ...range[0],
-                    startDate: currentStart,
-                    endDate: startDate,
-                }])
-            } else {
-                // If clicked date is before or same as current start, treat it as a new start
-                setRange([{
-                    startDate,
-                    endDate: null,
-                    key: 'selection',
-                }])
-            }
-        }
-    }
-
 
     function formatRangeDates(date) {
         const day = String(date.getDate()).padStart(2, '0')

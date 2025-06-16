@@ -16,10 +16,13 @@ import { DetailsMoreInfo } from '../cmps/details/DetailsMoreInfo'
 import { DetailsReviewSummary } from '../cmps/details/DetailsReviewSummary'
 import { FilterCalender } from '../cmps/calender/FilterCaleder'
 import { addDays } from "date-fns"
+import { setFilterBy } from '../store/stay.actions'
 
 
 export function StayDetails() {
   const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
+  const [filterToEdit, setFilterToEdit] = useState(filterBy)
+
   const [startDate, setStartDate] = useState('2025-07-04')
   const [endDate, setEndDate] = useState('2025-07-06')
   const [guests, setGuests] = useState({ adults: 1, kids: 0 })
@@ -34,6 +37,21 @@ export function StayDetails() {
       key: 'selection'
     }
   ])
+
+  useEffect(() => {
+    console.log(range)
+    setFilterToEdit(prevFilterBy => ({
+      ...prevFilterBy,
+      checkIn: range[0].startDate, checkOut: range[0].endDate
+    }))
+  }, [range])
+
+
+  useEffect(() => {
+    setFilterBy(filterToEdit)
+  }, [filterToEdit])
+
+
 
   function handleSelect(ranges) {
     const { startDate, endDate } = ranges.selection;
@@ -125,7 +143,13 @@ export function StayDetails() {
             /></div>
         </div>
 
-        <DetailsReservation onReserve={onReserve} sumNights={sumNights} formatRangeDatesCalender={formatRangeDatesCalender} />
+        <DetailsReservation
+          onReserve={onReserve}
+          sumNights={sumNights}
+          formatRangeDatesCalender={formatRangeDatesCalender}
+          range={range}
+          handleSelect={handleSelect}
+          setFilterToEdit={setFilterToEdit} />
       </div>
       <DetailsReviewSummary stay={stay} />
       <DetailsReviews reviews={stay.reviews} stayId={stay._id} />

@@ -43,6 +43,7 @@
     grid-template-columns: 2fr 1fr;
     gap: 8.333333333333332%;
     margin-top: 2rem;
+
   }
 
   .details-left {
@@ -51,16 +52,51 @@
     gap: 1.5rem;
 
     .details-calender {
+      .calender-stay-details {
+        padding: 0.1rem;
+        h2 {
+          font-size: 1.375rem;
+          margin: 0 0 0.5rem 0;
+        }
+
+        p {
+          margin: 0;
+          font-size: 0.875rem;
+        }
+      }
+
       .calender {
         position: static;
 
         .rdrCalendarWrapper {
           filter: none;
-          padding: 1.5rem 0;
+          padding-block: 0 1.5rem;
+          padding-inline: 0;
           height: max-content;
 
           .rdrDateDisplayWrapper {
             display: none;
+
+          }
+
+          .rdrMonthName {
+            position: relative;
+            padding-block-start:0 ;
+          }
+
+          .rdrMonthAndYearWrapper {
+            position: relative;
+            justify-content: space-between;
+
+            .rdrNextButton,
+            .rdrPprevButton {
+              position: absolute;
+              top: -32px;
+            }
+          }
+
+          .rdrNextButton {
+            right: 0;
           }
         }
       }
