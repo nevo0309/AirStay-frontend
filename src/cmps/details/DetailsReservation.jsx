@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { FilterCalender } from '../calender/FilterCaleder.jsx'
 import { AddGuests } from "../AddGuests.jsx"
 
-export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalender, setFilterToEdit }) {
+export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalender,range,handleSelect, setFilterToEdit }) {
     const stay = useSelector((storeState) => storeState.stayModule.stay)
     const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
     const [totalPrice, setTotalPrice] = useState(null)
