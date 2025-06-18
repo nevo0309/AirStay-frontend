@@ -163,11 +163,14 @@
 }
 
 .rdrMonthAndYearWrapper {
-    position: absolute;
-    top: 40px;
+    position: relative;
+    justify-content: space-between;
+    padding-top: 0;
+    height: 0;
+    top: 20px;
 
-    .rdrNextButton {
-        position: absolute;
-        left: 520px;
-    }
+    // .rdrNextButton {
+    //     position: absolute;
+    //     left: 520px;
+    // }
 }

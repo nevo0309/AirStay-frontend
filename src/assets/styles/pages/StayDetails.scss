@@ -53,14 +53,14 @@
 
     .details-calender {
       .calender-stay-details {
-        padding: 0.1rem;
+        padding-inline-start: 0.2rem;
         h2 {
           font-size: 1.375rem;
           margin: 0 0 0.5rem 0;
         }
 
         p {
-          margin: 0;
+          margin: 0 0 0 1.375;
           font-size: 0.875rem;
         }
       }
@@ -87,12 +87,8 @@
           .rdrMonthAndYearWrapper {
             position: relative;
             justify-content: space-between;
+            top: 10px;
 
-            .rdrNextButton,
-            .rdrPprevButton {
-              position: absolute;
-              top: -32px;
-            }
           }
 
           .rdrNextButton {

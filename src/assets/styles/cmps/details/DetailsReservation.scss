@@ -210,7 +210,7 @@
             }
 
             .calender-dates-input {
-                width: 287px;
+                width: 318px;
                 box-shadow: rgb(176, 176, 176) 0px 0px 0px 1px inset;
                 border-radius: 8px;
 
@@ -287,18 +287,30 @@
 
 
         .rdrMonthAndYearWrapper {
+            top: 22px;
+
             .rdrNextButton {
                 position: absolute;
                 left: 540px;
-                top: -30px
+
             }
 
             .rdrPprevButton {
                 position: absolute;
-                top: -30px
+
             }
         }
     }
+
+    .calender-open-backscreen {
+        background-color: transparent;
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
 
     .calender-open-backscreen {
         background-color: transparent;

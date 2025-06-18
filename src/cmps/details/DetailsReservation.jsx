@@ -155,7 +155,7 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
 
             <p>You won't be charged yet</p>
             <div className="prices">
-                <h2>{`₪${stay.price}`}<span> X </span> {nightSum + ((nightSum < 1) ? ' night' : ' nights')}</h2>
+                <h2>{`₪${stay.price}`}<span> X </span> {nightSum + ((nightSum === 1) ? ' night' : ' nights')}</h2>
                 {totalPrice && <p>{`₪${totalPrice}`}</p>}
                 <h2>Cleaning fee</h2>
                 {totalPrice && <p> {`₪${cleaningFee}`}</p>}
