@@ -154,6 +154,14 @@ export function handleButtonMouseMove(ev) {
   ev.currentTarget.style.setProperty('--y', `${y}%`)
 }
 
+export function getOrderCreationDate() {
+  const now = new Date()
+  const year = now.getFullYear()
+  const month = String(now.getMonth() + 1).padStart(2, '0')
+  const day = String(now.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
 export function formatFullDate(dateStr) {
   const date = new Date(dateStr)
   const options = { year: 'numeric', month: 'long', day: 'numeric' }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders } from '../store/order.actions'
+import { formatFullDate } from '../services/util.service'
 
 export function TripsPage() {
   useEffect(() => {
@@ -44,8 +45,7 @@ export function TripsPage() {
                 host: { fullname: hostName },
                 startDate,
                 endDate,
-
-                createdAt,
+                orderedAt,
                 totalPrice,
                 status,
               } = order
@@ -53,7 +53,7 @@ export function TripsPage() {
               const priceFormatted = `₪${totalPrice.toFixed(2)}`
               const statusClass = status === 'pending' ? 'status-pending' : 'status-completed'
               const statusText = status[0].toUpperCase() + status.slice(1)
-              const orderDate = new Date(createdAt).toLocaleDateString('en-GB').replace(/\//g, '-')
+
               return (
                 <tr key={_id}>
                   <td>
@@ -63,9 +63,9 @@ export function TripsPage() {
                     </div>
                   </td>
                   <td className="td-host">{hostName}</td>
-                  <td className="td-checkin">{startDate}</td>
-                  <td className="td-checkout">{endDate}</td>
-                  <td className="td-booked">{orderDate}</td>
+                  <td className="td-checkin">{formatFullDate(startDate)}</td>
+                  <td className="td-checkout">{formatFullDate(endDate)}</td>
+                  <td className="td-booked">{formatFullDate(orderedAt)}</td>
                   <td className="td-price">{priceFormatted}</td>
                   <td className={`td-status ${statusClass}`}>{statusText}</td>
                 </tr>
