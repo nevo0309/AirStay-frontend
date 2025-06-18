@@ -1,19 +1,20 @@
 // src/cmps/StayList.jsx
 import React from 'react'
 import { StayCarousel } from './carousel/StayCarousel'
+import { rightArrowSvg } from '../../data/svgExport'
 
 export function StayList({ stays }) {
   const sections = [
-    'Popular homes in Eilat >',
-    'Available in Tel Aviv-Yafo this weekend >',
-    'Stay in Athens >',
-    'Available in Jerusalem this weekend >',
-    'Homes in Budapest >',
-    'Available next month in Rome >',
-    'Places to stay in Paris >',
-    'Check out homes in Haifa >',
-    'Popular homes in London >',
-    'Stay in Madrid >',
+    <>Popular homes in Eilat {rightArrowSvg}</>,
+    <>Available in Tel Aviv-Yafo this weekend {rightArrowSvg}</>,
+    <>Stay in Athens {rightArrowSvg}</>,
+    <>Available in Jerusalem this weekend {rightArrowSvg}</>,
+    <>Homes in Budapest {rightArrowSvg}</>,
+    <>Available next month in Rome {rightArrowSvg}</>,
+    <>Places to stay in Paris {rightArrowSvg}</>,
+    <>Check out homes in Haifa {rightArrowSvg}</>,
+    <>Popular homes in London {rightArrowSvg}</>,
+    <>Stay in Madrid {rightArrowSvg}</>,
   ]
 
   return (
