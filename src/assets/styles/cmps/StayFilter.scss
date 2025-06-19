@@ -37,7 +37,7 @@
         letter-spacing: 0.8px;
         position: absolute;
         top: 13px;
-        right: 15px;
+        right: 10px;
         opacity: 0;
         animation: fadeIn 200ms ease forwards;
         animation-delay: 100ms;
@@ -151,7 +151,7 @@
     p {
       max-width: 100%;
       margin: 0;
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -165,14 +165,14 @@
   }
 
   label {
-    font-size: 0.70rem;
-    font-weight: 700;
+    font-size: 0.75rem;
+    font-weight: 500;
   }
 
   input {
     border: none;
     font-family: poppins;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     width: 214px;
     padding: 0;
     font-weight: 600;

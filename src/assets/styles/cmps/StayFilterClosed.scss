@@ -8,8 +8,9 @@
     border: 1px solid #dfdddd;
     height: 3rem;
 
-    div > h1 {
+    div>h1 {
         padding-inline-start: 0;
+
         &::after {
             content: '';
             position: absolute;
@@ -57,10 +58,11 @@
         margin-inline: 10px;
         border-radius: 50%;
         background-color: #FF385C;
+        margin-inline-start: 0;
 
         svg {
             color: white;
-            height: 0.75rem!important;
+            height: 0.75rem !important;
         }
     }
 }

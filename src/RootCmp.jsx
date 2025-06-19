@@ -40,7 +40,8 @@ export function RootCmp() {
   useEffect(() => {
     if (
       location.pathname.startsWith("/book/stay") ||
-      location.pathname.startsWith("/trips")
+      location.pathname.startsWith("/trips") ||
+      location.pathname.startsWith("/stay/hosting/order") 
     )
       setIsBookingOrDetailsPage(true)
     else setIsBookingOrDetailsPage(false)

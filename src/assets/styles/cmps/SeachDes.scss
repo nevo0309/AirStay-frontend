@@ -15,7 +15,7 @@
         z-index: 10;
         background-color: white;
         max-height: 470px;
-        padding-inline: 2rem;
+        padding-inline: 1.5rem;
         overflow-y: scroll;
         scrollbar-color: #8e8e8e transparent;
         scrollbar-width: thin;
@@ -37,8 +37,10 @@
     h1 {
         margin: 0;
         margin-block-end: 0.25rem;
+        padding-inline-start: 0.5rem;
         font-weight: 400;
         font-size: 0.75rem;
+
     }
 
     .des-card {
@@ -53,12 +55,12 @@
 
         div {
             h1 {
-                font-size: 0.85rem;
-                font-weight: 600;
+                font-size: 0.875rem;
+                font-weight: 500;
             }
 
             p {
-                font-size: 0.85rem;
+                font-size: 0.875rem;
                 color: #6A6A6A
             }
         }

@@ -17,7 +17,6 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
 
 
     useEffect(() => {
-        console.log(guest)
         if (Object.keys(filterBy.guest).length === 0) {
             setFilterToEdit(prevFilterBy => ({
                 ...prevFilterBy,
@@ -36,11 +35,11 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
     useEffect(() => {
         setTotalPrice(sumNights(filterBy.checkIn, filterBy.checkOut) * stay.price)
     }, [filterBy])
-    console.log(filterBy)
 
 
     function onOpenCalender() {
         setIsCalenderOpen(true)
+        setActiveCalenderDate('checkIn')
     }
 
     function formatRangeDates(date) {
@@ -82,7 +81,6 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
 
 
     function onClickBackDrop() {
-        console.log('ca')
         if (isCalenderOpen) setIsCalenderOpen(false)
         else if (isAddGuestOpen) setIsAddGuestOpen(false)
     }
@@ -120,7 +118,7 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
                             {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
                         </div>
                         <div className="calender-dates-input flex">
-                            <div className={"flex column " + (activeCalenderDate === 'checkIn' ? 'active' : '')} onClick={onOpenCalender}>
+                            <div className={"flex column " + (activeCalenderDate === 'checkIn' ? 'active' : '')}>
                                 <label>
                                     CHECK-IN
                                 </label>
@@ -155,7 +153,7 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
 
             <p>You won't be charged yet</p>
             <div className="prices">
-                <h2>{`₪${stay.price}`}<span> X </span> {nightSum + ((nightSum < 1) ? ' night' : ' nights')}</h2>
+                <h2>{`₪${stay.price}`}<span> X </span> {nightSum + ((nightSum === 1) ? ' night' : ' nights')}</h2>
                 {totalPrice && <p>{`₪${totalPrice}`}</p>}
                 <h2>Cleaning fee</h2>
                 {totalPrice && <p> {`₪${cleaningFee}`}</p>}
