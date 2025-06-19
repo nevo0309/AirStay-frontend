@@ -14,8 +14,8 @@ export function StayIndex({ isStayFilterOpen }) {
   const [loading, setLoading] = useState(true)
 
   const stays = useSelector(storeState => storeState.stayModule.stays)
-
-  console.log(filterBy)
+// 
+  // console.log(filterBy)
   useEffect(() => {
     async function fetch() {
       setLoading(true)

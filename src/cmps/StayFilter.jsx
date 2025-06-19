@@ -21,15 +21,13 @@ export function StayFilter() {
       key: 'selection'
     }
   ])
-  
+
   function formatRangeDates(date) {
     const options = { month: 'short', day: 'numeric' }
     const dateToShow = date.toLocaleDateString('en-US', options)
 
     return dateToShow;
   }
-
-  // console.log(openModal)
   // console.log(openModal === 'calenderCheckIn')
   // useEffect(() => {
   //   onSetFilterBy(filterToEdit)
@@ -61,30 +59,30 @@ export function StayFilter() {
 
 
   function handleSelect(ranges) {
-    const { startDate, endDate } = ranges.selection;
-    const currentStart = range[0].startDate;
-    const currentEnd = range[0].endDate;
+    const { startDate, endDate } = ranges.selection
+    const currentStart = range[0].startDate
+    const currentEnd = range[0].endDate
 
-    if (!currentStart || (currentStart && !currentEnd)) {
-      // Initial selection or selecting the end date
+    if (openModal === 'calenderCheckIn') {
       setRange([{
-        ...range[0],
         startDate,
-        endDate: startDate === endDate ? null : endDate,
+        endDate: currentEnd,
+        key: 'selection',
       }])
-    } else {
-      // If user clicks a new date AFTER current start date, update endDate
-      if (startDate > currentStart) {
+    }
+
+    if (openModal === 'calenderCheckOut') {
+      if (currentStart >= endDate) {
         setRange([{
-          ...range[0],
           startDate: currentStart,
-          endDate: startDate,
-        }])
-      } else {
-        // If clicked date is before or same as current start, treat it as a new start
-        setRange([{
-          startDate,
           endDate: null,
+          key: 'selection',
+        }])
+    
+      } else {
+        setRange([{
+          startDate: currentStart,
+          endDate,
           key: 'selection',
         }])
       }
@@ -121,15 +119,15 @@ export function StayFilter() {
   }
 
 
-  function onSearchFilter(){
+  function onSearchFilter() {
     openFilterModal('')
-    setFilterBy({location: locationToSearch ,checkIn:range[0].startDate ,checkOut:range[0].endDate,guest })
+    setFilterBy({ location: locationToSearch, checkIn: range[0].startDate, checkOut: range[0].endDate, guest })
   }
 
 
   const isAnyInputActive = openModal ? true : false
 
- 
+
   return (
     <section className={'stay-filter ' + (isAnyInputActive ? 'open' : '')}>
       <div className={'input-section flex column ' + (openModal === 'search' ? 'active' : '')}
@@ -174,7 +172,7 @@ export function StayFilter() {
 
 
       {openModal === 'guests' && <AddGuests setGuest={setGuest} />}
-      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={handleSelect} setOpenModal={setOpenModal} openModal={openModal} cmp={'header'}/>}
+      {(openModal === 'calenderCheckIn' || openModal === 'calenderCheckOut') && <FilterCalender range={range} setRange={handleSelect} setOpenModal={setOpenModal} openModal={openModal} cmp={'header'} />}
       {openModal === 'search' && <SearchDes setLocation={setLocationToSearch} setOpenModal={setOpenModal} />}
 
 

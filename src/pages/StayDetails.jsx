@@ -39,7 +39,7 @@ export function StayDetails() {
   ])
 
   useEffect(() => {
-    console.log(range)
+    // console.log(range)
     setFilterToEdit(prevFilterBy => ({
       ...prevFilterBy,
       checkIn: range[0].startDate, checkOut: range[0].endDate
@@ -54,12 +54,13 @@ export function StayDetails() {
 
 
   function handleSelect(ranges) {
-    const { startDate, endDate } = ranges.selection;
-    const currentStart = range[0].startDate;
-    const currentEnd = range[0].endDate;
+    const { startDate, endDate } = ranges.selection
+    const currentStart = range[0].startDate
+    const currentEnd = range[0].endDate
 
     if (!currentStart || (currentStart && !currentEnd)) {
       // Initial selection or selecting the end date
+
       setRange([{
         ...range[0],
         startDate,
@@ -70,8 +71,8 @@ export function StayDetails() {
       if (startDate > currentStart) {
         setRange([{
           ...range[0],
-          startDate: currentStart,
-          endDate: startDate,
+          startDate,
+          endDate: null,
         }])
       } else {
         // If clicked date is before or same as current start, treat it as a new start
