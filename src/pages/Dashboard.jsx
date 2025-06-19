@@ -48,6 +48,7 @@ export function Dashboard() {
       status: "Declined"
     }
   ]
+
   return (
     <div className='dashboard-container'>
       <main className='dashboard-main'>
