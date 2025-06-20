@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from "react"
 
 
 
-export function AddGuests({ setGuest }) {
-    const [adultsCount, setAdultsCount] = useState(0)
-    const [childrenCount, setChildrenCount] = useState(0)
-    const [infantsCount, setInfantsCount] = useState(0)
-    const [petsCount, setPetsCount] = useState(0)
-    
+export function AddGuests({ setGuest, filterBy }) {
+    const [adultsCount, setAdultsCount] = useState(filterBy ? filterBy.guest.adults : 0)
+    const [childrenCount, setChildrenCount] = useState(filterBy ? filterBy.guest.children: 0)
+    const [infantsCount, setInfantsCount] = useState(filterBy ? filterBy.guest.infants : 0)
+    const [petsCount, setPetsCount] = useState(filterBy ? filterBy.guest.pet : 0)
+
     useEffect(() => {
 
         if (adultsCount !== 0 || childrenCount !== 0 || infantsCount !== 0 || petsCount !== 0) {

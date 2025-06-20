@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 100%;
-  max-width: 1150px;
+  max-width: 1200px;
   // max-inline-size: 1280px;
   margin: 0 auto;
 
@@ -41,16 +41,69 @@
   .stay-details-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 2rem;
+    gap: 8.333333333333332%;
     margin-top: 2rem;
+
   }
 
   .details-left {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    .details-calender {
+      .calender-stay-details {
+        padding: 0.1rem;
+        h2 {
+          font-size: 1.375rem;
+          margin: 0 0 0.5rem 0;
+        }
+
+        p {
+          margin: 0;
+          font-size: 0.875rem;
+        }
+      }
+
+      .calender {
+        position: static;
+
+        .rdrCalendarWrapper {
+          filter: none;
+          padding-block: 0 1.5rem;
+          padding-inline: 0;
+          height: max-content;
+
+          .rdrDateDisplayWrapper {
+            display: none;
+
+          }
+
+          .rdrMonthName {
+            position: relative;
+            padding-block-start:0 ;
+          }
+
+          .rdrMonthAndYearWrapper {
+            position: relative;
+            justify-content: space-between;
+
+            .rdrNextButton,
+            .rdrPprevButton {
+              position: absolute;
+              top: -32px;
+            }
+          }
+
+          .rdrNextButton {
+            right: 0;
+          }
+        }
+      }
+    }
   }
 }
+
 // Housted By.....................
 .housted-by {
   display: flex;
@@ -75,13 +128,14 @@
     flex-direction: column;
     line-height: 1.2;
 
-    > div:first-child {
+    >div:first-child {
       margin-bottom: 5px;
       font-size: 1rem;
       font-weight: 600;
       color: #222;
     }
-    > div:last-child {
+
+    >div:last-child {
       font-size: 0.875rem;
       font-weight: 400;
       color: #717171;
@@ -91,16 +145,19 @@
 
 .details-map {
   width: 100%;
+
   h2 {
     margin-top: 0.9rem;
     margin-bottom: 1rem;
     font-weight: 500;
     font-size: 1.3rem;
   }
+
   .location-address {
     display: flex;
     flex-direction: column;
   }
+
   p {
     font-size: 1rem;
   }

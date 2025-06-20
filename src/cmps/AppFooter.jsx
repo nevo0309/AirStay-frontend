@@ -5,7 +5,10 @@ export function AppFooter() {
 
   return (
     <footer className="app-footer main-container full">
-      <section></section>
+      <section>
+        {/* <p>Coffeerights &copy; 2024</p>
+                <p>Count: {count}</p> */}
+      </section>
     </footer>
   )
 }
