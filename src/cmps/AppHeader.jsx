@@ -12,12 +12,21 @@ import { humburgerSvg } from "../../data/svgExport.jsx"
 import { heartSvg } from "../../data/svgExport.jsx"
 import { wishlistSvg } from "../../data/svgExport.jsx"
 import { trips2 } from "../../data/svgExport.jsx"
+import { usePathMatch } from "../customHooks/usePathMatch.js"
 
 export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
   const user = useSelector((storeState) => storeState.userModule.user)
+  const [isHosting, setIsHosting] = useState(false)
   const [isSideBarOpen, setIsSideBarOpen] = useState(false)
+  const isFilterSuppressedPage = usePathMatch(["/hosting/order"], "startsWith")
+  const isStaticPage = usePathMatch(["/stay", "/hosting"], "startsWith")
+
   const navigate = useNavigate()
   const location = useLocation()
+
+  useEffect(() => {
+    setIsHosting(location.pathname.startsWith("/hosting/order"))
+  }, [location.pathname])
 
   useEffect(() => {
     if (location.pathname.startsWith("/stay")) setIsStayFilterOpen(false)
@@ -48,13 +57,16 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
       showErrorMsg("Cannot logout")
     }
   }
+  const handleToggle = () => {
+    navigate(isHosting ? "/" : "/hosting/order")
+  }
 
   return (
     <header
       className={
         "app-header main-container full " +
-        (isStayFilterOpen ? "" : "closed") +
-        (location.pathname.startsWith("/stay") ? " static" : "")
+        (!isStayFilterOpen || isFilterSuppressedPage ? "closed " : "") +
+        (isStaticPage ? " static" : "")
       }
     >
       <nav>
@@ -65,40 +77,48 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
           </NavLink>
         </div>
 
-        {isStayFilterOpen ? (
-          <StayFilter />
-        ) : (
-          <StayFilterClosed setIsStayFilterOpen={setIsStayFilterOpen} />
-        )}
+        {!isFilterSuppressedPage ? (
+          isStayFilterOpen ? (
+            <StayFilter />
+          ) : (
+            <StayFilterClosed setIsStayFilterOpen={setIsStayFilterOpen} />
+          )
+        ) : null}
 
         {/* {!user && (
           <NavLink to="login" className="login-link">
           Login
           </NavLink>
           )} */}
-        <section className='btns flex'>
-          {/* <button className='host-guest-btn'>Become a host</button> */}
 
+        <section className='btns flex'>
           <button
             className='host-guest-btn'
-            onClick={() =>
-              navigate(
-                location.pathname.startsWith("/stay/hosting/order")
-                  ? "/"
-                  : "stay/hosting/order"
-              )
-            }
+            onClick={(e) => {
+              e.stopPropagation() // Prevent affecting parent click logic
+              handleToggle()
+            }}
           >
-            {location.pathname.startsWith("/stay/hosting/order")
-              ? "Switch to travel"
-              : "Switch to Hosting"}
+            {isHosting ? "Switch to travel" : "Switch to Hosting"}
           </button>
-          <section className="humburger"><button className='menue-btn' onClick={() => setIsSideBarOpen(!isSideBarOpen)}>{humburgerSvg}</button>
-            {isSideBarOpen && <section className="humurger-menu flex column">
-              <p className="flex">{wishlistSvg} <span>Wishlist</span></p>
-              <p className="flex" onClick={()=> navigate('/trips')}>{trips2}  <span>Trips</span></p>
-              <p>Login / Sign up</p>
-            </section>}
+          <section className='humburger'>
+            <button
+              className='menue-btn'
+              onClick={() => setIsSideBarOpen(!isSideBarOpen)}
+            >
+              {humburgerSvg}
+            </button>
+            {isSideBarOpen && (
+              <section className='humurger-menu flex column'>
+                <p className='flex'>
+                  {wishlistSvg} <span>Wishlist</span>
+                </p>
+                <p className='flex' onClick={() => navigate("/trips")}>
+                  {trips2} <span>Trips</span>
+                </p>
+                <p>Login / Sign up</p>
+              </section>
+            )}
           </section>
         </section>
 
