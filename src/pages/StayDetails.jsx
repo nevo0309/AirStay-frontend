@@ -29,7 +29,7 @@ export function StayDetails() {
   const { stayId } = useParams()
   const stay = useSelector(storeState => storeState.stayModule.stay)
   const navigate = useNavigate()
-
+  const nightSum = sumNights(filterBy.checkIn, filterBy.checkOut)
   const [range, setRange] = useState([
     {
       startDate: filterBy.checkIn || new Date(),
@@ -135,7 +135,7 @@ export function StayDetails() {
           <DetailsAmenities amenities={stay.amenities} />
           <div className='details-calender'>
             <div className="calender-stay-details">
-              <h2>{`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
+              <h2> {nightSum + ((nightSum === 1) ? ' night' : ' nights')}</h2>
               {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
             </div>
             <FilterCalender range={range}
@@ -150,7 +150,8 @@ export function StayDetails() {
           formatRangeDatesCalender={formatRangeDatesCalender}
           range={range}
           handleSelect={handleSelect}
-          setFilterToEdit={setFilterToEdit} />
+          setFilterToEdit={setFilterToEdit}
+          nightSum={nightSum} />
       </div>
       <DetailsReviewSummary stay={stay} />
       <DetailsReviews reviews={stay.reviews} stayId={stay._id} />
