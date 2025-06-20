@@ -168,6 +168,12 @@ export function formatFullDate(dateStr) {
   return date.toLocaleDateString(undefined, options)
 }
 
+export function formatDateFromStore(d) {
+  if (!d) return ''
+  const date = new Date(d)
+  return date.toISOString().split('T')[0]
+}
+
 // mock data
 export function generateRandomOrders(count = 10) {
   const guestNames = [
