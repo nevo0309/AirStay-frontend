@@ -15,12 +15,12 @@ import { DetailsReservation } from '../cmps/details/DetailsReservation'
 import { DetailsMoreInfo } from '../cmps/details/DetailsMoreInfo'
 import { DetailsReviewSummary } from '../cmps/details/DetailsReviewSummary'
 import { FilterCalender } from '../cmps/calender/FilterCaleder'
-import { addDays } from "date-fns"
+import { addDays } from 'date-fns'
 import { setFilterBy } from '../store/stay.actions'
-
+import { SkeletonStayDetails } from './StayDetailsSkeleton'
 
 export function StayDetails() {
-  const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
+  const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   const [filterToEdit, setFilterToEdit] = useState(filterBy)
 
   const [startDate, setStartDate] = useState('2025-07-04')
@@ -34,52 +34,56 @@ export function StayDetails() {
     {
       startDate: filterBy.checkIn || new Date(),
       endDate: filterBy.checkOut || addDays(new Date(), 2),
-      key: 'selection'
-    }
+      key: 'selection',
+    },
   ])
 
   useEffect(() => {
     console.log(range)
     setFilterToEdit(prevFilterBy => ({
       ...prevFilterBy,
-      checkIn: range[0].startDate, checkOut: range[0].endDate
+      checkIn: range[0].startDate,
+      checkOut: range[0].endDate,
     }))
   }, [range])
-
 
   useEffect(() => {
     setFilterBy(filterToEdit)
   }, [filterToEdit])
 
-
-
   function handleSelect(ranges) {
-    const { startDate, endDate } = ranges.selection;
-    const currentStart = range[0].startDate;
-    const currentEnd = range[0].endDate;
+    const { startDate, endDate } = ranges.selection
+    const currentStart = range[0].startDate
+    const currentEnd = range[0].endDate
 
     if (!currentStart || (currentStart && !currentEnd)) {
       // Initial selection or selecting the end date
-      setRange([{
-        ...range[0],
-        startDate,
-        endDate: startDate === endDate ? null : endDate,
-      }])
+      setRange([
+        {
+          ...range[0],
+          startDate,
+          endDate: startDate === endDate ? null : endDate,
+        },
+      ])
     } else {
       // If user clicks a new date AFTER current start date, update endDate
       if (startDate > currentStart) {
-        setRange([{
-          ...range[0],
-          startDate: currentStart,
-          endDate: startDate,
-        }])
+        setRange([
+          {
+            ...range[0],
+            startDate: currentStart,
+            endDate: startDate,
+          },
+        ])
       } else {
         // If clicked date is before or same as current start, treat it as a new start
-        setRange([{
-          startDate,
-          endDate: null,
-          key: 'selection',
-        }])
+        setRange([
+          {
+            startDate,
+            endDate: null,
+            key: 'selection',
+          },
+        ])
       }
     }
   }
@@ -93,7 +97,6 @@ export function StayDetails() {
     loadStay(stayId)
   }, [stayId])
 
-
   function sumNights(startDate, endDate) {
     if (!startDate || !endDate) return 0
 
@@ -103,8 +106,6 @@ export function StayDetails() {
     return Math.max(0, Math.round(diffMs / oneDayMs))
   }
 
-
-
   function formatRangeDatesCalender(date) {
     const options = { month: 'short', day: 'numeric', year: 'numeric' }
     const dateToShow = date.toLocaleDateString('en-US', options)
@@ -112,9 +113,8 @@ export function StayDetails() {
     return dateToShow
   }
 
-
-  if (!stay) return <div>Loading...</div>
-
+  // if (!stay) return <div>Loading...</div>
+  if (!stay) return <SkeletonStayDetails />
   return (
     <div className="stay-details">
       <DetailsHeader name={stay.name} />
@@ -132,15 +132,17 @@ export function StayDetails() {
           <DetailsHighlights />
           <DetailsSummary summary={stay.summary} />
           <DetailsAmenities amenities={stay.amenities} />
-          <div className='details-calender'>
+          <div className="details-calender">
             <div className="calender-stay-details">
               <h2>{`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
-              {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
+              {filterBy.checkIn && filterBy.checkOut && (
+                <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(
+                  filterBy.checkOut
+                )}`}</p>
+              )}
             </div>
-            <FilterCalender range={range}
-              setRange={handleSelect}
-              cmp={'details'}
-            /></div>
+            <FilterCalender range={range} setRange={handleSelect} cmp={'details'} />
+          </div>
         </div>
 
         <DetailsReservation
@@ -149,7 +151,8 @@ export function StayDetails() {
           formatRangeDatesCalender={formatRangeDatesCalender}
           range={range}
           handleSelect={handleSelect}
-          setFilterToEdit={setFilterToEdit} />
+          setFilterToEdit={setFilterToEdit}
+        />
       </div>
       <DetailsReviewSummary stay={stay} />
       <DetailsReviews reviews={stay.reviews} stayId={stay._id} />
