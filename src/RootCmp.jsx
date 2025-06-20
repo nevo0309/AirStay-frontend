@@ -24,7 +24,7 @@ import { TripsPage } from "./pages/TripsPage.jsx"
 import { ReservationAppHeader } from "./cmps/ReservationAppHeader.jsx"
 import { use } from "react"
 
-import { Dashboard } from "./pages/dashboard.jsx"
+import { OrdersTable } from "./pages/OrdersTable.jsx"
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -40,8 +40,7 @@ export function RootCmp() {
   useEffect(() => {
     if (
       location.pathname.startsWith("/book/stay") ||
-      location.pathname.startsWith("/trips") ||
-      location.pathname.startsWith("/stay/hosting/order") 
+      location.pathname.startsWith("/trips")
     )
       setIsBookingOrDetailsPage(true)
     else setIsBookingOrDetailsPage(false)
@@ -73,7 +72,7 @@ export function RootCmp() {
           <Route path='stay/:stayId' element={<StayDetails />} />
           <Route path='book/stay/:stayId' element={<ReservePage />} />
           <Route path='/trips' element={<TripsPage />} />
-          <Route path='stay/hosting/order' element={<Dashboard />} />
+          <Route path='/hosting/order' element={<OrdersTable />} />
           {/* <Route path="user/:id" element={<UserDetails />} /> */}
           {/* <Route path="review" element={<ReviewIndex />} /> */}
           {/* <Route path="chat" element={<ChatApp />} /> */}

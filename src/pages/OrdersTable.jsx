@@ -1,8 +1,55 @@
 import { useState, useEffect } from "react"
 import { formatFullDate } from "../services/util.service"
 
-export function OrdersTable({ orders }) {
+export function OrdersTable() {
   const userName = "Brayen Cheski"
+
+  const orders = [
+    {
+      _id: "o1001",
+      guest: { _id: "u101", fullname: "Lena Sparks" },
+      guests: { adults: 2, children: 0, infants: 1, pets: 0 },
+      startDate: "2025/06/15",
+      endDate: "2025/06/18",
+      bookedAt: "2025/05/20",
+      stay: { _id: "s101", name: "Hilltop Haven" },
+      totalPrice: 245,
+      status: "Approved"
+    },
+    {
+      _id: "o1002",
+      guest: { _id: "u102", fullname: "Mark Twain" },
+      guests: { adults: 1, children: 1, infants: 0, pets: 1 },
+      startDate: "2025/07/01",
+      endDate: "2025/07/06",
+      bookedAt: "2025/06/01",
+      stay: { _id: "s102", name: "Seaside Cottage" },
+      totalPrice: 420,
+      status: "Pending"
+    },
+    {
+      _id: "o1003",
+      guest: { _id: "u103", fullname: "Sophie Sky" },
+      guests: { adults: 2, children: 2, infants: 1, pets: 0 },
+      startDate: "2025/06/13",
+      endDate: "2025/06/16",
+      bookedAt: "2025/05/22",
+      stay: { _id: "s103", name: "Downtown Loft" },
+      totalPrice: 330,
+      status: "Approved"
+    },
+    {
+      _id: "o1004",
+      guest: { _id: "u104", fullname: "Nathan Drift" },
+      guests: { adults: 2, children: 1, infants: 0, pets: 1 },
+      startDate: "2025/08/03",
+      endDate: "2025/08/10",
+      bookedAt: "2025/07/01",
+      stay: { _id: "s104", name: "Lakeview Bungalow" },
+      totalPrice: 520,
+      status: "Declined"
+    }
+  ]
 
   const tabs = [
     { label: "All reservations", filter: "All" },
@@ -12,7 +59,6 @@ export function OrdersTable({ orders }) {
     { label: "Upcoming", filter: "Upcoming" },
     { label: "Pending review", filter: "Pending" }
   ]
-
   const [activeTab, setActiveTab] = useState(0)
   const [filteredOrders, setFilteredOrders] = useState(orders)
   const [currentOrders, setCurrentOrders] = useState(orders)
