@@ -12,27 +12,25 @@ import { StepChoosePayment } from '../cmps/steps/StepChoosePayment'
 import { StepPaymentMethod } from '../cmps/steps/StepPaymentMethod'
 import { StepMessage } from '../cmps/steps/StepMessage'
 import { StepReview } from '../cmps/steps/StepReview'
-
+import { formatDateFromStore, getOrderCreationDate } from '../services/util.service'
+import { useSelector } from 'react-redux'
+formatDateFromStore
 export function ReservePage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const location = useLocation()
   const { stayId } = useParams()
+  const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+  const stayToOrder = useSelector(storeState => storeState.stayModule.stay)
 
-  // console.log('🔍 location.state →', location.state)
+  const [stay, setStay] = useState(stayToOrder || null)
+  const [loadingStay, setLoadingStay] = useState(!stayToOrder)
+  const checkIn = formatDateFromStore(filterBy.checkIn) || '2025-12-04'
+  const checkOut = formatDateFromStore(filterBy.checkOut) || '2025-12-06'
+  const storeGuest = filterBy.guest || { adults: 1, kids: 0 }
 
-  const {
-    stay: locationStay,
-    startDate: locationStart,
-    endDate: locationEnd,
-    guests: locationGuests,
-  } = location.state || {}
-
-  const [stay, setStay] = useState(locationStay || null)
-  const [loadingStay, setLoadingStay] = useState(!locationStay)
-  const [startDate, setStartDate] = useState(locationStart || '2025-12-04')
-  const [endDate, setEndDate] = useState(locationEnd || '2025-12-06')
-  const [guests, setGuests] = useState(locationGuests || { adults: 1, kids: 0 })
+  const [startDate, setStartDate] = useState(checkIn)
+  const [endDate, setEndDate] = useState(checkOut)
+  const [guests, setGuests] = useState(storeGuest)
 
   const endDateMinus2 = (() => {
     const d = new Date(endDate + 'T00:00:00')
@@ -42,7 +40,7 @@ export function ReservePage() {
 
   useEffect(() => {
     async function loadStay() {
-      if (locationStay) return setLoadingStay(false)
+      if (stayToOrder) return setLoadingStay(false)
       try {
         const fetched = await stayService.getById(stayId)
         setStay(fetched)
@@ -53,7 +51,7 @@ export function ReservePage() {
       }
     }
     loadStay()
-  }, [stayId, locationStay])
+  }, [stayId, stayToOrder])
 
   // ── Wizard state
   const [currentStep, setCurrentStep] = useState(1)
@@ -93,7 +91,7 @@ export function ReservePage() {
       paymentMethod,
       message,
       cardDetails,
-      OrderedAt: Date.now(),
+      orderedAt: getOrderCreationDate(),
       stay: {
         _id: stay._id,
         name: stay.name,
