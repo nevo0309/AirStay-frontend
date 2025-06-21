@@ -34,20 +34,29 @@ function ScrollToTop() {
 
 export function RootCmp() {
   const location = useLocation()
-  const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
+  // const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
   const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
+  const isBookingOrDetailsPage = location.pathname.startsWith("/book/stay")
 
-  useEffect(() => {
-    if (
-      location.pathname.startsWith("/book/stay") ||
-      location.pathname.startsWith("/trips")
-    )
-      setIsBookingOrDetailsPage(true)
-    else setIsBookingOrDetailsPage(false)
-  }, [location.pathname])
+  // useEffect(() => {
+  //   if (
+  //     location.pathname.startsWith("/book/stay")
+  //     // location.pathname.startsWith("/trips")
+  //   )
+  //     setIsBookingOrDetailsPage(true)
+  //   else setIsBookingOrDetailsPage(false)
+  // }, [location.pathname])
 
   return (
     <div className='main-container'>
+      {/* {isBookingOrDetailsPage ? (
+        <ReservationAppHeader />
+      ) : (
+        <AppHeader
+          isStayFilterOpen={isStayFilterOpen}
+          setIsStayFilterOpen={setIsStayFilterOpen}
+        />
+      )} */}
       {isBookingOrDetailsPage ? (
         <ReservationAppHeader />
       ) : (
@@ -56,6 +65,7 @@ export function RootCmp() {
           setIsStayFilterOpen={setIsStayFilterOpen}
         />
       )}
+
       <UserMsg />
       <ScrollToTop />
       <main>

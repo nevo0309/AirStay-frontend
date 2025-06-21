@@ -18,8 +18,16 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
   const user = useSelector((storeState) => storeState.userModule.user)
   const [isHosting, setIsHosting] = useState(false)
   const [isSideBarOpen, setIsSideBarOpen] = useState(false)
-  const isFilterSuppressedPage = usePathMatch(["/hosting/order"], "startsWith")
-  const isStaticPage = usePathMatch(["/stay", "/hosting"], "startsWith")
+  const isFilterSuppressedPage = usePathMatch(
+    ["/hosting/order", "/trips", "/book"],
+    "startsWith"
+  )
+  const isStaticPage = usePathMatch([
+    "/stay",
+    "/hosting",
+    "/trips",
+    "startsWith"
+  ])
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -99,7 +107,7 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
               handleToggle()
             }}
           >
-            {isHosting ? "Switch to travel" : "Switch to Hosting"}
+            {isHosting ? "Switch to traveling" : "Switch to Hosting"}
           </button>
           <section className='humburger'>
             <button
