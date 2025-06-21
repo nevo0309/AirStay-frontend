@@ -22,6 +22,7 @@ import { Signup } from "./pages/Signup.jsx"
 import { ReservePage } from "./pages/ReservePage.jsx"
 import { TripsPage } from "./pages/TripsPage.jsx"
 import { ReservationAppHeader } from "./cmps/ReservationAppHeader.jsx"
+import { SearchPage } from "./pages/SearchPage.jsx"
 import { use } from "react"
 
 import { Dashboard } from "./pages/dashboard.jsx"
@@ -41,7 +42,7 @@ export function RootCmp() {
     if (
       location.pathname.startsWith("/book/stay") ||
       location.pathname.startsWith("/trips") ||
-      location.pathname.startsWith("/stay/hosting/order") 
+      location.pathname.startsWith("/stay/hosting/order")
     )
       setIsBookingOrDetailsPage(true)
     else setIsBookingOrDetailsPage(false)
@@ -74,6 +75,7 @@ export function RootCmp() {
           <Route path='book/stay/:stayId' element={<ReservePage />} />
           <Route path='/trips' element={<TripsPage />} />
           <Route path='stay/hosting/order' element={<Dashboard />} />
+          <Route path="/search" element={<SearchPage />} />
           {/* <Route path="user/:id" element={<UserDetails />} /> */}
           {/* <Route path="review" element={<ReviewIndex />} /> */}
           {/* <Route path="chat" element={<ChatApp />} /> */}

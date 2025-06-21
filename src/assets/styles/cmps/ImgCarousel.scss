@@ -1,0 +1,96 @@
+.card {
+    &:hover {
+        .nav {
+            opacity: 1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+            &.hidden{
+                display: none;
+            }
+            
+         
+
+            &:hover {
+                background-color: white;
+                scale: 1.05;
+
+            }
+        }
+    }
+
+    .carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        aspect-ratio: 1;
+
+
+        .keen-slider__slide {
+            .carousel-img {
+                width: 100%;
+                aspect-ratio: 1;
+
+                // height: 250px;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+
+        }
+    }
+}
+
+
+.nav {
+    opacity: 0;
+    transition: 300ms;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.908);
+    color: black;
+    border: none;
+    padding: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.nav.left {
+    left: 6px;
+}
+
+.nav.right {
+    right: 6px;
+}
+
+.dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.dot {
+
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: none;
+    background: #f7f4f4;
+    opacity: 0.5;
+    z-index: 1000;
+    margin: 0;
+    cursor: pointer;
+    padding: 0;
+
+    &.active {
+        background: rgb(255, 255, 255);
+        opacity: 1;
+    }
+}

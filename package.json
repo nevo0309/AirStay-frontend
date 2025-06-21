@@ -19,6 +19,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
     "embla-carousel-reactive-utils": "^8.6.0",
+    "keen-slider": "^6.8.6",
     "lucide-react": "^0.511.0",
     "react": "^19.1.0",
     "react-date-range": "^2.0.1",

@@ -20,14 +20,14 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
   const location = useLocation()
 
   useEffect(() => {
-    if (location.pathname.startsWith("/stay")) setIsStayFilterOpen(false)
+    if (location.pathname.startsWith("/stay") || location.pathname.startsWith("/search")) setIsStayFilterOpen(false)
     else setIsStayFilterOpen(true)
   }, [location.pathname])
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      if (location.pathname.startsWith("/stay")) return
+      if (location.pathname.startsWith("/stay") || location.pathname.startsWith("/search")) return
       if (scrollY > 1) {
         setIsStayFilterOpen(false)
       } else {
@@ -96,7 +96,7 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
           <section className="humburger"><button className='menue-btn' onClick={() => setIsSideBarOpen(!isSideBarOpen)}>{humburgerSvg}</button>
             {isSideBarOpen && <section className="humurger-menu flex column">
               <p className="flex">{wishlistSvg} <span>Wishlist</span></p>
-              <p className="flex" onClick={()=> navigate('/trips')}>{trips2}  <span>Trips</span></p>
+              <p className="flex" onClick={() => navigate('/trips')}>{trips2}  <span>Trips</span></p>
               <p>Login / Sign up</p>
             </section>}
           </section>

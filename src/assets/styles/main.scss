@@ -38,6 +38,7 @@
 @import "pages/TaskDetails";
 @import "pages/LoginSignup";
 @import "pages/Chat";
+@import "pages/SearchPage.scss";
 
 // Components
 @import "cmps/list";
@@ -80,6 +81,8 @@
 @import "cmps/AddGuests.scss";
 @import "cmps/SeachDes.scss";
 @import "cmps/ReservationAppHeader.scss";
+
+@import "cmps/ImgCarousel.scss"
 
 // @import "cmps/StayList";
 // @import "cmps/StayPreview";
