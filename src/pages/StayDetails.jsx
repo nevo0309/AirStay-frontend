@@ -172,9 +172,10 @@ export function StayDetails() {
           range={range}
           handleSelect={handleSelect}
           setFilterToEdit={setFilterToEdit}
+          nightSum={nightSum}
         />
-        setFilterToEdit={setFilterToEdit}
-        nightSum={nightSum} />
+        {/* setFilterToEdit={setFilterToEdit}
+         */}
       </div>
       <DetailsReviewSummary stay={stay} />
       <DetailsReviews reviews={stay.reviews} stayId={stay._id} />
