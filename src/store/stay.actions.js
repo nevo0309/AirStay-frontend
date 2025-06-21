@@ -116,7 +116,7 @@ function getCmdAddStayMsg(msg) {
   }
 }
 function getCmdFilterBy(filterBy) {
-  console.log('set')
+  // console.log('set')
   return {
     type: SET_FILTER_BY,
     filterBy

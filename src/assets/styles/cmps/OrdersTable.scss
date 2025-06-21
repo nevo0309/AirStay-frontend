@@ -1,0 +1,219 @@
+.orders-table-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #222;
+  border-radius: 12px;
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  padding-bottom: 3rem;
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .tab-btn {
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #222;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+
+      &.active {
+        background: #f9f9f9;
+        border-color: black;
+      }
+    }
+  }
+
+  // .empty-state {
+  //   text-align: center;
+  //   // padding: 2rem;
+  //   color: #777;
+  //   background: #f9f9f9;
+
+  //   .icon-placeholder {
+  //     font-size: 2rem;
+  //     margin-bottom: 0.5rem;
+  //   }
+
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 300px;
+    background: #f9f9f9;
+    color: #777;
+    text-align: center;
+    border-radius: 12px;
+
+    .icon-placeholder {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 800px;
+
+    thead.table-header {
+      .header-row {
+        background: #f7f7f7;
+        th {
+          text-align: left;
+          font-weight: 600;
+          font-size: 14px;
+          color: #555;
+          padding: 12px;
+          border-bottom: 1px solid #ddd;
+          white-space: nowrap;
+
+          &.th-status,
+          &.th-action {
+            text-align: center;
+            min-width: 100px;
+          }
+
+          &.th-guest {
+            min-width: 200px;
+          }
+
+          &.th-checkin,
+          &.th-checkout,
+          &.th-booked {
+            min-width: 100px;
+          }
+
+          &.th-stay {
+            min-width: 200px;
+          }
+
+          &.th-payment {
+            text-align: center;
+            min-width: 100px;
+          }
+        }
+      }
+    }
+
+    tbody.table-body {
+      .order-row {
+        border-bottom: 1px solid #eee;
+
+        &:hover {
+          background-color: #fafafa;
+        }
+
+        td {
+          padding: 14px 12px;
+          font-size: 14px;
+          vertical-align: middle;
+
+          &.td-payment {
+            text-align: center;
+            font-weight: 500;
+          }
+
+          &.td-action {
+            text-align: center;
+          }
+
+          &.td-status {
+            text-align: center;
+          }
+
+          &.td-guest {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            .avatar {
+              width: 42px;
+              height: 42px;
+              border-radius: 50%;
+              object-fit: cover;
+              background-color: #f0f0f0;
+              flex-shrink: 0;
+            }
+
+            .guest-text {
+              .guest-name {
+                font-weight: 600;
+                color: #222;
+              }
+
+              .guest-role {
+                font-size: 0.85rem;
+                color: #666;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .status-cell {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+
+    &.status-approved {
+      color: #28a745;
+    }
+
+    &.status-declined {
+      color: #dc3545;
+    }
+
+    &.status-pending {
+      color: #ffc107;
+    }
+  }
+
+  .btn-approve {
+    background-color: #28a745;
+    color: white;
+
+    &:hover {
+      background-color: #218838;
+    }
+
+    &:focus {
+      outline: 2px solid #1e7e34;
+      outline-offset: 2px;
+    }
+  }
+
+  .btn-decline {
+    background-color: #dc3545;
+    color: white;
+
+    &:hover {
+      background-color: #c82333;
+    }
+
+    &:focus {
+      outline: 2px solid #bd2130;
+      outline-offset: 2px;
+    }
+  }
+}

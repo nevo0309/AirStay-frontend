@@ -29,7 +29,7 @@ export function StayDetails() {
   const { stayId } = useParams()
   const stay = useSelector(storeState => storeState.stayModule.stay)
   const navigate = useNavigate()
-
+  const nightSum = sumNights(filterBy.checkIn, filterBy.checkOut)
   const [range, setRange] = useState([
     {
       startDate: filterBy.checkIn || new Date(),
@@ -39,7 +39,7 @@ export function StayDetails() {
   ])
 
   useEffect(() => {
-    console.log(range)
+    // console.log(range)
     setFilterToEdit(prevFilterBy => ({
       ...prevFilterBy,
       checkIn: range[0].startDate,
@@ -65,6 +65,14 @@ export function StayDetails() {
           endDate: startDate === endDate ? null : endDate,
         },
       ])
+
+      setRange([
+        {
+          ...range[0],
+          startDate,
+          endDate: startDate === endDate ? null : endDate,
+        },
+      ])
     } else {
       // If user clicks a new date AFTER current start date, update endDate
       if (startDate > currentStart) {
@@ -73,6 +81,13 @@ export function StayDetails() {
             ...range[0],
             startDate: currentStart,
             endDate: startDate,
+          },
+        ])
+        setRange([
+          {
+            ...range[0],
+            startDate,
+            endDate: null,
           },
         ])
       } else {
@@ -140,11 +155,16 @@ export function StayDetails() {
                   filterBy.checkOut
                 )}`}</p>
               )}
+              <h2> {nightSum + (nightSum === 1 ? ' night' : ' nights')}</h2>
+              {filterBy.checkIn && filterBy.checkOut && (
+                <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(
+                  filterBy.checkOut
+                )}`}</p>
+              )}
             </div>
             <FilterCalender range={range} setRange={handleSelect} cmp={'details'} />
           </div>
         </div>
-
         <DetailsReservation
           onReserve={onReserve}
           sumNights={sumNights}
@@ -153,6 +173,8 @@ export function StayDetails() {
           handleSelect={handleSelect}
           setFilterToEdit={setFilterToEdit}
         />
+        setFilterToEdit={setFilterToEdit}
+        nightSum={nightSum} />
       </div>
       <DetailsReviewSummary stay={stay} />
       <DetailsReviews reviews={stay.reviews} stayId={stay._id} />

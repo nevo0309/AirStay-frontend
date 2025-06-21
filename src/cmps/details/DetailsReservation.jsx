@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { FilterCalender } from '../calender/FilterCaleder.jsx'
 import { AddGuests } from "../AddGuests.jsx"
 
-export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalender,range,handleSelect, setFilterToEdit }) {
+export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalender, range, handleSelect, setFilterToEdit, nightSum }) {
     const stay = useSelector((storeState) => storeState.stayModule.stay)
     const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
     const [totalPrice, setTotalPrice] = useState(null)
@@ -12,12 +12,11 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
     const [activeCalenderDate, setActiveCalenderDate] = useState('checkIn')
     const [guest, setGuest] = useState(filterBy.guest)
     const [isAddGuestOpen, setIsAddGuestOpen] = useState(false)
-    const nightSum = sumNights(filterBy.checkIn, filterBy.checkOut)
-    const cleaningFee = totalPrice * 0.1
+    const cleaningFee = 55
+    const serviceFee = 62.82
 
 
     useEffect(() => {
-        console.log(guest)
         if (Object.keys(filterBy.guest).length === 0) {
             setFilterToEdit(prevFilterBy => ({
                 ...prevFilterBy,
@@ -36,11 +35,11 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
     useEffect(() => {
         setTotalPrice(sumNights(filterBy.checkIn, filterBy.checkOut) * stay.price)
     }, [filterBy])
-    console.log(filterBy)
 
 
     function onOpenCalender() {
         setIsCalenderOpen(true)
+        setActiveCalenderDate('checkIn')
     }
 
     function formatRangeDates(date) {
@@ -82,7 +81,6 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
 
 
     function onClickBackDrop() {
-        console.log('ca')
         if (isCalenderOpen) setIsCalenderOpen(false)
         else if (isAddGuestOpen) setIsAddGuestOpen(false)
     }
@@ -116,11 +114,11 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
                 {isCalenderOpen && <section className="details-res-calender">
                     <section className="calender-stay-options flex">
                         <div className="calender-stay-details">
-                            <h2>{`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
+                            <h2>{nightSum + ((nightSum === 1) ? ' night' : ' nights')}</h2>
                             {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
                         </div>
                         <div className="calender-dates-input flex">
-                            <div className={"flex column " + (activeCalenderDate === 'checkIn' ? 'active' : '')} onClick={onOpenCalender}>
+                            <div className={"flex column " + (activeCalenderDate === 'checkIn' ? 'active' : '')}>
                                 <label>
                                     CHECK-IN
                                 </label>
@@ -155,14 +153,17 @@ export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalen
 
             <p>You won't be charged yet</p>
             <div className="prices">
-                <h2>{`₪${stay.price}`}<span> X </span> {nightSum + ((nightSum < 1) ? ' night' : ' nights')}</h2>
+                <h2>{`₪${stay.price}`}<span> X </span> {nightSum + ((nightSum === 1) ? ' night' : ' nights')}</h2>
                 {totalPrice && <p>{`₪${totalPrice}`}</p>}
                 <h2>Cleaning fee</h2>
                 {totalPrice && <p> {`₪${cleaningFee}`}</p>}
+                <h2>Service fee</h2>
+                {totalPrice && <p> {`₪${serviceFee}`}</p>}
+
             </div>
             <div className="total-price flex">
                 <h2 >Total</h2>
-                {totalPrice && <p>{`₪${totalPrice + cleaningFee}`}</p>}
+                {totalPrice && <p>{`₪${totalPrice + cleaningFee + serviceFee}`}</p>}
             </div>
 
             <div className={(isCalenderOpen || isAddGuestOpen) ? 'calender-open-backscreen' : ''} onClick={() => onClickBackDrop()}></div>

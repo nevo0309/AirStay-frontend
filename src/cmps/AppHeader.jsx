@@ -9,9 +9,13 @@ import { StayFilter } from "../cmps/StayFilter.jsx"
 import { StayFilterClosed } from "./StayFilterClosed.jsx"
 import { logoSvg } from "../../data/svgExport.jsx"
 import { humburgerSvg } from "../../data/svgExport.jsx"
+import { heartSvg } from "../../data/svgExport.jsx"
+import { wishlistSvg } from "../../data/svgExport.jsx"
+import { trips2 } from "../../data/svgExport.jsx"
 
 export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
   const user = useSelector((storeState) => storeState.userModule.user)
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -86,10 +90,16 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
             }
           >
             {location.pathname.startsWith("/stay/hosting/order")
-              ? "Switch to guest"
+              ? "Switch to travel"
               : "Switch to Hosting"}
           </button>
-          <button className='menue-btn'>{humburgerSvg}</button>
+          <section className="humburger"><button className='menue-btn' onClick={() => setIsSideBarOpen(!isSideBarOpen)}>{humburgerSvg}</button>
+            {isSideBarOpen && <section className="humurger-menu flex column">
+              <p className="flex">{wishlistSvg} <span>Wishlist</span></p>
+              <p className="flex" onClick={()=> navigate('/trips')}>{trips2}  <span>Trips</span></p>
+              <p>Login / Sign up</p>
+            </section>}
+          </section>
         </section>
 
         {/* {user && (
