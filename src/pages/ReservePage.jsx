@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-
-import { stayService } from '../services/stay/stay.service.local'
-import { orderService } from '../services/stay/order.service.local'
+import { stayService } from '../services/stay/stay.service.remote.js'
+import { orderService } from '../services/stay/order.service.remote.js'
 import { ADD_ORDER } from '../store/order.reducer'
 
 import { BookingSidebar } from '../cmps/BookingSidebar'
@@ -14,11 +13,13 @@ import { StepMessage } from '../cmps/steps/StepMessage'
 import { StepReview } from '../cmps/steps/StepReview'
 import { formatDateFromStore, getOrderCreationDate } from '../services/util.service'
 import { useSelector } from 'react-redux'
-formatDateFromStore
+import { showErrorMsg } from '../services/event-bus.service.js'
+
 export function ReservePage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { stayId } = useParams()
+  const user = useSelector(store => store.userModule.user)
   const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   const stayToOrder = useSelector(storeState => storeState.stayModule.stay)
 
@@ -82,36 +83,43 @@ export function ReservePage() {
   }
 
   const totalPrice = calculateTotalPrice(stay.price, startDate, endDate)
-  // ── Final confirmation save the order
+
   const handleConfirm = async () => {
-    if (!stay) return
+    if (!stay || !user) {
+      showErrorMsg('Cannot order please login')
+      return
+    }
 
     const orderData = {
       paymentOption,
       paymentMethod,
       message,
-      cardDetails,
       orderedAt: getOrderCreationDate(),
+      startDate,
+      endDate,
+
+      guests,
+      totalPrice,
+      status: 'pending',
+
       stay: {
         _id: stay._id,
         name: stay.name,
         imgUrl: stay.imgUrls[0],
       },
+
       guest: {
-        _id: 'u101',
-        fullname: 'User 1',
+        _id: user._id,
+        fullname: user.fullname,
+        imgUrl: user.imgUrl,
       },
       host: {
         _id: stay.host._id,
         fullname: stay.host.fullname,
         imgUrl: stay.host.thumbnailUrl || stay.host.pictureUrl,
       },
-      totalPrice,
-      startDate,
-      endDate,
-      guests,
+
       msgs: [],
-      status: 'pending',
     }
 
     try {
