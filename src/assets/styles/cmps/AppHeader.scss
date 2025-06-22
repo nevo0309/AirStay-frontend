@@ -1,164 +1,166 @@
 .app-header {
-    height: 200px;
-    background: linear-gradient(0deg,
-            hsla(0, 0%, 98%, 1) 0%,
-            hsla(0, 0%, 100%, 1) 100%);
-    border-bottom: 1px solid #EBEBEB;
-    padding-block: 1.2rem;
-    position: fixed;
-    right: 0;
-    left: 0;
-    z-index: 1000;
+  height: 200px;
+  background: linear-gradient(
+    0deg,
+    hsla(0, 0%, 98%, 1) 0%,
+    hsla(0, 0%, 100%, 1) 100%
+  );
+  border-bottom: 1px solid #ebebeb;
+  padding-block: 1.2rem;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1000;
 
-    &.closed {
-        height: 5rem;
-        align-content: center;
-    }
+  &.closed {
+    height: 5rem;
+    align-content: center;
+  }
 
-    &.static {
-        position: static;
-
-        nav {
-            max-width: 1200px;
-            justify-self: center;
-        }
-    }
-
+  &.static {
+    position: static;
 
     nav {
-        display: grid;
-        grid-template-areas:
-            'logo filter-closed btns'
-            'filter filter filter'
-        ;
+      max-width: 1200px;
+      justify-self: center;
+    }
+  }
 
-        width: 100%;
+  nav {
+    display: grid;
+    grid-template-areas:
+      "logo filter-closed btns"
+      "filter filter filter";
+
+    width: 100%;
+    align-items: center;
+    font-size: 0.9em;
+
+    .logo {
+      grid-area: logo;
+
+      svg {
+        margin-inline-end: 0.2rem;
+      }
+
+      a {
+        display: flex;
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-inline-end: 2em;
+        color: #ff385c;
+        font-family: poppins;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      span {
+        display: inline;
+      }
+    }
+
+    .btns {
+      grid-area: btns;
+      justify-self: end;
+
+      .host-guest-btn {
+        background-color: transparent;
+        font-weight: 800;
+      }
+
+      .menue-btn {
+        background-color: #f2f2f2;
+        min-height: 40px;
+        min-width: 40px;
+        border-radius: 50%;
+
+        svg {
+          justify-self: center;
+        }
+      }
+    }
+
+    button {
+      font-family: poppins;
+      margin-inline-end: 0;
+      color: $clr7;
+    }
+  }
+
+  .humburger {
+    position: relative;
+
+    .humurger-menu {
+      position: absolute;
+      width: 11rem;
+      top: 3.2rem;
+      right: 0;
+      padding-block: 0.5rem;
+      border-radius: 15px;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+      background-color: white;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      p {
+        gap: 0.7rem;
         align-items: center;
-        font-size: 0.9em;
+        margin: 0;
+        padding: 0.5rem 1rem;
 
-        .logo {
-            grid-area: logo;
-
-            svg {
-                margin-inline-end: 0.2rem;
-            }
-
-            a {
-                display: flex;
-                font-size: 1.3em;
-                font-weight: bold;
-                margin-inline-end: 2em;
-                color: #FF385C;
-                font-family: poppins;
-
-                &:hover {
-                    text-decoration: none;
-                }
-            }
-
-            span {
-                display: inline;
-            }
+        svg {
+          width: 15px;
+          height: 15px;
         }
 
-
-        .btns {
-            grid-area: btns;
-            justify-self: end;
-
-            .host-guest-btn {
-                background-color: transparent;
-                font-weight: 800;
-            }
-
-            .menue-btn {
-                background-color: #f2f2f2;
-                min-height: 40px;
-                min-width: 40px;
-                border-radius: 50%;
-
-                svg {
-                    justify-self: center;
-                }
-
-            }
+        &:nth-of-type(2) {
+          margin-block-end: 0.5rem;
         }
 
-        button {
-            font-family: poppins;
-            margin-inline-end: 0;
-            color: $clr7
+        &:nth-of-type(3) {
+          border-top: 1px solid #dddddd;
+          margin: 0;
         }
+
+        &:hover {
+          background-color: #f5f3f3;
+        }
+      }
     }
 
-    .humburger {
-        position: relative;
-
-        .humurger-menu {
-            position: absolute;
-            width: 11rem;
-            top: 3.2rem;
-            right: 0;
-            padding-block: 0.5rem;
-            border-radius: 15px;
-            z-index: 100;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
-            background-color: white;
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-
-            p {
-                gap: 0.7rem;
-                align-items: center;
-                margin: 0;
-                padding: 0.5rem 1rem;
-
-
-                svg {
-                    width: 15px;
-                    height: 15px;
-                }
-
-                &:nth-of-type(2) {
-                    margin-block-end: 0.5rem;
-                }
-
-                &:nth-of-type(3) {
-                    border-top: 1px solid #DDDDDD;
-                    margin:  0 ;
-                }
-
-                &:hover {
-                    background-color: #f5f3f3;
-                }
-            }
-        }
+    .stay-filter-placeholder {
+      height: 72px;
+      width: 100%;
     }
+  }
 
-    // .user-info {
-    //     display: flex;
-    //     align-items: center;
-    //     margin-inline-start: auto;
-    //     color: $clr1;
+  // .user-info {
+  //     display: flex;
+  //     align-items: center;
+  //     margin-inline-start: auto;
+  //     color: $clr1;
 
-    //     .score {
-    //         padding: 8px;
-    //         background-color: $clr2;
-    //         border-radius: 50%;
-    //         margin: 10px;
+  //     .score {
+  //         padding: 8px;
+  //         background-color: $clr2;
+  //         border-radius: 50%;
+  //         margin: 10px;
 
-    //         color: $clr6;
-    //     }
+  //         color: $clr6;
+  //     }
 
-    //     img {
-    //         width: 32px;
-    //         aspect-ratio: 1;
-    //         border-radius: 50%;
-    //     }
+  //     img {
+  //         width: 32px;
+  //         aspect-ratio: 1;
+  //         border-radius: 50%;
+  //     }
 
-    //     .btn-link {
-    //         color: $clr2;
-    //     }
-    // }
+  //     .btn-link {
+  //         color: $clr2;
+  //     }
+  // }
 }
