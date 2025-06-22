@@ -1,6 +1,6 @@
 // src/store/order.actions.js
 
-import { orderService } from '../services/stay/order.service.local.js'
+import { orderService } from '../services/stay/order.service.remote.js'
 import { store } from './store.js' // adjust path if needed
 import {
   SET_ORDERS,
@@ -109,7 +109,7 @@ export function loadHostOrders(stayId) {
     try {
       const orders = await orderService.query({ stayId })
       // dispatch(_setHostOrders(orders))
-      // Note: Adjust for User Type   
+      // Note: Adjust for User Type
       dispatch({ type: SET_HOST_ORDERS, orders })
     } catch (err) {
       console.error('Failed to load host orders:', err)

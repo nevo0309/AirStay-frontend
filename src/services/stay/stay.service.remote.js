@@ -11,6 +11,9 @@ export const stayService = {
 async function query(filterBy = { txt: '', price: 0 }) {
   return httpService.get(`stay`, filterBy)
 }
+export async function queryByCity(city, limit = 9) {
+  return httpService.get('stay', { city, limit })
+}
 
 function getById(stayId) {
   return httpService.get(`stay/${stayId}`)

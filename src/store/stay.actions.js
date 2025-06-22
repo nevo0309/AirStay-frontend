@@ -1,4 +1,4 @@
-import { stayService } from '../services/stay/stay.service.local.js'
+import { stayService } from '../services/stay/stay.service.remote'
 import { store } from './store'
 import {
   ADD_STAY,
@@ -7,7 +7,8 @@ import {
   SET_STAY,
   UPDATE_STAY,
   ADD_STAY_MSG,
-  SET_FILTER_BY
+  SET_FILTER_BY,
+  SET_CITY_STAYS,
 } from './stay.reducer'
 
 export async function loadStays() {
@@ -19,6 +20,10 @@ export async function loadStays() {
     console.log('Cannot load stays', err)
     throw err
   }
+}
+export async function loadStaysByCity(city, limit = 9) {
+  const stays = await stayService.query({ city, limit })
+  store.dispatch({ type: SET_CITY_STAYS, city, stays })
 }
 
 export async function loadStay(stayId) {
@@ -119,7 +124,7 @@ function getCmdFilterBy(filterBy) {
   // console.log('set')
   return {
     type: SET_FILTER_BY,
-    filterBy
+    filterBy,
   }
 }
 
@@ -134,4 +139,3 @@ function getCmdFilterBy(filterBy) {
 //   await removeStay('m1oC7')
 //   // TODO unit test addStayMsg
 // }
-
