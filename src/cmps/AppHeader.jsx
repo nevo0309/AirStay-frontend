@@ -1,7 +1,7 @@
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { useNavigate } from "react-router"
 import { useSelector } from "react-redux"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { logout } from "../store/user.actions"
@@ -31,6 +31,7 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
 
   const navigate = useNavigate()
   const location = useLocation()
+  const humburgerRef = useRef(null)
 
   useEffect(() => {
     setIsHosting(location.pathname.startsWith("/hosting/order"))
@@ -55,6 +56,24 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [isStayFilterOpen, location.pathname])
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        humburgerRef.current &&
+        !humburgerRef.current.contains(event.target)
+      ) {
+        setIsSideBarOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
+  useEffect(() => {
+    setIsSideBarOpen(false)
+  }, [location.pathname])
 
   async function onLogout() {
     try {
@@ -109,7 +128,26 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
           >
             {isHosting ? "Switch to traveling" : "Switch to Hosting"}
           </button>
-          <section className='humburger'>
+          {/* <section className='humburger'>
+            <button
+              className='menue-btn'
+              onClick={() => setIsSideBarOpen(!isSideBarOpen)}
+            >
+              {humburgerSvg}
+            </button>
+            {isSideBarOpen && (
+              <section className='humurger-menu flex column'>
+                <p className='flex'>
+                  {wishlistSvg} <span>Wishlist</span>
+                </p>
+                <p className='flex' onClick={() => navigate("/trips")}>
+                  {trips2} <span>Trips</span>
+                </p>
+                <p>Login / Sign up</p>
+              </section>
+            )}
+          </section> */}
+          <section className='humburger' ref={humburgerRef}>
             <button
               className='menue-btn'
               onClick={() => setIsSideBarOpen(!isSideBarOpen)}
