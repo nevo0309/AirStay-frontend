@@ -2,13 +2,24 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders } from '../store/order.actions'
 import { formatFullDate } from '../services/util.service'
+import { useNavigate } from 'react-router-dom'
+import { showErrorMsg } from '../services/event-bus.service'
 
 export function TripsPage() {
-  useEffect(() => {
-    loadOrders()
-  }, [])
-
+  const user = useSelector(store => store.userModule.user)
   const orders = useSelector(store => store.orderModule.orders)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (user?._id) loadOrders({ guestId: user._id })
+  }, [user?._id])
+
+  useEffect(() => {
+    if (!user) {
+      showErrorMsg('Unauthorized – please log in')
+      navigate('/')
+    }
+  }, [user, navigate])
+  if (!user) return
 
   return (
     <div className="trips-page">
