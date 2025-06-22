@@ -488,3 +488,8 @@ export const arrowsSvg = {
     style={{ display: 'block', fill: 'none', height: '12px', width: '12px', stroke: 'currentcolor', strokeWidth: '4', overflow: 'visible' }}>
     <path fill="none" d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4" /></svg>
 }
+
+export const xSvg = (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="15px" height="15px" style={{ stroke:'currentcolor', strokeWidth:'1px' }}>
+    <path stroke="#222"
+      strokeWidth="2px" d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z" /></svg>)

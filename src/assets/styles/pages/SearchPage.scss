@@ -5,6 +5,7 @@ $slidesToShow: 7;
     padding-block-start: 5rem;
     width: 100%;
     margin-block: 1.5rem;
+    gap:3rem;
 
     .search-stays {
         display: grid;
@@ -74,5 +75,10 @@ $slidesToShow: 7;
                 }
             }
         }
+    }
+
+    .search-map {
+        width: 45%;
+        height: 100%;
     }
 }

@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { loadStays } from '../store/stay.actions'
 import { StayPreview } from '../cmps/StayPreview'
+import { SearchMap } from '../cmps/SearchMap'
 
 export function SearchPage() {
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
@@ -20,8 +21,8 @@ export function SearchPage() {
                 </div>
             ))}
         </div>
-        <div className="search- map">
-            <h1>map</h1>
+        <div className="search-map">
+            <SearchMap stays={stays} />
 
         </div>
     </section>
