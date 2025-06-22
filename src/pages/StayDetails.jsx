@@ -24,6 +24,7 @@ import { setFilterBy } from "../store/stay.actions"
 
 export function StayDetails() {
   const galleryRef = useRef(null)
+  const reservationRef = useRef(null)
   const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
   const [filterToEdit, setFilterToEdit] = useState(filterBy)
 
@@ -124,7 +125,12 @@ export function StayDetails() {
     <div className='stay-details'>
       <DetailsHeader name={stay.name} />
       <DetailsImageGallery ref={galleryRef} images={stay.imgUrls} />
-      <DetailsStickyNav triggerRef={galleryRef} />
+      <DetailsStickyNav
+        triggerRef={galleryRef}
+        reservationRef={reservationRef}
+        stay={stay}
+        onReserve={onReserve}
+      />
       <div className='stay-details-grid'>
         <div className='details-left'>
           <section id='overview'>
@@ -160,6 +166,7 @@ export function StayDetails() {
         </div>
 
         <DetailsReservation
+          ref={reservationRef}
           onReserve={onReserve}
           sumNights={sumNights}
           formatRangeDatesCalender={formatRangeDatesCalender}
