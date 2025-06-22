@@ -1,31 +1,84 @@
 import { useEffect, useState } from "react"
+import { MiniReservationCard } from "./MiniReservationCard"
 
-export function DetailsStickyNav({ triggerRef }) {
+export function DetailsStickyNav({
+  triggerRef,
+  reservationRef,
+  stay,
+  onReserve
+}) {
   const [visible, setVisible] = useState(false)
+  const [showMiniCard, setShowMiniCard] = useState(false)
 
   useEffect(() => {
-    if (!triggerRef?.current) return
+    if (!triggerRef?.current || !reservationRef?.current) return
 
-    const observer = new IntersectionObserver(
+    const triggerObserver = new IntersectionObserver(
       ([entry]) => setVisible(!entry.isIntersecting),
       { threshold: 0 }
     )
+    const reservationObserver = new IntersectionObserver(
+      ([entry]) => setShowMiniCard(!entry.isIntersecting),
+      { threshold: 0 }
+    )
 
-    observer.observe(triggerRef.current)
-    return () => observer.disconnect()
-  }, [triggerRef])
+    triggerObserver.observe(triggerRef.current)
+    reservationObserver.observe(reservationRef.current)
 
-  const scrollTo = (id) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+    return () => {
+      triggerObserver.disconnect()
+      reservationObserver.disconnect()
+    }
+  }, [triggerRef, reservationRef])
 
   if (!visible) return null
 
   return (
     <nav className='details-sticky-nav'>
-      <button onClick={() => scrollTo("photos")}>Photos</button>
-      <button onClick={() => scrollTo("amenities")}>Amenities</button>
-      <button onClick={() => scrollTo("reviews")}>Reviews</button>
-      <button onClick={() => scrollTo("map")}>Map</button>
+      <div className='sticky-nav-content'>
+        <div className='nav-buttons'>
+          <button
+            onClick={() =>
+              document
+                .getElementById("photos")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Photos{" "}
+          </button>
+          <button
+            onClick={() =>
+              document
+                .getElementById("amenities")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Amenities
+          </button>
+          <button
+            onClick={() =>
+              document
+                .getElementById("reviews")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Reviews
+          </button>
+          <button
+            onClick={() =>
+              document
+                .getElementById("map")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Map
+          </button>
+        </div>
+
+        {showMiniCard && (
+          <MiniReservationCard price={stay.price} onReserve={onReserve} />
+        )}
+      </div>
     </nav>
   )
 }
