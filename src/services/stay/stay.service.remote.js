@@ -1,4 +1,5 @@
 import { httpService } from '../http.service'
+let cachedGoogleApiKey = null
 
 export const stayService = {
   query,
@@ -6,6 +7,7 @@ export const stayService = {
   save,
   remove,
   addStayMsg,
+  getGoogleApi,
 }
 
 async function query(filterBy = { txt: '', price: 0 }) {
@@ -36,4 +38,20 @@ async function save(stay) {
 async function addStayMsg(stayId, txt) {
   const savedMsg = await httpService.post(`stay/${stayId}/msg`, { txt })
   return savedMsg
+}
+
+function getDefaultFilter() {
+  return { location: '', checkIn: '', checkOut: '', guest: {} }
+}
+async function getGoogleApi() {
+  if (cachedGoogleApiKey) return cachedGoogleApiKey
+
+  try {
+    const res = await httpService.get('config/google-maps-key')
+    cachedGoogleApiKey = res.apiKey
+    return cachedGoogleApiKey
+  } catch (err) {
+    console.error('Failed to load Google API key', err)
+    throw err
+  }
 }
