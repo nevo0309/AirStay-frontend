@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { userService } from '../services/user/user.service.remote.js'
 import { ImgUploader } from './ImgUploader.jsx'
+import { handleButtonMouseMove } from '../services/util.service.js'
 
 export function LoginForm({ onLogin, isSignup }) {
   const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
@@ -23,8 +24,9 @@ export function LoginForm({ onLogin, isSignup }) {
   const { fullname, username, password } = credentials
 
   return (
-    <form className="sign-login-form" onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
       <input
+        className="login-form__input"
         type="text"
         name="username"
         value={username}
@@ -34,6 +36,7 @@ export function LoginForm({ onLogin, isSignup }) {
         autoFocus
       />
       <input
+        className="login-form__input"
         type="password"
         name="password"
         value={password}
@@ -44,6 +47,7 @@ export function LoginForm({ onLogin, isSignup }) {
       {isSignup && (
         <>
           <input
+            className="login-form__input"
             type="text"
             name="fullname"
             value={fullname}
@@ -51,10 +55,11 @@ export function LoginForm({ onLogin, isSignup }) {
             onChange={handleChange}
             required
           />
-          <ImgUploader onUploaded={onUploaded} />
         </>
       )}
-      <button className="btn">{isSignup ? 'Signup' : 'Login'}</button>
+      <button className="login-form__btn" onMouseMove={handleButtonMouseMove}>
+        {isSignup ? 'Signup' : 'Login'}
+      </button>
     </form>
   )
 }
