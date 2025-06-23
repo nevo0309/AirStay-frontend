@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { loadStay } from '../store/stay.actions'
@@ -8,6 +8,7 @@ import { DetailsHeader } from '../cmps/details/DetailsHeader'
 import { DetailsOverview } from '../cmps/details/DetailsOverview'
 import { DetailsHighlights } from '../cmps/details/DetailsHighlights'
 import { handleButtonMouseMove, getRandomImageNumber } from '../services/util.service'
+import { DetailsStickyNav } from '../cmps/details/DetailsStickyNav'
 import { DetailsSummary } from '../cmps/details/DetailsSummary'
 import { DetailsReviews } from '../cmps/details/DetailsReview'
 import { DetailsMap } from '../cmps/details/DetailsMap'
@@ -20,6 +21,8 @@ import { setFilterBy } from '../store/stay.actions'
 import { SkeletonStayDetails } from './StayDetailsSkeleton'
 
 export function StayDetails() {
+  const galleryRef = useRef(null)
+  const reservationRef = useRef(null)
   const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   const [filterToEdit, setFilterToEdit] = useState(filterBy)
 
@@ -65,24 +68,9 @@ export function StayDetails() {
           endDate: startDate === endDate ? null : endDate,
         },
       ])
-
-      setRange([
-        {
-          ...range[0],
-          startDate,
-          endDate: startDate === endDate ? null : endDate,
-        },
-      ])
     } else {
       // If user clicks a new date AFTER current start date, update endDate
       if (startDate > currentStart) {
-        setRange([
-          {
-            ...range[0],
-            startDate: currentStart,
-            endDate: startDate,
-          },
-        ])
         setRange([
           {
             ...range[0],
@@ -128,15 +116,23 @@ export function StayDetails() {
     return dateToShow
   }
 
-  // if (!stay) return <div>Loading...</div>
   if (!stay) return <SkeletonStayDetails />
+
   return (
     <div className="stay-details">
       <DetailsHeader name={stay.name} />
-      <DetailsImageGallery images={stay.imgUrls} />
+      <DetailsImageGallery ref={galleryRef} images={stay.imgUrls} />
+      <DetailsStickyNav
+        triggerRef={galleryRef}
+        reservationRef={reservationRef}
+        stay={stay}
+        onReserve={onReserve}
+      />
       <div className="stay-details-grid">
         <div className="details-left">
-          <DetailsOverview stay={stay} />
+          <section id="overview">
+            <DetailsOverview stay={stay} />
+          </section>
           <div className="housted-by">
             <img src={stay.host.thumbnailUrl} alt={`${stay.host.fullname}`} />
             <div className="host-details">
@@ -149,12 +145,6 @@ export function StayDetails() {
           <DetailsAmenities amenities={stay.amenities} />
           <div className="details-calender">
             <div className="calender-stay-details">
-              <h2>{`${sumNights(filterBy.checkIn, filterBy.checkOut)} nights`}</h2>
-              {filterBy.checkIn && filterBy.checkOut && (
-                <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(
-                  filterBy.checkOut
-                )}`}</p>
-              )}
               <h2> {nightSum + (nightSum === 1 ? ' night' : ' nights')}</h2>
               {filterBy.checkIn && filterBy.checkOut && (
                 <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(
@@ -166,6 +156,7 @@ export function StayDetails() {
           </div>
         </div>
         <DetailsReservation
+          ref={reservationRef}
           onReserve={onReserve}
           sumNights={sumNights}
           formatRangeDatesCalender={formatRangeDatesCalender}
@@ -174,12 +165,14 @@ export function StayDetails() {
           setFilterToEdit={setFilterToEdit}
           nightSum={nightSum}
         />
-        {/* setFilterToEdit={setFilterToEdit}
-         */}
       </div>
       <DetailsReviewSummary stay={stay} />
-      <DetailsReviews reviews={stay.reviews} stayId={stay._id} />
-      <DetailsMap stay={stay} />
+      <section id="reviews">
+        <DetailsReviews reviews={stay.reviews} stayId={stay._id} />
+      </section>
+      <section id="map">
+        <DetailsMap stay={stay} />
+      </section>
       <DetailsMoreInfo stay={stay} />
     </div>
   )

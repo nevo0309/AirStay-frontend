@@ -24,7 +24,7 @@ import { TripsPage } from "./pages/TripsPage.jsx"
 import { ReservationAppHeader } from "./cmps/ReservationAppHeader.jsx"
 import { use } from "react"
 
-import { Dashboard } from "./pages/dashboard.jsx"
+import { OrdersTable } from "./pages/OrdersTable.jsx"
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -34,21 +34,29 @@ function ScrollToTop() {
 
 export function RootCmp() {
   const location = useLocation()
-  const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
+  // const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
   const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
+  const isBookingOrDetailsPage = location.pathname.startsWith("/book/stay")
 
-  useEffect(() => {
-    if (
-      location.pathname.startsWith("/book/stay") ||
-      location.pathname.startsWith("/trips") ||
-      location.pathname.startsWith("/stay/hosting/order") 
-    )
-      setIsBookingOrDetailsPage(true)
-    else setIsBookingOrDetailsPage(false)
-  }, [location.pathname])
+  // useEffect(() => {
+  //   if (
+  //     location.pathname.startsWith("/book/stay")
+  //     // location.pathname.startsWith("/trips")
+  //   )
+  //     setIsBookingOrDetailsPage(true)
+  //   else setIsBookingOrDetailsPage(false)
+  // }, [location.pathname])
 
   return (
     <div className='main-container'>
+      {/* {isBookingOrDetailsPage ? (
+        <ReservationAppHeader />
+      ) : (
+        <AppHeader
+          isStayFilterOpen={isStayFilterOpen}
+          setIsStayFilterOpen={setIsStayFilterOpen}
+        />
+      )} */}
       {isBookingOrDetailsPage ? (
         <ReservationAppHeader />
       ) : (
@@ -57,6 +65,7 @@ export function RootCmp() {
           setIsStayFilterOpen={setIsStayFilterOpen}
         />
       )}
+
       <UserMsg />
       <ScrollToTop />
       <main>
@@ -73,7 +82,7 @@ export function RootCmp() {
           <Route path='stay/:stayId' element={<StayDetails />} />
           <Route path='book/stay/:stayId' element={<ReservePage />} />
           <Route path='/trips' element={<TripsPage />} />
-          <Route path='stay/hosting/order' element={<Dashboard />} />
+          <Route path='/hosting/order' element={<OrdersTable />} />
           {/* <Route path="user/:id" element={<UserDetails />} /> */}
           {/* <Route path="review" element={<ReviewIndex />} /> */}
           {/* <Route path="chat" element={<ChatApp />} /> */}
