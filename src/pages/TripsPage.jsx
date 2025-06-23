@@ -11,7 +11,15 @@ export function TripsPage() {
   const navigate = useNavigate()
   useEffect(() => {
     if (user?._id) loadOrders({ guestId: user._id })
+    // if (user?._id) {
+    //   const guestId =
+    //     typeof user._id === 'object' && user._id.$oid ? user._id.$oid : String(user._id)
+    //   loadOrders({ guestId })
+    // }
   }, [user?._id])
+  // useEffect(() => {
+  //   console.log('orders after query →', orders)
+  // }, [orders])
 
   useEffect(() => {
     if (!user) {
@@ -62,7 +70,16 @@ export function TripsPage() {
               } = order
 
               const priceFormatted = `₪${totalPrice.toFixed(2)}`
-              const statusClass = status === 'pending' ? 'status-pending' : 'status-completed'
+              // const statusClass = status === 'pending' ? 'status-pending' : 'status-completed'
+              const statusClassMap = {
+                pending: 'status-pending',
+                approved: 'status-approved',
+                rejected: 'status-rejected',
+              }
+              console.log('start', startDate)
+
+              const statusClass = statusClassMap[status] || ''
+
               const statusText = status[0].toUpperCase() + status.slice(1)
 
               return (
