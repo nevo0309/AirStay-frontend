@@ -1,8 +1,7 @@
 .trips-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding-top: 2rem;
   color: #222222;
 
   .trips-heading {
@@ -144,8 +143,11 @@
       color: #ff7a45;
     }
 
-    &.status-completed {
-      color: #222222;
+    &.status-approved {
+      color: $clrApproved;
+    }
+    &.status-rejected {
+      color: $clr7;
     }
   }
 }
