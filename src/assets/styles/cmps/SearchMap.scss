@@ -22,12 +22,17 @@
         &:hover {
             transform: translate(-50%, -100%) scale(1.077);
         }
+
+        &.preview-open{
+            background-color: #222222;
+            color: white;
+        }
     }
 
     .stay-map-preview {
         position: absolute;
 
-        top: 0;
+        top: 6px;
         right: -90px;
         height: fit-content;
         width: 240px;

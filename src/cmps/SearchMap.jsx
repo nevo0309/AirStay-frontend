@@ -281,8 +281,8 @@ const lighStyle = [
 
 export function SearchMap({ stays }) {
     console.log(stays)
-    const center = stays[0]?.loc || { lat: 32.066, lng: 34.777 } // אם אין stays – ברירת מחדל
-    const [isPreviewOpen, setIsPreviewOpen] = useState(true)
+    const center = stays[0]?.loc || { lat: 32.066, lng: 34.777 }
+    const [openPreview, setOpenPreview] = useState('')
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: 'AIzaSyDpge7IgmfUfXiXFEqaeTr_PGBD5n3WRL0',
@@ -309,9 +309,9 @@ export function SearchMap({ stays }) {
                         mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                     >
                         <div className='label flex'>
-                            <div onClick={() => setIsPreviewOpen(true)}>₪{stay.price}</div>
-                            {isPreviewOpen && <div className='stay-map-preview'>
-                                <button className="close-btn" onClick={() => setIsPreviewOpen(false)}>{xSvg}</button>
+                            <div onClick={()=>setOpenPreview(stay._id)} className={openPreview === stay._id? 'preview-open' : ''}>₪{stay.price}</div>
+                            {(openPreview === stay._id) && <div className='stay-map-preview'>
+                                <button className="close-btn" onClick={() => setOpenPreview('')}>{xSvg}</button>
                                 <StayPreview stay={stay} />
                             </div>}
                         </div>
