@@ -279,8 +279,7 @@ const lighStyle = [
     }
 ]
 
-export function SearchMap({ stays }) {
-    console.log(stays)
+export function SearchMap({ stays , navigate}) {
     const center = stays[0]?.loc || { lat: 32.066, lng: 34.777 }
     const [openPreview, setOpenPreview] = useState('')
     const { isLoaded } = useJsApiLoader({
@@ -310,8 +309,10 @@ export function SearchMap({ stays }) {
                     >
                         <div className='label flex'>
                             <div onClick={()=>setOpenPreview(stay._id)} className={openPreview === stay._id? 'preview-open' : ''}>₪{stay.price}</div>
-                            {(openPreview === stay._id) && <div className='stay-map-preview'>
-                                <button className="close-btn" onClick={() => setOpenPreview('')}>{xSvg}</button>
+                            {(openPreview === stay._id) && <div className='stay-map-preview' onClick={()=>navigate(`/stay/${stay._id}`)}>
+                                <button className="close-btn" onClick={(ev) => {
+                                    ev.stopPropagation()
+                                    setOpenPreview('')}}>{xSvg}</button>
                                 <StayPreview stay={stay} />
                             </div>}
                         </div>

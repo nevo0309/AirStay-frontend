@@ -17,6 +17,7 @@ import { DetailsReviewSummary } from '../cmps/details/DetailsReviewSummary'
 import { FilterCalender } from '../cmps/calender/FilterCaleder'
 import { addDays } from "date-fns"
 import { setFilterBy } from '../store/stay.actions'
+import { sumNights } from '../services/util.service'
 
 
 export function StayDetails() {
@@ -93,17 +94,6 @@ export function StayDetails() {
   useEffect(() => {
     loadStay(stayId)
   }, [stayId])
-
-
-  function sumNights(startDate, endDate) {
-    if (!startDate || !endDate) return 0
-
-    const oneDayMs = 1000 * 60 * 60 * 24
-    const diffMs = endDate - startDate
-
-    return Math.max(0, Math.round(diffMs / oneDayMs))
-  }
-
 
 
   function formatRangeDatesCalender(date) {

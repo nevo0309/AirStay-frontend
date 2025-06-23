@@ -46,9 +46,6 @@ $slidesToShow: 7;
 
                 .preview-content {
                     padding: 2px;
-                    // flex: 1;
-                    // display: flex;
-                    // flex-direction: column;
                     display: grid;
                     grid-template-columns: 1fr auto;
                     gap: 4px;
@@ -87,6 +84,12 @@ $slidesToShow: 7;
                     .stay-price-preview {
                         grid-column: 1/3;
                         grid-row: 3;
+
+                        .total-price {
+                            text-decoration: underline;
+                            font-weight: 400;
+                            color: #717171
+                        }
                     }
 
                     .stay-review {

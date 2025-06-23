@@ -24,7 +24,7 @@ export function SearchPage() {
             ))}
         </div>
         <div className="search-map">
-            <SearchMap stays={stays} />
+            <SearchMap stays={stays} navigate={navigate} />
 
         </div>
     </section>

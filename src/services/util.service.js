@@ -234,3 +234,12 @@ export function getRandomImageNumber() {
 
   return pickedNumber
 }
+
+  export function sumNights(startDate, endDate) {
+    if (!startDate || !endDate) return 0
+
+    const oneDayMs = 1000 * 60 * 60 * 24
+    const diffMs = endDate - startDate
+
+    return Math.max(0, Math.round(diffMs / oneDayMs))
+  }
