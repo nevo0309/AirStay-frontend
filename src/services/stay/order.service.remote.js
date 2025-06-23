@@ -34,7 +34,7 @@ function remove(orderId) {
 }
 
 async function updateStatus(orderId, status) {
-  return httpService.patch(`order/${orderId}`, { status })
+  return httpService.patch(`order/${orderId}/status`, { status })
 }
 
 function getEmptyOrder() {
