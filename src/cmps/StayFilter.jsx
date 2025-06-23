@@ -6,6 +6,7 @@ import { FilterCalender } from './calender/FilterCaleder.jsx'
 import { setFilterBy } from '../store/stay.actions.js'
 import { useSelector } from 'react-redux'
 import { gu } from 'date-fns/locale'
+import { useNavigate } from "react-router"
 
 export function StayFilter() {
   const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
@@ -13,6 +14,7 @@ export function StayFilter() {
   const [openModal, setOpenModal] = useState('')
   const [locationToSearch, setLocationToSearch] = useState('')
   const [guest, setGuest] = useState('')
+  const navigate = useNavigate()
 
   const [range, setRange] = useState([
     {
@@ -78,7 +80,7 @@ export function StayFilter() {
           endDate: null,
           key: 'selection',
         }])
-    
+
       } else {
         setRange([{
           startDate: currentStart,
@@ -122,6 +124,7 @@ export function StayFilter() {
   function onSearchFilter() {
     openFilterModal('')
     setFilterBy({ location: locationToSearch, checkIn: range[0].startDate, checkOut: range[0].endDate, guest })
+    navigate('/search')
   }
 
 
