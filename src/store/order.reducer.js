@@ -45,18 +45,19 @@ export function orderReducer(state = initialState, action) {
       newState = {
         ...state,
         hostOrders: state.hostOrders.map(o =>
-          o._id === action.updatedOrder._id ? action.updatedOrder : o
+          o._id === action.updatedOrder._id ? { ...o, status: action.updatedOrder.status } : o
         ),
         orders: state.orders.map(o =>
-          o._id === action.updatedOrder._id ? action.updatedOrder : o
-        )
+          o._id === action.updatedOrder._id ? { ...o, status: action.updatedOrder.status } : o
+        ),
       }
       break
 
     case REMOVE_ORDER:
       newState = {
-        ...state, orders: state.orders.filter(o => o._id !== action.orderId),
-        hostOrders: state.hostOrders.filter(o => o._id !== action.orderId)
+        ...state,
+        orders: state.orders.filter(o => o._id !== action.orderId),
+        hostOrders: state.hostOrders.filter(o => o._id !== action.orderId),
       }
       break
 

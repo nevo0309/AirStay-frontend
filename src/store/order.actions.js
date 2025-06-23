@@ -117,14 +117,18 @@ export function loadHostOrders(stayId) {
   }
 }
 // 7. Update order status (Approve / Decline)
-export function updateOrderStatus(orderId, newStatus) {
-  return async dispatch => {
-    try {
-      const updatedOrder = await orderService.updateStatus(orderId, newStatus)
-      // dispatch(_updateOrderStatus(updatedOrder))
-      dispatch({ type: UPDATE_ORDER_STATUS, updatedOrder })
-    } catch (err) {
-      console.error('Failed to update order status:', err)
-    }
+export async function updateOrderStatus(orderId, newStatus) {
+  try {
+    const { orderId: idFromServer, status } = await orderService.updateStatus(orderId, newStatus)
+
+    const updatedOrder = { _id: idFromServer, status }
+    store.dispatch({
+      type: UPDATE_ORDER_STATUS,
+      updatedOrder,
+    })
+    return updatedOrder
+  } catch (err) {
+    console.error('Failed to update order status:', err)
+    throw err
   }
 }
