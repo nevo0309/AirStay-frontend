@@ -8,9 +8,10 @@ export const stayService = {
   remove,
   addStayMsg,
   getGoogleApi,
+  getDefaultFilter,
 }
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy) {
   return httpService.get(`stay`, filterBy)
 }
 export async function queryByCity(city, limit = 9) {
