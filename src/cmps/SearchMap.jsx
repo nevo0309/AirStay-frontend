@@ -4,7 +4,7 @@ import { xSvg } from '../../data/svgExport.jsx'
 import { StayPreview } from './StayPreview.jsx'
 const containerStyle = {
     width: '100%',
-    height: '600px',
+    height: '100%',
     borderRadius: '20px',
     marginBottom: '5rem',
 }

@@ -2,12 +2,14 @@ $gap: 11px;
 $slidesToShow: 7;
 
 .carousel-section {
+
   // &:not(:first-child) {
   //   margin-top: 15px;
   // }
   &:last-child {
     margin-bottom: 20px;
   }
+
   &:first-child {
     margin-top: 20px;
   }
@@ -121,10 +123,14 @@ $slidesToShow: 7;
         .preview-content {
           padding: 2px;
           flex: 1;
-          display: flex;
-          flex-direction: column;
+          // display: flex;
+          // flex-direction: column;
+          display: grid;
+          grid-template-columns: auto 1fr;
+
 
           h3 {
+            grid-column: 1/3;
             margin: 0;
             font-size: clamp(0.65rem, 0.75rem, 0.8rem);
             line-height: 1.2;
@@ -134,10 +140,27 @@ $slidesToShow: 7;
           }
 
           .stay-dates,
-          .stay-price-preview {
+          .stay-price-preview,
+          .stay-review {
             font-size: 0.688rem;
             line-height: 1.2;
             color: #717171;
+          }
+
+          .stay-dates {
+            grid-column: 1/3
+          }
+
+          .stay-price-preview {
+            grid-column: 1;
+          }
+
+          .stay-review {
+            grid-column: 2;
+          }
+
+          .review-count {
+            display: none;
           }
         }
       }
