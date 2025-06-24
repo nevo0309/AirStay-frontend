@@ -208,7 +208,7 @@ form > * {
 }
 
 .main-container main {
-  min-height: calc(100vh - 10rem);
+  min-height: calc(100vh - 8rem);
 }
 
 .fancy-box {
@@ -286,14 +286,14 @@ form > * {
   gap: 1.5rem;
 }
 .stay-details .details-left .details-calender .calender-stay-details {
-  padding: 0.1rem;
+  padding-inline-start: 0.2rem;
 }
 .stay-details .details-left .details-calender .calender-stay-details h2 {
   font-size: 1.375rem;
   margin: 0 0 0.5rem 0;
 }
 .stay-details .details-left .details-calender .calender-stay-details p {
-  margin: 0;
+  margin: 0 0 0 1.375;
   font-size: 0.875rem;
 }
 .stay-details .details-left .details-calender .calender {
@@ -315,11 +315,7 @@ form > * {
 .stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrMonthAndYearWrapper {
   position: relative;
   justify-content: space-between;
-}
-.stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrMonthAndYearWrapper .rdrNextButton,
-.stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrMonthAndYearWrapper .rdrPprevButton {
-  position: absolute;
-  top: -32px;
+  top: 10px;
 }
 .stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrNextButton {
   right: 0;
@@ -404,29 +400,7 @@ form > * {
 }
 
 .dashboard-container {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
-  padding: 20px;
-}
-.dashboard-container .dashboard-nav {
-  display: flex;
-  gap: 20px;
-}
-.dashboard-container .dashboard-nav .nav-item {
-  cursor: pointer;
-  font-weight: 500;
-}
-.dashboard-container .dashboard-nav .nav-item.active {
-  border-bottom: 2px solid black;
-}
-.dashboard-container .dashboard-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.dashboard-container .dashboard-main h1 {
-  margin-top: 20px;
 }
 
 .reserve-page {
@@ -1199,7 +1173,7 @@ form > * {
 .app-header {
   height: 200px;
   background: linear-gradient(0deg, hsl(0, 0%, 98%) 0%, hsl(0, 0%, 100%) 100%);
-  border-bottom: 1px solid #EBEBEB;
+  border-bottom: 1px solid #ebebeb;
   padding-block: 1.2rem;
   position: fixed;
   right: 0;
@@ -1235,7 +1209,7 @@ form > * {
   font-size: 1.3em;
   font-weight: bold;
   margin-inline-end: 2em;
-  color: #FF385C;
+  color: #ff385c;
   font-family: poppins;
 }
 .app-header nav .logo a:hover {
@@ -1265,6 +1239,47 @@ form > * {
   font-family: poppins;
   margin-inline-end: 0;
   color: #222;
+}
+.app-header .humburger {
+  position: relative;
+}
+.app-header .humburger .humurger-menu {
+  position: absolute;
+  width: 11rem;
+  top: 3.2rem;
+  right: 0;
+  padding-block: 0.5rem;
+  border-radius: 15px;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+  background-color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.app-header .humburger .humurger-menu p {
+  gap: 0.7rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+.app-header .humburger .humurger-menu p svg {
+  width: 15px;
+  height: 15px;
+}
+.app-header .humburger .humurger-menu p:nth-of-type(2) {
+  margin-block-end: 0.5rem;
+}
+.app-header .humburger .humurger-menu p:nth-of-type(3) {
+  border-top: 1px solid #dddddd;
+  margin: 0;
+}
+.app-header .humburger .humurger-menu p:hover {
+  background-color: #f5f3f3;
+}
+.app-header .humburger .stay-filter-placeholder {
+  height: 72px;
+  width: 100%;
 }
 
 .app-footer {
@@ -1354,7 +1369,7 @@ form > * {
   letter-spacing: 0.8px;
   position: absolute;
   top: 13px;
-  right: 15px;
+  right: 10px;
   opacity: 0;
   animation: fadeIn 200ms ease forwards;
   animation-delay: 100ms;
@@ -1440,7 +1455,7 @@ form > * {
 .stay-filter .input-section p {
   max-width: 100%;
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1451,13 +1466,13 @@ form > * {
   color: black;
 }
 .stay-filter label {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 .stay-filter input {
   border: none;
   font-family: poppins;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   width: 214px;
   padding: 0;
   font-weight: 600;
@@ -1535,6 +1550,7 @@ form > * {
   margin-inline: 10px;
   border-radius: 50%;
   background-color: #FF385C;
+  margin-inline-start: 0;
 }
 .stay-filter-closed .search-btn svg {
   color: white;
@@ -1948,12 +1964,11 @@ form > * {
 }
 
 .rdrMonthAndYearWrapper {
-  position: absolute;
-  top: 40px;
-}
-.rdrMonthAndYearWrapper .rdrNextButton {
-  position: absolute;
-  left: 520px;
+  position: relative;
+  justify-content: space-between;
+  padding-top: 0;
+  height: 0;
+  top: 20px;
 }
 
 .details-image-gallery {
@@ -2261,13 +2276,13 @@ form > * {
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   width: 100%;
-  height: 495px;
+  height: 530px;
   position: sticky;
-  top: 2rem;
+  top: 4.5rem;
 }
 .details-reservation h1 {
   font-size: 1.375rem;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.2rem 0;
 }
 .details-reservation h1 span {
   font-size: 1rem;
@@ -2369,6 +2384,10 @@ form > * {
 .details-reservation .reserve-btn-details {
   --x: 70%;
   --y: 50%;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: cereal;
+  height: 48px;
   overflow: hidden;
   min-width: 200px;
   padding: 0.75rem 1.5rem;
@@ -2405,7 +2424,7 @@ form > * {
   font-size: 1.375rem;
 }
 .details-reservation .details-res-calender .calender-stay-options .calender-dates-input {
-  width: 287px;
+  width: 318px;
   box-shadow: rgb(176, 176, 176) 0px 0px 0px 1px inset;
   border-radius: 8px;
 }
@@ -2456,14 +2475,23 @@ form > * {
 .details-reservation .details-res-calender .chosen .rdrInRange {
   background: #f7f7f7 !important;
 }
+.details-reservation .details-res-calender .rdrMonthAndYearWrapper {
+  top: 22px;
+}
 .details-reservation .details-res-calender .rdrMonthAndYearWrapper .rdrNextButton {
   position: absolute;
   left: 540px;
-  top: -30px;
 }
 .details-reservation .details-res-calender .rdrMonthAndYearWrapper .rdrPprevButton {
   position: absolute;
-  top: -30px;
+}
+.details-reservation .calender-open-backscreen {
+  background-color: transparent;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .details-reservation .calender-open-backscreen {
   background-color: transparent;
@@ -2586,6 +2614,73 @@ form > * {
   font-size: 0.875rem;
   margin-bottom: 10px;
   font-weight: 500;
+}
+
+.details-sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.details-sticky-nav .sticky-nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+}
+.details-sticky-nav .nav-buttons {
+  display: flex;
+  gap: 1.25rem;
+}
+.details-sticky-nav .nav-buttons button {
+  position: relative;
+  background: none;
+  border: none;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.details-sticky-nav .nav-buttons button:hover {
+  color: #000;
+}
+.details-sticky-nav .nav-buttons button:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.125rem;
+  width: 100%;
+  background-color: #000;
+}
+.details-sticky-nav .mini-reservation-card {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.details-sticky-nav .mini-reservation-card div {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.details-sticky-nav .mini-reservation-card div span {
+  font-weight: bold;
+}
+.details-sticky-nav .mini-reservation-card button {
+  padding: 0.375em 0.75em;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
 }
 
 .payment-options {
@@ -3039,43 +3134,54 @@ form > * {
   }
 }
 .orders-table-wrapper {
-  padding: 1rem;
-  background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #222;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
   overflow-x: auto;
+  margin-bottom: 2rem;
+  padding-bottom: 3rem;
+}
+.orders-table-wrapper h2 {
+  font-size: 22px;
+  font-weight: 600;
 }
 .orders-table-wrapper .tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 .orders-table-wrapper .tabs .tab-btn {
-  background: #f7f7f7;
   border: 1px solid #ccc;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 14px;
+  background: #fff;
+  color: #222;
+  padding: 8px 14px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
 .orders-table-wrapper .tabs .tab-btn.active {
-  background: #222;
-  color: #fff;
-  border-color: #222;
-}
-.orders-table-wrapper .tabs .tab-btn:hover {
-  background: #eaeaea;
+  background: #f9f9f9;
+  border-color: black;
 }
 .orders-table-wrapper .empty-state {
-  text-align: center;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  background: #f9f9f9;
   color: #777;
+  text-align: center;
+  border-radius: 12px;
 }
 .orders-table-wrapper .empty-state .icon-placeholder {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+}
+.orders-table-wrapper .empty-state p {
+  font-size: 14px;
+  margin: 0;
 }
 .orders-table-wrapper .orders-table {
   width: 100%;
@@ -3083,82 +3189,113 @@ form > * {
   font-size: 14px;
   min-width: 800px;
 }
-.orders-table-wrapper .orders-table thead {
+.orders-table-wrapper .orders-table thead.table-header .header-row {
   background: #f7f7f7;
 }
-.orders-table-wrapper .orders-table thead th {
+.orders-table-wrapper .orders-table thead.table-header .header-row th {
   text-align: left;
-  padding: 10px 12px;
-  color: #555;
   font-weight: 600;
-  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+  color: #555;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
   white-space: nowrap;
 }
-.orders-table-wrapper .orders-table tbody tr {
+.orders-table-wrapper .orders-table thead.table-header .header-row th.th-status, .orders-table-wrapper .orders-table thead.table-header .header-row th.th-action {
+  text-align: center;
+  min-width: 100px;
+}
+.orders-table-wrapper .orders-table thead.table-header .header-row th.th-guest {
+  min-width: 200px;
+}
+.orders-table-wrapper .orders-table thead.table-header .header-row th.th-checkin, .orders-table-wrapper .orders-table thead.table-header .header-row th.th-checkout, .orders-table-wrapper .orders-table thead.table-header .header-row th.th-booked {
+  min-width: 100px;
+}
+.orders-table-wrapper .orders-table thead.table-header .header-row th.th-stay {
+  min-width: 200px;
+}
+.orders-table-wrapper .orders-table thead.table-header .header-row th.th-payment {
+  text-align: center;
+  min-width: 100px;
+}
+.orders-table-wrapper .orders-table tbody.table-body .order-row {
   border-bottom: 1px solid #eee;
 }
-.orders-table-wrapper .orders-table tbody tr:hover {
+.orders-table-wrapper .orders-table tbody.table-body .order-row:hover {
   background-color: #fafafa;
 }
-.orders-table-wrapper .orders-table tbody td {
-  padding: 10px 12px;
+.orders-table-wrapper .orders-table tbody.table-body .order-row td {
+  padding: 14px 12px;
+  font-size: 14px;
   vertical-align: middle;
 }
-.orders-table-wrapper .orders-table tbody .guest-info {
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-payment {
+  text-align: center;
+  font-weight: 500;
+}
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-action {
+  text-align: center;
+}
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-status {
+  text-align: center;
+}
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-guest {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
-.orders-table-wrapper .orders-table tbody .guest-info .avatar {
-  width: 32px;
-  height: 32px;
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-guest .avatar {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
+  background-color: #f0f0f0;
+  flex-shrink: 0;
 }
-.orders-table-wrapper .orders-table tbody .guest-info .guest-text .guest-name {
-  font-weight: 500;
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-guest .guest-text .guest-name {
+  font-weight: 600;
   color: #222;
 }
-.orders-table-wrapper .orders-table tbody .guest-info .guest-text .guest-role {
-  font-size: 12px;
-  color: #777;
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-guest .guest-text .guest-role {
+  font-size: 0.85rem;
+  color: #666;
 }
-.orders-table-wrapper .orders-table tbody .action-buttons {
-  display: flex;
-  gap: 8px;
-}
-.orders-table-wrapper .orders-table tbody .action-buttons button {
-  font-size: 13px;
-  padding: 4px 10px;
+.orders-table-wrapper .status-cell {
+  font-weight: bold;
+  padding: 4px 8px;
   border-radius: 6px;
-  cursor: pointer;
-  border: none;
+  display: inline-block;
 }
-.orders-table-wrapper .orders-table tbody .action-buttons button.btn-approve {
-  background-color: #198754;
+.orders-table-wrapper .status-cell.status-approved {
+  color: #28a745;
+}
+.orders-table-wrapper .status-cell.status-declined {
+  color: #dc3545;
+}
+.orders-table-wrapper .status-cell.status-pending {
+  color: #ffc107;
+}
+.orders-table-wrapper .btn-approve {
+  background-color: #28a745;
   color: white;
 }
-.orders-table-wrapper .orders-table tbody .action-buttons button.btn-decline {
+.orders-table-wrapper .btn-approve:hover {
+  background-color: #218838;
+}
+.orders-table-wrapper .btn-approve:focus {
+  outline: 2px solid #1e7e34;
+  outline-offset: 2px;
+}
+.orders-table-wrapper .btn-decline {
   background-color: #dc3545;
   color: white;
 }
-.orders-table-wrapper .status-cell {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: bold;
+.orders-table-wrapper .btn-decline:hover {
+  background-color: #c82333;
 }
-.orders-table-wrapper .status-cell.status-approved {
-  color: #0f5132;
-  background-color: #d1e7dd;
-}
-.orders-table-wrapper .status-cell.status-declined {
-  color: #842029;
-  background-color: #f8d7da;
-}
-.orders-table-wrapper .status-cell.status-pending {
-  color: #664d03;
-  background-color: #fff3cd;
+.orders-table-wrapper .btn-decline:focus {
+  outline: 2px solid #bd2130;
+  outline-offset: 2px;
 }
 
 .add-guests {
@@ -3208,17 +3345,18 @@ form > * {
 .add-guests .guest-counter-card .guest h1 {
   color: #222;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
 }
 .add-guests .guest-counter-card .guest p {
   color: #6A6A6A;
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   padding-block-start: 0.25rem;
 }
 .add-guests .guest-counter-card .guest h2 {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: #6A6A6A;
   text-decoration: underline;
   cursor: pointer;
@@ -3239,7 +3377,7 @@ form > * {
   z-index: 10;
   background-color: white;
   max-height: 470px;
-  padding-inline: 2rem;
+  padding-inline: 1.5rem;
   overflow-y: scroll;
   scrollbar-color: #8e8e8e transparent;
   scrollbar-width: thin;
@@ -3252,6 +3390,7 @@ form > * {
 .suggested-des-container h1 {
   margin: 0;
   margin-block-end: 0.25rem;
+  padding-inline-start: 0.5rem;
   font-weight: 400;
   font-size: 0.75rem;
 }
@@ -3263,11 +3402,11 @@ form > * {
   height: 3.5rem;
 }
 .suggested-des-container .des-card div h1 {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 .suggested-des-container .des-card div p {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: #6A6A6A;
 }
 .suggested-des-container .des-card:hover {

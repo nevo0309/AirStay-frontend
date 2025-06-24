@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { MiniReservationCard } from "./MiniReservationCard"
 
 export function DetailsStickyNav({
   triggerRef,
@@ -17,6 +16,7 @@ export function DetailsStickyNav({
       ([entry]) => setVisible(!entry.isIntersecting),
       { threshold: 0 }
     )
+
     const reservationObserver = new IntersectionObserver(
       ([entry]) => setShowMiniCard(!entry.isIntersecting),
       { threshold: 0 }
@@ -31,52 +31,29 @@ export function DetailsStickyNav({
     }
   }, [triggerRef, reservationRef])
 
+  function scrollTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+  }
+
   if (!visible) return null
 
   return (
     <nav className='details-sticky-nav'>
       <div className='sticky-nav-content'>
         <div className='nav-buttons'>
-          <button
-            onClick={() =>
-              document
-                .getElementById("photos")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Photos{" "}
-          </button>
-          <button
-            onClick={() =>
-              document
-                .getElementById("amenities")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Amenities
-          </button>
-          <button
-            onClick={() =>
-              document
-                .getElementById("reviews")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Reviews
-          </button>
-          <button
-            onClick={() =>
-              document
-                .getElementById("map")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Map
-          </button>
+          <button onClick={() => scrollTo("photos")}>Photos</button>
+          <button onClick={() => scrollTo("amenities")}>Amenities</button>
+          <button onClick={() => scrollTo("reviews")}>Reviews</button>
+          <button onClick={() => scrollTo("map")}>Map</button>
         </div>
 
         {showMiniCard && (
-          <MiniReservationCard price={stay.price} onReserve={onReserve} />
+          <div className='mini-reservation-card'>
+            <div>
+              <span>₪{stay.price}</span> / night
+            </div>
+            <button onClick={onReserve}>Reserve</button>
+          </div>
         )}
       </div>
     </nav>
