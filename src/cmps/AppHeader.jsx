@@ -27,10 +27,10 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      if (location.pathname.startsWith("/stay") || location.pathname.startsWith("/search")) return
+      if (location.pathname.startsWith("/stay")) return
       if (scrollY > 1) {
         setIsStayFilterOpen(false)
-      } else {
+      } else if (!location.pathname.startsWith("/search")) {
         setIsStayFilterOpen(true)
       }
     }

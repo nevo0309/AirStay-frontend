@@ -18,7 +18,7 @@ export function SearchPage() {
     return <section className="search-page flex">
         <div className="search-stays">
             {stays.map(stay => (
-                <div key={stay._id} className='card' onClick={()=> navigate(`/stay/:${stay._id}`)}>
+                <div key={stay._id} className='card' onClick={()=> navigate(`/stay/${stay._id}`)}>
                     <StayPreview stay={stay} />
                 </div>
             ))}
