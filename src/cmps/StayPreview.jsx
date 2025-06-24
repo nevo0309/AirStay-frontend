@@ -4,6 +4,8 @@ import { heartSvg } from '../../data/svgExport.jsx'
 import { ImgCarousel } from './imgCarosel.jsx'
 import { sumNights } from '../services/util.service.js'
 import { useSelector } from 'react-redux'
+import { formatCalenderDate } from '../services/util.service.js'
+
 export function StayPreview({ stay }) {
   const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
   const location = useLocation()
@@ -28,12 +30,6 @@ export function StayPreview({ stay }) {
     }
   }
 
-  function formatDate(date) {
-    const options = { month: 'short', day: 'numeric' }
-    const dateToShow = date.toLocaleDateString('en-US', options)
-
-    return dateToShow
-  }
   const totalReview = Object.values(reviewCount).reduce((sum, n) => sum + n, 0)
   const avg = totalReview > 0 ? stay.reviews.reduce((sum, { stars }) => sum + stars, 0) / totalReview : 0
 
@@ -46,8 +42,8 @@ export function StayPreview({ stay }) {
 
       <div className="preview-content">
         <h3>{stay.name}</h3>
-        {location.pathname.startsWith("/search") ?
-          <div className="stay-dates">{`${formatDate(filterBy.checkIn)}-${formatDate(filterBy.checkOut)}`}</div>
+        {(location.pathname.startsWith("/search") && filterBy.checkIn && filterBy.checkOut) ?
+          <div className="stay-dates">{`${formatCalenderDate(filterBy.checkIn)}-${formatCalenderDate(filterBy.checkOut)}`}</div>
           : <div className="stay-dates">May 30 – Jun 1</div>}
 
         {location.pathname.startsWith("/search") ?

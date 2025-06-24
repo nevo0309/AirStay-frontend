@@ -7,6 +7,7 @@ import { setFilterBy } from '../store/stay.actions.js'
 import { useSelector } from 'react-redux'
 import { gu } from 'date-fns/locale'
 import { useNavigate } from "react-router"
+import { formatCalenderDate } from '../services/util.service.js'
 
 export function StayFilter() {
   const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
@@ -23,13 +24,6 @@ export function StayFilter() {
       key: 'selection'
     }
   ])
-
-  function formatRangeDates(date) {
-    const options = { month: 'short', day: 'numeric' }
-    const dateToShow = date.toLocaleDateString('en-US', options)
-
-    return dateToShow;
-  }
   // console.log(openModal === 'calenderCheckIn')
   // useEffect(() => {
   //   onSetFilterBy(filterToEdit)
@@ -151,7 +145,7 @@ export function StayFilter() {
         <label>
           Check in
         </label>
-        <p className={range[0].startDate ? 'chosen-value' : ''}>{range[0].startDate ? formatRangeDates(range[0].startDate) : 'Add dates'}</p>
+        <p className={range[0].startDate ? 'chosen-value' : ''}>{range[0].startDate ? formatCalenderDate(range[0].startDate) : 'Add dates'}</p>
       </div>
 
       <div className={'input-section flex column ' + (openModal === 'calenderCheckOut' ? 'active' : '')}
@@ -159,7 +153,7 @@ export function StayFilter() {
         <label>
           Check out
         </label>
-        <p className={range[0].startDate ? 'chosen-value' : ''}>{range[0].endDate ? formatRangeDates(range[0].endDate) : 'Add dates'}</p>
+        <p className={range[0].startDate ? 'chosen-value' : ''}>{range[0].endDate ? formatCalenderDate(range[0].endDate) : 'Add dates'}</p>
       </div>
 
 
