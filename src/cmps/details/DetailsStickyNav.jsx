@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { handleButtonMouseMove } from "../../services/util.service"
 
 export function DetailsStickyNav({
   triggerRef,
@@ -41,10 +42,26 @@ export function DetailsStickyNav({
     <nav className='details-sticky-nav'>
       <div className='sticky-nav-content'>
         <div className='nav-buttons'>
-          <button onClick={() => scrollTo("photos")}>Photos</button>
-          <button onClick={() => scrollTo("amenities")}>Amenities</button>
-          <button onClick={() => scrollTo("reviews")}>Reviews</button>
-          <button onClick={() => scrollTo("map")}>Map</button>
+          <button
+            className='nav-btn'
+            onClick={() => scrollTo("photos")}>
+            Photos
+          </button>
+          <button
+            className='nav-btn'
+            onClick={() => scrollTo("amenities")}>
+            Amenities
+          </button>
+          <button
+            className='nav-btn'
+            onClick={() => scrollTo("reviews")}>
+            Reviews
+          </button>
+          <button
+            className='nav-btn'
+            onClick={() => scrollTo("map")}>
+            Location
+          </button>
         </div>
 
         {showMiniCard && (
@@ -52,7 +69,12 @@ export function DetailsStickyNav({
             <div>
               <span>₪{stay.price}</span> / night
             </div>
-            <button onClick={onReserve}>Reserve</button>
+            <button
+              className='res-btn'
+              onMouseMove={handleButtonMouseMove}
+              onClick={onReserve}>
+              Reserve
+            </button>
           </div>
         )}
       </div>
