@@ -2,11 +2,11 @@
 /* Media  Mixins */
 @font-face {
   font-family: poppins;
-  src: url("/public/fonts/Poppins-Regular.ttf");
+  src: url('/public/fonts/Poppins-Regular.ttf');
 }
 @font-face {
-  font-family: "cereal";
-  src: url("/public/fonts/cereal.woff2") format("woff2");
+  font-family: 'cereal';
+  src: url('/public/fonts/cereal.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -61,7 +61,7 @@
 }
 .square-ratio::before {
   display: block;
-  content: "";
+  content: '';
   width: 100%;
   padding-top: 100%;
 }
@@ -83,7 +83,7 @@
 }
 .video-ratio::before {
   display: block;
-  content: "";
+  content: '';
   width: 100%;
   padding-top: 56.25%;
 }
@@ -105,7 +105,7 @@
 }
 .portrait-ratio::before {
   display: block;
-  content: "";
+  content: '';
   width: 100%;
   padding-top: 177.7777777778%;
 }
@@ -312,12 +312,29 @@ form > * {
   position: relative;
   padding-block-start: 0;
 }
-.stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrMonthAndYearWrapper {
+.stay-details
+  .details-left
+  .details-calender
+  .calender
+  .rdrCalendarWrapper
+  .rdrMonthAndYearWrapper {
   position: relative;
   justify-content: space-between;
 }
-.stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrMonthAndYearWrapper .rdrNextButton,
-.stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrMonthAndYearWrapper .rdrPprevButton {
+.stay-details
+  .details-left
+  .details-calender
+  .calender
+  .rdrCalendarWrapper
+  .rdrMonthAndYearWrapper
+  .rdrNextButton,
+.stay-details
+  .details-left
+  .details-calender
+  .calender
+  .rdrCalendarWrapper
+  .rdrMonthAndYearWrapper
+  .rdrPprevButton {
   position: absolute;
   top: -32px;
 }
@@ -408,6 +425,13 @@ form > * {
   flex-direction: column;
   min-height: 100vh;
   padding: 20px;
+}
+.dashboard-container .custom-font {
+  font-family: 'poppins';
+}
+.dashboard-container .dashboard-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
 }
 .dashboard-container .dashboard-nav {
   display: flex;
@@ -664,7 +688,7 @@ form > * {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #222222;
 }
 .trips-page .trips-heading {
@@ -1199,7 +1223,7 @@ form > * {
 .app-header {
   height: 200px;
   background: linear-gradient(0deg, hsl(0, 0%, 98%) 0%, hsl(0, 0%, 100%) 100%);
-  border-bottom: 1px solid #EBEBEB;
+  border-bottom: 1px solid #ebebeb;
   padding-block: 1.2rem;
   position: fixed;
   right: 0;
@@ -1219,7 +1243,7 @@ form > * {
 }
 .app-header nav {
   display: grid;
-  grid-template-areas: "logo filter-closed btns" "filter filter filter";
+  grid-template-areas: 'logo filter-closed btns' 'filter filter filter';
   width: 100%;
   align-items: center;
   font-size: 0.9em;
@@ -1235,7 +1259,7 @@ form > * {
   font-size: 1.3em;
   font-weight: bold;
   margin-inline-end: 2em;
-  color: #FF385C;
+  color: #ff385c;
   font-family: poppins;
 }
 .app-header nav .logo a:hover {
@@ -1335,12 +1359,12 @@ form > * {
 }
 .stay-filter.open {
   z-index: 10;
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
 .stay-filter.open .search-btn {
   width: 100px;
   border-radius: 24px;
-  background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  background: linear-gradient(to right, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
   transition: linear 200ms;
 }
 .stay-filter.open .search-btn svg {
@@ -1348,7 +1372,7 @@ form > * {
   justify-self: start;
 }
 .stay-filter.open .search-btn::after {
-  content: "Search";
+  content: 'Search';
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.8px;
@@ -1365,15 +1389,15 @@ form > * {
   }
 }
 .stay-filter.open input {
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
 .stay-filter.open .input-section:hover {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   position: relative;
   z-index: 0;
 }
 .stay-filter.open .input-section:hover input {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
 }
 .stay-filter .input-section {
   position: relative;
@@ -1389,14 +1413,14 @@ form > * {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px;
 }
 .stay-filter .input-section.active + .input-section:hover::after {
-  content: "";
+  content: '';
   display: block;
   width: calc(100% + 70px);
   height: 100%;
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   z-index: -1;
   border-radius: 4rem;
 }
@@ -1411,15 +1435,15 @@ form > * {
   background-color: white;
 }
 .stay-filter .input-section:hover {
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
 .stay-filter .input-section:hover input {
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
 .stay-filter .input-section:hover:has(+ .input-section.active) {
-  content: "";
+  content: '';
   width: calc(100% + 70px);
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   z-index: -1;
   border-radius: 4rem;
 }
@@ -1429,8 +1453,11 @@ form > * {
 .stay-filter .input-section:nth-of-type(4) {
   padding-inline-end: 140px;
 }
-.stay-filter .input-section:not(:last-of-type):not(:hover):not(:has(+ .input-section:hover)):not(.active):not(:has(+ .input-section.active))::after {
-  content: "";
+.stay-filter
+  .input-section:not(:last-of-type):not(:hover):not(:has(+ .input-section:hover)):not(.active):not(
+    :has(+ .input-section.active)
+  )::after {
+  content: '';
   position: absolute;
   height: 36px;
   width: 1px;
@@ -1475,7 +1502,7 @@ form > * {
   width: 48px;
   z-index: 100;
   border-radius: 50px;
-  background-color: #FF385C;
+  background-color: #ff385c;
   color: white;
   transition: width 200ms linear;
 }
@@ -1497,7 +1524,7 @@ form > * {
   padding-inline-start: 0;
 }
 .stay-filter-closed div > h1::after {
-  content: "";
+  content: '';
   position: absolute;
   height: 2.5rem;
   width: 1px;
@@ -1518,7 +1545,7 @@ form > * {
   text-overflow: ellipsis;
 }
 .stay-filter-closed > h1:not(:last-of-type)::after {
-  content: "";
+  content: '';
   position: absolute;
   height: 2.5rem;
   width: 1px;
@@ -1534,7 +1561,7 @@ form > * {
   padding: 0;
   margin-inline: 10px;
   border-radius: 50%;
-  background-color: #FF385C;
+  background-color: #ff385c;
 }
 .stay-filter-closed .search-btn svg {
   color: white;
@@ -1990,19 +2017,19 @@ form > * {
   grid-row: span 2;
 }
 .grid-container .image-wrapper:nth-child(2) {
-  grid-column: 5/span 2;
+  grid-column: 5 / span 2;
   grid-row: 1;
 }
 .grid-container .image-wrapper:nth-child(3) {
-  grid-column: 7/span 2;
+  grid-column: 7 / span 2;
   grid-row: 1;
 }
 .grid-container .image-wrapper:nth-child(4) {
-  grid-column: 5/span 2;
+  grid-column: 5 / span 2;
   grid-row: 2;
 }
 .grid-container .image-wrapper:nth-child(5) {
-  grid-column: 7/span 2;
+  grid-column: 7 / span 2;
   grid-row: 2;
 }
 
@@ -2326,17 +2353,38 @@ form > * {
 .details-reservation .reservation-options .details-res-add-guests .add-guests .guest-counter-card {
   border-bottom: none;
 }
-.details-reservation .reservation-options .details-res-add-guests .add-guests .guest-counter-card .guest {
+.details-reservation
+  .reservation-options
+  .details-res-add-guests
+  .add-guests
+  .guest-counter-card
+  .guest {
   margin-block: 0.75rem;
 }
-.details-reservation .reservation-options .details-res-add-guests .add-guests .guest-counter-card .counter button {
+.details-reservation
+  .reservation-options
+  .details-res-add-guests
+  .add-guests
+  .guest-counter-card
+  .counter
+  button {
   color: #909090;
 }
-.details-reservation .reservation-options .details-res-add-guests .add-guests .guest-counter-card:nth-of-type(1) .guest {
+.details-reservation
+  .reservation-options
+  .details-res-add-guests
+  .add-guests
+  .guest-counter-card:nth-of-type(1)
+  .guest {
   margin-block-start: 0.5rem;
   margin-block-end: 0.75rem;
 }
-.details-reservation .reservation-options .details-res-add-guests .add-guests .guest-counter-card:last-of-type h2 {
+.details-reservation
+  .reservation-options
+  .details-res-add-guests
+  .add-guests
+  .guest-counter-card:last-of-type
+  h2 {
   color: black;
   font-weight: 500;
 }
@@ -2377,11 +2425,29 @@ form > * {
   color: #fff;
   cursor: pointer;
   transition: filter 0.2s;
-  background: radial-gradient(circle at var(--x) var(--y), #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    #ff385c 0%,
+    #e61e4d 27.5%,
+    #e31c5f 40%,
+    #d70466 57.5%,
+    #bd1e59 75%,
+    #bd1e59 100%
+  );
   background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
 }
 .details-reservation .reserve-btn-details:hover {
-  background: radial-gradient(circle at circle, rgba(255, 124, 76, 0.3215686275), transparent 40%, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+  background: radial-gradient(
+    circle at circle,
+    rgba(255, 124, 76, 0.3215686275),
+    transparent 40%,
+    #ff385c 0%,
+    #e61e4d 27.5%,
+    #e31c5f 40%,
+    #d70466 57.5%,
+    #bd1e59 75%,
+    #bd1e59 100%
+  );
 }
 .details-reservation .details-res-calender {
   justify-self: center;
@@ -2415,18 +2481,34 @@ form > * {
   padding: 0 0.75rem 0.625rem 0.75rem;
   width: 100%;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-dates-input > div:nth-child(1) {
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-dates-input
+  > div:nth-child(1) {
   border-radius: 8px;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-dates-input > div:nth-child(1).active {
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-dates-input
+  > div:nth-child(1).active {
   border: 1px solid transparent;
   box-shadow: inset 0 0 0 2px black !important;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-dates-input > div:nth-child(2) {
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-dates-input
+  > div:nth-child(2) {
   border-left: none;
   border-radius: 8px;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-dates-input > div:nth-child(2).active {
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-dates-input
+  > div:nth-child(2).active {
   border: 1px solid transparent;
   box-shadow: inset 0 0 0 2px black !important;
 }
@@ -2801,7 +2883,12 @@ form > * {
   color: #222222;
   box-sizing: border-box;
 }
-.payment-method-form .card-form .card-numbers .card-extra-info .form-group.half .form-input::placeholder {
+.payment-method-form
+  .card-form
+  .card-numbers
+  .card-extra-info
+  .form-group.half
+  .form-input::placeholder {
   color: #6f6f6f;
 }
 .payment-method-form .card-form .card-numbers .card-extra-info .form-group.half .form-input:focus {
@@ -3176,7 +3263,7 @@ form > * {
   justify-content: space-between;
 }
 .add-guests .guest-counter-card:not(:last-child) {
-  border-bottom: 1px solid #EBEBEB;
+  border-bottom: 1px solid #ebebeb;
 }
 .add-guests .guest-counter-card .counter {
   align-items: center;
@@ -3212,14 +3299,14 @@ form > * {
   font-size: 1rem;
 }
 .add-guests .guest-counter-card .guest p {
-  color: #6A6A6A;
+  color: #6a6a6a;
   margin: 0;
   font-size: 0.86rem;
   padding-block-start: 0.25rem;
 }
 .add-guests .guest-counter-card .guest h2 {
   font-size: 0.8rem;
-  color: #6A6A6A;
+  color: #6a6a6a;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -3268,7 +3355,7 @@ form > * {
 }
 .suggested-des-container .des-card div p {
   font-size: 0.85rem;
-  color: #6A6A6A;
+  color: #6a6a6a;
 }
 .suggested-des-container .des-card:hover {
   background-color: #f4f4f4;
@@ -3277,13 +3364,13 @@ form > * {
 
 .reserve-app-header {
   height: 80px;
-  border-bottom: 1px solid #EBEBEB;
+  border-bottom: 1px solid #ebebeb;
   grid-column: 1/3;
   align-items: center;
 }
 .reserve-app-header svg {
   grid-column: 2;
-  color: #FF385C;
+  color: #ff385c;
 }
 
 /*# sourceMappingURL=main.css.map */

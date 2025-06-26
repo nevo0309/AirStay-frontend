@@ -1,172 +1,232 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, forwardRef } from "react"
 import { handleButtonMouseMove } from "./../../services/util.service"
 import { useSelector } from "react-redux"
-import { FilterCalender } from '../calender/FilterCaleder.jsx'
+import { FilterCalender } from "../calender/FilterCaleder.jsx"
 import { AddGuests } from "../AddGuests.jsx"
 
-export function DetailsReservation({ onReserve, sumNights, formatRangeDatesCalender, range, handleSelect, setFilterToEdit, nightSum }) {
-    const stay = useSelector((storeState) => storeState.stayModule.stay)
-    const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
-    const [totalPrice, setTotalPrice] = useState(null)
-    const [isCalenderOpen, setIsCalenderOpen] = useState(false)
-    const [activeCalenderDate, setActiveCalenderDate] = useState('checkIn')
-    const [guest, setGuest] = useState(filterBy.guest)
-    const [isAddGuestOpen, setIsAddGuestOpen] = useState(false)
-    const cleaningFee = 55
-    const serviceFee = 62.82
+// export function DetailsReservation({
+//   onReserve,
+//   sumNights,
+//   formatRangeDatesCalender,
+//   range,
+//   handleSelect,
+//   setFilterToEdit,
+//   nightSum
+// }) {
 
+export const DetailsReservation = forwardRef(function DetailsReservation(
+  props,
+  ref
+) {
+  const {
+    onReserve,
+    sumNights,
+    formatRangeDatesCalender,
+    range,
+    handleSelect,
+    setFilterToEdit,
+    nightSum
+  } = props
+  const stay = useSelector((storeState) => storeState.stayModule.stay)
+  const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
+  const [totalPrice, setTotalPrice] = useState(null)
+  const [isCalenderOpen, setIsCalenderOpen] = useState(false)
+  const [activeCalenderDate, setActiveCalenderDate] = useState("checkIn")
+  const [guest, setGuest] = useState(filterBy.guest)
+  const [isAddGuestOpen, setIsAddGuestOpen] = useState(false)
+  const cleaningFee = 55
+  const serviceFee = 62.82
 
-    useEffect(() => {
-        if (Object.keys(filterBy.guest).length === 0) {
-            setFilterToEdit(prevFilterBy => ({
-                ...prevFilterBy,
-                guest: { adults: 1, children: 0, infants: 0, pet: 0 }
-            }))
-        }
-        else {
-            setFilterToEdit(prevFilterBy => ({
-                ...prevFilterBy,
-                guest: guest
-            }))
-        }
-    }, [guest])
+  useEffect(() => {
+    if (Object.keys(filterBy.guest).length === 0) {
+      setFilterToEdit((prevFilterBy) => ({
+        ...prevFilterBy,
+        guest: { adults: 1, children: 0, infants: 0, pet: 0 }
+      }))
+    } else {
+      setFilterToEdit((prevFilterBy) => ({
+        ...prevFilterBy,
+        guest: guest
+      }))
+    }
+  }, [guest])
 
+  useEffect(() => {
+    setTotalPrice(sumNights(filterBy.checkIn, filterBy.checkOut) * stay.price)
+  }, [filterBy])
 
-    useEffect(() => {
-        setTotalPrice(sumNights(filterBy.checkIn, filterBy.checkOut) * stay.price)
-    }, [filterBy])
+  function onOpenCalender() {
+    setIsCalenderOpen(true)
+    setActiveCalenderDate("checkIn")
+  }
 
+  function formatRangeDates(date) {
+    const day = String(date.getDate()).padStart(2, "0")
+    const month = String(date.getMonth() + 1).padStart(2, "0")
+    const year = date.getFullYear()
 
-    function onOpenCalender() {
-        setIsCalenderOpen(true)
-        setActiveCalenderDate('checkIn')
+    return `${day}/${month}/${year}`
+  }
+
+  function guestSummary(guest) {
+    const labelMap = {
+      guests: ["guest", "guests"],
+      infants: ["infant", "infants"],
+      pet: ["pet", "pets"]
     }
 
-    function formatRangeDates(date) {
-        const day = String(date.getDate()).padStart(2, '0')
-        const month = String(date.getMonth() + 1).padStart(2, '0')
-        const year = date.getFullYear()
+    const totalGuests = guest.adults + guest.children
+    const totalGuestsSummary = []
 
-        return `${day}/${month}/${year}`
+    if (totalGuests > 0) {
+      const [singular, plural] = labelMap.guests
+      const label = totalGuests === 1 ? singular : plural
+      totalGuestsSummary.push(`${totalGuests} ${label}`)
     }
 
+    ;["infants", "pet"].forEach((key) => {
+      const count = guest[key] || 0
+      if (count > 0) {
+        const [singular, plural] = labelMap[key]
+        const label = count === 1 ? singular : plural
+        totalGuestsSummary.push(`${count} ${label}`)
+      }
+    })
 
-    function guestSummary(guest) {
-        const labelMap = {
-            guests: ['guest', 'guests'],
-            infants: ['infant', 'infants'],
-            pet: ['pet', 'pets']
-        }
+    return totalGuestsSummary.join(", ")
+  }
 
-        const totalGuests = (guest.adults) + (guest.children)
-        const totalGuestsSummary = []
+  function onClickBackDrop() {
+    if (isCalenderOpen) setIsCalenderOpen(false)
+    else if (isAddGuestOpen) setIsAddGuestOpen(false)
+  }
 
-        if (totalGuests > 0) {
-            const [singular, plural] = labelMap.guests;
-            const label = totalGuests === 1 ? singular : plural
-            totalGuestsSummary.push(`${totalGuests} ${label}`)
-        }
+  return (
+    <div ref={ref} className='details-reservation flex column'>
+      <h1>
+        {`₪${stay.price}`} <span>night </span>
+      </h1>
+      <div className='reservation-options'>
+        <div className='flex column' onClick={onOpenCalender}>
+          <label>CHECK-IN</label>
+          <p>
+            {filterBy.checkIn
+              ? formatRangeDates(filterBy.checkIn)
+              : "Add dates"}
+          </p>
+        </div>
 
-        ['infants', 'pet'].forEach((key) => {
-            const count = guest[key] || 0
-            if (count > 0) {
-                const [singular, plural] = labelMap[key];
-                const label = count === 1 ? singular : plural;
-                totalGuestsSummary.push(`${count} ${label}`);
-            }
-        })
+        <div className='flex column' onClick={onOpenCalender}>
+          <label>CHECK-OUT</label>
+          <p>
+            {" "}
+            {filterBy.checkOut
+              ? formatRangeDates(filterBy.checkOut)
+              : "Add dates"}
+          </p>
+        </div>
 
-        return totalGuestsSummary.join(', ')
-    }
-
-
-    function onClickBackDrop() {
-        if (isCalenderOpen) setIsCalenderOpen(false)
-        else if (isAddGuestOpen) setIsAddGuestOpen(false)
-    }
-
-    return (
-        <div className='details-reservation flex column'>
-            <h1>{`₪${stay.price}`} <span>night </span></h1>
-            <div className="reservation-options">
-                <div className="flex column" onClick={onOpenCalender}>
-                    <label>
-                        CHECK-IN
-                    </label>
-                    <p>{filterBy.checkIn ? formatRangeDates(filterBy.checkIn) : 'Add dates'}</p>
-                </div>
-
-                <div className="flex column" onClick={onOpenCalender}>
-                    <label>
-                        CHECK-OUT
-                    </label>
-                    <p> {filterBy.checkOut ? formatRangeDates(filterBy.checkOut) : 'Add dates'}</p>
-                </div>
-
-                <div className="flex column" onClick={(ev) => setIsAddGuestOpen(!isAddGuestOpen)}>
-                    <label>
-                        GUESTS
-                    </label>
-                    <p>{guestSummary(filterBy.guest)}</p>
-                    {isAddGuestOpen && <div className="details-res-add-guests" onClick={(ev) => ev.stopPropagation()}><AddGuests setGuest={setGuest} filterBy={filterBy} /></div>}
-                </div>
-
-                {isCalenderOpen && <section className="details-res-calender">
-                    <section className="calender-stay-options flex">
-                        <div className="calender-stay-details">
-                            <h2>{nightSum + ((nightSum === 1) ? ' night' : ' nights')}</h2>
-                            {(filterBy.checkIn && filterBy.checkOut) && <p>{`${formatRangeDatesCalender(filterBy.checkIn)} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>}
-                        </div>
-                        <div className="calender-dates-input flex">
-                            <div className={"flex column " + (activeCalenderDate === 'checkIn' ? 'active' : '')}>
-                                <label>
-                                    CHECK-IN
-                                </label>
-                                <p>{filterBy.checkIn ? formatRangeDates(filterBy.checkIn) : 'Add dates'}</p>
-                            </div>
-
-                            <div className={"flex column " + (activeCalenderDate === 'checkOut' ? 'active' : '')}>
-                                <label>
-                                    CHECK-OUT
-                                </label>
-                                <p> {filterBy.checkOut ? formatRangeDates(filterBy.checkOut) : 'Add dates'}</p>
-                            </div>
-                        </div>
-                    </section>
-                    <FilterCalender
-                        range={range}
-                        setRange={handleSelect}
-                        cmp={'details-res'}
-                        setIsCalenderOpen={setIsCalenderOpen}
-                        activeCalenderDate={activeCalenderDate}
-                        setActiveCalenderDate={setActiveCalenderDate} />
-                </section>}
-            </div>
-
-            <button
-                className='reserve-btn-details'
-                onClick={onReserve}
-                onMouseMove={handleButtonMouseMove}
+        <div
+          className='flex column'
+          onClick={(ev) => setIsAddGuestOpen(!isAddGuestOpen)}
+        >
+          <label>GUESTS</label>
+          <p>{guestSummary(filterBy.guest)}</p>
+          {isAddGuestOpen && (
+            <div
+              className='details-res-add-guests'
+              onClick={(ev) => ev.stopPropagation()}
             >
-                Reserve
-            </button>
-
-            <p>You won't be charged yet</p>
-            <div className="prices">
-                <h2>{`₪${stay.price}`}<span> X </span> {nightSum + ((nightSum === 1) ? ' night' : ' nights')}</h2>
-                {totalPrice && <p>{`₪${totalPrice}`}</p>}
-                <h2>Cleaning fee</h2>
-                {totalPrice && <p> {`₪${cleaningFee}`}</p>}
-                <h2>Service fee</h2>
-                {totalPrice && <p> {`₪${serviceFee}`}</p>}
-
+              <AddGuests setGuest={setGuest} filterBy={filterBy} />
             </div>
-            <div className="total-price flex">
-                <h2 >Total</h2>
-                {totalPrice && <p>{`₪${totalPrice + cleaningFee + serviceFee}`}</p>}
-            </div>
+          )}
+        </div>
 
-            <div className={(isCalenderOpen || isAddGuestOpen) ? 'calender-open-backscreen' : ''} onClick={() => onClickBackDrop()}></div>
+        {isCalenderOpen && (
+          <section className='details-res-calender'>
+            <section className='calender-stay-options flex'>
+              <div className='calender-stay-details'>
+                <h2>{nightSum + (nightSum === 1 ? " night" : " nights")}</h2>
+                {filterBy.checkIn && filterBy.checkOut && (
+                  <p>{`${formatRangeDatesCalender(
+                    filterBy.checkIn
+                  )} - ${formatRangeDatesCalender(filterBy.checkOut)}`}</p>
+                )}
+              </div>
+              <div className='calender-dates-input flex'>
+                <div
+                  className={
+                    "flex column " +
+                    (activeCalenderDate === "checkIn" ? "active" : "")
+                  }
+                >
+                  <label>CHECK-IN</label>
+                  <p>
+                    {filterBy.checkIn
+                      ? formatRangeDates(filterBy.checkIn)
+                      : "Add dates"}
+                  </p>
+                </div>
 
-        </div >)
-}
+                <div
+                  className={
+                    "flex column " +
+                    (activeCalenderDate === "checkOut" ? "active" : "")
+                  }
+                >
+                  <label>CHECK-OUT</label>
+                  <p>
+                    {" "}
+                    {filterBy.checkOut
+                      ? formatRangeDates(filterBy.checkOut)
+                      : "Add dates"}
+                  </p>
+                </div>
+              </div>
+            </section>
+            <FilterCalender
+              range={range}
+              setRange={handleSelect}
+              cmp={"details-res"}
+              setIsCalenderOpen={setIsCalenderOpen}
+              activeCalenderDate={activeCalenderDate}
+              setActiveCalenderDate={setActiveCalenderDate}
+            />
+          </section>
+        )}
+      </div>
+
+      <button
+        className='reserve-btn-details'
+        onClick={onReserve}
+        onMouseMove={handleButtonMouseMove}
+      >
+        Reserve
+      </button>
+
+      <p>You won't be charged yet</p>
+      <div className='prices'>
+        <h2>
+          {`₪${stay.price}`}
+          <span> X </span> {nightSum + (nightSum === 1 ? " night" : " nights")}
+        </h2>
+        {totalPrice && <p>{`₪${totalPrice}`}</p>}
+        <h2>Cleaning fee</h2>
+        {totalPrice && <p> {`₪${cleaningFee}`}</p>}
+        <h2>Service fee</h2>
+        {totalPrice && <p> {`₪${serviceFee}`}</p>}
+      </div>
+      <div className='total-price flex'>
+        <h2>Total</h2>
+        {totalPrice && <p>{`₪${totalPrice + cleaningFee + serviceFee}`}</p>}
+      </div>
+
+      <div
+        className={
+          isCalenderOpen || isAddGuestOpen ? "calender-open-backscreen" : ""
+        }
+        onClick={() => onClickBackDrop()}
+      ></div>
+    </div>
+  )
+})

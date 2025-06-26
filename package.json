@@ -8,8 +8,10 @@
     "sass-prod": "sass src/assets/styles/main.scss:src/assets/css/main.css --no-source-map --style=compressed",
     "dev": "vite",
     "dev:local": "set VITE_LOCAL=true && vite",
+    "dev:remote": "set VITE_LOCAL=false && vite",
     "dev:local:mac": "export VITE_LOCAL=true && vite",
     "build": "vite build",
+    "build2": "vite build --outDir dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

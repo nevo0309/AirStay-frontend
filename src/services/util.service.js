@@ -154,11 +154,26 @@ export function handleButtonMouseMove(ev) {
   ev.currentTarget.style.setProperty('--y', `${y}%`)
 }
 
+export function getOrderCreationDate() {
+  const now = new Date()
+  const year = now.getFullYear()
+  const month = String(now.getMonth() + 1).padStart(2, '0')
+  const day = String(now.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
 export function formatFullDate(dateStr) {
   const date = new Date(dateStr)
   const options = { year: 'numeric', month: 'long', day: 'numeric' }
   return date.toLocaleDateString(undefined, options)
 }
+
+export function formatDateFromStore(d) {
+  if (!d) return ''
+  const date = new Date(d)
+  return date.toISOString().split('T')[0]
+}
+
 export function formatCalenderDate(date) {
   const options = { month: 'short', day: 'numeric' }
   const dateToShow = date.toLocaleDateString('en-US', options)

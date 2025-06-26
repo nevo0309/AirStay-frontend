@@ -1,6 +1,6 @@
 // src/store/order.actions.js
 
-import { orderService } from '../services/stay/order.service.local.js'
+import { orderService } from '../services/stay/order.service.remote.js'
 import { store } from './store.js' // adjust path if needed
 import {
   SET_ORDERS,
@@ -109,7 +109,7 @@ export function loadHostOrders(stayId) {
     try {
       const orders = await orderService.query({ stayId })
       // dispatch(_setHostOrders(orders))
-      // Note: Adjust for User Type   
+      // Note: Adjust for User Type
       dispatch({ type: SET_HOST_ORDERS, orders })
     } catch (err) {
       console.error('Failed to load host orders:', err)
@@ -117,14 +117,18 @@ export function loadHostOrders(stayId) {
   }
 }
 // 7. Update order status (Approve / Decline)
-export function updateOrderStatus(orderId, newStatus) {
-  return async dispatch => {
-    try {
-      const updatedOrder = await orderService.updateStatus(orderId, newStatus)
-      // dispatch(_updateOrderStatus(updatedOrder))
-      dispatch({ type: UPDATE_ORDER_STATUS, updatedOrder })
-    } catch (err) {
-      console.error('Failed to update order status:', err)
-    }
+export async function updateOrderStatus(orderId, newStatus) {
+  try {
+    const { orderId: idFromServer, status } = await orderService.updateStatus(orderId, newStatus)
+
+    const updatedOrder = { _id: idFromServer, status }
+    store.dispatch({
+      type: UPDATE_ORDER_STATUS,
+      updatedOrder,
+    })
+    return updatedOrder
+  } catch (err) {
+    console.error('Failed to update order status:', err)
+    throw err
   }
 }

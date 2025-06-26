@@ -1,25 +1,29 @@
-// src/cmps/StayList.jsx
 import React from 'react'
 import { StayCarousel } from './carousel/StayCarousel'
+import { rightArrowSvg } from '../../data/svgExport'
 
-export function StayList({ stays }) {
+export function StayList({ staysByCity, onRemoveStay, onUpdateStay }) {
   const sections = [
-    'Popular homes in Eilat >',
-    'Available in Tel Aviv-Yafo this weekend >',
-    'Stay in Athens >',
-    'Available in Jerusalem this weekend >',
-    'Homes in Budapest >',
-    'Available next month in Rome >',
-    'Places to stay in Paris >',
-    'Check out homes in Haifa >',
-    'Popular homes in London >',
-    'Stay in Madrid >',
+    { city: 'Eilat', title: <>Popular homes in Eilat {rightArrowSvg}</> },
+    {
+      city: 'New York',
+      title: <>Available in New York this weekend {rightArrowSvg}</>,
+    },
+    { city: 'Paris', title: <>Places to stay in Paris {rightArrowSvg}</> },
+    { city: 'Barcelona', title: <>Stay in Barcelona {rightArrowSvg}</> },
+    { city: 'Athens', title: <>Available in Athens this weekend {rightArrowSvg}</> },
   ]
 
   return (
     <section className="explor-lists">
-      {sections.map((title, idx) => (
-        <StayCarousel key={idx} stays={stays} title={title} />
+      {sections.map(({ city, title }) => (
+        <StayCarousel
+          key={city}
+          title={title}
+          stays={staysByCity[city] || []}
+          onRemoveStay={onRemoveStay}
+          onUpdateStay={onUpdateStay}
+        />
       ))}
     </section>
   )

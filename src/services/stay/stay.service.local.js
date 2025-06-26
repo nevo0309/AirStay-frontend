@@ -1,6 +1,6 @@
 import { storageService } from '../async-storage.service'
 import { makeId, saveToStorage } from '../util.service'
-import { userService } from '../user'
+import { userService } from '../user/user.service.local'
 import { stays } from '../../../data/stay-demo'
 
 const STORAGE_KEY = 'stayDB'
@@ -13,7 +13,7 @@ export const stayService = {
   save,
   remove,
   addStayMsg,
-  getDefaultFilter
+  getDefaultFilter,
 }
 window.cs = stayService
 
@@ -98,8 +98,6 @@ function _createStays() {
   })
 }
 
-
-
 function getDefaultFilter() {
-    return { location: '', checkIn: '',checkOut:'' , guest: {}}
+  return { location: '', checkIn: '', checkOut: '', guest: {} }
 }
