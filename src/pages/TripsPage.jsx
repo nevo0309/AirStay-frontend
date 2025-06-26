@@ -1,13 +1,33 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders } from '../store/order.actions'
+import { formatFullDate } from '../services/util.service'
+import { useNavigate } from 'react-router-dom'
+import { showErrorMsg } from '../services/event-bus.service'
 
 export function TripsPage() {
-  useEffect(() => {
-    loadOrders()
-  }, [])
-
+  const user = useSelector(store => store.userModule.user)
   const orders = useSelector(store => store.orderModule.orders)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (user?._id) loadOrders({ guestId: user._id })
+    // if (user?._id) {
+    //   const guestId =
+    //     typeof user._id === 'object' && user._id.$oid ? user._id.$oid : String(user._id)
+    //   loadOrders({ guestId })
+    // }
+  }, [user?._id])
+  // useEffect(() => {
+  //   console.log('orders after query →', orders)
+  // }, [orders])
+
+  useEffect(() => {
+    if (!user) {
+      showErrorMsg('Unauthorized – please log in')
+      navigate('/')
+    }
+  }, [user, navigate])
+  if (!user) return
 
   return (
     <div className="trips-page">
@@ -44,16 +64,24 @@ export function TripsPage() {
                 host: { fullname: hostName },
                 startDate,
                 endDate,
-
-                createdAt,
+                orderedAt,
                 totalPrice,
                 status,
               } = order
 
               const priceFormatted = `₪${totalPrice.toFixed(2)}`
-              const statusClass = status === 'pending' ? 'status-pending' : 'status-completed'
+              // const statusClass = status === 'pending' ? 'status-pending' : 'status-completed'
+              const statusClassMap = {
+                pending: 'status-pending',
+                approved: 'status-approved',
+                rejected: 'status-rejected',
+              }
+              console.log('start', startDate)
+
+              const statusClass = statusClassMap[status] || ''
+
               const statusText = status[0].toUpperCase() + status.slice(1)
-              const orderDate = new Date(createdAt).toLocaleDateString('en-GB').replace(/\//g, '-')
+
               return (
                 <tr key={_id}>
                   <td>
@@ -63,9 +91,9 @@ export function TripsPage() {
                     </div>
                   </td>
                   <td className="td-host">{hostName}</td>
-                  <td className="td-checkin">{startDate}</td>
-                  <td className="td-checkout">{endDate}</td>
-                  <td className="td-booked">{orderDate}</td>
+                  <td className="td-checkin">{formatFullDate(startDate)}</td>
+                  <td className="td-checkout">{formatFullDate(endDate)}</td>
+                  <td className="td-booked">{formatFullDate(orderedAt)}</td>
                   <td className="td-price">{priceFormatted}</td>
                   <td className={`td-status ${statusClass}`}>{statusText}</td>
                 </tr>

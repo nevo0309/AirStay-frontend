@@ -54,7 +54,7 @@ export function DetailsReviewSummary({ stay }) {
       {/* overall header */}
       <div className='details-review-summary-header'>
         <span className='details-review-summary-star'>★</span>
-        <span className='details-review-summary-avg'>{avg.toFixed(2)}</span>
+        <span className='details-review-summary-avg'>{avg.toFixed(1)}</span>
         <span className='details-review-summary-dot'>·</span>
         <span className='details-review-summary-total'>{total} reviews</span>
       </div>

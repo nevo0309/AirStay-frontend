@@ -11,6 +11,7 @@ export function StayCarousel({ stays, title }) {
     slidesToScroll: 1,
     containScroll: 'trimSnaps',
   }
+  const slicedStays = stays.slice(0, 8)
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
     usePrevNextButtons(emblaApi)
@@ -32,7 +33,7 @@ export function StayCarousel({ stays, title }) {
         <section className="embla">
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">
-              {stays.map(stay => (
+              {slicedStays.map(stay => (
                 <div
                   className="embla__slide"
                   key={stay._id}

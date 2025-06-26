@@ -13,6 +13,13 @@ export function BookingSidebar({ stay, startDate, endDate, guests }) {
   const total = basePrice + cleaningFee + serviceFee
   const formattedDateRange = formatDateRange(startDate, endDate)
 
+  const { adults, children = 0, infants = 0, pet = 0 } = guests || {}
+  const guestLabels = []
+  guestLabels.push(`${adults} adult${adults > 1 ? 's' : ''}`)
+  if (children > 0) guestLabels.push(`${children} child${children > 1 ? 'ren' : ''}`)
+  if (infants > 0) guestLabels.push(`${infants} infant${infants > 1 ? 's' : ''}`)
+  if (pet > 0) guestLabels.push(`${pet} pet${pet > 1 ? 's' : ''}`)
+
   return (
     <aside className="booking-sidebar">
       <div className="sidebar-header">
@@ -47,10 +54,7 @@ export function BookingSidebar({ stay, startDate, endDate, guests }) {
           <button className="change-button">Change</button>
         </div>
         <p className="trip-dates">{formattedDateRange}</p>
-        <p className="trip-guests">
-          {guests.adults} adult{guests.adults > 1 ? 's' : ''}
-          {guests.kids > 0 ? `, ${guests.kids} kid${guests.kids > 1 ? 's' : ''}` : ''}
-        </p>
+        <p className="trip-guests">{guestLabels.join(', ')}</p>
       </div>
 
       {/* 4. Price details section */}

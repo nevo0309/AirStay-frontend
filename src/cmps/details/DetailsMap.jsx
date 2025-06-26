@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { GoogleMap, useJsApiLoader, OverlayView } from "@react-google-maps/api"
 import { homeSvg } from "../../../data/svgExport"
+import { stayService } from "../../services/stay/stay.service.remote"
+import { MapsKeyContext } from "../../contexts/MapsKeyContext"
 
 const containerStyle = {
   width: "100%",
@@ -12,10 +14,10 @@ const DEFAULT_ZOOM = 16
 
 export function DetailsMap({ stay }) {
   const stayLoc = { lat: stay.loc.lat, lng: stay.loc.lng }
-
+  const apiKey = useContext(MapsKeyContext)
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyDpge7IgmfUfXiXFEqaeTr_PGBD5n3WRL0"
+    googleMapsApiKey: apiKey
   })
 
   if (!isLoaded) return null

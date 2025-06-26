@@ -1,0 +1,186 @@
+.label {
+    &>div:nth-of-type(1) {
+        position: relative;
+        align-items: center;
+        transform: translate(-50%, -100%);
+        pointer-events: auto;
+        background-color: white;
+        padding: 5px 8px;
+        width: fit-content;
+        height: 1.75rem;
+        border-radius: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18), 0px 2px 4px 0px rgba(0, 0, 0, 0.18), 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+        color: black;
+        font-size: 0.875rem;
+        font-family: cereal;
+        font-weight: 700;
+        line-height: 1.43;
+        transform: translate(-50%, -100%);
+        transform-origin: center;
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: translate(-50%, -100%) scale(1.077);
+        }
+
+        &.preview-open {
+            background-color: #222222;
+            color: white;
+        }
+    }
+
+    .stay-map-preview {
+        position: absolute;
+
+        top: 6px;
+        right: -90px;
+        height: fit-content;
+        width: 240px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        font-family: cereal;
+
+        .close-btn,
+        .heart-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 7px;
+            right: 5px;
+            z-index: 1000;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+            font-size: 1.5rem;
+            aspect-ratio: 1;
+            padding: 0;
+            height: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .preview {
+            width: 100%;
+            // height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            position: relative;
+            pointer-events: auto;
+
+            .heart-icon {
+                top: 12px;
+                right: 52px;
+                cursor: pointer;
+
+                svg {
+                    height: 17px !important;
+
+                    path {
+                        fill: transparent;
+                        stroke: black;
+                        stroke-width: 3px;
+
+
+                    }
+                }
+            }
+
+
+            img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 54/ 35;
+                object-fit: cover;
+                border-radius: 15px 15px 0 0;
+            }
+
+            .preview-content {
+                padding: 2px;
+                flex: 1;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                gap: 4px;
+                padding: 0 0.875rem 1rem 0.875rem;
+
+                h3 {
+                    grid-column: 1;
+                    grid-row: 1;
+                    margin: 0;
+                    font-size: 0.9375rem;
+                    line-height: 1.2;
+                    font-weight: 600;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .stay-dates,
+                .stay-price-preview {
+                    font-size: 0.9375rem;
+                    line-height: 1.2;
+                    color: #717171;
+                    font-weight: 400;
+
+                    span {
+                        font-weight: 500;
+                        color: #222222;
+                    }
+                }
+
+
+                .stay-dates {
+                    grid-column: 1/3;
+                    grid-row: 2;
+                }
+
+                .stay-price-preview {
+                    grid-column: 1/3;
+                    grid-row: 3;
+
+                    .total-price{
+                        text-decoration: underline;
+                        font-weight: 400;
+                         color: #717171
+                    }
+                }
+
+                .stay-review {
+                    grid-column: 2;
+                    grid-row: 1;
+                    font-size: 0.9375rem;
+                    justify-self: start;
+                    line-height: 1;
+
+                    .dot {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .nav {
+            top: 30%;
+        }
+
+        &:hover {
+            .nav {
+                opacity: 1;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+                &.hidden {
+                    display: none;
+                }
+
+
+
+                &:hover {
+                    background-color: white;
+                    scale: 1.05;
+
+                }
+            }
+        }
+    }
+}

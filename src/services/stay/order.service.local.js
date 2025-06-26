@@ -2,11 +2,9 @@
 
 import { storageService } from '../async-storage.service.js'
 import { makeId } from '../../services/util.service.js'
-
-
+import { stayService } from './stay.service.remote.js'
 
 const STORAGE_KEY = 'orderDB'
-
 
 export const orderService = {
   query,
@@ -16,9 +14,8 @@ export const orderService = {
   updateStatus,
   getEmptyOrder,
 }
-window.cs = stayService
-function query(filterBy = {}) {
 
+function query(filterBy = {}) {
   return storageService.query(STORAGE_KEY).then(orders => {
     if (filterBy.stayId) {
       return orders.filter(order => order.stay?._id === filterBy.stayId)
@@ -56,10 +53,6 @@ async function updateStatus(orderId, status) {
   return save(order)
 }
 
-
-
-
-// Helper: return an “empty order” shape that the UI can start from
 function getEmptyOrder() {
   return {
     _id: '',
@@ -71,9 +64,7 @@ function getEmptyOrder() {
     items: [], // e.g. [ { productId, qty, price }, … ]
     total: 0,
     price: 0,
-    status: 'pending', // e.g. 'pending', 'shipped', 'delivered'
+    status: 'pending',
     createdAt: Date.now(),
   }
 }
-
-

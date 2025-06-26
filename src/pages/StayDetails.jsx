@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo, useRef } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { loadStay } from "../store/stay.actions"
-import { DetailsStickyNav } from "../cmps/details/DetailsStickyNav"
 import { DetailsImageGallery } from "../cmps/details/DetailsImageGallery"
 import { DetailsAmenities } from "../cmps/details/DetailsAmenities"
 import { DetailsHeader } from "../cmps/details/DetailsHeader"
@@ -12,6 +11,7 @@ import {
   handleButtonMouseMove,
   getRandomImageNumber
 } from "../services/util.service"
+import { DetailsStickyNav } from "../cmps/details/DetailsStickyNav"
 import { DetailsSummary } from "../cmps/details/DetailsSummary"
 import { DetailsReviews } from "../cmps/details/DetailsReview"
 import { DetailsMap } from "../cmps/details/DetailsMap"
@@ -21,6 +21,8 @@ import { DetailsReviewSummary } from "../cmps/details/DetailsReviewSummary"
 import { FilterCalender } from "../cmps/calender/FilterCaleder"
 import { addDays } from "date-fns"
 import { setFilterBy } from "../store/stay.actions"
+import { SkeletonStayDetails } from "./StayDetailsSkeleton"
+import { sumNights } from "../services/util.service"
 
 export function StayDetails() {
   const galleryRef = useRef(null)
@@ -63,7 +65,6 @@ export function StayDetails() {
 
     if (!currentStart || (currentStart && !currentEnd)) {
       // Initial selection or selecting the end date
-
       setRange([
         {
           ...range[0],
@@ -103,15 +104,6 @@ export function StayDetails() {
     loadStay(stayId)
   }, [stayId])
 
-  function sumNights(startDate, endDate) {
-    if (!startDate || !endDate) return 0
-
-    const oneDayMs = 1000 * 60 * 60 * 24
-    const diffMs = endDate - startDate
-
-    return Math.max(0, Math.round(diffMs / oneDayMs))
-  }
-
   function formatRangeDatesCalender(date) {
     const options = { month: "short", day: "numeric", year: "numeric" }
     const dateToShow = date.toLocaleDateString("en-US", options)
@@ -119,7 +111,7 @@ export function StayDetails() {
     return dateToShow
   }
 
-  if (!stay) return <div>Loading...</div>
+  if (!stay) return <SkeletonStayDetails />
 
   return (
     <div className='stay-details'>
@@ -181,7 +173,6 @@ export function StayDetails() {
             />
           </div>
         </div>
-
         <DetailsReservation
           ref={reservationRef}
           onReserve={onReserve}

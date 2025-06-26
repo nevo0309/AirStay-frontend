@@ -23,9 +23,7 @@ export function UserDetails() {
   }, [params.id])
 
   function onUserUpdate(user) {
-    showSuccessMsg(
-      `This user ${user.fullname} just got updated from socket, new score: ${user.score}`
-    )
+    showSuccessMsg(`This user ${user.fullname} just got updated from socket`)
     store.dispatch({ type: 'SET_WATCHED_USER', user })
   }
 

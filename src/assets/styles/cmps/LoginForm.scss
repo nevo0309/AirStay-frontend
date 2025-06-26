@@ -1,0 +1,118 @@
+.login-modal-form {
+  padding: 20px 1px 40px;
+
+  .login-modal-header {
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .login-form-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .login-form-title {
+      font-size: 1.425rem;
+      font-weight: 600;
+      text-align: left;
+      margin-top: 0;
+      padding-left: 20px;
+    }
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &__input {
+    width: 100%;
+    padding: 22px 18px 18px;
+    font-size: 1rem;
+    border: 1px solid $gray1;
+    border-radius: 12px;
+    transition: border 0.18s;
+    margin: 1px;
+
+    &:focus {
+      outline: none;
+      border-color: #000;
+      box-shadow: 0 0 0 2px #000;
+    }
+  }
+  .login-form__btn {
+    --x: 70%;
+    --y: 50%;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: cereal;
+    height: 48px;
+    overflow: hidden;
+    min-width: 200px;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.475rem;
+    color: #fff;
+    cursor: pointer;
+    transition: filter 0.2s;
+    background: radial-gradient(
+      circle at var(--x) var(--y),
+      #ff385c 0%,
+      #e61e4d 27.5%,
+      #e31c5f 40%,
+      #d70466 57.5%,
+      #bd1e59 75%,
+      #bd1e59 100%
+    );
+    // background: radial-gradient(circle at var(--x) var(--y), #ff7c4c52, transparent 40%),
+    //   linear-gradient(90deg, $clr1se 0%, $clr1st 100%);
+    background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+  }
+
+  .login-form__btn:hover {
+    background: radial-gradient(
+      circle at circle,
+      #ff7c4c52,
+      transparent 40%,
+      #ff385c 0%,
+      #e61e4d 27.5%,
+      #e31c5f 40%,
+      #d70466 57.5%,
+      #bd1e59 75%,
+      #bd1e59 100%
+    );
+    // filter: brightness(1.1);
+  }
+}
+
+.login-signup-btns {
+  text-align: center;
+  font-size: 0.9375rem;
+
+  a {
+    color: $clr2;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: $clr1se;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .login-modal-form {
+    padding: 48px 24px 32px;
+  }
+  .login-form-wrapper {
+    gap: 24px;
+  }
+}

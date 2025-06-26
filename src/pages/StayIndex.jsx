@@ -1,77 +1,44 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import { loadStays, removeStay, addStay, updateStay } from '../store/stay.actions'
+import { loadStays, loadStaysByCity, removeStay, updateStay } from '../store/stay.actions'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { stayService } from '../services/stay'
+
 import { StayList } from '../cmps/StayList'
 import { StayListSkeleton } from '../cmps/carousel/StayListSkeleton'
 
 export function StayIndex({ isStayFilterOpen }) {
-  // const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
-
-  const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+  const staysByCity = useSelector(s => s.stayModule.staysByCity)
   const [loading, setLoading] = useState(true)
 
-  const stays = useSelector(storeState => storeState.stayModule.stays)
-// 
-  // console.log(filterBy)
   useEffect(() => {
-    async function fetch() {
-      setLoading(true)
-      try {
-        await loadStays(filterBy)
-      } catch (err) {
-        console.error('Could not load stays', err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetch()
-  }, [filterBy])
+    const cities = [
+      'Eilat',
+      'New York',
+      'Barcelona',
+      'Athens',
+      'Budapest',
+      'Rome',
+      'Paris',
+      'Haifa',
+      'London',
+      'Madrid',
+    ]
 
-  function onSetFilterBy(updatedFilter) {
-    setFilterBy(prev => ({ ...prev, ...updatedFilter }))
-  }
+    let done = 0 // how many requests finished
 
-  async function onRemoveStay(stayId) {
-    try {
-      await removeStay(stayId)
-      showSuccessMsg('Stay removed')
-    } catch {
-      showErrorMsg('Cannot remove stay')
-    }
-  }
-
-  // async function onAddStay() {
-  //   const stay = stayService.getEmptyStay()
-
-  //   try {
-  //     const saved = await addStay(stay)
-  //     showSuccessMsg(`Stay added (id: ${saved._id})`)
-  //   } catch {
-  //     showErrorMsg('Cannot add stay')
-  //   }
-  // }
-
-  async function onUpdateStay(stay) {
-    const speed = +prompt('New speed?', stay.speed)
-    if (!speed) return
-    try {
-      const saved = await updateStay({ ...stay, speed })
-      showSuccessMsg(`Stay updated, new speed: ${saved.speed}`)
-    } catch {
-      showErrorMsg('Cannot update stay')
-    }
-  }
+    cities.forEach(city =>
+      loadStaysByCity(city).finally(() => {
+        // this runs on success or failure
+        done += 1 // mark one city as “done”
+        if (done === cities.length) setLoading(false) // all 10 finished → hide skeleton
+      })
+    )
+  }, [])
 
   return (
     <main className={'stay-index ' + (isStayFilterOpen ? '' : 'after-closed-header')}>
-      {loading ? (
-        <StayListSkeleton />
-      ) : (
-        <StayList stays={stays} onRemoveStay={onRemoveStay} onUpdateStay={onUpdateStay} />
-      )}
+      {loading ? <StayListSkeleton /> : <StayList staysByCity={staysByCity} />}
     </main>
   )
 }
