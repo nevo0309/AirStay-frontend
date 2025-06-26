@@ -87,10 +87,13 @@
     }
 
     .res-btn {
+      --x: 70%;
+      --y: 50%;
       font-size: 1rem;
       font-weight: 500;
       font-family: cereal;
       height: 44px;
+      overflow: hidden;
       min-width: 120px;
       padding: 0.5rem 1.7rem;
       border: none;
@@ -100,7 +103,7 @@
       cursor: pointer;
       transition: filter 0.2s;
       background: radial-gradient(
-        circle at 70% 50%,
+        circle at var(--x) var(--y),
         #ff385c 0%,
         #e61e4d 27.5%,
         #e31c5f 40%,
@@ -108,6 +111,7 @@
         #bd1e59 75%,
         #bd1e59 100%
       );
+
       &:hover {
         background: radial-gradient(
           circle at circle,
