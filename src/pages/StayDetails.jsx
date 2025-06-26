@@ -25,14 +25,14 @@ import { setFilterBy } from "../store/stay.actions"
 export function StayDetails() {
   const galleryRef = useRef(null)
   const reservationRef = useRef(null)
-  const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
+  const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   const [filterToEdit, setFilterToEdit] = useState(filterBy)
 
   const [startDate, setStartDate] = useState("2025-07-04")
   const [endDate, setEndDate] = useState("2025-07-06")
   const [guests, setGuests] = useState({ adults: 1, kids: 0 })
   const { stayId } = useParams()
-  const stay = useSelector((storeState) => storeState.stayModule.stay)
+  const stay = useSelector(storeState => storeState.stayModule.stay)
   const navigate = useNavigate()
   const nightSum = sumNights(filterBy.checkIn, filterBy.checkOut)
   const [range, setRange] = useState([
@@ -45,7 +45,7 @@ export function StayDetails() {
 
   useEffect(() => {
     // console.log(range)
-    setFilterToEdit((prevFilterBy) => ({
+    setFilterToEdit(prevFilterBy => ({
       ...prevFilterBy,
       checkIn: range[0].startDate,
       checkOut: range[0].endDate
@@ -123,8 +123,15 @@ export function StayDetails() {
 
   return (
     <div className='stay-details'>
+      <div
+        id='photos'
+        style={{ height: 0, margin: 0, padding: 0 }}
+      />
       <DetailsHeader name={stay.name} />
-      <DetailsImageGallery ref={galleryRef} images={stay.imgUrls} />
+      <DetailsImageGallery
+        ref={galleryRef}
+        images={stay.imgUrls}
+      />
       <DetailsStickyNav
         triggerRef={galleryRef}
         reservationRef={reservationRef}
@@ -133,21 +140,31 @@ export function StayDetails() {
       />
       <div className='stay-details-grid'>
         <div className='details-left'>
-          <section id='overview'>
-            <DetailsOverview stay={stay} />
-          </section>
+          <DetailsOverview stay={stay} />
           <div className='housted-by'>
-            <img src={stay.host.thumbnailUrl} alt={`${stay.host.fullname}`} />
+            <img
+              src={stay.host.thumbnailUrl}
+              alt={`${stay.host.fullname}`}
+            />
             <div className='host-details'>
               <div>Housted by {stay.host.fullname}</div>
               <div>Super Host · 5 years hosting </div>
             </div>
           </div>
           <DetailsHighlights />
+
           <DetailsSummary summary={stay.summary} />
-          <section id='amenities'>
-            <DetailsAmenities amenities={stay.amenities} />
-          </section>
+          <div
+            id='amenities'
+            style={{
+              height: 0,
+              margin: 0,
+              padding: "2rem",
+              borderTop: "1px solid #ebebeb"
+            }}
+          />
+          <DetailsAmenities amenities={stay.amenities} />
+
           <div className='details-calender'>
             <div className='calender-stay-details'>
               <h2> {nightSum + (nightSum === 1 ? " night" : " nights")}</h2>
@@ -176,13 +193,24 @@ export function StayDetails() {
           nightSum={nightSum}
         />
       </div>
+      <div
+        id='reviews'
+        style={{ height: 0, margin: "2.5rem", padding: 0 }}
+      />
+
       <DetailsReviewSummary stay={stay} />
-      <section id='reviews'>
-        <DetailsReviews reviews={stay.reviews} stayId={stay._id} />
-      </section>
-      <section id='map'>
-        <DetailsMap stay={stay} />
-      </section>
+
+      <DetailsReviews
+        reviews={stay.reviews}
+        stayId={stay._id}
+      />
+      <div
+        id='map'
+        style={{ height: 0, margin: "5rem", padding: 0 }}
+      />
+
+      <DetailsMap stay={stay} />
+
       <DetailsMoreInfo stay={stay} />
     </div>
   )
