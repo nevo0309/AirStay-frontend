@@ -115,10 +115,6 @@ export function StayDetails() {
 
   return (
     <div className='stay-details'>
-      <div
-        id='photos'
-        style={{ height: 0, margin: 0, padding: 0 }}
-      />
       <DetailsHeader name={stay.name} />
       <DetailsImageGallery
         ref={galleryRef}
@@ -146,15 +142,7 @@ export function StayDetails() {
           <DetailsHighlights />
 
           <DetailsSummary summary={stay.summary} />
-          <div
-            id='amenities'
-            style={{
-              height: 0,
-              margin: 0,
-              padding: "2rem",
-              borderTop: "1px solid #ebebeb"
-            }}
-          />
+  
           <DetailsAmenities amenities={stay.amenities} />
 
           <div className='details-calender'>
@@ -184,10 +172,7 @@ export function StayDetails() {
           nightSum={nightSum}
         />
       </div>
-      <div
-        id='reviews'
-        style={{ height: 0, margin: "2.5rem", padding: 0 }}
-      />
+
 
       <DetailsReviewSummary stay={stay} />
 
@@ -195,10 +180,7 @@ export function StayDetails() {
         reviews={stay.reviews}
         stayId={stay._id}
       />
-      <div
-        id='map'
-        style={{ height: 0, margin: "5rem", padding: 0 }}
-      />
+     
 
       <DetailsMap stay={stay} />
 

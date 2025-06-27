@@ -12,14 +12,16 @@
   overflow: hidden;
 
   .sticky-nav-content {
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
     height: 100%;
     padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2.5rem;
+    justify-self: center;
   }
 
   .nav-buttons {

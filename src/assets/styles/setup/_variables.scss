@@ -21,9 +21,3 @@ $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
 
-#photos,
-#amenities,
-#reviews,
-#map {
-  scroll-margin-top: var(--sticky-header-height);
-}

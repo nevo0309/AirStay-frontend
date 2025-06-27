@@ -9,7 +9,7 @@ export function DetailsAmenities({ amenities }) {
   }
 
   return (
-    <section className='details-amenities'>
+    <section className='details-amenities'   id='amenities'>
       <h3 className='section-title'>What this place offers</h3>
       <ul className='amenities-list'>
         {displayed.map(amenity => (

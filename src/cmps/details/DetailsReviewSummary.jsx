@@ -50,7 +50,7 @@ export function DetailsReviewSummary({ stay }) {
   ]
 
   return (
-    <section className='details-review-summary'>
+    <section className='details-review-summary' id='reviews'>
       {/* overall header */}
       <div className='details-review-summary-header'>
         <span className='details-review-summary-star'>★</span>

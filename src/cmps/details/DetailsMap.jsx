@@ -23,7 +23,7 @@ export function DetailsMap({ stay }) {
   if (!isLoaded) return null
 
   return (
-    <section className='details-map'>
+    <section className='details-map' id='map'>
       <div className='location-address'>
         <h2>Where you’ll be</h2>
         <p> {stay.loc.address}</p>

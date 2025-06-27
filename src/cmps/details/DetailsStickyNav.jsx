@@ -39,7 +39,7 @@ export function DetailsStickyNav({
   if (!visible) return null
 
   return (
-    <nav className='details-sticky-nav'>
+    <nav className='details-sticky-nav main-container'>
       <div className='sticky-nav-content'>
         <div className='nav-buttons'>
           <button

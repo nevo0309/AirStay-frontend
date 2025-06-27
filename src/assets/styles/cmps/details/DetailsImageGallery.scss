@@ -3,6 +3,7 @@
   max-height: 395px;
   overflow: hidden;
   border-radius: 12px;
+  scroll-margin-top: 80px;
 }
 
 .grid-container {
@@ -25,6 +26,7 @@
       display: block;
       transition: opacity 0.3s;
     }
+
     &:hover img {
       opacity: 0.9;
     }
@@ -38,14 +40,17 @@
       grid-column: 5 / span 2;
       grid-row: 1;
     }
+
     &:nth-child(3) {
       grid-column: 7 / span 2;
       grid-row: 1;
     }
+
     &:nth-child(4) {
       grid-column: 5 / span 2;
       grid-row: 2;
     }
+
     &:nth-child(5) {
       grid-column: 7 / span 2;
       grid-row: 2;
