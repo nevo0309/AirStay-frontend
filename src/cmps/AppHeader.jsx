@@ -41,7 +41,11 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
   }, [location.pathname])
 
   useEffect(() => {
-    if (location.pathname.startsWith("/stay") || location.pathname.startsWith("/search")) setIsStayFilterOpen(false)
+    if (
+      location.pathname.startsWith("/stay") ||
+      location.pathname.startsWith("/search")
+    )
+      setIsStayFilterOpen(false)
     else setIsStayFilterOpen(true)
   }, [location.pathname])
 
@@ -136,7 +140,9 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
               }}>
               {isHosting ? "Switch to traveling" : "Switch to Hosting"}
             </button>
-            <section className='humburger'>
+            <section
+              className='humburger'
+              ref={humburgerRef}>
               <button
                 className='menue-btn'
                 onClick={() => setIsSideBarOpen(!isSideBarOpen)}>
