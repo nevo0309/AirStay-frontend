@@ -140,6 +140,16 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
               }}>
               {isHosting ? "Switch to traveling" : "Switch to Hosting"}
             </button>
+            {/* USER AVATAR */}
+            <button className='user-avatar'>
+              <img
+                src={
+                  user?.imgUrl ||
+                  "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                }
+                alt={user.fullname}
+              />
+            </button>
             <section
               className='humburger'
               ref={humburgerRef}>

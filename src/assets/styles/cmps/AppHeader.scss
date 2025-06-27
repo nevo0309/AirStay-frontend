@@ -64,6 +64,7 @@
     .btns {
       grid-area: btns;
       justify-self: end;
+      gap: 0.5rem;
 
       .host-guest-btn {
         background-color: transparent;
@@ -138,29 +139,27 @@
     }
   }
 
-  // .user-info {
-  //     display: flex;
-  //     align-items: center;
-  //     margin-inline-start: auto;
-  //     color: $clr1;
+  .user-avatar {
+    justify-content: center;
+    margin-inline-start: auto;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #ebebeb;
+    cursor: default;
 
-  //     .score {
-  //         padding: 8px;
-  //         background-color: $clr2;
-  //         border-radius: 50%;
-  //         margin: 10px;
+    img {
+      width: 40px;
+      height: 40px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #eee;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+      transition: border-color 0.2s;
+    }
 
-  //         color: $clr6;
-  //     }
-
-  //     img {
-  //         width: 32px;
-  //         aspect-ratio: 1;
-  //         border-radius: 50%;
-  //     }
-
-  //     .btn-link {
-  //         color: $clr2;
-  //     }
-  // }
+    // &:hover img {
+    //   border-color: #ff385c;
+    // }
+  }
 }
