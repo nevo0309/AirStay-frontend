@@ -9,7 +9,7 @@ const containerStyle = {
     marginBottom: '5rem',
 }
 
-const DEFAULT_ZOOM = 12
+const DEFAULT_ZOOM = 15
 
 const lighStyle = [
     {
@@ -310,9 +310,7 @@ export function SearchMap({ stays , navigate}) {
                         <div className='label flex'>
                             <div onClick={()=>setOpenPreview(stay._id)} className={openPreview === stay._id? 'preview-open' : ''}>₪{stay.price}</div>
                             {(openPreview === stay._id) && <div className='stay-map-preview' onClick={()=>navigate(`/stay/${stay._id}`)}>
-                                <button className="close-btn" onClick={(ev) => {
-                                    ev.stopPropagation()
-                                    setOpenPreview('')}}>{xSvg}</button>
+                                <button className="close-btn" onClick={() => setOpenPreview('')}>{xSvg}</button>
                                 <StayPreview stay={stay} />
                             </div>}
                         </div>

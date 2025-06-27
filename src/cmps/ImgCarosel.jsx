@@ -11,7 +11,7 @@ export function ImgCarousel({ stay }) {
             setCurrentSlide(slider.track.details.rel)
         },
         created(slider) {
-            setLastSlide(slider.track.details.slides.length-1)
+            setLastSlide(slider.track.details.slides.length - 1)
         }
     })
     console.log(lastSlide)
@@ -27,13 +27,19 @@ export function ImgCarousel({ stay }) {
             </div>
             <button
                 className={"nav left " + (currentSlide === 0 ? 'hidden' : '')}
-                onClick={() => instanceRef.current?.prev()}
+                onClick={(ev) => {
+                    ev.stopPropagation()
+                    instanceRef.current?.prev()
+                }}
             >
                 {arrowsSvg.left}
             </button>
             <button
                 className={"nav right " + (currentSlide === lastSlide ? 'hidden' : '')}
-                onClick={() => instanceRef.current?.next()}
+                onClick={(ev) => {
+                    ev.stopPropagation()
+                    instanceRef.current?.next()
+                }}
             >
                 {arrowsSvg.right}
             </button>
