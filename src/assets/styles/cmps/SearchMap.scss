@@ -31,7 +31,7 @@
 
     .stay-map-preview {
         position: absolute;
-
+z-index: 1000;
         top: 6px;
         right: -90px;
         height: fit-content;
