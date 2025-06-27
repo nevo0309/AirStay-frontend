@@ -41,7 +41,7 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
   }, [location.pathname])
 
   useEffect(() => {
-    if (location.pathname.startsWith("/stay")) setIsStayFilterOpen(false)
+    if (location.pathname.startsWith("/stay") || location.pathname.startsWith("/search")) setIsStayFilterOpen(false)
     else setIsStayFilterOpen(true)
   }, [location.pathname])
 
