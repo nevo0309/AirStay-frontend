@@ -117,7 +117,7 @@ export function StayFilter() {
 
   function onSearchFilter() {
     openFilterModal('')
-    setFilterBy({ location: locationToSearch, checkIn: range[0].startDate, checkOut: range[0].endDate, guest })
+    setFilterBy({ country: locationToSearch.country, city: locationToSearch.city, checkIn: range[0].startDate, checkOut: range[0].endDate, guest })
     navigate('/search')
   }
 
@@ -133,7 +133,7 @@ export function StayFilter() {
         <input
           type="text"
           name="location"
-          value={locationToSearch}
+          value={locationToSearch.city}
           placeholder="Search Destinations"
           onChange={handleChange}
           required
