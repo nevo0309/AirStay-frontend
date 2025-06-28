@@ -16,7 +16,7 @@ export function LoginSignup({ onClose }) {
     try {
       await login(credentials)
       showSuccessMsg('Logged in successfully')
-      navigate('/')
+      // navigate('/')
       onClose()
     } catch (err) {
       showErrorMsg('Oops try again', err)
@@ -27,7 +27,7 @@ export function LoginSignup({ onClose }) {
     try {
       await signup(credentials)
       showSuccessMsg('Signup successfully')
-      navigate('/')
+      // navigate('/')
       onClose()
     } catch (err) {
       showErrorMsg('Oops try again', err)

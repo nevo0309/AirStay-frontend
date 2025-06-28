@@ -1,0 +1,25 @@
+.login {
+    button {
+        --x: 70%;
+        --y: 50%;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: cereal;
+        height: 3rem;
+        overflow: hidden;
+        min-width: 115px;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.75rem;
+        color: #fff;
+        cursor: pointer;
+        transition: filter 0.2s;
+        background: radial-gradient(circle at var(--x) var(--y),
+                #ff385c 0%,
+                #e61e4d 27.5%,
+                #e31c5f 40%,
+                #d70466 57.5%,
+                #bd1e59 75%,
+                #bd1e59 100%);
+    }
+}

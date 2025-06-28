@@ -76,6 +76,7 @@
 @import "cmps/steps/StepPaymentMethod";
 @import "cmps/steps/StepReview";
 @import "cmps/steps/StepCard.scss";
+@import 'cmps/steps/StepLogin.scss';
 
 @import "cmps/OrdersTable";
 
@@ -87,7 +88,7 @@
 @import "cmps/SearchMap.scss";
 @import "cmps/details/DetailsStickyNav.scss";
 @import "cmps/LoginForm.scss";
-@import "cmps/Modal.scss"
+@import "cmps/Modal.scss";
 
 // @import "cmps/StayList";
 // @import "cmps/StayPreview";
