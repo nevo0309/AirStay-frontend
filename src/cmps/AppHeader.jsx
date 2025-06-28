@@ -41,7 +41,11 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
   }, [location.pathname])
 
   useEffect(() => {
-    if (location.pathname.startsWith("/stay") || location.pathname.startsWith("/search")) setIsStayFilterOpen(false)
+    if (
+      location.pathname.startsWith("/stay") ||
+      location.pathname.startsWith("/search")
+    )
+      setIsStayFilterOpen(false)
     else setIsStayFilterOpen(true)
   }, [location.pathname])
 
@@ -136,7 +140,19 @@ export function AppHeader({ isStayFilterOpen, setIsStayFilterOpen }) {
               }}>
               {isHosting ? "Switch to traveling" : "Switch to Hosting"}
             </button>
-            <section className='humburger'>
+            {/* USER AVATAR */}
+            <button className='user-avatar'>
+              <img
+                src={
+                  user?.imgUrl ||
+                  "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                }
+                alt={user.fullname}
+              />
+            </button>
+            <section
+              className='humburger'
+              ref={humburgerRef}>
               <button
                 className='menue-btn'
                 onClick={() => setIsSideBarOpen(!isSideBarOpen)}>
