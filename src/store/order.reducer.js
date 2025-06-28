@@ -20,37 +20,38 @@ export function orderReducer(state = initialState, action) {
   let orders
 
   switch (action.type) {
-    case SET_ORDERS:
-      newState = { ...state, orders: action.orders }
-      break
-
     case SET_HOST_ORDERS:
       newState = { ...state, hostOrders: action.orders }
       break
 
-    case SET_ORDER:
-      newState = { ...state, order: action.order }
-      break
+    case SET_ORDERS: {
+      const newestFirst = [...action.orders].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      )
+      return { ...state, orders: newestFirst }
+    }
 
     case ADD_ORDER:
-      newState = { ...state, orders: [...state.orders, action.order] }
-      break
+      return {
+        ...state,
+        orders: [action.order, ...state.orders],
+        hostOrders: [action.order, ...state.hostOrders],
+      }
+
+    case UPDATE_ORDER_STATUS: {
+      const patch = o =>
+        o._id === action.updatedOrder._id ? { ...o, status: action.updatedOrder.status } : o
+
+      return {
+        ...state,
+        orders: state.orders.map(patch),
+        hostOrders: state.hostOrders.map(patch), //  ✅ keep host slice in sync
+      }
+    }
 
     case UPDATE_ORDER:
       orders = state.orders.map(o => (o._id === action.order._id ? action.order : o))
       newState = { ...state, orders }
-      break
-
-    case UPDATE_ORDER_STATUS:
-      newState = {
-        ...state,
-        hostOrders: state.hostOrders.map(o =>
-          o._id === action.updatedOrder._id ? { ...o, status: action.updatedOrder.status } : o
-        ),
-        orders: state.orders.map(o =>
-          o._id === action.updatedOrder._id ? { ...o, status: action.updatedOrder.status } : o
-        ),
-      }
       break
 
     case REMOVE_ORDER:

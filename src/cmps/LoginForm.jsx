@@ -20,6 +20,10 @@ export function LoginForm({ onLogin, isSignup }) {
     ev.preventDefault()
     onLogin(credentials)
   }
+  function handleDemoLogin(ev) {
+    ev.preventDefault()
+    onLogin({ username: 'Alice11', password: 'secret' })
+  }
 
   const { fullname, username, password } = credentials
 
@@ -59,6 +63,14 @@ export function LoginForm({ onLogin, isSignup }) {
       )}
       <button className="login-form__btn" onMouseMove={handleButtonMouseMove}>
         {isSignup ? 'Signup' : 'Login'}
+      </button>
+      <button
+        type="button"
+        className="login-form__btn"
+        onClick={handleDemoLogin}
+        onMouseMove={handleButtonMouseMove}
+      >
+        Demo Login
       </button>
     </form>
   )

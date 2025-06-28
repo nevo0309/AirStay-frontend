@@ -13,7 +13,38 @@ const initialState = {
   stays: [],
   staysByCity: {},
   stay: null,
-  filterBy: stayService.getDefaultFilter(),
+  filterBy: getFilterFromUrl(),
+}
+
+function getFilterFromUrl() {
+  const defaults = stayService.getDefaultFilter()
+  const params = new URLSearchParams(window.location.search)
+  const filter = { ...defaults }
+
+  Object.keys(defaults).forEach(key => {
+    const raw = params.get(key)
+    if (!raw) return
+
+    // Handle date fields specifically
+    if (key === 'checkIn' || key === 'checkOut') {
+      const dateObj = new Date(raw)
+      // Only set the date if it's valid
+      if (!isNaN(dateObj.getTime())) {
+        filter[key] = dateObj
+      }
+      // If invalid, keep the default value from defaults
+      return
+    }
+
+    // If the value looks like JSON (e.g. guest object) parse it
+    try {
+      filter[key] = JSON.parse(raw)
+    } catch {
+      filter[key] = raw
+    }
+  })
+
+  return filter
 }
 
 export function stayReducer(state = initialState, action) {
