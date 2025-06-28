@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client'
 import { toPlainId } from './util.service'
 import { loadOrders } from '../store/order.actions'
-import { showSuccessMsg } from './event-bus.service'
+import { showErrorMsg, showSuccessMsg } from './event-bus.service'
 
 let socket
 let storeRef // <-- Redux store reference
@@ -30,7 +30,11 @@ export function setupSocket(store) {
     if (!myId) return
 
     if (myId === guestId) {
-      showSuccessMsg(`Your booking was ${status.toLowerCase()}`)
+      if (status === 'approved') {
+        showSuccessMsg(`Your booking was ${status.toLowerCase()}`)
+      } else {
+        showErrorMsg(`Your booking was ${status.toLowerCase()}`)
+      }
       loadOrders({ guestId: myId })
     }
 
