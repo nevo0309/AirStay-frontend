@@ -26,6 +26,7 @@ import { SearchPage } from "./pages/SearchPage.jsx"
 import { use } from "react"
 
 import { OrdersTable } from './pages/OrdersTable.jsx'
+import { useSocketUser } from './customHooks/useSockerUser.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -34,6 +35,7 @@ function ScrollToTop() {
 }
 
 export function RootCmp() {
+  useSocketUser()
   const location = useLocation()
   // const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
   const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
