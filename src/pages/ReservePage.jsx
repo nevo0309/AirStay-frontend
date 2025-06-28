@@ -116,7 +116,7 @@ export function ReservePage() {
       host: {
         _id: stay.host._id,
         fullname: stay.host.fullname,
-        imgUrl: stay.host.thumbnailUrl || stay.host.pictureUrl,
+        imgUrl: stay.host.imgUrl || stay.host.thumbnailUrl,
       },
 
       msgs: [],
