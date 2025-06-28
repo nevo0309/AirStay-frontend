@@ -3,48 +3,67 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  height: 80px;
+  min-height: 80px;
+  max-height: 80px;
+  background: #fff;
   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 0.625rem 1.25rem;
+  overflow: hidden;
 
   .sticky-nav-content {
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
+    height: 100%;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1.25rem;
+    gap: 2.5rem;
+    justify-self: center;
   }
 
   .nav-buttons {
     display: flex;
-    gap: 1.25rem;
+    gap: 1.5rem;
+    position: relative;
 
-    button {
-      position: relative;
+    .nav-btn {
       background: none;
       border: none;
       color: #222;
-      font-size: 14px;
+      margin: 0;
+      padding: 0;
+      font-family: cereal;
+      font-size: 0.875rem;
+      border-radius: 0.375rem;
       font-weight: 500;
-      cursor: pointer;
-      padding: 0.375rem 0.625rem;
-      transition: color 0.2s ease;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+      position: relative;
 
-      &:hover {
-        color: #000;
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        bottom: calc(-18px);
+        background: #000;
+        border-radius: 2px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s;
       }
 
-      &:hover::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 0.125rem;
-        background-color: #000;
-        width: 100%;
+      &:hover::after,
+      &.active::after {
+        opacity: 1;
       }
     }
   }
@@ -52,25 +71,62 @@
   .mini-reservation-card {
     display: flex;
     align-items: center;
-    gap: 0.625rem;
+    gap: 1.2rem;
+    // padding: 0 1.4em 0 1em;
+    height: 48px;
+    background: #fff;
+    border-radius: 1.5rem;
 
     div {
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 1.07rem;
+      font-weight: 500;
+      line-height: 1.2;
 
       span {
         font-weight: bold;
+        font-size: 1.11em;
       }
     }
 
-    button {
-      padding: 0.375rem 0.75rem;
-      background-color: #000;
-      color: #fff;
+    .res-btn {
+      --x: 70%;
+      --y: 50%;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: cereal;
+      height: 44px;
+      overflow: hidden;
+      min-width: 120px;
+      padding: 0.5rem 1.7rem;
       border: none;
-      border-radius: 0.375rem;
+      border-radius: 1.7rem;
+      color: #fff;
+      margin: 0;
       cursor: pointer;
-      font-size: 14px;
+      transition: filter 0.2s;
+      background: radial-gradient(
+        circle at var(--x) var(--y),
+        #ff385c 0%,
+        #e61e4d 27.5%,
+        #e31c5f 40%,
+        #d70466 57.5%,
+        #bd1e59 75%,
+        #bd1e59 100%
+      );
+
+      &:hover {
+        background: radial-gradient(
+          circle at circle,
+          #ff7c4c52 0%,
+          transparent 30%,
+          #ff385c 0%,
+          #e61e4d 27.5%,
+          #e31c5f 40%,
+          #d70466 57.5%,
+          #bd1e59 75%,
+          #bd1e59 100%
+        );
+      }
     }
   }
 }

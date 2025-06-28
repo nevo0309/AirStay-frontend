@@ -1,0 +1,121 @@
+$gap: 11px;
+$slidesToShow: 7;
+
+.search-page {
+    padding-block-start: 5rem;
+    width: 100%;
+    margin-block: 1.5rem;
+    gap: 3rem;
+
+    .search-stays {
+        display: grid;
+        width: 62%;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 1.5rem;
+
+        .card {
+            flex: 0 0 calc((100% - #{($slidesToShow - 1) * $gap}) / #{$slidesToShow});
+            aspect-ratio: 180 / 230;
+            border-radius: 0;
+
+            .preview {
+                width: 100%;
+                // height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                box-sizing: border-box;
+                position: relative;
+
+                .heart-icon {
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    cursor: pointer;
+                    z-index: 10;
+                }
+
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 20 / 19;
+                    object-fit: cover;
+                    border-radius: 15px;
+                }
+
+                .preview-content {
+                    padding: 2px;
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    gap: 4px;
+                    align-items: center;
+
+                    h3 {
+                        grid-column: 1;
+                        grid-row: 1;
+                        margin: 0;
+                        font-size: 0.9375rem;
+                        line-height: 1.2;
+                        font-weight: 600;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    .stay-dates,
+                    .stay-price-preview {
+                        font-size: 0.9375rem;
+                        line-height: 1.2;
+                        color: #717171;
+
+
+                        span {
+                            font-weight: 500;
+                            color: #222222;
+                        }
+                    }
+
+                    .stay-dates {
+                        grid-column: 1/3;
+                        grid-row: 2;
+                    }
+
+                    .stay-price-preview {
+                        grid-column: 1/3;
+                        grid-row: 3;
+
+                        .total-price {
+                            text-decoration: underline;
+                            font-weight: 400;
+                            color: #717171
+                        }
+                    }
+
+                    .stay-review {
+                        grid-column: 2;
+                        grid-row: 1;
+                        font-size: 0.9375rem;
+                        justify-self: start;
+                        line-height: 1;
+
+                        .dot {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .search-map {
+        width: 45%;
+        height: calc(100vh - 8.5rem);
+        position: sticky;
+        top: 6.5rem;
+
+        .map {
+            height: 100%;
+        }
+    }
+}

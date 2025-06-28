@@ -141,6 +141,7 @@
 
 .details-map {
   width: 100%;
+  scroll-margin-top:80px;
 
   h2 {
     margin-top: 0.9rem;
@@ -156,6 +157,10 @@
 
   p {
     font-size: 1rem;
+  }
+
+  #map{
+    width:100%;
   }
 }
 

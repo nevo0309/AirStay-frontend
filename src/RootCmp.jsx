@@ -13,16 +13,17 @@ import { AdminIndex } from './pages/AdminIndex.jsx'
 import { StayDetails } from './pages/StayDetails'
 import { UserDetails } from './pages/UserDetails'
 
-import { AppHeader } from './cmps/AppHeader'
-import { AppFooter } from './cmps/AppFooter'
-import { UserMsg } from './cmps/UserMsg.jsx'
-import { LoginSignup } from './pages/LoginSignup.jsx'
-import { Login } from './pages/Login.jsx'
-import { Signup } from './pages/Signup.jsx'
-import { ReservePage } from './pages/ReservePage.jsx'
-import { TripsPage } from './pages/TripsPage.jsx'
-import { ReservationAppHeader } from './cmps/ReservationAppHeader.jsx'
-import { use } from 'react'
+import { AppHeader } from "./cmps/AppHeader"
+import { AppFooter } from "./cmps/AppFooter"
+import { UserMsg } from "./cmps/UserMsg.jsx"
+import { LoginSignup } from "./pages/LoginSignup.jsx"
+import { Login } from "./pages/Login.jsx"
+import { Signup } from "./pages/Signup.jsx"
+import { ReservePage } from "./pages/ReservePage.jsx"
+import { TripsPage } from "./pages/TripsPage.jsx"
+import { ReservationAppHeader } from "./cmps/ReservationAppHeader.jsx"
+import { SearchPage } from "./pages/SearchPage.jsx"
+import { use } from "react"
 
 import { OrdersTable } from './pages/OrdersTable.jsx'
 
@@ -36,6 +37,8 @@ export function RootCmp() {
   const location = useLocation()
   // const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
   const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
+
+
   const isBookingOrDetailsPage = location.pathname.startsWith('/book/stay')
 
   // useEffect(() => {
@@ -77,6 +80,7 @@ export function RootCmp() {
           <Route path="book/stay/:stayId" element={<ReservePage />} />
           <Route path="/trips" element={<TripsPage />} />
           <Route path="/hosting/order" element={<OrdersTable />} />
+          <Route path="/search" element={<SearchPage />} />
           {/* <Route path="user/:id" element={<UserDetails />} /> */}
           {/* <Route path="review" element={<ReviewIndex />} /> */}
           {/* <Route path="chat" element={<ChatApp />} /> */}

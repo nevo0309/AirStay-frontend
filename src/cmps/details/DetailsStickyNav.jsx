@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { MiniReservationCard } from "./MiniReservationCard"
+import { handleButtonMouseMove } from "../../services/util.service"
 
 export function DetailsStickyNav({
   triggerRef,
@@ -17,6 +17,7 @@ export function DetailsStickyNav({
       ([entry]) => setVisible(!entry.isIntersecting),
       { threshold: 0 }
     )
+
     const reservationObserver = new IntersectionObserver(
       ([entry]) => setShowMiniCard(!entry.isIntersecting),
       { threshold: 0 }
@@ -31,52 +32,50 @@ export function DetailsStickyNav({
     }
   }, [triggerRef, reservationRef])
 
+  function scrollTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+  }
+
   if (!visible) return null
 
   return (
-    <nav className='details-sticky-nav'>
+    <nav className='details-sticky-nav main-container'>
       <div className='sticky-nav-content'>
         <div className='nav-buttons'>
           <button
-            onClick={() =>
-              document
-                .getElementById("photos")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Photos{" "}
+            className='nav-btn'
+            onClick={() => scrollTo("photos")}>
+            Photos
           </button>
           <button
-            onClick={() =>
-              document
-                .getElementById("amenities")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
+            className='nav-btn'
+            onClick={() => scrollTo("amenities")}>
             Amenities
           </button>
           <button
-            onClick={() =>
-              document
-                .getElementById("reviews")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
+            className='nav-btn'
+            onClick={() => scrollTo("reviews")}>
             Reviews
           </button>
           <button
-            onClick={() =>
-              document
-                .getElementById("map")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Map
+            className='nav-btn'
+            onClick={() => scrollTo("map")}>
+            Location
           </button>
         </div>
 
         {showMiniCard && (
-          <MiniReservationCard price={stay.price} onReserve={onReserve} />
+          <div className='mini-reservation-card'>
+            <div>
+              <span>₪{stay.price}</span> / night
+            </div>
+            <button
+              className='res-btn'
+              onMouseMove={handleButtonMouseMove}
+              onClick={onReserve}>
+              Reserve
+            </button>
+          </div>
         )}
       </div>
     </nav>

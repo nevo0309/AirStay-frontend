@@ -174,6 +174,12 @@ export function formatDateFromStore(d) {
   return date.toISOString().split('T')[0]
 }
 
+export function formatCalenderDate(date) {
+  const options = { month: 'short', day: 'numeric' }
+  const dateToShow = date.toLocaleDateString('en-US', options)
+
+  return dateToShow
+}
 // mock data
 export function generateRandomOrders(count = 10) {
   const guestNames = [
@@ -247,4 +253,13 @@ export function getRandomImageNumber() {
   availableNumbers.splice(randomIndex, 1)
 
   return pickedNumber
+}
+
+export function sumNights(startDate, endDate) {
+  if (!startDate || !endDate) return 0
+
+  const oneDayMs = 1000 * 60 * 60 * 24
+  const diffMs = endDate - startDate
+
+  return Math.max(0, Math.round(diffMs / oneDayMs))
 }

@@ -27,8 +27,8 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
     setFilterToEdit,
     nightSum
   } = props
-  const stay = useSelector((storeState) => storeState.stayModule.stay)
-  const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
+  const stay = useSelector(storeState => storeState.stayModule.stay)
+  const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   const [totalPrice, setTotalPrice] = useState(null)
   const [isCalenderOpen, setIsCalenderOpen] = useState(false)
   const [activeCalenderDate, setActiveCalenderDate] = useState("checkIn")
@@ -39,12 +39,12 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
 
   useEffect(() => {
     if (Object.keys(filterBy.guest).length === 0) {
-      setFilterToEdit((prevFilterBy) => ({
+      setFilterToEdit(prevFilterBy => ({
         ...prevFilterBy,
         guest: { adults: 1, children: 0, infants: 0, pet: 0 }
       }))
     } else {
-      setFilterToEdit((prevFilterBy) => ({
+      setFilterToEdit(prevFilterBy => ({
         ...prevFilterBy,
         guest: guest
       }))
@@ -84,7 +84,7 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
       totalGuestsSummary.push(`${totalGuests} ${label}`)
     }
 
-    ;["infants", "pet"].forEach((key) => {
+    ;["infants", "pet"].forEach(key => {
       const count = guest[key] || 0
       if (count > 0) {
         const [singular, plural] = labelMap[key]
@@ -102,12 +102,14 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
   }
 
   return (
-    <div ref={ref} className='details-reservation flex column'>
+    <div className='details-reservation flex column'>
       <h1>
         {`₪${stay.price}`} <span>night </span>
       </h1>
       <div className='reservation-options'>
-        <div className='flex column' onClick={onOpenCalender}>
+        <div
+          className='flex column'
+          onClick={onOpenCalender}>
           <label>CHECK-IN</label>
           <p>
             {filterBy.checkIn
@@ -116,7 +118,9 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
           </p>
         </div>
 
-        <div className='flex column' onClick={onOpenCalender}>
+        <div
+          className='flex column'
+          onClick={onOpenCalender}>
           <label>CHECK-OUT</label>
           <p>
             {" "}
@@ -128,16 +132,17 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
 
         <div
           className='flex column'
-          onClick={(ev) => setIsAddGuestOpen(!isAddGuestOpen)}
-        >
+          onClick={ev => setIsAddGuestOpen(!isAddGuestOpen)}>
           <label>GUESTS</label>
           <p>{guestSummary(filterBy.guest)}</p>
           {isAddGuestOpen && (
             <div
               className='details-res-add-guests'
-              onClick={(ev) => ev.stopPropagation()}
-            >
-              <AddGuests setGuest={setGuest} filterBy={filterBy} />
+              onClick={ev => ev.stopPropagation()}>
+              <AddGuests
+                setGuest={setGuest}
+                filterBy={filterBy}
+              />
             </div>
           )}
         </div>
@@ -158,8 +163,7 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
                   className={
                     "flex column " +
                     (activeCalenderDate === "checkIn" ? "active" : "")
-                  }
-                >
+                  }>
                   <label>CHECK-IN</label>
                   <p>
                     {filterBy.checkIn
@@ -172,8 +176,7 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
                   className={
                     "flex column " +
                     (activeCalenderDate === "checkOut" ? "active" : "")
-                  }
-                >
+                  }>
                   <label>CHECK-OUT</label>
                   <p>
                     {" "}
@@ -197,10 +200,10 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
       </div>
 
       <button
+        ref={ref}
         className='reserve-btn-details'
         onClick={onReserve}
-        onMouseMove={handleButtonMouseMove}
-      >
+        onMouseMove={handleButtonMouseMove}>
         Reserve
       </button>
 
@@ -225,8 +228,7 @@ export const DetailsReservation = forwardRef(function DetailsReservation(
         className={
           isCalenderOpen || isAddGuestOpen ? "calender-open-backscreen" : ""
         }
-        onClick={() => onClickBackDrop()}
-      ></div>
+        onClick={() => onClickBackDrop()}></div>
     </div>
   )
 })

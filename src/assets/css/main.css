@@ -2,11 +2,11 @@
 /* Media  Mixins */
 @font-face {
   font-family: poppins;
-  src: url('/public/fonts/Poppins-Regular.ttf');
+  src: url("/public/fonts/Poppins-Regular.ttf");
 }
 @font-face {
-  font-family: 'cereal';
-  src: url('/public/fonts/cereal.woff2') format('woff2');
+  font-family: "cereal";
+  src: url("/public/fonts/cereal.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -61,7 +61,7 @@
 }
 .square-ratio::before {
   display: block;
-  content: '';
+  content: "";
   width: 100%;
   padding-top: 100%;
 }
@@ -83,7 +83,7 @@
 }
 .video-ratio::before {
   display: block;
-  content: '';
+  content: "";
   width: 100%;
   padding-top: 56.25%;
 }
@@ -105,7 +105,7 @@
 }
 .portrait-ratio::before {
   display: block;
-  content: '';
+  content: "";
   width: 100%;
   padding-top: 177.7777777778%;
 }
@@ -208,7 +208,7 @@ form > * {
 }
 
 .main-container main {
-  min-height: calc(100vh - 10rem);
+  min-height: calc(100vh - 8rem);
 }
 
 .fancy-box {
@@ -286,14 +286,14 @@ form > * {
   gap: 1.5rem;
 }
 .stay-details .details-left .details-calender .calender-stay-details {
-  padding: 0.1rem;
+  padding-inline-start: 0.2rem;
 }
 .stay-details .details-left .details-calender .calender-stay-details h2 {
   font-size: 1.375rem;
   margin: 0 0 0.5rem 0;
 }
 .stay-details .details-left .details-calender .calender-stay-details p {
-  margin: 0;
+  margin: 0 0 0 1.375;
   font-size: 0.875rem;
 }
 .stay-details .details-left .details-calender .calender {
@@ -305,10 +305,20 @@ form > * {
   padding-inline: 0;
   height: max-content;
 }
-.stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrDateDisplayWrapper {
+.stay-details
+  .details-left
+  .details-calender
+  .calender
+  .rdrCalendarWrapper
+  .rdrDateDisplayWrapper {
   display: none;
 }
-.stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrMonthName {
+.stay-details
+  .details-left
+  .details-calender
+  .calender
+  .rdrCalendarWrapper
+  .rdrMonthName {
   position: relative;
   padding-block-start: 0;
 }
@@ -338,7 +348,12 @@ form > * {
   position: absolute;
   top: -32px;
 }
-.stay-details .details-left .details-calender .calender .rdrCalendarWrapper .rdrNextButton {
+.stay-details
+  .details-left
+  .details-calender
+  .calender
+  .rdrCalendarWrapper
+  .rdrNextButton {
   right: 0;
 }
 
@@ -421,13 +436,11 @@ form > * {
 }
 
 .dashboard-container {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
   padding: 20px;
 }
 .dashboard-container .custom-font {
-  font-family: 'poppins';
+  font-family: "poppins";
 }
 .dashboard-container .dashboard-header {
   border-bottom: 1px solid #ddd;
@@ -688,7 +701,7 @@ form > * {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: #222222;
 }
 .trips-page .trips-heading {
@@ -1174,10 +1187,18 @@ form > * {
 .booking-sidebar .price-details-section .price-breakdown .price-row:last-child {
   margin-bottom: 0;
 }
-.booking-sidebar .price-details-section .price-breakdown .price-row span:first-child {
+.booking-sidebar
+  .price-details-section
+  .price-breakdown
+  .price-row
+  span:first-child {
   font-weight: 400;
 }
-.booking-sidebar .price-details-section .price-breakdown .price-row span:last-child {
+.booking-sidebar
+  .price-details-section
+  .price-breakdown
+  .price-row
+  span:last-child {
   font-weight: 400;
 }
 .booking-sidebar .total-section {
@@ -1243,7 +1264,7 @@ form > * {
 }
 .app-header nav {
   display: grid;
-  grid-template-areas: 'logo filter-closed btns' 'filter filter filter';
+  grid-template-areas: "logo filter-closed btns" "filter filter filter";
   width: 100%;
   align-items: center;
   font-size: 0.9em;
@@ -1289,6 +1310,47 @@ form > * {
   font-family: poppins;
   margin-inline-end: 0;
   color: #222;
+}
+.app-header .humburger {
+  position: relative;
+}
+.app-header .humburger .humurger-menu {
+  position: absolute;
+  width: 11rem;
+  top: 3.2rem;
+  right: 0;
+  padding-block: 0.5rem;
+  border-radius: 15px;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+  background-color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.app-header .humburger .humurger-menu p {
+  gap: 0.7rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+.app-header .humburger .humurger-menu p svg {
+  width: 15px;
+  height: 15px;
+}
+.app-header .humburger .humurger-menu p:nth-of-type(2) {
+  margin-block-end: 0.5rem;
+}
+.app-header .humburger .humurger-menu p:nth-of-type(3) {
+  border-top: 1px solid #dddddd;
+  margin: 0;
+}
+.app-header .humburger .humurger-menu p:hover {
+  background-color: #f5f3f3;
+}
+.app-header .humburger .stay-filter-placeholder {
+  height: 72px;
+  width: 100%;
 }
 
 .app-footer {
@@ -1345,7 +1407,10 @@ form > * {
   grid-area: filter;
   display: grid;
   position: relative;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(
+      0,
+      2fr
+    );
   gap: 5px;
   align-items: center;
   height: 66px;
@@ -1372,13 +1437,13 @@ form > * {
   justify-self: start;
 }
 .stay-filter.open .search-btn::after {
-  content: 'Search';
+  content: "Search";
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.8px;
   position: absolute;
   top: 13px;
-  right: 15px;
+  right: 10px;
   opacity: 0;
   animation: fadeIn 200ms ease forwards;
   animation-delay: 100ms;
@@ -1410,10 +1475,11 @@ form > * {
 .stay-filter .input-section.active {
   z-index: 2;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 12px 0px,
+    rgba(0, 0, 0, 0.08) 0px 1px 2px 0px;
 }
 .stay-filter .input-section.active + .input-section:hover::after {
-  content: '';
+  content: "";
   display: block;
   width: calc(100% + 70px);
   height: 100%;
@@ -1441,7 +1507,7 @@ form > * {
   background-color: #ebebeb;
 }
 .stay-filter .input-section:hover:has(+ .input-section.active) {
-  content: '';
+  content: "";
   width: calc(100% + 70px);
   background-color: #dddddd;
   z-index: -1;
@@ -1454,10 +1520,10 @@ form > * {
   padding-inline-end: 140px;
 }
 .stay-filter
-  .input-section:not(:last-of-type):not(:hover):not(:has(+ .input-section:hover)):not(.active):not(
-    :has(+ .input-section.active)
-  )::after {
-  content: '';
+  .input-section:not(:last-of-type):not(:hover):not(
+    :has(+ .input-section:hover)
+  ):not(.active):not(:has(+ .input-section.active))::after {
+  content: "";
   position: absolute;
   height: 36px;
   width: 1px;
@@ -1467,7 +1533,7 @@ form > * {
 .stay-filter .input-section p {
   max-width: 100%;
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1478,13 +1544,13 @@ form > * {
   color: black;
 }
 .stay-filter label {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 .stay-filter input {
   border: none;
   font-family: poppins;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   width: 214px;
   padding: 0;
   font-weight: 600;
@@ -1524,7 +1590,7 @@ form > * {
   padding-inline-start: 0;
 }
 .stay-filter-closed div > h1::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 2.5rem;
   width: 1px;
@@ -1545,7 +1611,7 @@ form > * {
   text-overflow: ellipsis;
 }
 .stay-filter-closed > h1:not(:last-of-type)::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 2.5rem;
   width: 1px;
@@ -1562,6 +1628,7 @@ form > * {
   margin-inline: 10px;
   border-radius: 50%;
   background-color: #ff385c;
+  margin-inline-start: 0;
 }
 .stay-filter-closed .search-btn svg {
   color: white;
@@ -1975,12 +2042,11 @@ form > * {
 }
 
 .rdrMonthAndYearWrapper {
-  position: absolute;
-  top: 40px;
-}
-.rdrMonthAndYearWrapper .rdrNextButton {
-  position: absolute;
-  left: 520px;
+  position: relative;
+  justify-content: space-between;
+  padding-top: 0;
+  height: 0;
+  top: 20px;
 }
 
 .details-image-gallery {
@@ -2288,13 +2354,13 @@ form > * {
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   width: 100%;
-  height: 495px;
+  height: 530px;
   position: sticky;
-  top: 2rem;
+  top: 4.5rem;
 }
 .details-reservation h1 {
   font-size: 1.375rem;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.2rem 0;
 }
 .details-reservation h1 span {
   font-size: 1rem;
@@ -2344,13 +2410,18 @@ form > * {
   z-index: 1000;
 }
 .details-reservation .reservation-options .details-res-add-guests .add-guests {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px,
+    rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
   top: 114px;
   width: 100%;
   border-radius: 4px;
   padding: 1rem;
 }
-.details-reservation .reservation-options .details-res-add-guests .add-guests .guest-counter-card {
+.details-reservation
+  .reservation-options
+  .details-res-add-guests
+  .add-guests
+  .guest-counter-card {
   border-bottom: none;
 }
 .details-reservation
@@ -2417,6 +2488,10 @@ form > * {
 .details-reservation .reserve-btn-details {
   --x: 70%;
   --y: 50%;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: cereal;
+  height: 48px;
   overflow: hidden;
   min-width: 200px;
   padding: 0.75rem 1.5rem;
@@ -2434,7 +2509,8 @@ form > * {
     #bd1e59 75%,
     #bd1e59 100%
   );
-  background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+  background-position: calc((100 - var(--mouse-x, 0)) * 1%)
+    calc((100 - var(--mouse-y, 0)) * 1%);
 }
 .details-reservation .reserve-btn-details:hover {
   background: radial-gradient(
@@ -2467,15 +2543,26 @@ form > * {
   padding-block-end: 1rem;
   z-index: 5;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-stay-details h2 {
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-stay-details
+  h2 {
   font-size: 1.375rem;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-dates-input {
-  width: 287px;
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-dates-input {
+  width: 318px;
   box-shadow: rgb(176, 176, 176) 0px 0px 0px 1px inset;
   border-radius: 8px;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-dates-input > div {
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-dates-input
+  > div {
   justify-content: end;
   height: 3.625rem;
   padding: 0 0.75rem 0.625rem 0.75rem;
@@ -2512,11 +2599,19 @@ form > * {
   border: 1px solid transparent;
   box-shadow: inset 0 0 0 2px black !important;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-dates-input label {
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-dates-input
+  label {
   font-size: 0.625rem;
   font-weight: 700;
 }
-.details-reservation .details-res-calender .calender-stay-options .calender-dates-input p {
+.details-reservation
+  .details-res-calender
+  .calender-stay-options
+  .calender-dates-input
+  p {
   font-size: 0.875rem;
 }
 .details-reservation .details-res-calender .calender {
@@ -2538,14 +2633,29 @@ form > * {
 .details-reservation .details-res-calender .chosen .rdrInRange {
   background: #f7f7f7 !important;
 }
-.details-reservation .details-res-calender .rdrMonthAndYearWrapper .rdrNextButton {
+.details-reservation .details-res-calender .rdrMonthAndYearWrapper {
+  top: 22px;
+}
+.details-reservation
+  .details-res-calender
+  .rdrMonthAndYearWrapper
+  .rdrNextButton {
   position: absolute;
   left: 540px;
-  top: -30px;
 }
-.details-reservation .details-res-calender .rdrMonthAndYearWrapper .rdrPprevButton {
+.details-reservation
+  .details-res-calender
+  .rdrMonthAndYearWrapper
+  .rdrPprevButton {
   position: absolute;
-  top: -30px;
+}
+.details-reservation .calender-open-backscreen {
+  background-color: transparent;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .details-reservation .calender-open-backscreen {
   background-color: transparent;
@@ -2670,6 +2780,73 @@ form > * {
   font-weight: 500;
 }
 
+.details-sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.details-sticky-nav .sticky-nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+}
+.details-sticky-nav .nav-buttons {
+  display: flex;
+  gap: 1.25rem;
+}
+.details-sticky-nav .nav-buttons button {
+  position: relative;
+  background: none;
+  border: none;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.details-sticky-nav .nav-buttons button:hover {
+  color: #000;
+}
+.details-sticky-nav .nav-buttons button:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.125rem;
+  width: 100%;
+  background-color: #000;
+}
+.details-sticky-nav .mini-reservation-card {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.details-sticky-nav .mini-reservation-card div {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.details-sticky-nav .mini-reservation-card div span {
+  font-weight: bold;
+}
+.details-sticky-nav .mini-reservation-card button {
+  padding: 0.375em 0.75em;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
 .payment-options {
   display: flex;
   flex-direction: column;
@@ -2701,7 +2878,11 @@ form > * {
   text-decoration: underline;
   cursor: pointer;
 }
-.payment-options .payment-option .option-content .option-subtext .more-info:hover {
+.payment-options
+  .payment-option
+  .option-content
+  .option-subtext
+  .more-info:hover {
   color: #555555;
 }
 .payment-options .payment-option .radio-input {
@@ -2795,7 +2976,11 @@ form > * {
   gap: 0.75rem;
   flex: 1;
 }
-.payment-method-form .method-selector .payment-method-option .method-info .card-icon {
+.payment-method-form
+  .method-selector
+  .payment-method-option
+  .method-info
+  .card-icon {
   font-size: 1.5rem;
   color: #222222;
 }
@@ -2804,18 +2989,41 @@ form > * {
   font-weight: 500;
   color: #222222;
 }
-.payment-method-form .method-selector .payment-method-option .method-info .card-logos {
+.payment-method-form
+  .method-selector
+  .payment-method-option
+  .method-info
+  .card-logos {
   display: flex;
   gap: 0.5rem;
   margin-left: 1rem;
 }
-.payment-method-form .method-selector .payment-method-option .method-info .card-logos .visa,
-.payment-method-form .method-selector .payment-method-option .method-info .card-logos .mastercard,
-.payment-method-form .method-selector .payment-method-option .method-info .card-logos .amex {
+.payment-method-form
+  .method-selector
+  .payment-method-option
+  .method-info
+  .card-logos
+  .visa,
+.payment-method-form
+  .method-selector
+  .payment-method-option
+  .method-info
+  .card-logos
+  .mastercard,
+.payment-method-form
+  .method-selector
+  .payment-method-option
+  .method-info
+  .card-logos
+  .amex {
   height: 1rem;
   align-self: center;
 }
-.payment-method-form .method-selector .payment-method-option .method-info .gpay-icon {
+.payment-method-form
+  .method-selector
+  .payment-method-option
+  .method-info
+  .gpay-icon {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -2853,7 +3061,11 @@ form > * {
   color: #222222;
   box-sizing: border-box;
 }
-.payment-method-form .card-form .card-numbers .form-group .form-input::placeholder {
+.payment-method-form
+  .card-form
+  .card-numbers
+  .form-group
+  .form-input::placeholder {
   color: #6f6f6f;
 }
 .payment-method-form .card-form .card-numbers .form-group .form-input:focus {
@@ -2866,15 +3078,28 @@ form > * {
   width: 100%;
   border-top: 1px solid #e0e0e0;
 }
-.payment-method-form .card-form .card-numbers .card-extra-info .form-group.half {
+.payment-method-form
+  .card-form
+  .card-numbers
+  .card-extra-info
+  .form-group.half {
   flex: 1;
   margin: 0;
   position: relative;
 }
-.payment-method-form .card-form .card-numbers .card-extra-info .form-group.half:first-child {
+.payment-method-form
+  .card-form
+  .card-numbers
+  .card-extra-info
+  .form-group.half:first-child {
   border-right: 1px solid #e0e0e0;
 }
-.payment-method-form .card-form .card-numbers .card-extra-info .form-group.half .form-input {
+.payment-method-form
+  .card-form
+  .card-numbers
+  .card-extra-info
+  .form-group.half
+  .form-input {
   width: 100%;
   padding: 1rem;
   border: none;
@@ -2891,7 +3116,12 @@ form > * {
   .form-input::placeholder {
   color: #6f6f6f;
 }
-.payment-method-form .card-form .card-numbers .card-extra-info .form-group.half .form-input:focus {
+.payment-method-form
+  .card-form
+  .card-numbers
+  .card-extra-info
+  .form-group.half
+  .form-input:focus {
   outline: none;
   box-shadow: none;
   border: none;
@@ -2923,7 +3153,11 @@ form > * {
 .payment-method-form .card-form .form-group.country .select-wrapper {
   position: relative;
 }
-.payment-method-form .card-form .form-group.country .select-wrapper .form-select {
+.payment-method-form
+  .card-form
+  .form-group.country
+  .select-wrapper
+  .form-select {
   width: 100%;
   padding: 1rem;
   padding-right: 2.5rem;
@@ -2936,15 +3170,27 @@ form > * {
   cursor: pointer;
   box-sizing: border-box;
 }
-.payment-method-form .card-form .form-group.country .select-wrapper .form-select::placeholder {
+.payment-method-form
+  .card-form
+  .form-group.country
+  .select-wrapper
+  .form-select::placeholder {
   color: #6f6f6f;
 }
-.payment-method-form .card-form .form-group.country .select-wrapper .form-select:focus {
+.payment-method-form
+  .card-form
+  .form-group.country
+  .select-wrapper
+  .form-select:focus {
   outline: none;
   border-color: #222222;
   box-shadow: 0 0 0 1px #222222;
 }
-.payment-method-form .card-form .form-group.country .select-wrapper .select-icon {
+.payment-method-form
+  .card-form
+  .form-group.country
+  .select-wrapper
+  .select-icon {
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -3126,43 +3372,54 @@ form > * {
   }
 }
 .orders-table-wrapper {
-  padding: 1rem;
-  background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #222;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
   overflow-x: auto;
+  margin-bottom: 2rem;
+  padding-bottom: 3rem;
+}
+.orders-table-wrapper h2 {
+  font-size: 22px;
+  font-weight: 600;
 }
 .orders-table-wrapper .tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 .orders-table-wrapper .tabs .tab-btn {
-  background: #f7f7f7;
   border: 1px solid #ccc;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 14px;
+  background: #fff;
+  color: #222;
+  padding: 8px 14px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
 .orders-table-wrapper .tabs .tab-btn.active {
-  background: #222;
-  color: #fff;
-  border-color: #222;
-}
-.orders-table-wrapper .tabs .tab-btn:hover {
-  background: #eaeaea;
+  background: #f9f9f9;
+  border-color: black;
 }
 .orders-table-wrapper .empty-state {
-  text-align: center;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  background: #f9f9f9;
   color: #777;
+  text-align: center;
+  border-radius: 12px;
 }
 .orders-table-wrapper .empty-state .icon-placeholder {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+}
+.orders-table-wrapper .empty-state p {
+  font-size: 14px;
+  margin: 0;
 }
 .orders-table-wrapper .orders-table {
   width: 100%;
@@ -3170,82 +3427,153 @@ form > * {
   font-size: 14px;
   min-width: 800px;
 }
-.orders-table-wrapper .orders-table thead {
+.orders-table-wrapper .orders-table thead.table-header .header-row {
   background: #f7f7f7;
 }
-.orders-table-wrapper .orders-table thead th {
+.orders-table-wrapper .orders-table thead.table-header .header-row th {
   text-align: left;
-  padding: 10px 12px;
-  color: #555;
   font-weight: 600;
-  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+  color: #555;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
   white-space: nowrap;
 }
-.orders-table-wrapper .orders-table tbody tr {
+.orders-table-wrapper .orders-table thead.table-header .header-row th.th-status,
+.orders-table-wrapper
+  .orders-table
+  thead.table-header
+  .header-row
+  th.th-action {
+  text-align: center;
+  min-width: 100px;
+}
+.orders-table-wrapper .orders-table thead.table-header .header-row th.th-guest {
+  min-width: 200px;
+}
+.orders-table-wrapper
+  .orders-table
+  thead.table-header
+  .header-row
+  th.th-checkin,
+.orders-table-wrapper
+  .orders-table
+  thead.table-header
+  .header-row
+  th.th-checkout,
+.orders-table-wrapper
+  .orders-table
+  thead.table-header
+  .header-row
+  th.th-booked {
+  min-width: 100px;
+}
+.orders-table-wrapper .orders-table thead.table-header .header-row th.th-stay {
+  min-width: 200px;
+}
+.orders-table-wrapper
+  .orders-table
+  thead.table-header
+  .header-row
+  th.th-payment {
+  text-align: center;
+  min-width: 100px;
+}
+.orders-table-wrapper .orders-table tbody.table-body .order-row {
   border-bottom: 1px solid #eee;
 }
-.orders-table-wrapper .orders-table tbody tr:hover {
+.orders-table-wrapper .orders-table tbody.table-body .order-row:hover {
   background-color: #fafafa;
 }
-.orders-table-wrapper .orders-table tbody td {
-  padding: 10px 12px;
+.orders-table-wrapper .orders-table tbody.table-body .order-row td {
+  padding: 14px 12px;
+  font-size: 14px;
   vertical-align: middle;
 }
-.orders-table-wrapper .orders-table tbody .guest-info {
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-payment {
+  text-align: center;
+  font-weight: 500;
+}
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-action {
+  text-align: center;
+}
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-status {
+  text-align: center;
+}
+.orders-table-wrapper .orders-table tbody.table-body .order-row td.td-guest {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
-.orders-table-wrapper .orders-table tbody .guest-info .avatar {
-  width: 32px;
-  height: 32px;
+.orders-table-wrapper
+  .orders-table
+  tbody.table-body
+  .order-row
+  td.td-guest
+  .avatar {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
+  background-color: #f0f0f0;
+  flex-shrink: 0;
 }
-.orders-table-wrapper .orders-table tbody .guest-info .guest-text .guest-name {
-  font-weight: 500;
+.orders-table-wrapper
+  .orders-table
+  tbody.table-body
+  .order-row
+  td.td-guest
+  .guest-text
+  .guest-name {
+  font-weight: 600;
   color: #222;
 }
-.orders-table-wrapper .orders-table tbody .guest-info .guest-text .guest-role {
-  font-size: 12px;
-  color: #777;
+.orders-table-wrapper
+  .orders-table
+  tbody.table-body
+  .order-row
+  td.td-guest
+  .guest-text
+  .guest-role {
+  font-size: 0.85rem;
+  color: #666;
 }
-.orders-table-wrapper .orders-table tbody .action-buttons {
-  display: flex;
-  gap: 8px;
-}
-.orders-table-wrapper .orders-table tbody .action-buttons button {
-  font-size: 13px;
-  padding: 4px 10px;
+.orders-table-wrapper .status-cell {
+  font-weight: bold;
+  padding: 4px 8px;
   border-radius: 6px;
-  cursor: pointer;
-  border: none;
+  display: inline-block;
 }
-.orders-table-wrapper .orders-table tbody .action-buttons button.btn-approve {
-  background-color: #198754;
+.orders-table-wrapper .status-cell.status-approved {
+  color: #28a745;
+}
+.orders-table-wrapper .status-cell.status-declined {
+  color: #dc3545;
+}
+.orders-table-wrapper .status-cell.status-pending {
+  color: #ffc107;
+}
+.orders-table-wrapper .btn-approve {
+  background-color: #28a745;
   color: white;
 }
-.orders-table-wrapper .orders-table tbody .action-buttons button.btn-decline {
+.orders-table-wrapper .btn-approve:hover {
+  background-color: #218838;
+}
+.orders-table-wrapper .btn-approve:focus {
+  outline: 2px solid #1e7e34;
+  outline-offset: 2px;
+}
+.orders-table-wrapper .btn-decline {
   background-color: #dc3545;
   color: white;
 }
-.orders-table-wrapper .status-cell {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: bold;
+.orders-table-wrapper .btn-decline:hover {
+  background-color: #c82333;
 }
-.orders-table-wrapper .status-cell.status-approved {
-  color: #0f5132;
-  background-color: #d1e7dd;
-}
-.orders-table-wrapper .status-cell.status-declined {
-  color: #842029;
-  background-color: #f8d7da;
-}
-.orders-table-wrapper .status-cell.status-pending {
-  color: #664d03;
-  background-color: #fff3cd;
+.orders-table-wrapper .btn-decline:focus {
+  outline: 2px solid #bd2130;
+  outline-offset: 2px;
 }
 
 .add-guests {
@@ -3295,17 +3623,18 @@ form > * {
 .add-guests .guest-counter-card .guest h1 {
   color: #222;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
 }
 .add-guests .guest-counter-card .guest p {
   color: #6a6a6a;
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   padding-block-start: 0.25rem;
 }
 .add-guests .guest-counter-card .guest h2 {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: #6a6a6a;
   text-decoration: underline;
   cursor: pointer;
@@ -3326,7 +3655,7 @@ form > * {
   z-index: 10;
   background-color: white;
   max-height: 470px;
-  padding-inline: 2rem;
+  padding-inline: 1.5rem;
   overflow-y: scroll;
   scrollbar-color: #8e8e8e transparent;
   scrollbar-width: thin;
@@ -3339,6 +3668,7 @@ form > * {
 .suggested-des-container h1 {
   margin: 0;
   margin-block-end: 0.25rem;
+  padding-inline-start: 0.5rem;
   font-weight: 400;
   font-size: 0.75rem;
 }
@@ -3350,11 +3680,11 @@ form > * {
   height: 3.5rem;
 }
 .suggested-des-container .des-card div h1 {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 .suggested-des-container .des-card div p {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: #6a6a6a;
 }
 .suggested-des-container .des-card:hover {

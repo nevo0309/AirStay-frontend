@@ -21,24 +21,25 @@
 @import 'pages/StayDetailsSkeleton';
 @import 'pages/Dashbord';
 
-@import 'pages/ReservePage';
-@import 'pages/ReviewIndex';
-@import 'pages/UserDetails';
-@import 'pages/AdminIndex';
-@import 'pages/TaskDetails';
-@import 'pages/LoginSignup';
-@import 'pages/Chat';
-@import 'pages/AboutUs';
-@import 'pages/HomePage';
-@import 'pages/StayIndex';
-@import 'pages/TripsPage';
-@import 'pages/ReservePage';
-@import 'pages/ReviewIndex';
-@import 'pages/UserDetails';
-@import 'pages/AdminIndex';
-@import 'pages/TaskDetails';
-@import 'pages/LoginSignup';
-@import 'pages/Chat';
+@import "pages/ReservePage";
+@import "pages/ReviewIndex";
+@import "pages/UserDetails";
+@import "pages/AdminIndex";
+@import "pages/TaskDetails";
+@import "pages/LoginSignup";
+@import "pages/Chat";
+@import "pages/AboutUs";
+@import "pages/HomePage";
+@import "pages/StayIndex";
+@import "pages/TripsPage";
+@import "pages/ReservePage";
+@import "pages/ReviewIndex";
+@import "pages/UserDetails";
+@import "pages/AdminIndex";
+@import "pages/TaskDetails";
+@import "pages/LoginSignup";
+@import "pages/Chat";
+@import "pages/SearchPage.scss";
 
 // Components
 @import 'cmps/list';
@@ -59,29 +60,34 @@
 @import 'cmps/SkeletonCarousel';
 @import 'cmps/FilterCalender.scss';
 
-@import 'cmps/details/DetailsImageGallery';
-@import 'cmps/details/DetailsAmenities';
-@import 'cmps/details/DetailsHeader';
-@import 'cmps/details/DetailsOverview';
-@import 'cmps/details/DetailsHighlights';
-@import 'cmps/details/DetailsSummary';
-@import 'cmps/details/DetailsReview';
-@import 'cmps/details/DetailsReservation.scss';
-@import 'cmps/details/DetailsMoreInfo';
-@import 'cmps/details/DetailsReviewSummary';
-@import 'cmps/details/DetailsStickyNav';
-@import 'cmps/steps/StepChoosePayment';
-@import 'cmps/steps/StepMessage';
-@import 'cmps/steps/StepPaymentMethod';
-@import 'cmps/steps/StepReview';
-@import 'cmps/steps/StepCard.scss';
-@import 'cmps/OrdersTable.scss';
-@import 'cmps/Modal.scss';
-@import 'cmps/LoginForm.scss';
+@import "cmps/details/DetailsImageGallery";
+@import "cmps/details/DetailsAmenities";
+@import "cmps/details/DetailsHeader";
+@import "cmps/details/DetailsOverview";
+@import "cmps/details/DetailsHighlights";
+@import "cmps/details/DetailsSummary";
+@import "cmps/details/DetailsReview";
+@import "cmps/details/DetailsReservation.scss";
+@import "cmps/details/DetailsMoreInfo";
+@import "cmps/details/DetailsReviewSummary";
 
-@import 'cmps/AddGuests.scss';
-@import 'cmps/SeachDes.scss';
-@import 'cmps/ReservationAppHeader.scss';
+@import "cmps/steps/StepChoosePayment";
+@import "cmps/steps/StepMessage";
+@import "cmps/steps/StepPaymentMethod";
+@import "cmps/steps/StepReview";
+@import "cmps/steps/StepCard.scss";
+
+@import "cmps/OrdersTable";
+
+@import "cmps/AddGuests.scss";
+@import "cmps/SeachDes.scss";
+@import "cmps/ReservationAppHeader.scss";
+
+@import "cmps/ImgCarousel.scss";
+@import "cmps/SearchMap.scss";
+@import "cmps/details/DetailsStickyNav.scss";
+@import "cmps/LoginForm.scss";
+@import "cmps/Modal.scss"
 
 // @import "cmps/StayList";
 // @import "cmps/StayPreview";

@@ -5,6 +5,7 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding-top: 2rem;
+  scroll-margin-top: 80px;
 
   .reviews-grid {
     display: grid;
@@ -18,9 +19,11 @@
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+
     &:not(:nth-child(1)):not(:nth-child(2)) {
       margin-top: 1.25rem;
     }
+
     .reviewer {
       display: flex;
       align-items: center;
@@ -43,6 +46,7 @@
           font-weight: 600;
           color: #222;
         }
+
         .reviewer-location {
           font-size: 0.875rem;
           color: #717171;
