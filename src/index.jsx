@@ -10,6 +10,7 @@ import { MapsKeyContext } from './contexts/MapsKeyContext'
 
 import './assets/styles/main.scss'
 import { getGoogleApiKey } from './customHooks/getGoogleApiKey'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 function App() {
   const apiKey = getGoogleApiKey()
