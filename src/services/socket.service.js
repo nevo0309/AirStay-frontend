@@ -1,6 +1,7 @@
 import { io } from 'socket.io-client'
 import { toPlainId } from './util.service'
 import { loadOrders } from '../store/order.actions'
+import { showSuccessMsg } from './event-bus.service'
 
 let socket
 let storeRef // <-- Redux store reference
@@ -15,13 +16,27 @@ export function setupSocket(store) {
   /* ← one-time global listeners → */
   socket.on('connect', () => console.log('[SOCKET] connected', socket.id))
   socket.on('disconnect', () => console.log('[SOCKET] disconnected'))
-  socket.on('order-added', order => storeRef.dispatch({ type: 'ADD_ORDER', order }))
-  socket.on('order-updated', ({ guestId, hostId }) => {
+  socket.on('order-added', order => {
+    storeRef.dispatch({ type: 'ADD_ORDER', order })
+
+    const myId = storeRef.getState().userModule.user?._id
+    if (myId && toPlainId(order.host._id) === myId) {
+      showSuccessMsg(`New booking request`)
+    }
+  })
+
+  socket.on('order-updated', ({ guestId, hostId, status }) => {
     const myId = storeRef.getState().userModule.user?._id
     if (!myId) return
 
-    if (myId === guestId) storeRef.dispatch(loadOrders({ guestId: myId }))
-    if (myId === hostId) storeRef.dispatch(loadOrders({ hostId: myId }))
+    if (myId === guestId) {
+      showSuccessMsg(`Your booking was ${status.toLowerCase()}`)
+      loadOrders({ guestId: myId })
+    }
+
+    if (myId === hostId) {
+      loadOrders({ hostId: myId })
+    }
   })
 }
 
