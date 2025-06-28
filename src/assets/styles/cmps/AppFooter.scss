@@ -1,13 +1,41 @@
 .app-footer {
   min-height: 3rem;
-  background-color: $gray1;
+  background-color: #f7f7f7;
+  align-items: center;
+  font-size: 1rem;
 
-  > section {
-    display: flex;
+
+
+  footer {
+    gap: 0.7rem;
     align-items: center;
-    justify-content: space-between;
-    p {
+
+    &>h1 {
+      font-size: 1rem;
+      margin: 0.8rem 0 0 0;
+    }
+
+    .linkdin {
+      gap: 1.5rem;
       margin: 0;
+
+
+    }
+
+    .github {
+      gap: 0.7rem;
+      align-items: center;
+
+      &>div {
+        gap: 1rem;
+      }
+    }
+
+    a {
+      color: #222222;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
   }
 }

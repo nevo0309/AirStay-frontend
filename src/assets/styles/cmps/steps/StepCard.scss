@@ -5,10 +5,18 @@
   border: none;
   overflow: hidden;
   width: 524px;
-  min-height: 292px;
+  // min-height: 292px;
   max-height: 550px;
   margin: 0 auto;
 
+  &.login{
+    display: flex;
+    justify-content: space-between;
+
+    .step-footer{
+      display: none;
+    }
+  }
   &:last-child {
     margin-bottom: 60px;
   }
@@ -29,6 +37,10 @@
   .step-body {
     padding: 0.75rem 1.5rem 1.5rem;
     background-color: #ffffff;
+
+    &.login{
+          padding: 1rem ;
+    }
   }
 
   .step-footer {

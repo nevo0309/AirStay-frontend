@@ -116,6 +116,7 @@
     tbody.table-body {
       .order-row {
         border-bottom: 1px solid #eee;
+        height: 6.25rem;
 
         &:hover {
           background-color: #fafafa;
@@ -133,6 +134,7 @@
 
           &.td-action {
             text-align: center;
+            width: 8.5rem;
           }
 
           &.td-status {
