@@ -61,7 +61,7 @@ export function TripsPage() {
               const {
                 _id,
                 stay: { name: stayName, imgUrl: stayImg },
-                host: { fullname: hostName },
+                host: { fullname: hostName, imgUrl: hostImg },
                 startDate,
                 endDate,
                 orderedAt,
@@ -90,7 +90,17 @@ export function TripsPage() {
                       <span className="trip-title">{stayName}</span>
                     </div>
                   </td>
-                  <td className="td-host">{hostName}</td>
+                  <td className="td-host ">
+                    <img
+                      src={
+                        hostImg ||
+                        'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+                      }
+                      alt={hostName}
+                      className="avatar"
+                    />
+                    {hostName}
+                  </td>
                   <td className="td-checkin">{formatFullDate(startDate)}</td>
                   <td className="td-checkout">{formatFullDate(endDate)}</td>
                   <td className="td-booked">{formatFullDate(orderedAt)}</td>

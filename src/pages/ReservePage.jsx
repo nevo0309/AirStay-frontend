@@ -11,6 +11,7 @@ import { StepChoosePayment } from '../cmps/steps/StepChoosePayment'
 import { StepPaymentMethod } from '../cmps/steps/StepPaymentMethod'
 import { StepMessage } from '../cmps/steps/StepMessage'
 import { StepReview } from '../cmps/steps/StepReview'
+import { StepLogin } from '../cmps/steps/StepLogin.jsx'
 import { formatDateFromStore, getOrderCreationDate } from '../services/util.service'
 import { useSelector } from 'react-redux'
 import { showErrorMsg } from '../services/event-bus.service.js'
@@ -116,7 +117,7 @@ export function ReservePage() {
       host: {
         _id: stay.host._id,
         fullname: stay.host.fullname,
-        imgUrl: stay.host.thumbnailUrl || stay.host.pictureUrl,
+        imgUrl: stay.host.imgUrl || stay.host.thumbnailUrl,
       },
 
       msgs: [],
@@ -170,6 +171,10 @@ export function ReservePage() {
         <div className="reserve-grid">
           {/* LEFT: the four Step components → */}
           <div className="reserve-content">
+            {!user && <StepLogin
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+            />}
             <StepChoosePayment
               currentStep={currentStep}
               setCurrentStep={setCurrentStep}
@@ -177,6 +182,7 @@ export function ReservePage() {
               setPaymentOption={setPaymentOption}
               totalPrice={totalPrice}
               endDayToPay={endDateMinus2}
+              user={user}
             />
 
             <StepPaymentMethod

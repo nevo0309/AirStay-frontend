@@ -9,14 +9,16 @@ export function StepCard({
   disabled = false,
   bodyContent,
   footerContent,
+  cmp
 }) {
+
   // If not open, render a “collapsed summary” row
   if (!isOpen) {
     return (
       <div className={`collapsed-summary${disabled ? ' inactive' : ''}`}>
         <div className="summary-left">
           <h2 className="step-title">
-            {stepNumber}. {title}
+            {stepNumber ? stepNumber + '.' : ''} {title}
           </h2>
           {summaryText && <span className="summary-text">{summaryText}</span>}
         </div>
@@ -31,13 +33,13 @@ export function StepCard({
 
   // Otherwise, render the expanded “step-card”
   return (
-    <div className="step-card">
+    <div className={'step-card ' + (cmp ? cmp : '')}>
       <div className="step-header">
         <h2 className="step-title">
-          {stepNumber}. {title}
+          {stepNumber ? stepNumber + '.' : ''} {title}
         </h2>
       </div>
-      <div className="step-body">{bodyContent}</div>
+      <div className={'step-body ' + (cmp ? cmp : '')}>{bodyContent}</div>
       <div className="step-footer">{footerContent}</div>
     </div>
   )

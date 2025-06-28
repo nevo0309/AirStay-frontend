@@ -10,11 +10,14 @@ export function StepChoosePayment({
   setPaymentOption,
   totalPrice,
   endDayToPay,
+  user
 }) {
-  const isOpen = currentStep === 1
+  const isOpen = user ? currentStep === 1: false
+  const disabled = user ? false : true
   const partPrice = totalPrice / 4
   const leftToPay = totalPrice - partPrice
 
+  console.log(user)
   const payDateStr = formatDate(endDayToPay)
 
   console.log('paydate', payDateStr)
@@ -28,7 +31,7 @@ export function StepChoosePayment({
       isOpen={isOpen}
       summaryText=""
       onChange={() => setCurrentStep(1)}
-      disabled={false}
+      disabled={disabled}
       bodyContent={
         <div className="payment-options">
           <label className="payment-option">

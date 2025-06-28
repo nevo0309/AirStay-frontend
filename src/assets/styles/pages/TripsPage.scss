@@ -48,6 +48,9 @@
       .th-guests {
         min-width: 120px;
       }
+      .th-booked {
+        min-width: 100px;
+      }
       .th-price {
         min-width: 120px;
         text-align: center;
@@ -108,15 +111,28 @@
   }
 
   .td-host {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: #525252;
     font-size: 16px;
+    margin-top: 0.85rem;
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      background-color: #f0f0f0;
+    }
   }
 
   .td-checkin,
   .td-checkout {
     color: #6f6f6f;
     font-size: 16px;
-    white-space: nowrap;
+    // white-space: nowrap;
   }
 
   .td-guests {

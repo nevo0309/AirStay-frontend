@@ -1,10 +1,11 @@
 import { userService } from '../services/user/user.service.remote'
-// import { socketService } from '../services/socket.service'
+
 import { store } from '../store/store'
 
 import { showErrorMsg } from '../services/event-bus.service'
 import { LOADING_DONE, LOADING_START } from './system.reducer'
 import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from './user.reducer'
+import { socketUser } from '../services/socket.service'
 
 export async function loadUsers() {
   try {
@@ -34,7 +35,7 @@ export async function login(credentials) {
       type: SET_USER,
       user,
     })
-    // socketService.login(user._id)
+    socketUser.set(user._id)
     return user
   } catch (err) {
     console.log('Cannot login', err)
@@ -49,7 +50,8 @@ export async function signup(credentials) {
       type: SET_USER,
       user,
     })
-    // socketService.login(user)
+    socketUser.set(user._id)
+
     return user
   } catch (err) {
     console.log('Cannot signup', err)
@@ -64,7 +66,7 @@ export async function logout() {
       type: SET_USER,
       user: null,
     })
-    // socketService.logout()
+    socketUser.unset()
   } catch (err) {
     console.log('Cannot logout', err)
     throw err

@@ -254,6 +254,13 @@ export function getRandomImageNumber() {
 
   return pickedNumber
 }
+export function toPlainId(id) {
+  if (!id) return ''
+  if (typeof id === 'string') return id
+  if (id.$oid) return id.$oid // came from Mongo → JSON
+  if (id.toString) return id.toString() // ObjectId instance
+  return String(id) // fallback
+}
 
 export function sumNights(startDate, endDate) {
   if (!startDate || !endDate) return 0
