@@ -129,10 +129,11 @@
   }
 
   .td-checkin,
-  .td-checkout {
+  .td-checkout,
+  .td-booked {
     color: #6f6f6f;
     font-size: 16px;
-    // white-space: nowrap;
+    white-space: nowrap;
   }
 
   .td-guests {
