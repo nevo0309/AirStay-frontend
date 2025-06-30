@@ -1,9 +1,13 @@
-import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { heartFilledSvg, heartOutlineSvg } from "../../data/svgExport"
-import { stayService } from "../services/stay/stay.service.remote"
+import { toggleWishlistStay } from "../store/user.actions"
+import { useState } from "react"
 
-export function WishlistHeart({ stay }) {
-  const [isLiked, setIsLiked] = useState(false)
+export function WishlistHeart({ stay, onToggle }) {
+  const dispatch = useDispatch()
+  const wishlistIds = useSelector(state => state.userModule.wishlistIds) // ✅ Moved up
+  const isLiked = wishlistIds.includes(stay._id)
+
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -15,8 +19,8 @@ export function WishlistHeart({ stay }) {
     setError(null)
 
     try {
-      const result = await stayService.toggleWishlist(stay._id)
-      setIsLiked(result) // result is boolean: true or false
+      const result = await dispatch(toggleWishlistStay(stay)) // returns true or false
+      onToggle?.(result, stay._id) // Notify parent if provided
     } catch (err) {
       setError("Failed to update wishlist")
     } finally {
@@ -25,17 +29,7 @@ export function WishlistHeart({ stay }) {
   }
 
   return (
-    // <button className='heart-icon' onClick={handleClick}>
-    //   {isLoading ? (
-    //     <span>...</span>
-    //   ) : isLiked ? (
-    //     heartFilledSvg
-    //   ) : (
-    //     heartOutlineSvg
-    //   )}
-    // </button>
     <button className='heart-icon' onClick={handleClick} disabled={isLoading}>
-      {/* Show spinner overlay or opacity if loading */}
       <span style={{ position: "relative", display: "inline-block" }}>
         <span style={isLoading ? { opacity: 0.6 } : {}}>
           {isLiked ? heartFilledSvg : heartOutlineSvg}
