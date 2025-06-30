@@ -42,7 +42,7 @@
           .visa,
           .mastercard,
           .amex {
-            height: 1rem;
+            // height: 1rem;
             align-self: center;
           }
         }
@@ -60,6 +60,7 @@
         height: 1.25rem;
         accent-color: #222222;
         margin-left: 1rem;
+        margin-block: 0;
         cursor: pointer;
       }
     }
