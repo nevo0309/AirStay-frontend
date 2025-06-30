@@ -8,6 +8,7 @@ export const UPDATE_ORDER = 'UPDATE_ORDER'
 export const REMOVE_ORDER = 'REMOVE_ORDER'
 export const SET_HOST_ORDERS = 'SET_HOST_ORDERS'
 export const UPDATE_ORDER_STATUS = 'UPDATE_ORDER_STATUS'
+export const MSG_READ = 'MSG_READ'
 
 const initialState = {
   orders: [], // array of all orders
@@ -60,10 +61,18 @@ export function orderReducer(state = initialState, action) {
         orders: state.orders.filter(o => o._id !== action.orderId),
         hostOrders: state.hostOrders.filter(o => o._id !== action.orderId),
       }
-      break
+
+    case MSG_READ: {
+      const patch = o => (o._id === action.orderId ? { ...o, isHostMsgRead: true } : o)
+
+      return {
+        ...state,
+        orders: state.orders.map(patch),
+        hostOrders: state.hostOrders.map(patch),
+      }
+    }
 
     default:
-      // no change
       break
   }
 

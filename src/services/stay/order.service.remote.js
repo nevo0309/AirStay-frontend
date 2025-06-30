@@ -12,6 +12,7 @@ export const orderService = {
   remove,
   updateStatus,
   getEmptyOrder,
+  markMsgRead,
 }
 
 function query(filterBy = {}) {
@@ -35,6 +36,9 @@ function remove(orderId) {
 
 async function updateStatus(orderId, status) {
   return httpService.patch(`order/${orderId}/status`, { status })
+}
+function markMsgRead(orderId) {
+  return httpService.patch(`order/${orderId}/msg-read`)
 }
 
 function getEmptyOrder() {

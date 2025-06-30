@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { formatFullDate } from '../services/util.service'
 import { useSelector } from 'react-redux'
 import { showErrorMsg } from '../services/event-bus.service'
-import { loadOrders, updateOrderStatus } from '../store/order.actions'
+import { loadOrders, markMsgRead, updateOrderStatus } from '../store/order.actions'
 import { Modal } from '../cmps/Modal'
 
 export function OrdersTable() {
@@ -201,13 +201,13 @@ export function OrdersTable() {
                     {showMsg ? (
                       <button
                         className="btn-msg"
-                        onClick={() => {
-                          setReadIds(prev => new Set(prev).add(order._id))
+                        onClick={async () => {
+                          if (!order.isHostMsgRead) await markMsgRead(order._id)
                           setOpenMsg({ id: order._id, text: order.message })
                         }}
                       >
                         View message
-                        {!readIds.has(order._id) && <span className="new-dot" />}
+                        {!order.isHostMsgRead && <span className="new-dot" />}
                       </button>
                     ) : (
                       '—'
