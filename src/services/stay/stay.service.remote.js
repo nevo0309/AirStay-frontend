@@ -9,6 +9,8 @@ export const stayService = {
   addStayMsg,
   getGoogleApi,
   getDefaultFilter,
+  toggleWishlist,   // 👈 ADD
+  fetchWishlist,    // 👈 ADD
 }
 
 async function query(filterBy) {
@@ -55,4 +57,15 @@ async function getGoogleApi() {
     console.error('Failed to load Google API key', err)
     throw err
   }
+}
+
+// Toggle wishlist for a stay (remote)
+async function toggleWishlist(stayId) {
+  if (!stayId) throw new Error('No stayId provided to toggleWishlist')
+  return httpService.post(`stay/${stayId}/wishlist`, {})
+}
+
+// Get all stays wishlisted by the logged-in user
+async function fetchWishlist() {
+  return httpService.get(`stay/wishlists`)
 }
