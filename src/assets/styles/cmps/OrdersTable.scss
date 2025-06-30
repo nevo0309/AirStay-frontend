@@ -104,7 +104,10 @@
           &.th-stay {
             min-width: 200px;
           }
-
+          &.th-message {
+            text-align: center;
+            min-width: 140px;
+          }
           &.th-payment {
             text-align: center;
             min-width: 100px;
@@ -136,7 +139,9 @@
             text-align: center;
             width: 8.5rem;
           }
-
+          &.td-message {
+            text-align: center;
+          }
           &.td-status {
             text-align: center;
           }
@@ -144,6 +149,7 @@
           &.td-guest {
             display: flex;
             align-items: center;
+            padding-top: 2rem;
             gap: 12px;
 
             .avatar {
@@ -217,5 +223,58 @@
       outline: 2px solid #bd2130;
       outline-offset: 2px;
     }
+  }
+}
+
+/* View message  */
+.btn-msg {
+  position: relative !important;
+  overflow: visible;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 0.45rem 1.15rem 0.45rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: $gray1;
+  color: $clr7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
+
+  &:hover {
+    background: lighten($gray1, 4%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+  }
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+  }
+
+  .new-dot {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: red;
+    box-shadow: 0 0 0 2px $gray1;
+    pointer-events: none;
+  }
+}
+
+.msg-modal {
+  max-width: 420px;
+  padding: 1.5rem 2rem;
+  line-height: 1.45;
+  p {
+    white-space: pre-wrap;
   }
 }

@@ -4,6 +4,7 @@ import { formatFullDate } from '../services/util.service'
 import { useSelector } from 'react-redux'
 import { showErrorMsg } from '../services/event-bus.service'
 import { loadOrders, updateOrderStatus } from '../store/order.actions'
+import { Modal } from '../cmps/Modal'
 
 export function OrdersTable() {
   const user = useSelector(store => store.userModule.user)
@@ -80,6 +81,11 @@ export function OrdersTable() {
   const [activeTab, setActiveTab] = useState(0)
   const [filteredOrders, setFilteredOrders] = useState(orders)
   const [currentOrders, setCurrentOrders] = useState([])
+
+  const [openMsg, setOpenMsg] = useState(null)
+  const [readIds, setReadIds] = useState(new Set())
+
+  const hasGuestMsg = o => o.message && o.message.trim().length
   useEffect(() => setCurrentOrders(orders), [orders])
 
   const today = new Date()
@@ -148,6 +154,7 @@ export function OrdersTable() {
               <th className="th-booked">Booked</th>
               <th className="th-stay">Listing</th>
               <th className="th-payment">Payment</th>
+              <th className="th-message">Message</th>
               <th className="th-action">Action</th>
             </tr>
           </thead>
@@ -160,6 +167,8 @@ export function OrdersTable() {
                 order.createdAt || order.bookedAt || order.startDate
               )
               const status = (order.status || 'unknown').toLowerCase()
+              const showMsg = hasGuestMsg(order)
+
               const stayName = order.stay?.name || 'Unknown Stay'
 
               return (
@@ -188,6 +197,22 @@ export function OrdersTable() {
                   <td className="td-booked">{bookedDate}</td>
                   <td className="td-listing">{stayName}</td>
                   <td className="td-payment">₪{order.totalPrice}</td>
+                  <td className="td-message">
+                    {showMsg ? (
+                      <button
+                        className="btn-msg"
+                        onClick={() => {
+                          setReadIds(prev => new Set(prev).add(order._id))
+                          setOpenMsg({ id: order._id, text: order.message })
+                        }}
+                      >
+                        View message
+                        {!readIds.has(order._id) && <span className="new-dot" />}
+                      </button>
+                    ) : (
+                      '—'
+                    )}
+                  </td>
                   <td className="td-action">
                     {status === 'pending' ? (
                       <div className="action-buttons">
@@ -213,6 +238,15 @@ export function OrdersTable() {
             })}
           </tbody>
         </table>
+      )}
+      {/* ───────── modal ───────── */}
+      {openMsg && (
+        <Modal onClose={() => setOpenMsg(null)}>
+          <div className="msg-modal">
+            <h2>Guest message</h2>
+            <p>{openMsg.text}</p>
+          </div>
+        </Modal>
       )}
     </div>
   )
