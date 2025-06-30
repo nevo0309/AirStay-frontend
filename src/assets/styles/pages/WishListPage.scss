@@ -1,0 +1,23 @@
+.heart-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+
+  .heart {
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+  }
+
+  .filled {
+    color: #ff385c;
+  }
+
+  .outline {
+    color: white;
+    stroke: #222;
+  }
+}

@@ -187,7 +187,7 @@ export function OrdersTable() {
                   <td className="td-checkout">{checkOut}</td>
                   <td className="td-booked">{bookedDate}</td>
                   <td className="td-listing">{stayName}</td>
-                  <td className="td-payment">${order.totalPrice}</td>
+                  <td className="td-payment">₪{order.totalPrice}</td>
                   <td className="td-action">
                     {status === 'pending' ? (
                       <div className="action-buttons">

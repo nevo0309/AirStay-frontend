@@ -18,7 +18,7 @@ export function AppFooter() {
             </a>
             |
             <a href="http://www.linkedin.com/in/dima-dovgan-479987210" target="_blank" rel="noreferrer">
-              <i className="fa-brands fa-linkedin"></i> Dima Dovgen
+              <i className="fa-brands fa-linkedin"></i> Dima Dovgan
             </a>
           </p>
           <p className='github flex column'>
