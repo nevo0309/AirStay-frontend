@@ -93,18 +93,19 @@
   .reserve-page {
     .sticky-arrow-wrapper {
       .back-arrow {
-        left: 9rem;
+        left: -2.5rem;
         top: 2.5rem;
       }
     }
 
     .reserve-header {
       .header-container {
-        padding-left: 10.3rem;
+        padding: 0;
       }
     }
   }
   .reserve-container {
+    padding: 0;
     .reserve-grid {
       align-items: center;
       flex-direction: column-reverse;

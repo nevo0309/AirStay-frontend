@@ -95,6 +95,7 @@ export function ReservePage() {
       paymentOption,
       paymentMethod,
       message,
+      isHostMsgRead: false,
       orderedAt: getOrderCreationDate(),
       startDate,
       endDate,
@@ -171,10 +172,7 @@ export function ReservePage() {
         <div className="reserve-grid">
           {/* LEFT: the four Step components → */}
           <div className="reserve-content">
-            {!user && <StepLogin
-            currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
-            />}
+            {!user && <StepLogin currentStep={currentStep} setCurrentStep={setCurrentStep} />}
             <StepChoosePayment
               currentStep={currentStep}
               setCurrentStep={setCurrentStep}

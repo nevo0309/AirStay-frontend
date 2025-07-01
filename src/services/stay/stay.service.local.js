@@ -4,6 +4,7 @@ import { userService } from '../user/user.service.local'
 import { stays } from '../../../data/stay-demo'
 
 const STORAGE_KEY = 'stayDB'
+const WISHLIST_KEY = 'wishlistDB'
 
 let gStays = []
 _createStays()
@@ -13,6 +14,8 @@ export const stayService = {
   save,
   remove,
   addStayMsg,
+  fetchWishlist,   // <--- added
+  toggleWishlist,  // <--- added
   getDefaultFilter,
 }
 window.cs = stayService
@@ -97,6 +100,62 @@ function _createStays() {
     }
   })
 }
+
+// // =============== WISHLIST LOGIC ===============
+
+// function loadWishlist() {
+//   try {
+//     return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || []
+//   } catch {
+//     return []
+//   }
+// }
+
+// function saveWishlist(wishlist) {
+//   localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist))
+// }
+
+// async function fetchWishlist() {
+//   // Get all stays and filter to those in the wishlist
+//   const allStays = await storageService.query(STORAGE_KEY)
+//   const wishlistIds = loadWishlist()
+//   return allStays.filter(stay => wishlistIds.includes(stay._id))
+// }
+
+// async function toggleWishlist(stayId) {
+//   let wishlistIds = loadWishlist()
+//   let isLiked
+
+//   // Toggle logic for wishlistIds
+//   if (wishlistIds.includes(stayId)) {
+//     wishlistIds = wishlistIds.filter(id => id !== stayId)
+//     isLiked = false
+//   } else {
+//     wishlistIds.push(stayId)
+//     isLiked = true
+//   }
+//   saveWishlist(wishlistIds)
+
+//   // Also update likedByUsers field on the specific stay in storage
+//   const allStays = await storageService.query(STORAGE_KEY)
+//   const idx = allStays.findIndex(s => s._id === stayId)
+//   if (idx > -1) {
+//     const guestId = 'guest' // Swap to real user later if needed
+//     let arr = allStays[idx].likedByUsers || []
+//     if (isLiked && !arr.includes(guestId)) {
+//       allStays[idx].likedByUsers = [...arr, guestId]
+//     } else if (!isLiked) {
+//       allStays[idx].likedByUsers = arr.filter(id => id !== guestId)
+//     }
+//     await storageService.put(STORAGE_KEY, allStays[idx])
+//   }
+
+//   // Return what changed
+//   return { stayId, isLiked }
+// }
+// // ===============================================
+
+
 
 function getDefaultFilter() {
   return { location: '', checkIn: '', checkOut: '', guest: {} }

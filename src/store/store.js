@@ -1,4 +1,5 @@
 import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import { thunk } from 'redux-thunk'
 
 import { stayReducer } from './stay.reducer'
 import { userReducer } from './user.reducer'
@@ -22,7 +23,7 @@ const rootReducer = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const enhancer = composeEnhancers(
-  applyMiddleware(filterSyncMiddleware) // ← add more inside the same call
+  applyMiddleware(filterSyncMiddleware, thunk) // ← add more inside the same call
   // e.g. applyMiddleware(filterSyncMiddleware, thunk)
 )
 

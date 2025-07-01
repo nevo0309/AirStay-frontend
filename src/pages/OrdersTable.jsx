@@ -1,14 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { formatFullDate } from '../services/util.service'
 import { useSelector } from 'react-redux'
+
+import { formatFullDate } from '../services/util.service'
 import { showErrorMsg } from '../services/event-bus.service'
-import { loadOrders, updateOrderStatus } from '../store/order.actions'
+import { loadOrders, updateOrderStatus, markMsgRead } from '../store/order.actions'
+
+import { Modal } from '../cmps/Modal'
+import { OrdersCards } from '../cmps/OrdersCards'
 
 export function OrdersTable() {
   const user = useSelector(store => store.userModule.user)
   const orders = useSelector(store => store.orderModule.orders)
+
   const navigate = useNavigate()
+
   useEffect(() => {
     if (user?._id) loadOrders({ hostId: user._id })
   }, [user?._id])
@@ -19,55 +25,19 @@ export function OrdersTable() {
       navigate('/')
     }
   }, [user, navigate])
-  if (!user) return
+
+  if (!user) return null
   const userName = user.fullname
 
-  // const orders = [
-  //   {
-  //     _id: "o1001",
-  //     guest: { _id: "u101", fullname: "Lena Sparks" },
-  //     guests: { adults: 2, children: 0, infants: 1, pets: 0 },
-  //     startDate: "2025/06/15",
-  //     endDate: "2025/06/18",
-  //     bookedAt: "2025/05/20",
-  //     stay: { _id: "s101", name: "Hilltop Haven" },
-  //     totalPrice: 245,
-  //     status: "Approved"
-  //   },
-  //   {
-  //     _id: "o1002",
-  //     guest: { _id: "u102", fullname: "Mark Twain" },
-  //     guests: { adults: 1, children: 1, infants: 0, pets: 1 },
-  //     startDate: "2025/07/01",
-  //     endDate: "2025/07/06",
-  //     bookedAt: "2025/06/01",
-  //     stay: { _id: "s102", name: "Seaside Cottage" },
-  //     totalPrice: 420,
-  //     status: "Pending"
-  //   },
-  //   {
-  //     _id: "o1003",
-  //     guest: { _id: "u103", fullname: "Sophie Sky" },
-  //     guests: { adults: 2, children: 2, infants: 1, pets: 0 },
-  //     startDate: "2025/06/13",
-  //     endDate: "2025/06/16",
-  //     bookedAt: "2025/05/22",
-  //     stay: { _id: "s103", name: "Downtown Loft" },
-  //     totalPrice: 330,
-  //     status: "Approved"
-  //   },
-  //   {
-  //     _id: "o1004",
-  //     guest: { _id: "u104", fullname: "Nathan Drift" },
-  //     guests: { adults: 2, children: 1, infants: 0, pets: 1 },
-  //     startDate: "2025/08/03",
-  //     endDate: "2025/08/10",
-  //     bookedAt: "2025/07/01",
-  //     stay: { _id: "s104", name: "Lakeview Bungalow" },
-  //     totalPrice: 520,
-  //     status: "Declined"
-  //   }
-  // ]
+  /* ------------------------------------------------------------------ */
+  /*  Detect very small screens (≤ 480 px)                              */
+  /* ------------------------------------------------------------------ */
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 480)
+  useLayoutEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 480)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   const tabs = [
     { label: 'All reservations', filter: 'All' },
@@ -77,32 +47,28 @@ export function OrdersTable() {
     { label: 'Upcoming', filter: 'Upcoming' },
     { label: 'Pending review', filter: 'Pending' },
   ]
-  const [activeTab, setActiveTab] = useState(0)
-  const [filteredOrders, setFilteredOrders] = useState(orders)
-  const [currentOrders, setCurrentOrders] = useState([])
-  useEffect(() => setCurrentOrders(orders), [orders])
 
+  const [activeTab, setActiveTab] = useState(0)
+  const [currentOrders, setCurrentOrders] = useState([])
+  const [filteredOrders, setFilteredOrders] = useState(orders)
+
+  const [openMsg, setOpenMsg] = useState(null) // { id, text }
+
+  // helpers
+  const hasGuestMsg = o => o.message && o.message.trim().length
   const today = new Date()
   const tomorrow = new Date(today)
   tomorrow.setDate(today.getDate() + 1)
-
   const isSameDay = (d1, d2) => new Date(d1).toDateString() === new Date(d2).toDateString()
 
-  async function handleStatusChange(orderId, newStatus) {
-    try {
-      await updateOrderStatus(orderId, newStatus)
-    } catch (err) {
-      console.error(err)
-      showErrorMsg('Could not update reservation status')
-    }
-  }
+  useEffect(() => setCurrentOrders(orders), [orders])
 
   useEffect(() => {
     const filter = tabs[activeTab].filter
     const result = currentOrders.filter(order => {
       const start = new Date(order.startDate)
       const end = new Date(order.endDate)
-      const status = order.status.toLowerCase()
+      const status = (order.status || '').toLowerCase()
 
       if (filter === 'All') return true
       if (status === 'declined') return false
@@ -116,16 +82,28 @@ export function OrdersTable() {
     setFilteredOrders(result)
   }, [activeTab, currentOrders])
 
+  async function handleStatusChange(orderId, newStatus) {
+    try {
+      await updateOrderStatus(orderId, newStatus)
+    } catch (err) {
+      console.error(err)
+      showErrorMsg('Could not update reservation status')
+    }
+  }
+
   return (
-    <div className="orders-table-wrapper">
+    <div className="orders-wrapper">
       <h1>Welcome, {userName}!</h1>
+      <h2></h2>
       <h2>Your reservations</h2>
+
+      {/* ── category tabs ── */}
       <div className="tabs">
-        {tabs.map((tab, index) => (
+        {tabs.map((tab, idx) => (
           <button
-            key={index}
-            className={`tab-btn ${index === activeTab ? 'active' : ''}`}
-            onClick={() => setActiveTab(index)}
+            key={idx}
+            className={`tab-btn ${idx === activeTab ? 'active' : ''}`}
+            onClick={() => setActiveTab(idx)}
           >
             {tab.label}
           </button>
@@ -137,7 +115,29 @@ export function OrdersTable() {
           <div className="icon-placeholder">📄</div>
           <p>No reservations found for this category.</p>
         </div>
+      ) : isMobile ? (
+        /* ============================================================
+         *  MOBILE  – cards
+         * ============================================================ */
+        <div className="orders-cards">
+          {filteredOrders.map(order => (
+            <OrdersCards
+              key={order._id}
+              order={order}
+              hasMsg={hasGuestMsg(order)}
+              onOpenMsg={async () => {
+                if (!order.isHostMsgRead) await markMsgRead(order._id)
+                setOpenMsg({ id: order._id, text: order.message })
+              }}
+              onApprove={() => handleStatusChange(order._id, 'approved')}
+              onDecline={() => handleStatusChange(order._id, 'declined')}
+            />
+          ))}
+        </div>
       ) : (
+        /* ============================================================
+         *  DESKTOP
+         * ============================================================ */
         <table className="orders-table">
           <thead className="table-header">
             <tr className="header-row">
@@ -148,9 +148,11 @@ export function OrdersTable() {
               <th className="th-booked">Booked</th>
               <th className="th-stay">Listing</th>
               <th className="th-payment">Payment</th>
-              <th className="th-action">Action</th>
+              <th className="th-message">Action</th>
+              {/* <th className="th-action">Action</th> */}
             </tr>
           </thead>
+
           <tbody className="table-body">
             {filteredOrders.map(order => {
               const guestName = order.guest?.fullname || 'Unknown Guest'
@@ -161,14 +163,18 @@ export function OrdersTable() {
               )
               const status = (order.status || 'unknown').toLowerCase()
               const stayName = order.stay?.name || 'Unknown Stay'
+              const showMsg = hasGuestMsg(order)
 
               return (
                 <tr key={order._id} className="order-row">
+                  {/* status */}
                   <td className="td-status">
                     <span className={`status-cell status-${status}`}>
                       {status.charAt(0).toUpperCase() + status.slice(1)}
                     </span>
                   </td>
+
+                  {/* guest */}
                   <td className="td-guest guest-info">
                     <img
                       src={
@@ -183,12 +189,36 @@ export function OrdersTable() {
                       <div className="guest-role">Guest</div>
                     </div>
                   </td>
+
+                  {/* dates */}
                   <td className="td-checkin">{checkIn}</td>
                   <td className="td-checkout">{checkOut}</td>
                   <td className="td-booked">{bookedDate}</td>
+
+                  {/* stay + price */}
                   <td className="td-listing">{stayName}</td>
                   <td className="td-payment">₪{order.totalPrice}</td>
-                  <td className="td-action">
+
+                  {/* message */}
+                  <td className="td-message">
+                    {showMsg ? (
+                      <button
+                        className="btn-msg"
+                        onClick={async () => {
+                          if (!order.isHostMsgRead) await markMsgRead(order._id)
+                          setOpenMsg({ id: order._id, text: order.message })
+                        }}
+                      >
+                        View message
+                        {!order.isHostMsgRead && <span className="new-dot" />}
+                      </button>
+                    ) : (
+                      '—'
+                    )}
+                  </td>
+
+                  {/* approve / decline */}
+                  {/* <td className="td-action">
                     {status === 'pending' ? (
                       <div className="action-buttons">
                         <button
@@ -205,14 +235,57 @@ export function OrdersTable() {
                         </button>
                       </div>
                     ) : (
-                      <span>—</span>
+                      '—'
                     )}
-                  </td>
+                  </td> */}
                 </tr>
               )
             })}
           </tbody>
         </table>
+      )}
+
+      {/* ── modal ── */}
+      {openMsg && (
+        <Modal contentClassName="host-msg" onClose={() => setOpenMsg(null)}>
+          {isMobile ? (
+            /* ────── PHONE: just the guest message ────── */
+            <div className="msg-modal">
+              <h2>Guest message</h2>
+              <p>{openMsg.text}</p>
+            </div>
+          ) : (
+            /* ────── DESKTOP modal with actions ────── */
+            <div className="msg-modal">
+              <h2>Guest order</h2>
+
+              <h3>Guest message</h3>
+              <p>{openMsg.text}</p>
+
+              <h3 className="order-action">Order action</h3>
+              <div className="modal-actions">
+                <button
+                  className="btn-approve"
+                  onClick={() => {
+                    handleStatusChange(openMsg.id, 'approved')
+                    setOpenMsg(null)
+                  }}
+                >
+                  Approve
+                </button>
+                <button
+                  className="btn-decline"
+                  onClick={() => {
+                    handleStatusChange(openMsg.id, 'declined')
+                    setOpenMsg(null)
+                  }}
+                >
+                  Decline
+                </button>
+              </div>
+            </div>
+          )}
+        </Modal>
       )}
     </div>
   )

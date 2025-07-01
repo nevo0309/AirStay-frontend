@@ -10,6 +10,7 @@ import {
   REMOVE_ORDER,
   SET_HOST_ORDERS,
   UPDATE_ORDER_STATUS,
+  MSG_READ,
 } from './order.reducer.js'
 
 // === Action Creators ===
@@ -131,4 +132,8 @@ export async function updateOrderStatus(orderId, newStatus) {
     console.error('Failed to update order status:', err)
     throw err
   }
+}
+export async function markMsgRead(orderId) {
+  await orderService.markMsgRead(orderId)
+  store.dispatch({ type: MSG_READ, orderId })
 }

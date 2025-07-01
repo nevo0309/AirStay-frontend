@@ -1,3 +1,4 @@
+.orders-wrapper,
 .orders-table-wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -32,17 +33,6 @@
       }
     }
   }
-
-  // .empty-state {
-  //   text-align: center;
-  //   // padding: 2rem;
-  //   color: #777;
-  //   background: #f9f9f9;
-
-  //   .icon-placeholder {
-  //     font-size: 2rem;
-  //     margin-bottom: 0.5rem;
-  //   }
 
   .empty-state {
     display: flex;
@@ -94,20 +84,18 @@
           &.th-guest {
             min-width: 200px;
           }
-
           &.th-checkin,
           &.th-checkout,
           &.th-booked {
             min-width: 100px;
           }
-
           &.th-stay {
             min-width: 200px;
           }
-
+          &.th-message,
           &.th-payment {
             text-align: center;
-            min-width: 100px;
+            min-width: 140px;
           }
         }
       }
@@ -131,19 +119,20 @@
             text-align: center;
             font-weight: 500;
           }
-
-          &.td-action {
-            text-align: center;
-            width: 8.5rem;
-          }
-
+          &.td-action,
+          &.td-message,
           &.td-status {
             text-align: center;
+          }
+
+          &.td-action {
+            width: 8.5rem;
           }
 
           &.td-guest {
             display: flex;
             align-items: center;
+            padding-top: 2rem;
             gap: 12px;
 
             .avatar {
@@ -160,7 +149,6 @@
                 font-weight: 600;
                 color: #222;
               }
-
               .guest-role {
                 font-size: 0.85rem;
                 color: #666;
@@ -181,41 +169,167 @@
     &.status-approved {
       color: #28a745;
     }
-
     &.status-declined {
       color: #dc3545;
     }
-
     &.status-pending {
       color: #ffc107;
     }
   }
 
-  .btn-approve {
-    background-color: #28a745;
-    color: white;
+  .btn-approve,
+  .btn-decline {
+    color: #fff;
 
-    &:hover {
-      background-color: #218838;
+    &.btn-approve {
+      background-color: #28a745;
+      &:hover {
+        background-color: #218838;
+      }
+      &:focus {
+        outline: 2px solid #1e7e34;
+        outline-offset: 2px;
+      }
     }
 
-    &:focus {
-      outline: 2px solid #1e7e34;
-      outline-offset: 2px;
+    &.btn-decline {
+      background-color: #dc3545;
+      &:hover {
+        background-color: #c82333;
+      }
+      &:focus {
+        outline: 2px solid #bd2130;
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+.btn-msg {
+  position: relative !important;
+  overflow: visible;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 0.45rem 1.15rem 0.45rem 15px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: $gray1;
+  color: $clr7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
+
+  &:hover {
+    background: lighten($gray1, 4%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+  }
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+  }
+
+  .new-dot {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: red;
+    box-shadow: 0 0 0 2px $gray1;
+    pointer-events: none;
+  }
+}
+
+/* ==================================================================== */
+/*  Host-order modal */
+/* ==================================================================== */
+.modal-content.host-msg {
+  display: inline-block;
+  text-align: left;
+  position: relative;
+  // width: auto;
+  min-width: 200px;
+  max-width: 500px;
+  padding: 2rem 2.5rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 18px;
+  background: #fff;
+
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.14);
+
+  .modal-close {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  .msg-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #222;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+      &.order-action {
+        text-align: center;
+      }
+    }
+
+    p {
+      font-size: 0.925rem;
+      line-height: 1.45;
+      color: #333;
+      margin: 0.25rem 0 0;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+
+      .btn-approve,
+      .btn-decline {
+        flex: 1 1 0;
+        padding: 0.55rem 0;
+        font-size: 0.875rem;
+        font-weight: 600;
+        border-radius: 10px;
+      }
+      .btn-approve {
+        background-color: #1e7e34;
+      }
+      .btn-decline {
+        background-color: #bd2130;
+      }
     }
   }
 
-  .btn-decline {
-    background-color: #dc3545;
-    color: white;
+  /* ------------ phones  ------------ */
+  @media (max-width: 480px) {
+    width: 92vw;
+    max-width: none;
+    padding: 1.5rem 1.25rem;
+    border-radius: 14px;
 
-    &:hover {
-      background-color: #c82333;
-    }
-
-    &:focus {
-      outline: 2px solid #bd2130;
-      outline-offset: 2px;
+    .modal-close {
+      top: -5px;
+      left: -7px;
     }
   }
 }

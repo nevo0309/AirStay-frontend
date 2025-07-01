@@ -1,0 +1,145 @@
+/* ===================================================================== */
+/* 3)  Mobile cards (≤480 px)                                            */
+/* ===================================================================== */
+@media (max-width: 480px) {
+  .main-container {
+    display: block;
+  }
+  .orders-wrapper {
+    width: 350px;
+    .tabs {
+      gap: 15px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      flex-wrap: nowrap;
+    }
+  }
+  .card-actions {
+    width: 100%;
+    display: flex;
+    padding: 0 0.1rem 0.1rem;
+    .btn-approve,
+    .btn-decline {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  .orders-table {
+    display: none;
+  }
+  .orders-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .order-card {
+    position: relative;
+    border: 1px solid #e7e7e7;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    .new-dot {
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      width: 15px;
+      height: 15px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background: red;
+    }
+  }
+
+  /* header */
+  .order-card .card-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0.5rem;
+
+    .status-badge {
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 0.15rem;
+
+      &.status-approved {
+        color: #28a745;
+      }
+      &.status-pending {
+        color: #ffc107;
+      }
+      &.status-declined {
+        color: #dc3545;
+      }
+    }
+    .stay-name {
+      font-size: 0.78rem;
+      color: #777;
+    }
+
+    .avatar-box {
+      position: relative;
+      top: 80px;
+
+      .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .order-card .card-body {
+    padding: 0 1rem 1.25rem;
+
+    .guest-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .dates {
+      font-size: 0.96rem;
+      color: #333;
+    }
+  }
+
+  .order-card .card-btn {
+    border: none;
+    border-top: 1px solid #eee;
+    color: #333;
+    background: #fafafa;
+    padding: 0.9rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #f2f2f2;
+    }
+  }
+
+  /* approve/decline inside modal */
+  .modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+
+    .btn-approve,
+    .btn-decline {
+      flex: 1 1 0;
+      padding: 0.65rem 0;
+    }
+  }
+}

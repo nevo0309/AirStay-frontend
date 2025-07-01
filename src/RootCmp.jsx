@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router'
-import { useLocation } from 'react-router-dom'
+import React, { useState, useEffect } from "react"
+import { Routes, Route, Navigate } from "react-router"
+import { useLocation } from "react-router-dom"
 
-import { userService } from './services/user'
-import { HomePage } from './pages/HomePage'
-import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
-import { StayIndex } from './pages/StayIndex.jsx'
-import { ReviewIndex } from './pages/ReviewIndex.jsx'
-import { ChatApp } from './pages/Chat.jsx'
-import { AdminIndex } from './pages/AdminIndex.jsx'
+import { userService } from "./services/user"
+import { HomePage } from "./pages/HomePage"
+import { AboutUs, AboutTeam, AboutVision } from "./pages/AboutUs"
+import { StayIndex } from "./pages/StayIndex.jsx"
+import { ReviewIndex } from "./pages/ReviewIndex.jsx"
+import { ChatApp } from "./pages/Chat.jsx"
+import { AdminIndex } from "./pages/AdminIndex.jsx"
 
-import { StayDetails } from './pages/StayDetails'
-import { UserDetails } from './pages/UserDetails'
+import { StayDetails } from "./pages/StayDetails"
+import { UserDetails } from "./pages/UserDetails"
 
 import { AppHeader } from "./cmps/AppHeader"
 import { AppFooter } from "./cmps/AppFooter"
@@ -25,8 +25,9 @@ import { ReservationAppHeader } from "./cmps/ReservationAppHeader.jsx"
 import { SearchPage } from "./pages/SearchPage.jsx"
 import { use } from "react"
 
-import { OrdersTable } from './pages/OrdersTable.jsx'
-import { useSocketUser } from './customHooks/useSockerUser.jsx'
+import { OrdersTable } from "./pages/OrdersTable.jsx"
+import { WishlistPage } from "./pages/WishListPage.jsx"
+import { useSocketUser } from "./customHooks/useSockerUser.jsx"
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -40,8 +41,7 @@ export function RootCmp() {
   // const [isBookingOrDetailsPage, setIsBookingOrDetailsPage] = useState(true)
   const [isStayFilterOpen, setIsStayFilterOpen] = useState(true)
 
-
-  const isBookingOrDetailsPage = location.pathname.startsWith('/book/stay')
+  const isBookingOrDetailsPage = location.pathname.startsWith("/book/stay")
 
   // useEffect(() => {
   //   if (
@@ -53,7 +53,7 @@ export function RootCmp() {
   // }, [location.pathname])
 
   return (
-    <div className="main-container">
+    <div className='main-container'>
       {/* {isBookingOrDetailsPage ? (
         <ReservationAppHeader />
       ) : (
@@ -65,7 +65,10 @@ export function RootCmp() {
       {isBookingOrDetailsPage ? (
         <ReservationAppHeader />
       ) : (
-        <AppHeader isStayFilterOpen={isStayFilterOpen} setIsStayFilterOpen={setIsStayFilterOpen} />
+        <AppHeader
+          isStayFilterOpen={isStayFilterOpen}
+          setIsStayFilterOpen={setIsStayFilterOpen}
+        />
       )}
 
       <UserMsg />
@@ -77,12 +80,17 @@ export function RootCmp() {
           {/* <Route path="team" element={<AboutTeam />} /> */}
           {/* <Route path="vision" element={<AboutVision />} /> */}
           {/* </Route> */}
-          <Route path="/" element={<StayIndex isStayFilterOpen={isStayFilterOpen} />} />
-          <Route path="stay/:stayId" element={<StayDetails />} />
-          <Route path="book/stay/:stayId" element={<ReservePage />} />
-          <Route path="/trips" element={<TripsPage />} />
-          <Route path="/hosting/order" element={<OrdersTable />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route
+            path='/'
+            element={<StayIndex isStayFilterOpen={isStayFilterOpen} />}
+          />
+          <Route path='stay/:stayId' element={<StayDetails />} />
+          <Route path='book/stay/:stayId' element={<ReservePage />} />
+          <Route path='/trips' element={<TripsPage />} />
+          <Route path='/hosting/order' element={<OrdersTable />} />
+          <Route path='/search' element={<SearchPage />} />
+          <Route path='/wishlist' element={<WishlistPage />} />
+
           {/* <Route path="user/:id" element={<UserDetails />} /> */}
           {/* <Route path="review" element={<ReviewIndex />} /> */}
           {/* <Route path="chat" element={<ChatApp />} /> */}
@@ -109,8 +117,8 @@ function AuthGuard({ children, checkAdmin = false }) {
   const user = userService.getLoggedinUser()
   const isNotAllowed = !user || (checkAdmin && !user.isAdmin)
   if (isNotAllowed) {
-    console.log('Not Authenticated!')
-    return <Navigate to="/" />
+    console.log("Not Authenticated!")
+    return <Navigate to='/' />
   }
   return children
 }
