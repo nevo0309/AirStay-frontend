@@ -1,10 +1,11 @@
 .wishlist-page {
   padding: 2rem;
+  grid-template-columns: 4rem 1fr 4rem;
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
+  // h2 {
+  //   font-size: 2rem;
+  //   margin-bottom: 1.5rem;
+  // }
 
   &.empty {
     text-align: center;

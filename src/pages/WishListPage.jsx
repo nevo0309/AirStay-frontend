@@ -20,7 +20,7 @@ export function WishlistPage() {
     return <div className='wishlist-page empty'>No wishlisted stays yet</div>
 
   return (
-    <section className='wishlist-page'>
+    <section className='wishlist-page main-container full'>
       <h2>Wishlist</h2>
       <div className='wishlist-grid'>
         {wishlistStays.map(stay => (
