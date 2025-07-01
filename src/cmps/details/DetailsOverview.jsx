@@ -10,16 +10,22 @@ export function DetailsOverview({ stay }) {
   const total = Object.values(counts).reduce((sum, n) => sum + n, 0)
 
   // 2) average rating
-  const avg = total > 0 ? stay.reviews.reduce((sum, { stars }) => sum + stars, 0) / total : 0
+  const avg =
+    total > 0
+      ? stay.reviews.reduce((sum, { stars }) => sum + stars, 0) / total
+      : 0
   return (
-    <section className="details-overview">
-      <div className="overview-header">
-        <h2 className="overview-location">{stay.name}</h2>
-        <p className="overview-info">
+    <section className='details-overview'>
+      <div className='overview-header'>
+        <h2 className='overview-location'>{stay.name}</h2>
+        <p className='overview-info'>
           {stay.capacity} guests · {stay.bedrooms} bed · {stay.bathrooms} bath
         </p>
-        <p className="stay-rating">
-          <span className="star">★</span> {avg.toFixed(1)} {stay.reviews.length} · reviews
+        <p className='stay-rating'>
+          <span className='star'>★</span>
+          <span>{avg.toFixed(1)}</span>
+          <span>·</span>
+          <span>{stay.reviews.length} reviews</span>
         </p>
       </div>
     </section>
