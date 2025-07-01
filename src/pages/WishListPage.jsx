@@ -1,15 +1,14 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-
 import { WishlistHeart } from "../cmps/WishlistHeart"
 import { loadUserWishlist } from "../store/user.actions"
-import { Navigate, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 
 export function WishlistPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const wishlistStays = useSelector(state => state.userModule.wishlistStays)
-  const loading = useSelector(state => state.systemModule.isLoading) // Optional, if using loading state in Redux
+  const loading = useSelector(state => state.systemModule.isLoading)
 
   useEffect(() => {
     dispatch(loadUserWishlist())
@@ -19,11 +18,20 @@ export function WishlistPage() {
   if (!wishlistStays?.length)
     return <div className='wishlist-page empty'>No wishlisted stays yet</div>
 
+  // Preprocess stays with average rating
+  const staysWithAvg = wishlistStays.map(stay => {
+    const reviews = stay.reviews || []
+    const total = reviews.length
+    const avg =
+      total > 0 ? reviews.reduce((sum, { stars }) => sum + stars, 0) / total : 0
+    return { ...stay, avgRating: avg }
+  })
+
   return (
     <section className='wishlist-page main-container full'>
       <h2>Wishlist</h2>
       <div className='wishlist-grid'>
-        {wishlistStays.map(stay => (
+        {staysWithAvg.map(stay => (
           <article
             key={stay._id}
             className='wishlist-card'
@@ -37,7 +45,7 @@ export function WishlistPage() {
               <p>
                 {stay.loc?.city || "City"}, {stay.loc?.country || "Country"}
               </p>
-              <p>★ {stay.rating || 4.83}</p>
+              <p>★ {stay.avgRating.toFixed(1)}</p>
             </div>
           </article>
         ))}
