@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
-export function Modal({ children, onClose }) {
+export function Modal({ children, onClose, contentClassName }) {
   // Close on ESC
   useEffect(() => {
     const onKey = e => e.key === 'Escape' && onClose()
@@ -16,7 +16,7 @@ export function Modal({ children, onClose }) {
 
   return createPortal(
     <div className="modal-backdrop" onClick={handleBackdrop}>
-      <div className="modal-content">
+      <div className={`modal-content ${contentClassName || ''}`}>
         <button className="modal-close" onClick={onClose}>
           &times;
         </button>
