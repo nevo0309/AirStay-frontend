@@ -1,11 +1,13 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+
 import { WishlistHeart } from "../cmps/WishlistHeart"
 import { loadUserWishlist } from "../store/user.actions"
+import { Navigate, useNavigate } from "react-router"
 
 export function WishlistPage() {
   const dispatch = useDispatch()
-
+  const navigate = useNavigate()
   const wishlistStays = useSelector(state => state.userModule.wishlistStays)
   const loading = useSelector(state => state.systemModule.isLoading) // Optional, if using loading state in Redux
 
@@ -22,7 +24,10 @@ export function WishlistPage() {
       <h2>Wishlist</h2>
       <div className='wishlist-grid'>
         {wishlistStays.map(stay => (
-          <article key={stay._id} className='wishlist-card'>
+          <article
+            key={stay._id}
+            className='wishlist-card'
+            onClick={() => navigate(`/stay/${stay._id}`)}>
             <div className='wishlist-imgs'>
               <img src={stay.imgUrls?.[0]} alt={stay.name} />
               <WishlistHeart stay={stay} />
