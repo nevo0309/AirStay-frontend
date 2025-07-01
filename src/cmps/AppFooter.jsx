@@ -23,16 +23,11 @@ export function AppFooter() {
               <i className='fa-brands fa-linkedin'></i> Nevo Yaakoby
             </a>
             |
-<<<<<<< HEAD
-            <a href="http://www.linkedin.com/in/dima-dovgan-479987210" target="_blank" rel="noreferrer">
-              <i className="fa-brands fa-linkedin"></i> Dima Dovgan
-=======
             <a
               href='http://www.linkedin.com/in/dima-dovgan-479987210'
               target='_blank'
               rel='noreferrer'>
               <i className='fa-brands fa-linkedin'></i> Dima Dovgan
->>>>>>> f-wishlist-page
             </a>
           </p>
           <p className='github flex column'>
