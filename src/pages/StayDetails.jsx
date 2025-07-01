@@ -179,6 +179,7 @@ export function StayDetails() {
       <DetailsReviews
         reviews={stay.reviews}
         stayId={stay._id}
+        stay={stay}
       />
      
 

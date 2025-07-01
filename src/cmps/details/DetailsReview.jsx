@@ -1,10 +1,11 @@
 import React from 'react'
 import { format } from 'date-fns'
 import { useMemo } from 'react'
-
+import { ReviewModal } from './ReviewModal'
+import { useState } from 'react'
 import { getRandomImageNumber } from '../../services/util.service'
 
-function Stars({ count }) {
+export function Stars({ count }) {
   return (
     <span className="stars">
       {Array.from({ length: 5 }, (_, i) => (i < count ? '★' : '☆')).join('')}
@@ -12,8 +13,10 @@ function Stars({ count }) {
   )
 }
 
-export function DetailsReviews({ reviews }) {
+export function DetailsReviews({ reviews, stay }) {
   if (!reviews || !reviews.length) return null
+
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false)
 
   const numOfReviews = reviews.length
   const displayed = reviews.slice(0, 6)
@@ -42,8 +45,12 @@ export function DetailsReviews({ reviews }) {
         ))}
       </div>
       {numOfReviews > 5 && (
-        <button className="show-all-reviews">Show all {numOfReviews} reviews</button>
+        <button className="show-all-reviews" onClick={() => setIsReviewModalOpen(true)}>Show all {numOfReviews} reviews</button>
       )}
+
+      {isReviewModalOpen && <ReviewModal reviews={reviews} stay={stay} setIsReviewModalOpen={setIsReviewModalOpen}/>}
     </section>
+
+
   )
 }

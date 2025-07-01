@@ -21,7 +21,7 @@ export function AppFooter() {
               <i className="fa-brands fa-linkedin"></i> Dima Dovgan
             </a>
           </p>
-          <p className='github flex column'>
+          <div className='github flex column'>
             <div className="flex">
               <a href="https://github.com/nevo0309/AirStay-frontend" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-github"></i>Frontend
@@ -31,7 +31,7 @@ export function AppFooter() {
                 <i className="fa-brands fa-github"></i> Backend
               </a>
             </div>
-          </p>
+          </div>
 
         </footer>
       </section>
