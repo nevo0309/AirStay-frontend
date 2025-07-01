@@ -1,4 +1,6 @@
 import { userService } from '../services/user/user.service.remote'
+import { stayService } from '../services/stay/stay.service.remote'
+import { SET_WISHLIST, TOGGLE_WISHLIST } from './user.reducer'
 
 import { store } from '../store/store'
 
@@ -35,6 +37,7 @@ export async function login(credentials) {
       type: SET_USER,
       user,
     })
+    store.dispatch(loadUserWishlist())
     socketUser.set(user._id)
     return user
   } catch (err) {
@@ -50,6 +53,7 @@ export async function signup(credentials) {
       type: SET_USER,
       user,
     })
+    store.dispatch(loadUserWishlist())
     socketUser.set(user._id)
 
     return user
@@ -59,13 +63,28 @@ export async function signup(credentials) {
   }
 }
 
+// export async function logout() {
+//   try {
+//     await userService.logout()
+//     store.dispatch({
+//       type: SET_USER,
+//       user: null,
+//     })
+//     socketUser.unset()
+//   } catch (err) {
+//     console.log('Cannot logout', err)
+//     throw err
+//   }
+// }
+
 export async function logout() {
   try {
     await userService.logout()
-    store.dispatch({
-      type: SET_USER,
-      user: null,
-    })
+    store.dispatch({ type: SET_USER, user: null })
+
+    // 🧼 Clear Redux wishlist on logout
+    store.dispatch({ type: SET_WISHLIST, wishlistIds: [], wishlistStays: [] })
+
     socketUser.unset()
   } catch (err) {
     console.log('Cannot logout', err)
@@ -80,5 +99,37 @@ export async function loadUser(userId) {
   } catch (err) {
     showErrorMsg('Cannot load user')
     console.log('Cannot load user', err)
+  }
+}
+
+export function loadUserWishlist() {
+  return async dispatch => {
+    try {
+      const stays = await stayService.fetchWishlist()
+      const wishlistIds = stays.map(stay => stay._id)
+      dispatch({ type: SET_WISHLIST, wishlistIds, wishlistStays: stays })
+      return stays // allow `.then()` in component
+    } catch (err) {
+      console.error("Failed to load wishlist", err)
+      return []
+    }
+  }
+}
+
+export async function toggleWishlistStay(stay) {
+  try {
+    const isNowLiked = await stayService.toggleWishlist(stay._id)
+
+    store.dispatch({
+      type: TOGGLE_WISHLIST,
+      stayId: stay._id,
+      stay: isNowLiked ? stay : null
+    })
+
+    return isNowLiked
+  } catch (err) {
+    console.error('Failed to toggle wishlist', err)
+    showErrorMsg('Could not update wishlist')
+    throw err
   }
 }

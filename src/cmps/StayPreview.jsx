@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useLocation } from "react-router-dom"
 import { heartSvg } from "../../data/svgExport.jsx"
 import { ImgCarousel } from "./imgCarosel.jsx"
@@ -10,7 +10,7 @@ import { WishlistHeart } from "./WishlistHeart.jsx"
 export function StayPreview({ stay }) {
   const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   const location = useLocation()
-
+  const [wishUpdate, setWishUpdate] = useState(0) // for re-rendering
   const reviewCount = stay.reviews.reduce(
     (acc, { stars }) => {
       acc[stars]++
@@ -41,14 +41,9 @@ export function StayPreview({ stay }) {
       {location.pathname.startsWith("/search") ? (
         <ImgCarousel stay={stay} />
       ) : (
-        <img
-          src={stay.imgUrls?.[0]}
-          alt={stay.name}
-        />
+        <img src={stay.imgUrls?.[0]} alt={stay.name} />
       )}
-      {/* <div className="heart-icon">{heartSvg}</div> */}
-
-      <WishlistHeart stay={stay} />
+      <WishlistHeart stay={stay} isLiked={true} />
 
       <div className='preview-content'>
         <h3>{stay.name}</h3>
