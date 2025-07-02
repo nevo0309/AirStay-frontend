@@ -1,5 +1,5 @@
 // src/store/order.actions.js
-
+import { getSocket } from '../services/socket.service'
 import { orderService } from '../services/stay/order.service.remote.js'
 import { store } from './store.js' // adjust path if needed
 import {
@@ -137,3 +137,8 @@ export async function markMsgRead(orderId) {
   await orderService.markMsgRead(orderId)
   store.dispatch({ type: MSG_READ, orderId })
 }
+let socket
+try {
+  socket = getSocket()
+  socket.on('order-added', order => store.dispatch(_addOrder(order)))
+} catch {}

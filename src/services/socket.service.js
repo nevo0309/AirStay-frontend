@@ -44,6 +44,11 @@ export function setupSocket(store) {
   })
 }
 
+export function getSocket() {
+  if (!socket) throw new Error('Socket not initialised – call setupSocket(store) first')
+  return socket
+}
+
 export const socketUser = {
   set(userId) {
     socket?.emit('set-user-socket', toPlainId(userId))
